@@ -1,0 +1,55 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+library(sparseR)
+```
+
+# Implementing ranked sparsity methods with sparseR
+
+[![Codecov test coverage](https://codecov.io/gh/petersonR/sparseR/branch/master/graph/badge.svg)](https://codecov.io/gh/petersonR/sparseR?branch=master)
+[![R-CMD-check](https://github.com/petersonR/sparseR/workflows/R-CMD-check/badge.svg)](https://github.com/petersonR/sparseR/actions)
+
+## Overview
+
+The `sparseR` package implements the following ranked sparsity methods:
+
+1) Sparsity-ranked lasso
+2) Sparsity-ranked MCP
+3) Sparsity-ranked SCAD
+4) Ranked Bayesian Information Criterion (and corresponding stepwise approaches)
+
+Additionally, `sparseR` has many features designed to streamline dealing with interaction terms and polynomials, including functions for variable pre-processing, variable selection, post-selection inference, and post-fit model visualization under ranked sparsity.
+
+The package is currently in beta phase (version 0.0.1), with plans for a stable release to CRAN in February 2022. A publication detailing ranked sparsity principles is currently under review, and available upon request. 
+
+## Installation 
+
+```{r gh-installation}
+# install.packages("devtools")
+devtools::install_github("petersonR/sparseR")
+```
+
+## Example
+
+```{r, eval = FALSE}
+library(sparseR)
+```
+
+```{r example}
+data(iris)
+set.seed(1321)
+
+srl <- sparseR(Sepal.Width ~ ., data = iris, k = 1, seed = 1)
+srl
+```
+
+For more examples and a closer look, check out the [package website](https://petersonr.github.io/sparseR/). 
