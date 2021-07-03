@@ -1,0 +1,552 @@
+---
+title: "Using the `sparseR` package"
+author: "Ryan A. Peterson"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    number_sections: yes
+    toc: yes
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{sparseR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.height = 5, fig.width = 7)
+
+library(recipes)
+library(dplyr)
+library(knitr)
+library(kableExtra)
+library(sparseR)
+par(mar = c(5,4,4,2))
+```
+
+# Introduction
+
+The `sparseR` package aids in the implementation of ranked sparsity methods for model selection in the presence of interactions and polynomials. 
+
+The following methods are supported, with help from `ncvreg` on the backend: 
+
+1) The sparsity-ranked lasso (SRL)
+2) Sparsity-ranked MCP/SCAD (SRM/SRS)
+3) Sparsity-ranked elastic net (SREN)
+
+Additionally, `sparseR` makes it easy to preprocess data and get it ready for looking at all candidate interactions of order `k`, or all possible polynomials of order `poly`. 
+
+This document goes through several use cases of the package on different datasets. 
+
+# Use case: `iris` data 
+
+To illustrate in a simple case, consider Fisher's Iris data set, composed of 4 numeric variables and one categorical variable. 
+
+```{r}
+data(iris)
+summary(iris)
+```
+
+If we are interested in predicting `Sepal.Width` based on the other variables and their pairwise interactions, have a couple of options. We can either use the built-in preprocessing for building the model matrix and fitting the model, or we can manually build the model matrix and pass it to the `sparseR` function. 
+
+## Using formula specification
+
+Passing a `formula` to `sparseR` will tell the function which main effects should be in the model. These are also the main effects which will indicate which interactions/polynomials should be investigated. Note that the formula will only accept main effect terms, and will not allow specification of individual interaction effects (or other functions of the main effects). 
+
+The sparsity-ranked lasso model for all-pairwise interactions can be fit as follows (cross-validation is performed for `lambda` via the `ncvreg` package, so it is important to set the seed for reproducibililty). 
+
+```{r}
+srl <- sparseR(Sepal.Width ~ ., data = iris, k = 1, seed = 1)
+```
+
+The print method will present useful results from these fits: 
+
+```{r}
+srl
+```
+
+For more detailed model information, the `summary` method for `sparseR` objects displays more information about the fits (see `?ncvreg::summary.ncvreg` for more information).
+
+```{r}
+# At the lambda which minimizes CVE
+summary(srl, at = "cvmin")
+
+# At the lambda which is within 1 SE of the minimum CVE
+summary(srl, at = "cv1se")
+```
+
+Finally, plots of either the cross-validation error across `lambda` values or the coefficient paths can be produced fairly easily: 
+
+```{r}
+plot(srl, plot_type = "cv")
+```
+
+```{r}
+plot(srl, plot_type = "path")
+```
+
+Importantly, since `sparseR` with a formula centers and scales the covariates prior to forming interactions, the coefficients should be interpreted this way (a 1-unit change in the covariate corresponds to a 1 SD change in the unit of the main effect, and parameters involving interactions must be interpreted at the mean value of involved covariates). 
+
+## Using model matrix specification
+
+Since the `sparseR` preprocessing has limits to its customability, and often it will be of interest to create interactions that are centered at prespecified values (as opposed to their mean), it is also possible to feed in a matrix to `sparseR` that has already been preprocessed. The function also allows users to circumvent the recipes functionality and supply their own model matrix, composed of interactions and/or polynomials. This may be useful in cases where users wish to:  
+
+- specify their own missing data imputation methods, 
+- specify the intercept differently than a grand mean (avoid centering variables prior to making certain interactions of interest)
+- scale variables differently
+
+The key arguments for this purpose are to set `pre_process` to `FALSE`, and supply `model_matrix` and the outcome `y`. Users may also want to specify how the model matrix is specified in terms of polynomial order (the package requires a prefix, such as "poly_1", or "poly_2" to denote polynomial terms of orders 1 and 2 respectively) and interaction seperator (by default, this is "\\\\:", which is the default for `model.matrix`). 
+
+The code below creates a model matrix will all pairwise interactions, however as opposed to the formula, the numeric variables are not centered prior to forming the interactions, and the factor variable of species will be given a reference category (as opposed to a cell-means specification). Therefore, this method will lead to different results. 
+
+
+```{r}
+X <- model.matrix(Sepal.Width ~ .*., data = iris)[,-1]
+```
+
+```{r}
+set.seed(1)
+srl2 <- sparseR(pre_process = FALSE, model_matrix = X, y = iris$Sepal.Width)
+```
+
+Since we have a warning about iterations, note that we can pass through arguments to `ncvreg` and fix this issue: 
+
+```{r}
+set.seed(1)
+srl2 <- sparseR(pre_process = FALSE, model_matrix = X, y = iris$Sepal.Width, max.iter = 1e6)
+```
+
+And we can use the same S3 methods to get more information about the SRL model:
+
+```{r, fig.height=8}
+srl2
+summary(srl2, at = "cv1se")
+par(mfrow = c(2,1))
+plot(srl2)
+```
+
+Since we did not center/scale any of the variables prior to this fitting procedure, the interpretation of these coefficients should be on the original scale of the predictors, and the origin for the terms involved in interactions is 0, not at the mean of their constituent  covariates. 
+
+Note also that there are fewer total covariates listed. This is because `model.matrix` uses reference cell dummy variables by default. Another way to do this without the reference category specification would be to pass pre-process options to `sparseR`, or to manually use `sparseR_prep` to create the model matrix. 
+
+```{r}
+set.seed(1) 
+srl3 <- sparseR(Sepal.Width ~ ., data = iris, k = 1, 
+                pre_proc_opts = c("none"), max.iter = 1e6)
+srl3
+summary(srl3, at = "cv1se")
+```
+
+## Centering to different values
+
+In many cases with interactions, it makes sense to center variables to certain values (or rather, it does **not** make sense to center variables to their mean or to zero). Therefore we built some flexibility into `sparseR` and `sparseR_prep` in order to allow users to change these as the context dictates. 
+
+Each covariate's centering location (in this case their minima) can be passed into `sparseR_prep` as follows: 
+
+```{r}
+cc <- iris %>%
+    select(Sepal.Length, Petal.Length, Petal.Width) %>%
+    apply(2, min, na.rm = T)
+
+
+p1 <- sparseR_prep(Sepal.Width ~ ., iris, k = 0, extra_opts = list(centers = cc))
+(c2min <- bake(p1, iris))
+summary(c2min)
+```
+
+Or directly into `sparseR`:
+
+```{r}
+srl_centered2min <- sparseR(Sepal.Width ~ ., iris, extra_opts = list(centers = cc), seed = 1)
+```
+
+Or, a function can be passed to evaluate the location for each covariate:
+
+```{r}
+p2 <- sparseR_prep(Sepal.Width ~ ., iris, k = 0, extra_opts = list(center_fn = min))
+(c2min2 <- bake(p2, iris))
+identical(c2min2, c2min)
+```
+
+## Plotting the model 
+
+Interactions are notoriously difficult to understand and to communicate, and visualizations can often be helpful. The `sparseR` package has some limited functionality for plotting the results from these fits, using the `visreg` package as a rough guide. 
+
+```{r,warning=FALSE}
+effect_plot(srl, "Petal.Width", by = "Species")
+```
+
+Notice how this changes if the covariates are centered to their minima instead: 
+
+```{r,warning=FALSE}
+effect_plot(srl_centered2min, "Petal.Width", by = "Species")
+```
+
+It's clear that the model itself can change quite a bit depending on the center location utilized prior to building the interactions. Unfortunately, optimizing the center location for each covariate is a difficult, p-dimensional problem (set in the context of another difficult optimization problem of regularized regression with multiple tuning parameters). 
+
+The `sparseR` package will allow users to compare certain choices in terms of their cross-validated error, which is a decent starting point. The plot below shows how the "centered to zero" model has *slightly* lower cross-validated error than the best mean-centered model and the best minimum-centered model. 
+
+```{r,warning=FALSE, fig.height=6, fig.width=8, out.width="100%"}
+par(mfrow = c(2,3), mar = c(4,4,5,2) + .1)
+plot(srl3, plot_type = "cv", ylim = c(0,.2))
+title("Centered to zero", line = 3)
+abline(h = min(srl3$fit$cve), col = "red")
+plot(srl_centered2min, plot_type = "cv", ylim = c(0,.2))
+title("Centered to minimum values", line = 3)
+abline(h = min(srl3$fit$cve), col = "red")
+plot(srl, plot_type = "cv", ylim = c(0,.2))
+title("Centered to mean", line = 3)
+abline(h = min(srl3$fit$cve), col = "red")
+
+par(mar = c(4,4,2,2) +.1)
+effect_plot(srl3, "Petal.Width", by = "Species", 
+            plot.args = list(ylim = c(1.5, 4.8)))
+effect_plot(srl_centered2min, "Petal.Width", by = "Species", 
+            plot.args = list(ylim = c(1.5, 4.8)))
+effect_plot(srl, "Petal.Width", by = "Species", 
+            plot.args = list(ylim = c(1.5, 4.8)))
+```
+
+Though these models look substantially different, it's worth noting that the predictions obtained from the three models are very close to one another (since the models look similar in the neighborhood of existing data):
+
+```{r}
+p1 <- predict(srl3, at = "cvmin")
+p2 <- predict(srl_centered2min, at = "cvmin")
+p3 <- predict(srl, at = "cvmin")
+
+cor(cbind(p1, p2 ,p3))
+pairs(cbind(p1, p2 ,p3))
+
+```
+
+At the CV1se lambda value, there is slightly less agreement in these predictions: 
+
+```{r}
+# At CV1se
+p4 <- predict(srl3, at = "cv1se")
+p5 <- predict(srl_centered2min, at = "cv1se")
+p6 <- predict(srl, at = "cv1se")
+
+cor(cbind(p1, p2 ,p3, p4,p5,p6))
+pairs(cbind(p1, p2 ,p3, p4,p5,p6))
+```
+
+```{r,warning=FALSE}
+par(mfrow = c(1,3))
+effect_plot(srl3, "Petal.Width", by = "Species", at = "cv1se", 
+            plot.args = list(ylim = c(1.5, 5)))
+effect_plot(srl_centered2min, "Petal.Width", by = "Species", at = "cv1se", 
+            plot.args = list(ylim = c(1.5, 5)))
+effect_plot(srl, "Petal.Width", by = "Species", at = "cv1se", 
+            plot.args = list(ylim = c(1.5, 5)))
+```
+
+## Using stepwise RBIC 
+
+RBIC, or *Ranked-sparsity Bayesian Information Criterion*, is a ranked sparsity model selection criterion that will correctly penalize interactions (higher than main effects). The benefit of using a stepwise approach informed by RBIC is that there is no shrinkage, and it thus doesn't matter whether or not (or where) the covariates are centered (usually). The exceptions here occur when the stepwise process is not sequential/hierarchical (i.e. main effects first, then interactions of the "active" main effects, etc.).
+
+Inference on the parameters is still i) difficult because one must account for post-selection inference, and ii) affected by where and whether the covariates are centered. However, the lines themselves will not be affected by centering status. 
+
+We can see this in the examples below:
+
+```{r, warning = F, fig.height=8, fig.width = 6}
+## Centered model
+(rbic1 <- sparseRBIC_step(Sepal.Width ~ ., iris, pre_proc_opts = c("center", "scale")))
+
+# Non-centered model
+(rbic2 <- sparseRBIC_step(Sepal.Width ~ ., iris, pre_proc_opts = c("scale")))
+
+par(mfrow = c(2,2))
+effect_plot(rbic1, "Petal.Width", by = "Species", plot.args = list(ylim = c(1.5, 5)))
+effect_plot(rbic2, "Petal.Width", by = "Species", plot.args = list(ylim = c(1.5, 5)))
+effect_plot(rbic1, "Sepal.Length", by = "Species")
+effect_plot(rbic2, "Sepal.Length", by = "Species")
+```
+
+
+Again similar S3 methods are available (note how inference does change for certain parameters based on the centering status). A message is produced because these p-values do not account for post-selection inference.
+
+```{r}
+summary(rbic1)
+summary(rbic2)
+```
+
+Alternatively, sample splitting can be utilized to achieve valid inference. This method divides the data into two samples of equal size, uses the first sample to select the model, and the second one to fit and achieve valid (though potentially low-power) inference. Coefficients which are not selected are bestowed a p-value of 1. 
+
+```{r}
+s1 <- sparseRBIC_sampsplit(rbic1)
+```
+
+```{r}
+s1$results %>%
+  kable(digits = 5) %>% 
+  kable_styling(full_width = FALSE)
+```
+
+
+```{r}
+s2 <- sparseRBIC_sampsplit(rbic2)
+```
+
+```{r}
+s2$results %>%
+  kable(digits = 5) %>% 
+  kable_styling(full_width = FALSE)
+```
+
+
+Additionally, inferences based on bootstrapped samples of the data are available via the `sparseRBIC_bootstrap` function, which stores p-values for each coefficient after model selection has been performed. If a coefficient has not been selected, the p-value is set to one for that bootstrap iteration, so when the "mean" p-value is calculated across bootstraps, the underestimation of the p-value due to model selection is attenuated, as the estimate gets "pulled up" by the 1's in the vector. Since this may be a conservative approach, we also display the "geometric" mean which is a measure of central tendency less sensitive to skew (which many p-values will be highly right skewed). More research must be done on these techniques to ensure adequate coverage properties, but given a high enough number of bootstrap samples they should both be more conservative than the naive, "pretend model selection never took place" approach. The downside here is that depending on the size of the data and the number of variables, this could take quite some time. 
+
+Note that the mean p-value across bootstraps is bounded to be greater than 1-P(selected). In some sense, this makes sense, as if a variable has a low probability of being selected, then that variable should have a higher adjusted p-value. However, for variables whose effects will be highly related (i.e. an interaction and a constituent main effect), this may be too conservative.
+
+```{r, message=FALSE}
+set.seed(1)
+## Centered model
+b1 <- sparseRBIC_bootstrap(rbic1, B = 250)
+```
+
+```{r, echo = F}
+b1$results %>%
+  kable(digits = 5) %>% 
+  kable_styling(full_width = FALSE)
+```
+
+
+```{r, message = F}
+set.seed(1)
+## Uncentered model
+b2 <- sparseRBIC_bootstrap(rbic2, B = 250)
+```
+
+```{r, echo = F}
+b2$results %>%
+  kable(digits = 5) %>% 
+  kable_styling(full_width = FALSE)
+```
+
+This section is still under development. 
+
+# Use case: lung data 
+
+As a more realistic example, we take a data set that is often used to train models that can predict lung cancer status. It has 1027 observations and 14 covariates, including urban/rural, age, years of school, smoking years, number of children, etc.
+
+First, let's look at the data a little: 
+
+```{r}
+data("irlcs_radon_syn")
+summary(irlcs_radon_syn)
+```
+
+Note: 
+
+- There are missing values for BMI - we will see how `sparseR` handles this.
+- Everything is coded as numeric except the outcome, case (this is not necessary for `sparseR` to work), as we will see. 
+- `ID` is an arbitrary identifying variable which should not be used in the modeling phase
+
+```{r}
+irlcs_radon_syn <- select(irlcs_radon_syn, -ID)
+```
+
+At this point, we will split the data into a test and training set. 
+
+```{r}
+set.seed(13)
+
+N <- nrow(irlcs_radon_syn)
+trainIDX <- sample(1:N, N * .75)
+train <- irlcs_radon_syn[trainIDX,]
+test <- irlcs_radon_syn[-trainIDX,]
+```
+
+## Preprocessing
+
+Although the `sparseR()` function will do it automatically, it's generally a good idea to see how the data is being preprocessed and to examine how the model matrix is built before the regularization. We can see what `sparseR` does to preprocess the data by running the function `sparseR_prep`, which utilizes the `recipes` package to perform preprocessing. At no time is the outcome used to train any of the steps, except for the elimination of NA values if any exist. 
+
+```{r}
+prep_obj <- sparseR_prep(CASE ~ ., data = train, k = 0, poly = 1)
+prep_obj
+```
+
+We see that the preprocessor did many things, among which it imputed the data for the missing value using the other predictors in the model. Apparently, by default, this preprocessor will remove variables with "near" zero variance, and that as a result, SMKYRS is not considered (it's eliminated in an early step). 
+
+If we look at this variable, we see that it may be informative: 
+
+```{r}
+MASS::truehist(train$SMKYRS)
+```
+
+Therefore, we can tell the preprocessor not to filter this variable in two ways. First, we could tell it to use `zv` instead of `nzv`, in which case it will only remove zero variance predictors:  
+
+```{r}
+sparseR_prep(CASE ~ ., data = train, k = 0, poly = 1, filter = "zv")
+```
+
+Or, we could adjust the options for the near-zero variance filter (see `?recipes::step_nzv` for details):
+
+```{r}
+sparseR_prep(CASE ~ ., data = train, k = 0, poly = 1, extra_opts = list(unique_cut = 5))
+```
+
+Notice that we haven't told the preprocessor to build any interactions or polynomials of higher degree than 1. we can do this simply by setting `k` and `poly` respectively to higher numbers:
+
+```{r}
+sparseR_prep(CASE ~ ., data = train, k = 1, poly = 1, extra_opts = list(unique_cut = 5))
+sparseR_prep(CASE ~ ., data = train, k = 1, poly = 2, extra_opts = list(unique_cut = 5))
+```
+
+
+*Note*: This preprocessor does not actually produce any data, it only prepares all of the steps. In the recipes package, this is known as `prep`ping the processor. the final step is called `bake`, where the data is fed through the processor and a new data set is returned. 
+
+## Using the `sparseR` function
+
+All of the preprocessing options can be accomplished through the main function for the package, `sparseR`. The following code runs a SRL model, an APL model, a main effects model, and an SRL with polynomials:
+
+
+```{r}
+lso <- list(
+  SRL  = sparseR(CASE ~ ., train, seed = 1),            ## SRL model
+  APL  = sparseR(CASE ~ ., train, seed = 1, gamma = 0), ## APL model
+  ME   = sparseR(CASE ~ ., train, seed = 1, k = 0),     ## Main effects model
+  SRLp = sparseR(CASE ~ ., train, seed = 1, poly = 2)   ## SRL + polynomials
+)
+```
+
+The simple print method allows one to investigate all of these models
+
+```{r}
+lso
+```
+
+Similarly, plots can be produced of all of these figures:
+
+```{r, fig.height= 9, fig.width=7}
+par(mfrow = c(4,2), mar = c(3, 4, 4, 2))
+n <- lapply(lso, plot, log.l = T)
+```
+
+MCP: 
+
+```{r}
+mcp <- list(
+  SRM  = sparseR(CASE ~ ., train, seed = 1, penalty = "MCP"),            ## SRM model
+  APM  = sparseR(CASE ~ ., train, seed = 1, gamma = 0, penalty = "MCP"), ## APM model
+  MEM   = sparseR(CASE ~ ., train, seed = 1, k = 0, penalty = "MCP"),     ## Main effects MCP model
+  SRMp = sparseR(CASE ~ ., train, seed = 1, poly = 2, penalty = "MCP")   ## SRM + polynomials
+)
+```
+
+```{r}
+mcp
+```
+
+```{r, fig.height= 9, fig.width=7}
+par(mfrow = c(4,2), mar = c(3, 4, 4, 2))
+n <- lapply(mcp, plot, log.l = T)
+```
+
+SCAD: 
+
+```{r}
+scad <- list(
+  SRS  = sparseR(CASE ~ ., train, seed = 1, penalty = "SCAD"),            ## SRS model
+  APS  = sparseR(CASE ~ ., train, seed = 1, gamma = 0, penalty = "SCAD"), ## APS model
+  MES   = sparseR(CASE ~ ., train, seed = 1, k = 0, penalty = "SCAD"),    ## Main effects SCAD model
+  SRSp = sparseR(CASE ~ ., train, seed = 1, poly = 2, penalty = "SCAD")   ## SRS + polynomials
+)
+```
+
+```{r}
+scad
+```
+
+```{r, fig.height= 9, fig.width=7}
+par(mfrow = c(4,2), mar = c(3, 4, 4, 2))
+n <- lapply(mcp, plot, log.l = T)
+```
+
+Summary: 
+
+```{r}
+lso_sum <- lapply(lso, function(x) bind_cols(x$results_summary[,c(1,5,2:4)],x$results1se_summary[,-c(1:2, 5)])) %>% 
+  bind_rows()
+mcp_sum <- lapply(mcp, function(x) bind_cols(x$results_summary[,c(1,5,2:4)],x$results1se_summary[,-c(1:2, 5)])) %>% 
+  bind_rows()
+scad_sum <- lapply(scad, function(x) bind_cols(x$results_summary[,c(1,5,2:4)],x$results1se_summary[,-c(1:2, 5)])) %>% 
+  bind_rows()
+
+
+```
+
+```{r, echo = F}
+names(mcp_sum)[6:7] <- names(scad_sum)[6:7] <- names(lso_sum)[6:7] <- names(lso_sum)[4:5]
+lso_sum %>% 
+  kable(digits = 3) %>% 
+  kable_styling("striped", full_width = F) %>%
+  add_header_above(header = c(" " = 3, "Min CV" = 2, "CV1se" = 2)) %>% 
+  group_rows(index = c("SRL" = 2, "APL" = 2, "MEL" = 1, "SRLp" = 3)) 
+  
+mcp_sum %>% 
+  kable(digits = 3) %>% 
+  kable_styling("striped", full_width = F) %>%
+  add_header_above(header = c(" " = 3, "Min CV" = 2, "CV1se" = 2)) %>% 
+  group_rows(index = c("SRM" = 2, "APM" = 2, "MEM" = 1, "SRMp" = 3)) 
+  
+scad_sum %>% 
+  kable(digits = 3) %>% 
+  kable_styling("striped", full_width = F) %>%
+  add_header_above(header = c(" " = 3, "Min CV" = 2, "CV1se" = 2)) %>% 
+  group_rows(index = c("SRS" = 2, "APS" = 2, "MES" = 1, "SRSp" = 3)) 
+    
+```
+
+# Future work: 
+
+This section is still incomplete and under active development. 
+
+## Use case: heart data
+
+```{r}
+remove(list = ls())
+
+## Load Data set, correctly code factors + outcome
+data("Detrano")
+cleveland$thal <- factor(cleveland$thal)
+cleveland$case <- 1*(cleveland$num > 0)
+
+# Convert variables into factor variables if necessary!
+summary(cleveland)
+sapply(cleveland, function(x) length(unique(x)))
+cleveland$sex <- factor(cleveland$sex)
+cleveland$fbs <- factor(cleveland$fbs)
+cleveland$exang <- factor(cleveland$exang)
+
+# Set seed for reproducibility
+set.seed(167)
+
+# Split data into test and train
+N <- nrow(cleveland)
+trainIDX <- sample(1:N, N*.5)
+trainDF <- cleveland[trainIDX,] %>%
+  select(-num)
+testDF <- cleveland[-trainIDX,] %>%
+  select(-num)
+
+# Simulate missing data
+trainDF$thal[2] <- trainDF$thalach[1] <- NA
+
+lso <- list(
+  SRL  = sparseR(case ~ ., trainDF, seed = 1), ## SRL model
+  APL  = sparseR(case ~ ., trainDF, seed = 1, gamma = 0), ## APL model
+  ME   = sparseR(case ~ ., trainDF, seed = 1, k = 0), ## Main effects model
+  SRLp = sparseR(case ~ ., trainDF, seed = 1, poly = 2) ## SRL + polynomials
+)
+
+lso
+plot(lso$SRL)
+par(mfrow = c(4,2))
+lapply(lso, plot, log.l = T)
+```
+
+## Use case: Sheddon survival data
+
+

@@ -1,0 +1,39 @@
+Package: sparseR
+Type: Package
+Title: Variable selection under ranked sparsity principles for interactions and polynomials
+Version: 0.0.1.902
+Authors@R: person("Ryan Andrew", "Peterson", 
+                  email = "ryan-peterson@uiowa.edu", 
+                  role = c("aut", "cre"))
+Description: 
+    This package is designed to implement ranked sparsity methods, including 
+    penalized regression methods such as the sparsity-ranked lasso, MCP, SCAD,
+    and elastic net, as well as the sparsity-ranked Bayesian Information 
+    Criterion (RBIC). These methods are primarily useful for variable selection
+    in the presence of prior informational asymmetry, which occurs in the 
+    context of trying to perform variable selection in the presence of interactions
+    and/or polynomials. Ultimately, this package attempts to facilitate  
+    dealing with cumbersome interactions and polynomials while not avoiding them
+    entirely.
+Suggests:
+    knitr,
+    rmarkdown,
+    kableExtra,
+    testthat,
+    covr, 
+    modeldata, 
+    MASS
+Imports: 
+    survival,
+    ncvreg,
+    rlang,
+    magrittr, 
+    dplyr,
+    recipes
+Depends: 
+    R (>= 3.5)
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+VignetteBuilder: knitr 
+RoxygenNote: 7.1.1
