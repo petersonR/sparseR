@@ -42,11 +42,11 @@ plot.sparseR <- function(x, plot_type = c("both", "cv", "path"), cols = NULL, lo
       coef(x$fit$fit)
     } else coef(x$fit$fit)[-1, , drop = FALSE]
 
-    penalized <- which(x$fit$fit$penalty.factor != 0)
-    nonzero <- which(apply(abs(YY), 1, sum) != 0)
-    ind <- intersect(penalized, nonzero)
 
-    plot(x$fit$fit, log.l = log.l, col = as.character(cols[ind]), ...)
+    # only include those coefficients which are penalized
+    ind <- which(x$fit$fit$penalty.factor != 0)
+
+    plot(x$fit$fit, log.l = log.l, col = as.character(cols[ind]))
     abline(v = vline, lty = c(2), col =c("slategrey", "orange3"))
     legend("topleft", legend = levels(factor(x$results$Vartype)),
            bty = "n", col = levels(cols), lwd = 2)
