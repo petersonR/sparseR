@@ -14,8 +14,8 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.height = 5, fig.width = 7)
-
+knitr::opts_chunk$set(echo = TRUE, fig.height = 5, fig.width = 7,
+                      eval=rmarkdown::pandoc_available("1.12.3"))
 library(recipes)
 library(dplyr)
 library(knitr)
@@ -505,7 +505,7 @@ This section is still incomplete and under active development.
 
 ## Use case: heart data
 
-```{r}
+```{r, fig.height=8, fig.width=7}
 remove(list = ls())
 
 ## Load Data set, correctly code factors + outcome

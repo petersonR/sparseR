@@ -11,6 +11,14 @@ a set of interaction and polynomial terms under ranked sparsity. Additional
 tools for data pre-processing, post-selection inference, and visualization
 are also included.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://petersonr.github.io/sparseR/}
+  \item \url{https://github.com/petersonR/sparseR/}
+}
+
+}
 \author{
 \strong{Maintainer}: Ryan Andrew Peterson \email{ryan-peterson@uiowa.edu}
 
