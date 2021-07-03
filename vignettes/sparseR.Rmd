@@ -1,5 +1,5 @@
 ---
-title: "Using the `sparseR` package"
+title: "Using the sparseR package"
 author: "Ryan A. Peterson"
 date: "`r Sys.Date()`"
 output: 
