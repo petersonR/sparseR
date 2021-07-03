@@ -32,8 +32,6 @@ request.
 ``` r
 # install.packages("devtools")
 devtools::install_github("petersonR/sparseR")
-#> Skipping install of 'sparseR' from a github remote, the SHA1 (3bb99454) has not changed since last install.
-#>   Use `force = TRUE` to force installation
 ```
 
 ## Example

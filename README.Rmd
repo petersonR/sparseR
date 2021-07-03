@@ -33,7 +33,7 @@ The package is currently in beta phase (version 0.0.1), with plans for a stable 
 
 ## Installation 
 
-```{r gh-installation}
+```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("petersonR/sparseR")
 ```
