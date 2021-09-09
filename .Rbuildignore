@@ -1,4 +1,11 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^cran-comments\.md$
+^README\.Rmd$
+^README-.*\.png$
+^\.travis\.yml$
+^doc$
+^Meta$
+^CRAN-RELEASE$
 ^\.github$
 ^codecov\.yml$
