@@ -77,7 +77,7 @@
       <h1 data-toc-skip>Using the <code>sparseR</code> package</h1>
                         <h4 class="author">Ryan A. Peterson</h4>
             
-            <h4 class="date">2021-07-03</h4>
+            <h4 class="date">2021-09-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/petersonR/sparseR/blob/master/vignettes/sparseR.Rmd"><code>vignettes/sparseR.Rmd</code></a></small>
       <div class="hidden name"><code>sparseR.Rmd</code></div>
@@ -353,7 +353,7 @@
 
 <span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">0</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>centers <span class="op">=</span> <span class="va">cc</span><span class="op">)</span><span class="op">)</span>
 <span class="op">(</span><span class="va">c2min</span> <span class="op">&lt;-</span> <span class="fu">bake</span><span class="op">(</span><span class="va">p1</span>, <span class="va">iris</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 150 x 6
+<pre><code>## # A tibble: 150 × 6
 ##    Sepal.Length Petal.Length Petal.Width Species_setosa Species_versicolor
 ##           &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;              &lt;dbl&gt;
 ##  1        0.966        0.227       0.131              1                  0
@@ -390,7 +390,7 @@
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">0</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>center_fn <span class="op">=</span> <span class="va">min</span><span class="op">)</span><span class="op">)</span>
 <span class="op">(</span><span class="va">c2min2</span> <span class="op">&lt;-</span> <span class="fu">bake</span><span class="op">(</span><span class="va">p2</span>, <span class="va">iris</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 150 x 6
+<pre><code>## # A tibble: 150 × 6
 ##    Sepal.Length Petal.Length Petal.Width Species_setosa Species_versicolor
 ##           &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;              &lt;dbl&gt;
 ##  1        0.966        0.227       0.131              1                  0
