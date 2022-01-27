@@ -11,9 +11,10 @@
 #' @importFrom dplyr progress_estimated tibble
 #' @export
 
-sparseRBIC_bootstrap <- function(srbic_fit, B = 100, quiet = F) {
+sparseRBIC_bootstrap <- function(srbic_fit, B = 100, quiet = FALSE) {
 
- message("Note: sparseRBIC_bootstrap is currently experimental and may not behave as expected.")
+ if(!quiet)
+   message("Note: sparseRBIC_bootstrap is currently experimental and may not behave as expected.")
 
 
   ## Need to keep track of how many times each observation shows up

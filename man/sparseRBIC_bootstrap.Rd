@@ -4,7 +4,7 @@
 \alias{sparseRBIC_bootstrap}
 \title{Bootstrap procedure for stepwise regression}
 \usage{
-sparseRBIC_bootstrap(srbic_fit, B = 100, quiet = F)
+sparseRBIC_bootstrap(srbic_fit, B = 100, quiet = FALSE)
 }
 \arguments{
 \item{srbic_fit}{An object fitted by sparseRBIC_step}

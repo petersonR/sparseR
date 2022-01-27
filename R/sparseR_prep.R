@@ -35,7 +35,7 @@
 #' @importFrom dplyr all_of
 #' @importFrom recipes recipe step_nzv step_zv has_role all_predictors all_outcomes
 #'   prep update_role step_interact step_naomit all_numeric step_scale step_other
-#'   step_knnimpute step_naomit step_rm step_dummy step_poly
+#'   step_impute_knn step_naomit step_rm step_dummy step_poly
 #'
 #' @export
 sparseR_prep <- function(formula, data, k = 1, poly = 1,
@@ -114,7 +114,7 @@ sparseR_prep <- function(formula, data, k = 1, poly = 1,
     if(!length(extra_opts$neighbors))
       extra_opts$neighbors <- 5
     rec_obj <- rec_obj %>%
-      step_knnimpute(all_predictors(), has_role("dummy"),
+      step_impute_knn(all_predictors(), has_role("dummy"),
                      neighbors = extra_opts$neighbors,
                      impute_with = imp_vars(all_predictors(), has_role("dummy")))
   }
