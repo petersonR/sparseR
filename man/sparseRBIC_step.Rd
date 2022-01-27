@@ -2,7 +2,7 @@
 % Please edit documentation in R/sparseRBIC_step.R
 \name{sparseRBIC_step}
 \alias{sparseRBIC_step}
-\title{Fit a ranked-sparsity model with forward stepwise RBIC}
+\title{Fit a ranked-sparsity model with forward stepwise RBIC (experimental)}
 \usage{
 sparseRBIC_step(
   formula,
@@ -26,6 +26,7 @@ sparseRBIC_step(
   filter = c("nzv", "zv"),
   extra_opts = list(),
   trace = 0,
+  message = TRUE,
   ...
 )
 }
@@ -81,10 +82,12 @@ interaction terms?}
 
 \item{trace}{Should intermediate results of model selection process be output}
 
+\item{message}{should experimental message be suppressed}
+
 \item{...}{additional arguments for running stepwise selection}
 }
 \description{
-Fit a ranked-sparsity model with forward stepwise RBIC
+Fit a ranked-sparsity model with forward stepwise RBIC (experimental)
 }
 \details{
 This function mirrors \code{sparseR} but uses stepwise selection guided by RBIC.

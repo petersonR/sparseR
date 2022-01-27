@@ -13,6 +13,8 @@
 
 sparseRBIC_sampsplit <- function(srbic_fit, S = 100, quiet = F) {
 
+  message("Note: sparseRBIC_sampsplit is currently experimental and may not behave as expected.")
+
   n <- nrow(srbic_fit$data)
 
   phi <- list()[1:S]
@@ -36,7 +38,8 @@ sparseRBIC_sampsplit <- function(srbic_fit, S = 100, quiet = F) {
       cumulative_poly = srbic_fit$info$cumulative_poly,
       pool = srbic_fit$info$pool,
       poly_prefix = srbic_fit$info$poly_prefix,
-      int_sep = srbic_fit$info$int_sep
+      int_sep = srbic_fit$info$int_sep,
+      message = FALSE
     )
 
     ## Fit selected model on new data

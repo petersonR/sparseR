@@ -1,5 +1,5 @@
 ## Ranked sparsity forward stepwise selection with RBIC
-#' Fit a ranked-sparsity model with forward stepwise RBIC
+#' Fit a ranked-sparsity model with forward stepwise RBIC (experimental)
 #'
 #' @param formula Names of the terms
 #' @param data Data
@@ -31,6 +31,7 @@
 #' @param trace Should intermediate results of model selection process be output
 #' @param ic The information criterion to use
 #' @param ia_formula formula to be passed to step_interact via terms argument
+#' @param message should experimental message be suppressed
 #' @param ... additional arguments for running stepwise selection
 #'
 #' @details
@@ -88,7 +89,10 @@ sparseRBIC_step <- function(formula, data, family = c("gaussian", "binomial", "p
                             poly_prefix = "_poly_", int_sep = "\\:",
                             pre_proc_opts = c("knnImpute", "scale", "center", "otherbin", "none"),
                             filter = c("nzv", "zv"), extra_opts = list(),
-                            trace = 0, ...) {
+                            trace = 0, message = TRUE, ...) {
+
+  if(message)
+    message("Note: sparseRBIC_step is currently experimental and may not behave as expected.")
 
   ## Check and validate arguments
   if(is.null(pre_proc_opts))

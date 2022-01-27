@@ -17,4 +17,5 @@ sparseRBIC_bootstrap(srbic_fit, B = 100, quiet = F)
 Runs bootstrap on models selection procedure using RBIC to
 find bootstrapped standard error (smoothed, see Efron 2014)
 as well as selection percentage across candidate variables.
+(experimental)
 }

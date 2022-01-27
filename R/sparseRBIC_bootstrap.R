@@ -3,6 +3,7 @@
 #' Runs bootstrap on models selection procedure using RBIC to
 #' find bootstrapped standard error (smoothed, see Efron 2014)
 #' as well as selection percentage across candidate variables.
+#' (experimental)
 #'
 #' @param srbic_fit An object fitted by sparseRBIC_step
 #' @param B Number of bootstrap samples
@@ -11,6 +12,9 @@
 #' @export
 
 sparseRBIC_bootstrap <- function(srbic_fit, B = 100, quiet = F) {
+
+ message("Note: sparseRBIC_bootstrap is currently experimental and may not behave as expected.")
+
 
   ## Need to keep track of how many times each observation shows up
   Ni <- matrix(0,nrow = nrow(srbic_fit$data), ncol = B)
@@ -43,7 +47,8 @@ sparseRBIC_bootstrap <- function(srbic_fit, B = 100, quiet = F) {
       cumulative_poly = srbic_fit$info$cumulative_poly,
       pool = srbic_fit$info$pool,
       poly_prefix = srbic_fit$info$poly_prefix,
-      int_sep = srbic_fit$info$int_sep
+      int_sep = srbic_fit$info$int_sep,
+      message = FALSE
     )
 
     s <- summary(bsrbic_fit$fit)$coef
