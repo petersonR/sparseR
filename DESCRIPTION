@@ -3,7 +3,7 @@ Type: Package
 Title: Variable Selection under Ranked Sparsity Principles for Interactions and Polynomials
 Version: 0.0.1.903
 Authors@R: person("Ryan Andrew", "Peterson", 
-                  email = "ryan-peterson@uiowa.edu", 
+                  email = "ryan.a.peterson@cuanschutz.edu", 
                   role = c("aut", "cre"))
 Description: 
     An implementation of ranked sparsity methods, including 

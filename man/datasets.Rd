@@ -63,7 +63,7 @@ Sheddon survival data (Z: clinical covariates, S:survival outcome)
   \item{IRLCS}{
     FIELD, R., SMITH, B., STECK, D. et al. Residential radon exposure and lung cancer:
     Variation in risk estimates using alternative exposure scenarios. J Expo Sci Environ Epidemiol
-    12, 197–203 (2002). https://doi.org/10.1038/sj.jea.7500215 \url{https://www.nature.com/articles/7500215}
+    12, 197–203 (2002). \url{https://www.nature.com/articles/7500215}
   }
   \item{Sheddon}{
   Director's Challenge Consortium for the Molecular Classification of Lung Adenocarcinoma, Shedden, K.,
