@@ -28,6 +28,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -40,18 +42,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">sparseR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.902</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.903</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/sparseR.html">Get started</a>
 </li>
@@ -64,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/petersonR/sparseR/">
+  <a href="https://github.com/petersonR/sparseR/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -81,33 +77,38 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="implementing-ranked-sparsity-methods-with-sparser" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#implementing-ranked-sparsity-methods-with-sparser" class="anchor"></a>Implementing ranked sparsity methods with sparseR</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="implementing-ranked-sparsity-methods-with-sparser">Implementing ranked sparsity methods with sparseR<a class="anchor" aria-label="anchor" href="#implementing-ranked-sparsity-methods-with-sparser"></a>
+</h1></div>
 
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
 <p>The <code>sparseR</code> package implements the following ranked sparsity methods:</p>
-<p>1) Sparsity-ranked lasso 2) Sparsity-ranked MCP 3) Sparsity-ranked SCAD 4) Ranked Bayesian Information Criterion (and corresponding stepwise approaches)</p>
+<ol style="list-style-type: decimal">
+<li>Sparsity-ranked lasso</li>
+<li>Sparsity-ranked MCP</li>
+<li>Sparsity-ranked SCAD</li>
+<li>Ranked Bayesian Information Criterion (and corresponding stepwise approaches)</li>
+</ol>
 <p>Additionally, <code>sparseR</code> has many features designed to streamline dealing with interaction terms and polynomials, including functions for variable pre-processing, variable selection, post-selection inference, and post-fit model visualization under ranked sparsity.</p>
 <p>The package is currently in beta phase (version 0.0.1), with plans for a stable release to CRAN in February 2022. A publication detailing ranked sparsity principles is currently under review, and available upon request.</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"petersonR/sparseR"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://petersonr.github.io/sparseR/">sparseR</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://petersonr.github.io/sparseR/" class="external-link">sparseR</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1321</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1321</span><span class="op">)</span>
 
 <span class="va">srl</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">1</span>, seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 <span class="va">srl</span>
@@ -142,55 +143,61 @@
 <span class="co">#&gt;              Vartype Total Selected Saturation Penalty</span>
 <span class="co">#&gt;          Main effect     6        3      0.500    2.45</span>
 <span class="co">#&gt;  Order 1 interaction    12        4      0.333    3.46</span></code></pre></div>
-<p>For more examples and a closer look, check out the <a href="https://petersonr.github.io/sparseR/">package website</a>.</p>
+<p>For more examples and a closer look, check out the <a href="https://petersonr.github.io/sparseR/" class="external-link">package website</a>.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/petersonR/sparseR/">https://​github.com/​petersonR/​sparseR/​</a>
-</li>
+<li><a href="https://github.com/petersonR/sparseR/" class="external-link">Browse source code</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></li>
 </ul>
 </div>
+
+
 <div class="citation">
-<h2>Citation</h2>
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html">Citing sparseR</a></li>
+<li><a href="authors.html#citation">Citing sparseR</a></li>
 </ul>
 </div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Ryan Andrew Peterson <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://codecov.io/gh/petersonR/sparseR?branch=master"><img src="https://codecov.io/gh/petersonR/sparseR/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://github.com/petersonR/sparseR/actions"><img src="https://github.com/petersonR/sparseR/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://codecov.io/gh/petersonR/sparseR?branch=master" class="external-link"><img src="https://codecov.io/gh/petersonR/sparseR/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/petersonR/sparseR/actions" class="external-link"><img src="https://github.com/petersonR/sparseR/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Ryan Andrew Peterson.</p>
+  <p></p>
+<p>Developed by Ryan Andrew Peterson.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -198,6 +205,8 @@
 
   
 
+
+  
 
   </body>
 </html>
