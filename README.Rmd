@@ -15,7 +15,7 @@ library(sparseR)
 
 # Implementing ranked sparsity methods with sparseR
 
-[![Codecov test coverage](https://codecov.io/gh/petersonR/sparseR/branch/master/graph/badge.svg)](https://codecov.io/gh/petersonR/sparseR?branch=master)
+[![codecov](https://codecov.io/gh/petersonR/sparseR/branch/main/graph/badge.svg)](https://codecov.io/gh/petersonR/sparseR)
 [![R-CMD-check](https://github.com/petersonR/sparseR/workflows/R-CMD-check/badge.svg)](https://github.com/petersonR/sparseR/actions)
 
 ## Overview

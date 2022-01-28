@@ -315,10 +315,6 @@ predict.sparseR <- function(object, newdata, lambda, at = c("cvmin", "cv1se"), .
     predict(object$fit, X=X, ...)
 }
 
-
-
-
-
 #' @rdname predict.sparseR
 #' @method coef sparseR
 #' @export
@@ -343,8 +339,6 @@ coef.sparseR <- function(object, lambda, at = c("cvmin", "cv1se"), ...) {
     coef(object$fit, ...)
 }
 
-
-# Still need:
 
 #' Summary of sparseR model coefficients
 #' @param object a sparseR object

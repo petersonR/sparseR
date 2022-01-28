@@ -13,7 +13,8 @@
 
 sparseRBIC_sampsplit <- function(srbic_fit, S = 100, quiet = F) {
 
-  message("Note: sparseRBIC_sampsplit is currently experimental and may not behave as expected.")
+  if(!quiet)
+    message("Note: sparseRBIC_sampsplit is currently experimental and may not behave as expected.")
 
   n <- nrow(srbic_fit$data)
 

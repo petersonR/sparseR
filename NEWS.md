@@ -3,6 +3,7 @@
 - Updated documentation, added experimental message regarding RBIC
 - Update citation to new paper in AStA
 - Begin process of prepping for CRAN
+- Improve test coverage, begin cleaning up stepwise selection code
 
 # 0.0.1.901
 

@@ -86,6 +86,49 @@ test_that("Different vals of k and poly work, specific formulae, RAIC", {
 
 })
 
+test_that("Different vals of k and poly work, specific formulae, EBIC", {
+
+  formula <- Sepal.Width ~ Petal.Width + BV + Petal.Length + Group
+  expect_silent({
+    obj1 <- sparseRBIC_step(formula, data = iris, ic = "EBIC", message = FALSE)
+    obj2 <- sparseRBIC_step(formula, data = iris, k = 2, poly = 2, ic = "EBIC", message = FALSE)
+    obj3 <- sparseRBIC_step(formula, data = iris, k = 1, poly = 1, ic = "EBIC", message = FALSE)
+    obj4 <- sparseRBIC_step(formula, data = iris, k = 0, poly = 2, ic = "EBIC", message = FALSE)
+  })
+
+  formula <- Sepal.Width ~ BV + UBV + Group
+  expect_silent({
+    obj1 <- sparseRBIC_step(formula, data = iris, ic = "EBIC", message = FALSE)
+    obj2 <- sparseRBIC_step(formula, data = iris, k = 2, poly = 2, ic = "EBIC", message = FALSE)
+    obj3 <- sparseRBIC_step(formula, data = iris, k = 1, poly = 1, ic = "EBIC", message = FALSE)
+    obj4 <- sparseRBIC_step(formula, data = iris, k = 0, poly = 2, ic = "EBIC", message = FALSE)
+    obj5 <- sparseRBIC_step(formula, data = iris, k = 5, poly = 5, ic = "EBIC", message = FALSE)
+  })
+
+})
+
+test_that("Different vals of k and poly work, specific formulae, AIC/BIC", {
+
+  formula <- Sepal.Width ~ Petal.Width + BV + Petal.Length + Group
+  expect_silent({
+    obj1 <- sparseRBIC_step(formula, data = iris, ic = "BIC", message = FALSE)
+    obj2 <- sparseRBIC_step(formula, data = iris, k = 2, poly = 2, ic = "BIC", message = FALSE)
+    obj3 <- sparseRBIC_step(formula, data = iris, k = 1, poly = 1, ic = "BIC", message = FALSE)
+    obj4 <- sparseRBIC_step(formula, data = iris, k = 0, poly = 2, ic = "BIC", message = FALSE)
+  })
+
+  formula <- Sepal.Width ~ BV + UBV + Group
+  expect_silent({
+    obj1 <- sparseRBIC_step(formula, data = iris, ic = "AIC", message = FALSE)
+    obj2 <- sparseRBIC_step(formula, data = iris, k = 2, poly = 2, ic = "AIC", message = FALSE)
+    obj3 <- sparseRBIC_step(formula, data = iris, k = 1, poly = 1, ic = "AIC", message = FALSE)
+    obj4 <- sparseRBIC_step(formula, data = iris, k = 0, poly = 2, ic = "AIC", message = FALSE)
+  })
+
+
+
+})
+
 ## Test Detrano use-case
 
 data("Detrano")
@@ -151,8 +194,8 @@ test_that("Detrano RBIC functionality", {
   expect_silent(MEM <<- sparseRBIC_step(formula = case ~ ., data = cleveland, k = 0, family = "binomial", message = FALSE))
 
   formula <- case ~ sex + thal
-  expect_silent(sparseRBIC_step(formula, data = cleveland, message = FALSE))
-  expect_silent(sparseRBIC_step(formula, data = cleveland, k = 0, family = "binomial", message = FALSE))
+  expect_silent(SRL_b <<- sparseRBIC_step(formula, data = cleveland, message = FALSE))
+  expect_silent(MEM_b <<- sparseRBIC_step(formula, data = cleveland, k = 0, family = "binomial", message = FALSE))
 })
 
 test_that("Detrano RBIC stepwise predict (coef) functionality", {
@@ -164,8 +207,16 @@ test_that("Detrano RBIC stepwise predict (coef) functionality", {
 test_that("Detrano RBIC bootstrap functionality", {
   expect_silent(f <- sparseRBIC_bootstrap(SRL, B = 25, quiet = T))
   expect_silent(f <- sparseRBIC_bootstrap(MEM, B = 25, quiet = T))
+  expect_silent(f <- sparseRBIC_bootstrap(SRL_b, B = 25, quiet = T))
+  expect_silent(f <- sparseRBIC_bootstrap(MEM_b, B = 25, quiet = T))
 
-  formula <- case ~ sex + thal
-  expect_silent(sparseRBIC_step(formula, data = cleveland, message = FALSE))
-  expect_silent(sparseRBIC_step(formula, data = cleveland, k = 0, family = "binomial", message = FALSE))
 })
+
+test_that("Detrano RBIC sampsplit functionality", {
+  expect_silent(f <- sparseRBIC_sampsplit(SRL, S = 25, quiet = T))
+  expect_silent(f <- sparseRBIC_sampsplit(MEM, S = 25, quiet = T))
+  expect_silent(f <- sparseRBIC_sampsplit(SRL_b, S = 25, quiet = T))
+  expect_silent(f <- sparseRBIC_sampsplit(MEM_b, S = 25, quiet = T))
+
+})
+

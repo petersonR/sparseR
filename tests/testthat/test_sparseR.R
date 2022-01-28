@@ -23,6 +23,8 @@ iris$Group[2] <- NA
 # Add missing binary data
 iris$BV[12] <- NA
 
+set.seed(123)
+
 obj1 <- sparseR(Sepal.Width ~ ., data = iris)
 obj2 <- sparseR(Sepal.Width ~ ., data = iris, k = 2, poly = 2)
 obj3 <- sparseR(Sepal.Width ~ ., data = iris, k = 1, poly = 1)
@@ -247,4 +249,12 @@ test_that("Detrano MCPnet predict (coef) functionality", {
   expect_equal(length(coef(APL, at = "cv1se")), nrow(SRL$fit$fit$beta))
   expect_equal(length(coef(MEM, at = "cv1se")), nrow(MEM$fit$fit$beta))
   expect_equal(length(coef(SRLp, at = "cv1se")), nrow(SRLp$fit$fit$beta))
+})
+
+test_that("Print/summary functionality works as expected", {
+  expect_output(print(SRL))
+  expect_output(print(obj4))
+  expect_output(print(obj4))
+  expect_visible(summary(SRL))
+  expect_visible(summary(obj4))
 })

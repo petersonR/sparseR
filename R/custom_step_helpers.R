@@ -98,25 +98,20 @@ run_steps <- function (object, scope, scale = 0, direction = c("both", "backward
   if (use.start)
     warning("'use.start' cannot be used with R's version of 'glm'")
   md <- missing(direction)
-  direction <- match.arg(direction)
-  backward <- direction == "both" | direction == "backward"
-  forward <- direction == "both" | direction == "forward"
+  if(direction != "forward")
+    stop("run_steps can currently only use direction = 'forward'")
+
+  forward <- TRUE
+
   if (missing(scope)) {
-    fdrop <- numeric()
     fadd <- attr(Terms, "factors")
-    if (md)
-      forward <- FALSE
   } else {
     if (is.list(scope)) {
-      fdrop <- if (!is.null(fdrop <- scope$lower)) {
-        attr(terms(update.formula(object, fdrop)), "factors")
-      } else numeric()
       fadd <- if (!is.null(fadd <- scope$upper))
         attr(terms(update.formula(object, fadd)), "factors")
     } else {
       fadd <- if (!is.null(fadd <- scope))
         attr(terms(update.formula(object, scope)), "factors")
-      fdrop <- numeric()
     }
   }
   models <- vector("list", steps)
@@ -125,8 +120,7 @@ run_steps <- function (object, scope, scale = 0, direction = c("both", "backward
   n <- nobs(object, use.fallback = TRUE)
   fit <- object
   bAIC <- penaltyfn(fit, ...)
-  # bAIC <- penaltyfn(fit, P_index)
-  #
+
   edf <- bAIC[1L]
   bAIC <- bAIC[2L]
   if (is.na(bAIC))
@@ -161,34 +155,9 @@ run_steps <- function (object, scope, scale = 0, direction = c("both", "backward
     if (!is.null(sp <-
                  attr(Terms, "specials")) && !is.null(st <- sp$strata))
       ffac <- ffac[-st,]
-    scope <- factor.scope(ffac, list(add = fadd, drop = fdrop))
+    scope <- factor.scope(ffac, list(add = fadd))
     aod <- NULL
     change <- NULL
-    if (backward && length(scope$drop)) {
-      aod <- my_dropterm(
-        fit,
-        scope,
-        scale = scale,
-        trace = max(0, trace - 1),
-        k = k,
-        penaltyfn = penaltyfn,
-        ...
-      )
-      rn <- row.names(aod)
-      row.names(aod) <- c(rn[1L], paste("-", rn[-1L], sep = " "))
-      if (any(aod$Df == 0, na.rm = TRUE)) {
-        zdf <- aod$Df == 0 & !is.na(aod$Df)
-        nc <- match(c("Cp", "AIC"), names(aod))
-        nc <- nc[!is.na(nc)][1L]
-        ch <- abs(aod[zdf, nc] - aod[1, nc]) > 0.01
-        if (any(is.finite(ch) & ch)) {
-          warning("0 df terms are changing AIC")
-          zdf <- zdf[!ch]
-        }
-        if (length(zdf) > 0L)
-          change <- rev(rownames(aod)[zdf])[1L]
-      }
-    }
     if (is.null(change)) {
       if (forward && length(scope$add)) {
         aodf <- my_addterm(
@@ -261,9 +230,6 @@ run_steps <- function (object, scope, scale = 0, direction = c("both", "backward
     fit$keep <- re.arrange(keep.list[seq(nm)])
   step.results(models = models[seq(nm)], fit, object, usingCp)
 }
-
-
-
 
 
 fitall <- function(y, X, method = "lm", ...) {
@@ -480,141 +446,6 @@ my_addterm <- function (object, scope, scale = 0,
   }
   aod <- aod[o, ]
   head <- c("Single term additions", "\nModel:", deparse(formula(object)))
-  if (scale > 0)
-    head <- c(head, paste("\nscale: ", format(scale), "\n"))
-  class(aod) <- c("anova", "data.frame")
-  attr(aod, "heading") <- head
-  aod
-}
-
-my_drop1 <- function (object, scope, scale = 0, all.cols = TRUE,
-                      test = c("none", "Chisq", "F"), k = 2,
-                      penaltyfn = penaltyfn, ...) {
-  check_exact(object)
-  x <- model.matrix(object)
-  offset <- model.offset(model.frame(object))
-  iswt <- !is.null(wt <- object$weights)
-  n <- nrow(x)
-  asgn <- attr(x, "assign")
-  tl <- attr(object$terms, "term.labels")
-  if (missing(scope)) {
-    scope <- drop.scope(object)
-  } else if (length(scope$drop)) {
-    scope <- scope$drop
-  } else {
-    if (!is.character(scope))
-      scope <- attr(terms(update.formula(object, scope)),
-                    "term.labels")
-    if (!all(match(scope, tl, 0L) > 0L))
-      stop("scope is not a subset of term labels")
-  }
-  ndrop <- match(scope, tl)
-  ns <- length(scope)
-  rdf <- object$df.residual
-  chisq <- deviance.lm(object)
-  dfs <- numeric(ns)
-  RSS <- numeric(ns)
-  aic <- numeric(ns)
-  y <- object$residuals + object$fitted.values
-  na.coef <- seq_along(object$coefficients)[!is.na(object$coefficients)]
-  for (i in seq_len(ns)) {
-    ii <- seq_along(asgn)[asgn == ndrop[i]]
-    jj <- setdiff(if (all.cols)
-      seq(ncol(x))
-      else na.coef, ii)
-    z <- if (iswt)
-      lm.wfit(x[, jj, drop = FALSE], y, wt, offset = offset)
-    else lm.fit(x[, jj, drop = FALSE], y, offset = offset)
-    z$nobs <- length(y)
-    dfs[i] <- z$rank
-    oldClass(z) <- "lm"
-    RSS[i] <- deviance(z)
-    aic[i] <- penaltyfn(z, ...)[2]
-  }
-  scope <- c("<none>", scope)
-  dfs <- c(object$rank, dfs)
-  RSS <- c(chisq, RSS)
-  aic <- c(penaltyfn(object, ...)[2], aic)
-  dfs <- dfs[1L] - dfs
-  dfs[1L] <- NA
-  aod <- data.frame(Df = dfs, `Sum of Sq` = c(NA, RSS[-1L] - RSS[1L]),
-                    RSS = RSS, AIC = aic, row.names = scope, check.names = FALSE)
-  if (scale > 0)
-    names(aod) <- c("Df", "Sum of Sq", "RSS", "Cp")
-  test <- match.arg(test)
-  if (test == "Chisq") {
-    dev <- aod$"Sum of Sq"
-    if (scale == 0) {
-      dev <- n * log(RSS/n)
-      dev <- dev - dev[1L]
-      dev[1L] <- NA
-    }
-    else dev <- dev/scale
-    df <- aod$Df
-    nas <- !is.na(df)
-    dev[nas] <- safe_pchisq(dev[nas], df[nas], lower.tail = FALSE)
-    aod[, "Pr(>Chi)"] <- dev
-  }
-  else if (test == "F") {
-    dev <- aod$"Sum of Sq"
-    dfs <- aod$Df
-    rdf <- object$df.residual
-    rms <- aod$RSS[1L]/rdf
-    Fs <- (dev/dfs)/rms
-    Fs[dfs < 1e-04] <- NA
-    P <- Fs
-    nas <- !is.na(Fs)
-    P[nas] <- safe_pf(Fs[nas], dfs[nas], rdf, lower.tail = FALSE)
-    aod[, c("F value", "Pr(>F)")] <- list(Fs, P)
-  }
-  head <- c("Single term deletions", "\nModel:", deparse(formula(object)),
-            if (scale > 0) paste("\nscale: ", format(scale), "\n"))
-  class(aod) <- c("anova", "data.frame")
-  attr(aod, "heading") <- head
-  aod
-}
-
-my_dropterm <- function (object,
-                         scope = scope,
-                         scale = 0,
-                         test = c("none",  "Chisq", "F"),
-                         k = 2,
-                         sorted = FALSE,
-                         penaltyfn = penaltyfn,
-                         ...) {
-
-  aod <- my_drop1(object, scope = scope, scale = scale,k=k, penaltyfn = penaltyfn, ...)
-  dfs <- object$rank - c(0, aod$Df[-1L])
-  RSS <- aod$RSS
-  n <- length(object$residuals)
-
-  o <- if (sorted)
-    order(aod$AIC)
-  else seq_along(aod$AIC)
-  if (scale > 0)
-    names(aod) <- c("Df", "Sum of Sq", "RSS", "Cp")
-  test <- match.arg(test)
-  if (test == "Chisq") {
-    dev <- aod$"Sum of Sq"
-    nas <- !is.na(dev)
-    dev[nas] <- safe_pchisq(dev[nas]/scale, aod$Df[nas],
-                            lower.tail = FALSE)
-    aod[, "Pr(Chi)"] <- dev
-  }
-  else if (test == "F") {
-    dev <- aod$"Sum of Sq"
-    dfs <- aod$Df
-    rdf <- object$df.residual
-    rms <- aod$RSS[1L]/rdf
-    Fs <- (dev/dfs)/rms
-    Fs[dfs < 1e-04] <- NA
-    P <- Fs
-    nas <- !is.na(Fs)
-    P[nas] <- safe_pf(Fs[nas], dfs[nas], rdf, lower.tail = FALSE)
-    aod[, c("F Value", "Pr(F)")] <- list(Fs, P)
-  }
-  aod <- aod[o, ]
-  head <- c("Single term deletions", "\nModel:", deparse(formula(object)))
   if (scale > 0)
     head <- c(head, paste("\nscale: ", format(scale), "\n"))
   class(aod) <- c("anova", "data.frame")
