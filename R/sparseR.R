@@ -153,7 +153,7 @@ sparseR <- function(formula, data, family = c("gaussian", "binomial", "poisson",
   pn <- pen_info$penalties
 
   ## Run regularized regression model
-  fit <- fit_fn(as.data.frame(X), y, family = family, penalty = penalty,
+  fit <- fit_fn(as.matrix(X), y, family = family, penalty = penalty,
                    penalty.factor = pn, alpha = alpha, lambda.min = lambda.min,
                    gamma = ncvgamma, ...)
 
