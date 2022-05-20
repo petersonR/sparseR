@@ -73,7 +73,7 @@
       <h1 data-toc-skip>Using the <code>sparseR</code> package</h1>
                         <h4 data-toc-skip class="author">Ryan A. Peterson</h4>
             
-            <h4 data-toc-skip class="date">2022-01-28</h4>
+            <h4 data-toc-skip class="date">2022-05-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/petersonR/sparseR/blob/HEAD/vignettes/sparseR.Rmd" class="external-link"><code>vignettes/sparseR.Rmd</code></a></small>
       <div class="hidden name"><code>sparseR.Rmd</code></div>
@@ -170,17 +170,17 @@
 <span class="co">##   Expected nonzero coefficients:   3.36</span>
 <span class="co">##   Average mfdr (10 features)   :   0.336</span>
 <span class="co">## </span>
-<span class="co">##                                   Estimate       z       mfdr Selected</span>
-<span class="co">## Species_setosa                     1.24843 28.8653    &lt; 1e-04        *</span>
-<span class="co">## `Sepal.Length:Species_setosa`      0.35020  9.3864    &lt; 1e-04        *</span>
-<span class="co">## Sepal.Length                       0.18424  9.1304    &lt; 1e-04        *</span>
-<span class="co">## `Petal.Width:Species_virginica`    0.23716  6.6223    &lt; 1e-04        *</span>
-<span class="co">## `Petal.Width:Species_versicolor`   0.55330  4.7733 0.00017238        *</span>
-<span class="co">## Species_virginica                 -0.09639 -2.3907 0.27557456        *</span>
-<span class="co">## `Sepal.Length:Petal.Length`       -0.04447 -2.2272 0.36889592        *</span>
-<span class="co">## `Petal.Length:Petal.Width`         0.04928  2.0135 0.71570426        *</span>
-<span class="co">## Petal.Length                      -0.02042 -1.1660 1.00000000        *</span>
-<span class="co">## `Sepal.Length:Species_versicolor` -0.01629 -0.5358 1.00000000        *</span></code></pre>
+<span class="co">##                                 Estimate       z       mfdr Selected</span>
+<span class="co">## Species_setosa                   1.24843 28.8653    &lt; 1e-04        *</span>
+<span class="co">## Sepal.Length:Species_setosa      0.35020  9.3864    &lt; 1e-04        *</span>
+<span class="co">## Sepal.Length                     0.18424  9.1304    &lt; 1e-04        *</span>
+<span class="co">## Petal.Width:Species_virginica    0.23716  6.6223    &lt; 1e-04        *</span>
+<span class="co">## Petal.Width:Species_versicolor   0.55330  4.7733 0.00017238        *</span>
+<span class="co">## Species_virginica               -0.09639 -2.3907 0.27557456        *</span>
+<span class="co">## Sepal.Length:Petal.Length       -0.04447 -2.2272 0.36889592        *</span>
+<span class="co">## Petal.Length:Petal.Width         0.04928  2.0135 0.71570426        *</span>
+<span class="co">## Petal.Length                    -0.02042 -1.1660 1.00000000        *</span>
+<span class="co">## Sepal.Length:Species_versicolor -0.01629 -0.5358 1.00000000        *</span></code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># At the lambda which is within 1 SE of the minimum CVE</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></code></pre></div>
@@ -191,14 +191,14 @@
 <span class="co">##   Expected nonzero coefficients:   1.38</span>
 <span class="co">##   Average mfdr (7 features)    :   0.198</span>
 <span class="co">## </span>
-<span class="co">##                                   Estimate       z     mfdr Selected</span>
-<span class="co">## Species_setosa                    0.810513 17.9513  &lt; 1e-04        *</span>
-<span class="co">## Sepal.Length                      0.191210  9.3371  &lt; 1e-04        *</span>
-<span class="co">## `Petal.Length:Petal.Width`        0.119640  5.0379  &lt; 1e-04        *</span>
-<span class="co">## `Petal.Width:Species_versicolor`  0.275341  3.1640 0.055680        *</span>
-<span class="co">## `Sepal.Length:Petal.Length`      -0.052711 -3.2466 0.078121        *</span>
-<span class="co">## `Sepal.Length:Species_setosa`     0.062782  2.5978 0.251076        *</span>
-<span class="co">## Species_versicolor               -0.001653 -0.8052 1.000000        *</span></code></pre>
+<span class="co">##                                 Estimate       z     mfdr Selected</span>
+<span class="co">## Species_setosa                  0.810513 17.9513  &lt; 1e-04        *</span>
+<span class="co">## Sepal.Length                    0.191210  9.3371  &lt; 1e-04        *</span>
+<span class="co">## Petal.Length:Petal.Width        0.119640  5.0379  &lt; 1e-04        *</span>
+<span class="co">## Petal.Width:Species_versicolor  0.275341  3.1640 0.055680        *</span>
+<span class="co">## Sepal.Length:Petal.Length      -0.052711 -3.2466 0.078121        *</span>
+<span class="co">## Sepal.Length:Species_setosa     0.062782  2.5978 0.251076        *</span>
+<span class="co">## Species_versicolor             -0.001653 -0.8052 1.000000        *</span></code></pre>
 <p>Finally, plots of either the cross-validation error across <code>lambda</code> values or the coefficient paths can be produced fairly easily:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl</span>, plot_type <span class="op">=</span> <span class="st">"cv"</span><span class="op">)</span></code></pre></div>
@@ -272,12 +272,12 @@
 <span class="co">##   Expected nonzero coefficients:   0.00</span>
 <span class="co">##   Average mfdr (5 features)    :   0.000</span>
 <span class="co">## </span>
-<span class="co">##                             Estimate      z    mfdr Selected</span>
-<span class="co">## Speciesvirginica             -1.1502 -25.15 &lt; 1e-04        *</span>
-<span class="co">## Speciesversicolor            -1.0558 -23.10 &lt; 1e-04        *</span>
-<span class="co">## Sepal.Length                  0.4243  16.32 &lt; 1e-04        *</span>
-<span class="co">## Petal.Width                   0.3390  12.06 &lt; 1e-04        *</span>
-<span class="co">## `Sepal.Length:Petal.Length`  -0.0189 -11.68 &lt; 1e-04        *</span></code></pre>
+<span class="co">##                           Estimate      z    mfdr Selected</span>
+<span class="co">## Speciesvirginica           -1.1502 -25.15 &lt; 1e-04        *</span>
+<span class="co">## Speciesversicolor          -1.0558 -23.10 &lt; 1e-04        *</span>
+<span class="co">## Sepal.Length                0.4243  16.32 &lt; 1e-04        *</span>
+<span class="co">## Petal.Width                 0.3390  12.06 &lt; 1e-04        *</span>
+<span class="co">## Sepal.Length:Petal.Length  -0.0189 -11.68 &lt; 1e-04        *</span></code></pre>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl2</span><span class="op">)</span></code></pre></div>
@@ -329,12 +329,12 @@
 <span class="co">##   Expected nonzero coefficients:   2.00</span>
 <span class="co">##   Average mfdr (5 features)    :   0.400</span>
 <span class="co">## </span>
-<span class="co">##                               Estimate       z   mfdr Selected</span>
-<span class="co">## `Sepal.Length:Species_setosa`  0.20458 22.6156 &lt;1e-04        *</span>
-<span class="co">## Sepal.Length                   0.23392  9.2194 &lt;1e-04        *</span>
-<span class="co">## Petal.Width                    0.15373  5.7679 &lt;1e-04        *</span>
-<span class="co">## Species_virginica             -0.03911 -1.3126      1        *</span>
-<span class="co">## `Petal.Width:Species_setosa`   0.02738  0.8386      1        *</span></code></pre>
+<span class="co">##                             Estimate       z   mfdr Selected</span>
+<span class="co">## Sepal.Length:Species_setosa  0.20458 22.6156 &lt;1e-04        *</span>
+<span class="co">## Sepal.Length                 0.23392  9.2194 &lt;1e-04        *</span>
+<span class="co">## Petal.Width                  0.15373  5.7679 &lt;1e-04        *</span>
+<span class="co">## Species_virginica           -0.03911 -1.3126      1        *</span>
+<span class="co">## Petal.Width:Species_setosa   0.02738  0.8386      1        *</span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="centering-to-different-values">Centering to different values<a class="anchor" aria-label="anchor" href="#centering-to-different-values"></a>
@@ -1648,12 +1648,12 @@ Petal.Width:Species_virginica
 <span class="co">## </span>
 <span class="co">## Operations:</span>
 <span class="co">## </span>
-<span class="co">## Sparse, unbalanced variable filter removed no terms [trained]</span>
+<span class="co">## Sparse, unbalanced variable filter removed &lt;none&gt; [trained]</span>
 <span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Collapsing factor levels for SCHOOL [trained]</span>
 <span class="co">## K-nearest neighbor imputation for AGE, SCHOOL, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
-<span class="co">## Removing rows with NA values in everything()</span>
+<span class="co">## Removing rows with NA values in CITY, YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, P... [trained]</span>
 <span class="co">## Variables removed CASE [trained]</span>
 <span class="co">## Dummy variables from CITY, SCHOOL, PRELUNG, SMKEVER, SMKCUR [trained]</span>
 <span class="co">## Sparse, unbalanced variable filter removed SCHOOL_other [trained]</span></code></pre>
@@ -1678,15 +1678,15 @@ Petal.Width:Species_virginica
 <span class="co">## </span>
 <span class="co">## Operations:</span>
 <span class="co">## </span>
-<span class="co">## Zero variance filter removed no terms [trained]</span>
+<span class="co">## Zero variance filter removed &lt;none&gt; [trained]</span>
 <span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Collapsing factor levels for SCHOOL [trained]</span>
 <span class="co">## K-nearest neighbor imputation for AGE, SCHOOL, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
-<span class="co">## Removing rows with NA values in everything()</span>
+<span class="co">## Removing rows with NA values in CITY, YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, P... [trained]</span>
 <span class="co">## Variables removed CASE [trained]</span>
 <span class="co">## Dummy variables from CITY, SCHOOL, PRELUNG, SMKEVER, SMKCUR [trained]</span>
-<span class="co">## Zero variance filter removed no terms [trained]</span></code></pre>
+<span class="co">## Zero variance filter removed &lt;none&gt; [trained]</span></code></pre>
 <p>Or, we could adjust the options for the near-zero variance filter (see <code><a href="https://recipes.tidymodels.org/reference/step_nzv.html" class="external-link">?recipes::step_nzv</a></code> for details):</p>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">0</span>, poly <span class="op">=</span> <span class="fl">1</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unique_cut <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -1703,12 +1703,12 @@ Petal.Width:Species_virginica
 <span class="co">## </span>
 <span class="co">## Operations:</span>
 <span class="co">## </span>
-<span class="co">## Sparse, unbalanced variable filter removed no terms [trained]</span>
+<span class="co">## Sparse, unbalanced variable filter removed &lt;none&gt; [trained]</span>
 <span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Collapsing factor levels for SCHOOL [trained]</span>
 <span class="co">## K-nearest neighbor imputation for AGE, SCHOOL, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
-<span class="co">## Removing rows with NA values in everything()</span>
+<span class="co">## Removing rows with NA values in CITY, YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, P... [trained]</span>
 <span class="co">## Variables removed CASE [trained]</span>
 <span class="co">## Dummy variables from CITY, SCHOOL, PRELUNG, SMKEVER, SMKCUR [trained]</span>
 <span class="co">## Sparse, unbalanced variable filter removed SCHOOL_other [trained]</span></code></pre>
@@ -1728,15 +1728,15 @@ Petal.Width:Species_virginica
 <span class="co">## </span>
 <span class="co">## Operations:</span>
 <span class="co">## </span>
-<span class="co">## Sparse, unbalanced variable filter removed no terms [trained]</span>
+<span class="co">## Sparse, unbalanced variable filter removed &lt;none&gt; [trained]</span>
 <span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Collapsing factor levels for SCHOOL [trained]</span>
 <span class="co">## K-nearest neighbor imputation for AGE, SCHOOL, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
-<span class="co">## Removing rows with NA values in everything()</span>
+<span class="co">## Removing rows with NA values in CITY, YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, P... [trained]</span>
 <span class="co">## Variables removed CASE [trained]</span>
 <span class="co">## Dummy variables from CITY, SCHOOL, PRELUNG, SMKEVER, SMKCUR [trained]</span>
-<span class="co">## Interactions with (YRSHOME + AGE + SMKYRS + CHILDREN + PYR + PYRRATE + SMKQUIT + BMI + WLM20 + (CITY_X0 + CITY_X1 + SCHOOL_X1 + SCHOOL_X2 + SCHOOL_X3 + SCHOOL_X4 + SCHOOL_other + PRELUNG_X0 + PRELUNG_X1 + SMKEVER_X0 + SMKEVER_X1 + SMKCUR_X0 + SMKCUR_X1)) * (YRSHOME + AGE + SMKYRS + CHILDREN + PYR + PYRRATE + SMKQUIT + BMI + WLM20 + (CITY_X0 + CITY_X1 + SCHOOL_X1 + SCHOOL_X2 + SCHOOL_X3 + SCHOOL_X4 + SCHOOL_other + PRELUNG_X0 + PRELUNG_X1 + SMKEVER_X0 + SMKEVER_X1 + SMKCUR_X0 + SMKCUR_X1)) [trained]</span>
+<span class="co">## Interactions with (YRSHOME + AGE + SMKYRS + CHILDREN + PYR + PYRRATE... [trained]</span>
 <span class="co">## Sparse, unbalanced variable filter removed SCHOOL_other, YRSHOME:SCHOOL_X1, YRSHOM... [trained]</span></code></pre>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">1</span>, poly <span class="op">=</span> <span class="fl">2</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unique_cut <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -1753,15 +1753,15 @@ Petal.Width:Species_virginica
 <span class="co">## </span>
 <span class="co">## Operations:</span>
 <span class="co">## </span>
-<span class="co">## Sparse, unbalanced variable filter removed no terms [trained]</span>
+<span class="co">## Sparse, unbalanced variable filter removed &lt;none&gt; [trained]</span>
 <span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Collapsing factor levels for SCHOOL [trained]</span>
 <span class="co">## K-nearest neighbor imputation for AGE, SCHOOL, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
-<span class="co">## Removing rows with NA values in everything()</span>
+<span class="co">## Removing rows with NA values in CITY, YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, P... [trained]</span>
 <span class="co">## Variables removed CASE [trained]</span>
 <span class="co">## Dummy variables from CITY, SCHOOL, PRELUNG, SMKEVER, SMKCUR [trained]</span>
-<span class="co">## Interactions with (YRSHOME + AGE + SMKYRS + CHILDREN + PYR + PYRRATE + SMKQUIT + BMI + WLM20 + (CITY_X0 + CITY_X1 + SCHOOL_X1 + SCHOOL_X2 + SCHOOL_X3 + SCHOOL_X4 + SCHOOL_other + PRELUNG_X0 + PRELUNG_X1 + SMKEVER_X0 + SMKEVER_X1 + SMKCUR_X0 + SMKCUR_X1)) * (YRSHOME + AGE + SMKYRS + CHILDREN + PYR + PYRRATE + SMKQUIT + BMI + WLM20 + (CITY_X0 + CITY_X1 + SCHOOL_X1 + SCHOOL_X2 + SCHOOL_X3 + SCHOOL_X4 + SCHOOL_other + PRELUNG_X0 + PRELUNG_X1 + SMKEVER_X0 + SMKEVER_X1 + SMKCUR_X0 + SMKCUR_X1)) [trained]</span>
+<span class="co">## Interactions with (YRSHOME + AGE + SMKYRS + CHILDREN + PYR + PYRRATE... [trained]</span>
 <span class="co">## Orthogonal polynomials on YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRA... [trained]</span>
 <span class="co">## Sparse, unbalanced variable filter removed SCHOOL_other, YRSHOME:SCHOOL_X1, YRSHOM... [trained]</span></code></pre>
 <p><em>Note</em>: This preprocessor does not actually produce any data, it only prepares all of the steps. In the recipes package, this is known as <code>prep</code>ping the processor. the final step is called <code>bake</code>, where the data is fed through the processor and a new data set is returned.</p>
@@ -2211,71 +2211,35 @@ Petal.Width:Species_virginica
 <code class="sourceCode R"><span class="va">lso_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">lso</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">bind_cols</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">results_summary</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">5</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">]</span>,<span class="va">x</span><span class="op">$</span><span class="va">results1se_summary</span><span class="op">[</span>,<span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## New names:</span>
-<span class="co">## * Selected -&gt; Selected...4</span>
-<span class="co">## * Saturation -&gt; Saturation...5</span>
-<span class="co">## * Selected -&gt; Selected...6</span>
-<span class="co">## * Saturation -&gt; Saturation...7</span>
 <span class="co">## New names:</span>
-<span class="co">## * Selected -&gt; Selected...4</span>
-<span class="co">## * Saturation -&gt; Saturation...5</span>
-<span class="co">## * Selected -&gt; Selected...6</span>
-<span class="co">## * Saturation -&gt; Saturation...7</span>
 <span class="co">## New names:</span>
-<span class="co">## * Selected -&gt; Selected...4</span>
-<span class="co">## * Saturation -&gt; Saturation...5</span>
-<span class="co">## * Selected -&gt; Selected...6</span>
-<span class="co">## * Saturation -&gt; Saturation...7</span>
 <span class="co">## New names:</span>
-<span class="co">## * Selected -&gt; Selected...4</span>
-<span class="co">## * Saturation -&gt; Saturation...5</span>
-<span class="co">## * Selected -&gt; Selected...6</span>
-<span class="co">## * Saturation -&gt; Saturation...7</span></code></pre>
+<span class="co">## <span style="color: #00BBBB;">•</span> `Selected` -&gt; `Selected...4`</span>
+<span class="co">## <span style="color: #00BBBB;">•</span> `Saturation` -&gt; `Saturation...5`</span>
+<span class="co">## <span style="color: #00BBBB;">•</span> `Selected` -&gt; `Selected...6`</span>
+<span class="co">## <span style="color: #00BBBB;">•</span> `Saturation` -&gt; `Saturation...7`</span></code></pre>
 <div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mcp_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">mcp</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">bind_cols</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">results_summary</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">5</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">]</span>,<span class="va">x</span><span class="op">$</span><span class="va">results1se_summary</span><span class="op">[</span>,<span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## New names:</span>
-<span class="co">## * Selected -&gt; Selected...4</span>
-<span class="co">## * Saturation -&gt; Saturation...5</span>
-<span class="co">## * Selected -&gt; Selected...6</span>
-<span class="co">## * Saturation -&gt; Saturation...7</span>
 <span class="co">## New names:</span>
-<span class="co">## * Selected -&gt; Selected...4</span>
-<span class="co">## * Saturation -&gt; Saturation...5</span>
-<span class="co">## * Selected -&gt; Selected...6</span>
-<span class="co">## * Saturation -&gt; Saturation...7</span>
 <span class="co">## New names:</span>
-<span class="co">## * Selected -&gt; Selected...4</span>
-<span class="co">## * Saturation -&gt; Saturation...5</span>
-<span class="co">## * Selected -&gt; Selected...6</span>
-<span class="co">## * Saturation -&gt; Saturation...7</span>
 <span class="co">## New names:</span>
-<span class="co">## * Selected -&gt; Selected...4</span>
-<span class="co">## * Saturation -&gt; Saturation...5</span>
-<span class="co">## * Selected -&gt; Selected...6</span>
-<span class="co">## * Saturation -&gt; Saturation...7</span></code></pre>
+<span class="co">## <span style="color: #00BBBB;">•</span> `Selected` -&gt; `Selected...4`</span>
+<span class="co">## <span style="color: #00BBBB;">•</span> `Saturation` -&gt; `Saturation...5`</span>
+<span class="co">## <span style="color: #00BBBB;">•</span> `Selected` -&gt; `Selected...6`</span>
+<span class="co">## <span style="color: #00BBBB;">•</span> `Saturation` -&gt; `Saturation...7`</span></code></pre>
 <div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">scad_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">scad</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">bind_cols</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">results_summary</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">5</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">]</span>,<span class="va">x</span><span class="op">$</span><span class="va">results1se_summary</span><span class="op">[</span>,<span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## New names:</span>
-<span class="co">## * Selected -&gt; Selected...4</span>
-<span class="co">## * Saturation -&gt; Saturation...5</span>
-<span class="co">## * Selected -&gt; Selected...6</span>
-<span class="co">## * Saturation -&gt; Saturation...7</span>
 <span class="co">## New names:</span>
-<span class="co">## * Selected -&gt; Selected...4</span>
-<span class="co">## * Saturation -&gt; Saturation...5</span>
-<span class="co">## * Selected -&gt; Selected...6</span>
-<span class="co">## * Saturation -&gt; Saturation...7</span>
 <span class="co">## New names:</span>
-<span class="co">## * Selected -&gt; Selected...4</span>
-<span class="co">## * Saturation -&gt; Saturation...5</span>
-<span class="co">## * Selected -&gt; Selected...6</span>
-<span class="co">## * Saturation -&gt; Saturation...7</span>
 <span class="co">## New names:</span>
-<span class="co">## * Selected -&gt; Selected...4</span>
-<span class="co">## * Saturation -&gt; Saturation...5</span>
-<span class="co">## * Selected -&gt; Selected...6</span>
-<span class="co">## * Saturation -&gt; Saturation...7</span></code></pre>
+<span class="co">## <span style="color: #00BBBB;">•</span> `Selected` -&gt; `Selected...4`</span>
+<span class="co">## <span style="color: #00BBBB;">•</span> `Saturation` -&gt; `Saturation...5`</span>
+<span class="co">## <span style="color: #00BBBB;">•</span> `Selected` -&gt; `Selected...6`</span>
+<span class="co">## <span style="color: #00BBBB;">•</span> `Saturation` -&gt; `Saturation...7`</span></code></pre>
 <table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3275,7 +3239,7 @@ Order 2 polynomial
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
