@@ -2,24 +2,24 @@
 #'
 #' @rdname custom_ics
 #' @aliases EBIC RBIC RAIC
-#'
 #' @param fit a fitted object
 #' @param varnames names of variables
 #' @param pen_info penalty information
 #' @param gammafn What to use for gamma in formula
 #' @param return_df should the deg. freedom be returned
 #' @param ... additional args
-#'
 #' @importFrom stats AIC BIC coef add.scope approx as.formula complete.cases
 #'   deviance drop.scope extractAIC factor.scope formula glm lm.fit lm.wfit
 #'   median model.frame model.matrix model.offset model.response model.weights
 #'   nobs pf predict quantile terms update.formula weighted.residuals
 #'   pchisq pf
 #' @export
-EBIC <- function(x, ...){
+EBIC <- function(...){
   UseMethod("EBIC")
 }
 
+#' @rdname custom_ics
+#' @export
 EBIC.default <- function(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...) {
 
   if(!is.null(fit$model)) {
@@ -53,7 +53,7 @@ EBIC.default <- function(fit, varnames, pen_info, gammafn = NULL, return_df = TR
 
 #' @rdname custom_ics
 #' @export
-RBIC <- function(x, ...){
+RBIC <- function(fit, ...){
   UseMethod("RBIC")
 }
 
@@ -108,7 +108,7 @@ myAIC <- function(fit, ...) {
 
 #' @rdname custom_ics
 #' @export
-RAIC <- function(x, ...){
+RAIC <- function(fit, ...){
   UseMethod("RAIC")
 }
 
@@ -144,19 +144,19 @@ RAIC.default <- function(fit, varnames, pen_info, gammafn = NULL, return_df = TR
 }
 
 #' @export
-RBIC.sparseRBIC <- function(x, ...) {
-  RBIC(x$fit, varnames = x$pen_info$varnames, pen_info = x$pen_info,
+RBIC.sparseRBIC <- function(fit, ...) {
+  RBIC(fit$fit, varnames = fit$pen_info$varnames, pen_info = fit$pen_info,
        return_df = FALSE,...)
 }
 
 #' @export
-RAIC.sparseRBIC <- function(x, ...) {
-  RAIC(x$fit, varnames = x$pen_info$varnames, pen_info = x$pen_info,
+RAIC.sparseRBIC <- function(fit, ...) {
+  RAIC(fit$fit, varnames = fit$pen_info$varnames, pen_info = fit$pen_info,
        return_df = FALSE, ...)
 }
 
 #' @export
-EBIC.sparseRBIC <- function(x, ...) {
-  EBIC(x$fit, varnames = x$pen_info$varnames, pen_info = x$pen_info,
+EBIC.sparseRBIC <- function(fit, ...) {
+  EBIC(fit$fit, varnames = fit$pen_info$varnames, pen_info = fit$pen_info,
        return_df = FALSE, ...)
 }
