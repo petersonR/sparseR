@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sparseR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.903</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2.900</span>
       </span>
     </div>
 
@@ -64,7 +64,8 @@
   pre_proc_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"knnImpute"</span>, <span class="st">"scale"</span>, <span class="st">"center"</span>, <span class="st">"otherbin"</span>, <span class="st">"none"</span><span class="op">)</span>,
   ia_formula <span class="op">=</span> <span class="cn">NULL</span>,
   filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"nzv"</span>, <span class="st">"zv"</span><span class="op">)</span>,
-  extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>
+  extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
+  family <span class="op">=</span> <span class="st">"gaussian"</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -90,6 +91,8 @@ see details)</p></dd>
 (near) zero variance? (see details)</p></dd>
 <dt>extra_opts</dt>
 <dd><p>extra options to be used for preprocessing</p></dd>
+<dt>family</dt>
+<dd><p>family passed from sparseR</p></dd>
 </dl></div>
     <div id="details">
     <h2>Details</h2>

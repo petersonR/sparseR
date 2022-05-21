@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sparseR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.903</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2.900</span>
       </span>
     </div>
 
@@ -73,7 +73,7 @@
       <h1 data-toc-skip>Using the <code>sparseR</code> package</h1>
                         <h4 data-toc-skip class="author">Ryan A. Peterson</h4>
             
-            <h4 data-toc-skip class="date">2022-05-20</h4>
+            <h4 data-toc-skip class="date">2022-05-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/petersonR/sparseR/blob/HEAD/vignettes/sparseR.Rmd" class="external-link"><code>vignettes/sparseR.Rmd</code></a></small>
       <div class="hidden name"><code>sparseR.Rmd</code></div>
@@ -293,12 +293,12 @@
 <span class="co">## Model summary @ min CV:</span>
 <span class="co">## -----------------------------------------------------</span>
 <span class="co">##   lasso-penalized linear regression with n=150, p=18</span>
-<span class="co">##   (At lambda=0.0006):</span>
+<span class="co">##   (At lambda=0.0007):</span>
 <span class="co">##     Nonzero coefficients: 6</span>
 <span class="co">##     Cross-validation error (deviance): 0.07</span>
 <span class="co">##     R-squared: 0.64</span>
-<span class="co">##     Signal-to-noise ratio: 1.79</span>
-<span class="co">##     Scale estimate (sigma): 0.260</span>
+<span class="co">##     Signal-to-noise ratio: 1.74</span>
+<span class="co">##     Scale estimate (sigma): 0.262</span>
 <span class="co">## </span>
 <span class="co">##   SR information:</span>
 <span class="co">##              Vartype Total Selected Saturation Penalty</span>
@@ -309,12 +309,12 @@
 <span class="co">## Model summary @ CV1se:</span>
 <span class="co">## -----------------------------------------------------</span>
 <span class="co">##   lasso-penalized linear regression with n=150, p=18</span>
-<span class="co">##   (At lambda=0.0043):</span>
+<span class="co">##   (At lambda=0.0041):</span>
 <span class="co">##     Nonzero coefficients: 5</span>
 <span class="co">##     Cross-validation error (deviance): 0.08</span>
 <span class="co">##     R-squared: 0.59</span>
-<span class="co">##     Signal-to-noise ratio: 1.46</span>
-<span class="co">##     Scale estimate (sigma): 0.277</span>
+<span class="co">##     Signal-to-noise ratio: 1.42</span>
+<span class="co">##     Scale estimate (sigma): 0.279</span>
 <span class="co">## </span>
 <span class="co">##   SR information:</span>
 <span class="co">##              Vartype Total Selected Saturation Penalty</span>
@@ -323,18 +323,18 @@
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl3</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## lasso-penalized linear regression with n=150, p=18</span>
-<span class="co">## At lambda=0.0043:</span>
+<span class="co">## At lambda=0.0041:</span>
 <span class="co">## -------------------------------------------------</span>
 <span class="co">##   Nonzero coefficients         :   5</span>
-<span class="co">##   Expected nonzero coefficients:   2.00</span>
-<span class="co">##   Average mfdr (5 features)    :   0.400</span>
+<span class="co">##   Expected nonzero coefficients:   1.82</span>
+<span class="co">##   Average mfdr (5 features)    :   0.364</span>
 <span class="co">## </span>
-<span class="co">##                             Estimate       z   mfdr Selected</span>
-<span class="co">## Sepal.Length:Species_setosa  0.20458 22.6156 &lt;1e-04        *</span>
-<span class="co">## Sepal.Length                 0.23392  9.2194 &lt;1e-04        *</span>
-<span class="co">## Petal.Width                  0.15373  5.7679 &lt;1e-04        *</span>
-<span class="co">## Species_virginica           -0.03911 -1.3126      1        *</span>
-<span class="co">## Petal.Width:Species_setosa   0.02738  0.8386      1        *</span></code></pre>
+<span class="co">##                              Estimate       z    mfdr Selected</span>
+<span class="co">## Sepal.Length:Species_setosa  0.211340 23.4596 &lt; 1e-04        *</span>
+<span class="co">## Sepal.Length                 0.233045  9.2221 &lt; 1e-04        *</span>
+<span class="co">## Petal.Width                  0.179185  6.6622 &lt; 1e-04        *</span>
+<span class="co">## Petal.Width:Species_setosa   0.002791  0.6622 0.81825        *</span>
+<span class="co">## Species_virginica           -0.056953 -1.6796 1.00000        *</span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="centering-to-different-values">Centering to different values<a class="anchor" aria-label="anchor" href="#centering-to-different-values"></a>
@@ -445,9 +445,9 @@
 
 <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span> ,<span class="va">p3</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##           p1        p2        p3</span>
-<span class="co">## p1 1.0000000 0.9917599 0.9921750</span>
-<span class="co">## p2 0.9917599 1.0000000 0.9946687</span>
-<span class="co">## p3 0.9921750 0.9946687 1.0000000</span></code></pre>
+<span class="co">## p1 1.0000000 0.9919068 0.9919581</span>
+<span class="co">## p2 0.9919068 1.0000000 0.9946687</span>
+<span class="co">## p3 0.9919581 0.9946687 1.0000000</span></code></pre>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span> ,<span class="va">p3</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-18-1.png" width="672"></p>
@@ -460,12 +460,12 @@
 
 <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span> ,<span class="va">p3</span>, <span class="va">p4</span>,<span class="va">p5</span>,<span class="va">p6</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##           p1        p2        p3        p4        p5        p6</span>
-<span class="co">## p1 1.0000000 0.9917599 0.9921750 0.9711085 0.9595865 0.9732816</span>
-<span class="co">## p2 0.9917599 1.0000000 0.9946687 0.9692262 0.9797246 0.9642979</span>
-<span class="co">## p3 0.9921750 0.9946687 1.0000000 0.9677262 0.9701393 0.9763341</span>
-<span class="co">## p4 0.9711085 0.9692262 0.9677262 1.0000000 0.9789632 0.9882960</span>
-<span class="co">## p5 0.9595865 0.9797246 0.9701393 0.9789632 1.0000000 0.9602063</span>
-<span class="co">## p6 0.9732816 0.9642979 0.9763341 0.9882960 0.9602063 1.0000000</span></code></pre>
+<span class="co">## p1 1.0000000 0.9919068 0.9919581 0.9761025 0.9607660 0.9744660</span>
+<span class="co">## p2 0.9919068 1.0000000 0.9946687 0.9718119 0.9797246 0.9642979</span>
+<span class="co">## p3 0.9919581 0.9946687 1.0000000 0.9704648 0.9701393 0.9763341</span>
+<span class="co">## p4 0.9761025 0.9718119 0.9704648 1.0000000 0.9787516 0.9891270</span>
+<span class="co">## p5 0.9607660 0.9797246 0.9701393 0.9787516 1.0000000 0.9602063</span>
+<span class="co">## p6 0.9744660 0.9642979 0.9763341 0.9891270 0.9602063 1.0000000</span></code></pre>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span> ,<span class="va">p3</span>, <span class="va">p4</span>,<span class="va">p5</span>,<span class="va">p6</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-19-1.png" width="672"></p>
@@ -655,7 +655,7 @@ Species_setosa
 0.00000
 </td>
 <td style="text-align:right;">
-0.00632
+0.00063
 </td>
 <td style="text-align:right;">
 0.00000
@@ -669,16 +669,33 @@ Species_setosa
 Sepal.Length
 </td>
 <td style="text-align:right;">
-0.00010
+0.00006
 </td>
 <td style="text-align:right;">
-0.03286
+0.04231
 </td>
 <td style="text-align:right;">
-0.00010
+0.00007
 </td>
 <td style="text-align:right;">
-99
+97
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sepal.Length:Species_setosa
+</td>
+<td style="text-align:right;">
+0.00953
+</td>
+<td style="text-align:right;">
+0.30767
+</td>
+<td style="text-align:right;">
+0.01159
+</td>
+<td style="text-align:right;">
+70
 </td>
 </tr>
 <tr>
@@ -686,16 +703,16 @@ Sepal.Length
 Petal.Width
 </td>
 <td style="text-align:right;">
-1.00000
+0.15652
 </td>
 <td style="text-align:right;">
-0.52173
+0.49997
 </td>
 <td style="text-align:right;">
-0.07946
+0.08659
 </td>
 <td style="text-align:right;">
-49
+52
 </td>
 </tr>
 <tr>
@@ -706,47 +723,13 @@ Species_versicolor
 1.00000
 </td>
 <td style="text-align:right;">
-0.82359
+0.80657
 </td>
 <td style="text-align:right;">
-0.51189
+0.49933
 </td>
 <td style="text-align:right;">
-19
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sepal.Length:Species_setosa
-</td>
-<td style="text-align:right;">
-0.00529
-</td>
-<td style="text-align:right;">
-0.23679
-</td>
-<td style="text-align:right;">
-0.00737
-</td>
-<td style="text-align:right;">
-77
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Species_virginica
-</td>
-<td style="text-align:right;">
-1.00000
-</td>
-<td style="text-align:right;">
-0.88884
-</td>
-<td style="text-align:right;">
-0.66978
-</td>
-<td style="text-align:right;">
-12
+22
 </td>
 </tr>
 <tr>
@@ -757,30 +740,30 @@ Petal.Length
 1.00000
 </td>
 <td style="text-align:right;">
-0.85029
+0.89294
 </td>
 <td style="text-align:right;">
-0.64690
+0.79868
 </td>
 <td style="text-align:right;">
-20
+17
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Petal.Length:Petal.Width
+Species_virginica
 </td>
 <td style="text-align:right;">
 1.00000
 </td>
 <td style="text-align:right;">
-0.99395
+0.91756
 </td>
 <td style="text-align:right;">
-0.99075
+0.76499
 </td>
 <td style="text-align:right;">
-1
+9
 </td>
 </tr>
 <tr>
@@ -791,64 +774,13 @@ Petal.Width:Species_setosa
 1.00000
 </td>
 <td style="text-align:right;">
-0.98221
+0.97783
 </td>
 <td style="text-align:right;">
-0.97050
+0.96049
 </td>
 <td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sepal.Length:Petal.Width
-</td>
-<td style="text-align:right;">
-1.00000
-</td>
-<td style="text-align:right;">
-0.92072
-</td>
-<td style="text-align:right;">
-0.67022
-</td>
-<td style="text-align:right;">
-8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Petal.Width:Species_versicolor
-</td>
-<td style="text-align:right;">
-1.00000
-</td>
-<td style="text-align:right;">
-0.99695
-</td>
-<td style="text-align:right;">
-0.99637
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sepal.Length:Species_versicolor
-</td>
-<td style="text-align:right;">
-1.00000
-</td>
-<td style="text-align:right;">
-0.99669
-</td>
-<td style="text-align:right;">
-0.99608
-</td>
-<td style="text-align:right;">
-2
+5
 </td>
 </tr>
 <tr>
@@ -859,13 +791,64 @@ Sepal.Length:Petal.Length
 1.00000
 </td>
 <td style="text-align:right;">
-0.96317
+0.94834
 </td>
 <td style="text-align:right;">
-0.85959
+0.86016
 </td>
 <td style="text-align:right;">
-4
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sepal.Length:Petal.Width
+</td>
+<td style="text-align:right;">
+1.00000
+</td>
+<td style="text-align:right;">
+0.91121
+</td>
+<td style="text-align:right;">
+0.61836
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Petal.Width:Species_versicolor
+</td>
+<td style="text-align:right;">
+1.00000
+</td>
+<td style="text-align:right;">
+0.99624
+</td>
+<td style="text-align:right;">
+0.99592
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Petal.Length:Petal.Width
+</td>
+<td style="text-align:right;">
+1.00000
+</td>
+<td style="text-align:right;">
+0.99864
+</td>
+<td style="text-align:right;">
+0.99854
+</td>
+<td style="text-align:right;">
+1
 </td>
 </tr>
 </tbody>
@@ -1648,6 +1631,7 @@ Petal.Width:Species_virginica
 <span class="co">## </span>
 <span class="co">## Operations:</span>
 <span class="co">## </span>
+<span class="co">## Variables removed &lt;none&gt; [trained]</span>
 <span class="co">## Sparse, unbalanced variable filter removed &lt;none&gt; [trained]</span>
 <span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
@@ -1678,6 +1662,7 @@ Petal.Width:Species_virginica
 <span class="co">## </span>
 <span class="co">## Operations:</span>
 <span class="co">## </span>
+<span class="co">## Variables removed &lt;none&gt; [trained]</span>
 <span class="co">## Zero variance filter removed &lt;none&gt; [trained]</span>
 <span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
@@ -1703,6 +1688,7 @@ Petal.Width:Species_virginica
 <span class="co">## </span>
 <span class="co">## Operations:</span>
 <span class="co">## </span>
+<span class="co">## Variables removed &lt;none&gt; [trained]</span>
 <span class="co">## Sparse, unbalanced variable filter removed &lt;none&gt; [trained]</span>
 <span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
@@ -1728,6 +1714,7 @@ Petal.Width:Species_virginica
 <span class="co">## </span>
 <span class="co">## Operations:</span>
 <span class="co">## </span>
+<span class="co">## Variables removed &lt;none&gt; [trained]</span>
 <span class="co">## Sparse, unbalanced variable filter removed &lt;none&gt; [trained]</span>
 <span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
@@ -1753,6 +1740,7 @@ Petal.Width:Species_virginica
 <span class="co">## </span>
 <span class="co">## Operations:</span>
 <span class="co">## </span>
+<span class="co">## Variables removed &lt;none&gt; [trained]</span>
 <span class="co">## Sparse, unbalanced variable filter removed &lt;none&gt; [trained]</span>
 <span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
 <span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span>
