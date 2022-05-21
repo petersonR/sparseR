@@ -196,6 +196,10 @@ test_that("Detrano RBIC functionality", {
                                         data = cleveland, k = 0,
                                         family = "binomial", message = FALSE))
 
+  expect_output(n <- sparseRBIC_step(formula = case ~ .,
+                                        data = cleveland, k = 0, message = FALSE,
+                                        family = "binomial", trace = TRUE))
+
   formula <- case ~ sex + thal
   expect_silent(SRL_b <<- sparseRBIC_step(formula, data = cleveland, message = FALSE))
   expect_silent(MEM_b <<- sparseRBIC_step(formula, data = cleveland, k = 0, family = "binomial", message = FALSE))
