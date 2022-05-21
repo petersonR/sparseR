@@ -1,6 +1,6 @@
 # 0.0.2.900
 
-- improved coverage and documentation
+- improved coverage and documentation, fixing checks 
 
 # 0.0.1.903
 

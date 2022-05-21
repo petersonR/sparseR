@@ -170,7 +170,7 @@ test_that("Centering to minimum works", {
 
   # testing print + tidy methods for center_to
   expect_output(print(p2$steps[[3]]))
-  expect_output(tidy(p2$steps[[3]]))
+  expect_silent(t1 <- tidy(p2$steps[[3]]))
 })
 
 
