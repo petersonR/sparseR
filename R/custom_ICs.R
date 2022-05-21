@@ -1,5 +1,8 @@
 #' Custom IC functions for stepwise models
 #'
+#' @rdname custom_ics
+#' @aliases EBIC RBIC RAIC
+#'
 #' @param fit a fitted object
 #' @param varnames names of variables
 #' @param pen_info penalty information
@@ -12,8 +15,12 @@
 #'   median model.frame model.matrix model.offset model.response model.weights
 #'   nobs pf predict quantile terms update.formula weighted.residuals
 #'   pchisq pf
-#'
-EBIC <- function(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...) {
+#' @export
+EBIC <- function(x, ...){
+  UseMethod("EBIC")
+}
+
+EBIC.default <- function(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...) {
 
   if(!is.null(fit$model)) {
     n <- nrow(fit$model)
@@ -44,9 +51,13 @@ EBIC <- function(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...)
   BIC(fit) + 2 * sum(gammafn(P, m, n) * lchoose(P, m))
 }
 
-# P_index is a list whose each element is a group of covariate names
+#' @rdname custom_ics
+#' @export
+RBIC <- function(x, ...){
+  UseMethod("RBIC")
+}
 
-RBIC <- function(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...) {
+RBIC.default <- function(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...) {
 
   if(!is.null(fit$model)) {
     n <- nrow(fit$model)
@@ -84,6 +95,7 @@ RBIC <- function(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...)
   BIC(fit) + 2 * sum(gammafn(P, m, n) * lchoose(P, m))
 }
 
+# Helpers (internal)
 myBIC <- function(fit, ...) {
   m <- length(fit$coefficients) - 1
   c(m, BIC(fit))
@@ -94,7 +106,13 @@ myAIC <- function(fit, ...) {
   c(m, AIC(fit))
 }
 
-RAIC <- function(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...) {
+#' @rdname custom_ics
+#' @export
+RAIC <- function(x, ...){
+  UseMethod("RAIC")
+}
+
+RAIC.default <- function(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...) {
   if(!is.null(fit$model)) {
     n <- nrow(fit$model)
   } else if (!is.null(fit$nobs)) {
@@ -123,4 +141,22 @@ RAIC <- function(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...)
   }
 
   AIC(fit) + 2*m*((n-m)/(n-Pstar) - 1) - 2*((n-m)/(n-Pstar) - 1)^2
+}
+
+#' @export
+RBIC.sparseRBIC <- function(x, ...) {
+  RBIC(x$fit, varnames = x$pen_info$varnames, pen_info = x$pen_info,
+       return_df = FALSE,...)
+}
+
+#' @export
+RAIC.sparseRBIC <- function(x, ...) {
+  RAIC(x$fit, varnames = x$pen_info$varnames, pen_info = x$pen_info,
+       return_df = FALSE, ...)
+}
+
+#' @export
+EBIC.sparseRBIC <- function(x, ...) {
+  EBIC(x$fit, varnames = x$pen_info$varnames, pen_info = x$pen_info,
+       return_df = FALSE, ...)
 }

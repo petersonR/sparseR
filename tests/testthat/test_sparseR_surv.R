@@ -14,13 +14,14 @@ iris$BV <- rbinom(nrow(iris), 1, prob = .5)
 # Add an unbalanced binary variable
 iris$UBV <- rbinom(nrow(iris), 1, prob = .02)
 
-X2 <- bake(sparseR_prep(Sepal.Width ~ ., data = iris), iris)
-X3 <- bake(sparseR_prep(Sepal.Width ~ ., data = iris, poly = 2), iris)
-
 # Create time-to-event data
 y<-iris$time <- survival::Surv(rnorm(nrow(iris), 5)*iris$Sepal.Length, rbinom(nrow(iris), 1, prob = .5))
 
 test_that("Different vals of k and poly work (matrix)", {
+
+  X2 <- bake(sparseR_prep(Sepal.Width ~ ., data = iris), iris)
+  X3 <- bake(sparseR_prep(Sepal.Width ~ ., data = iris, poly = 2), iris)
+
   expect_silent({
     obj1 <- sparseR(model_matrix = X2, y = y, pre_process = FALSE, max.iter=1e7, family = "coxph")
   })
@@ -33,12 +34,19 @@ test_that("Different vals of k and poly work (matrix)", {
 data("Sheddon_small")
 set.seed(123)
 
-srp <- sparseR_prep(formula = ~., data = Z)
-X <- bake(srp, new_data = Z)
+test_that("Different vals of k and poly work, sheddon", {
 
+  srp <- sparseR_prep(formula = ~., data = Z)
+  X <- bake(srp, new_data = Z)
 
-sr_cox <- sparseR(survtime~., data = data.frame(survtime = S, Z), family = "coxph", cumulative_k = T)
+  srp2 <- sparseR_prep(survtime~., data = data.frame(survtime = S, Z), family = "coxph")
 
-plot(sr_cox)
-effect_plot(sr_cox, coef_name = "Age", by = "Sex")
-apl_cox <- sparseR(model_matrix = X, y = S, gamma = 0, pre_process = FALSE, family = "coxph")
+  sr_cox <- sparseR(survtime~., data = data.frame(survtime = S, Z),
+                    family = "coxph", cumulative_k = T)
+
+  plot(sr_cox)
+  expect_warning(effect_plot(sr_cox, coef_name = "Age", by = "Sex"))
+  apl_cox <- sparseR(model_matrix = X, y = S, gamma = 0,
+                     pre_process = FALSE, family = "coxph")
+})
+

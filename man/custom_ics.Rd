@@ -2,11 +2,19 @@
 % Please edit documentation in R/custom_ICs.R
 \name{EBIC}
 \alias{EBIC}
+\alias{RBIC}
+\alias{RAIC}
 \title{Custom IC functions for stepwise models}
 \usage{
-EBIC(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...)
+EBIC(x, ...)
+
+RBIC(x, ...)
+
+RAIC(x, ...)
 }
 \arguments{
+\item{...}{additional args}
+
 \item{fit}{a fitted object}
 
 \item{varnames}{names of variables}
@@ -16,8 +24,6 @@ EBIC(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...)
 \item{gammafn}{What to use for gamma in formula}
 
 \item{return_df}{should the deg. freedom be returned}
-
-\item{...}{additional args}
 }
 \description{
 Custom IC functions for stepwise models

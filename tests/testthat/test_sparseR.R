@@ -25,17 +25,12 @@ iris$BV[12] <- NA
 
 set.seed(123)
 
-obj1 <- sparseR(Sepal.Width ~ ., data = iris)
-obj2 <- sparseR(Sepal.Width ~ ., data = iris, k = 2, poly = 2)
-obj3 <- sparseR(Sepal.Width ~ ., data = iris, k = 1, poly = 1)
-obj4 <- sparseR(Sepal.Width ~ ., data = iris, k = 0, poly = 2)
-
 test_that("Different vals of k and poly work, general formula", {
   expect_silent({
-    obj1 <- sparseR(Sepal.Width ~ ., data = iris)
-    obj2 <- sparseR(Sepal.Width ~ ., data = iris, k = 2, poly = 2)
-    obj3 <- sparseR(Sepal.Width ~ ., data = iris, k = 1, poly = 1)
-    obj4 <- sparseR(Sepal.Width ~ ., data = iris, k = 0, poly = 2)
+    obj1 <<- sparseR(Sepal.Width ~ ., data = iris)
+    obj2 <<- sparseR(Sepal.Width ~ ., data = iris, k = 2, poly = 2)
+    obj3 <<- sparseR(Sepal.Width ~ ., data = iris, k = 1, poly = 1)
+    obj4 <<- sparseR(Sepal.Width ~ ., data = iris, k = 0, poly = 2)
   })
 
   expect_error(sparseR(Sepal.Width ~ ., data = iris, k = 1, poly = 0))

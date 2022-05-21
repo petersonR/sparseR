@@ -1,3 +1,7 @@
+# 0.0.2.900
+
+- improved coverage and documentation
+
 # 0.0.1.903
 
 - Updated documentation, added experimental message regarding RBIC
