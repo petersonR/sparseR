@@ -73,7 +73,7 @@
       <h1 data-toc-skip>Using the <code>sparseR</code> package</h1>
                         <h4 data-toc-skip class="author">Ryan A. Peterson</h4>
             
-            <h4 data-toc-skip class="date">2022-05-21</h4>
+            <h4 data-toc-skip class="date">2022-05-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/petersonR/sparseR/blob/HEAD/vignettes/sparseR.Rmd" class="external-link"><code>vignettes/sparseR.Rmd</code></a></small>
       <div class="hidden name"><code>sparseR.Rmd</code></div>
@@ -655,7 +655,7 @@ Species_setosa
 0.00000
 </td>
 <td style="text-align:right;">
-0.00045
+0.00063
 </td>
 <td style="text-align:right;">
 0.00000
@@ -723,13 +723,13 @@ Species_versicolor
 1.00000
 </td>
 <td style="text-align:right;">
-0.76640
+0.80657
 </td>
 <td style="text-align:right;">
-0.45277
+0.49933
 </td>
 <td style="text-align:right;">
-26
+22
 </td>
 </tr>
 <tr>
@@ -757,13 +757,13 @@ Species_virginica
 1.00000
 </td>
 <td style="text-align:right;">
-0.95774
+0.91756
 </td>
 <td style="text-align:right;">
-0.84366
+0.76499
 </td>
 <td style="text-align:right;">
-5
+9
 </td>
 </tr>
 <tr>
@@ -884,13 +884,13 @@ Gmean_p
 (Intercept)
 </td>
 <td style="text-align:right;">
-0.00447
+0.00500
 </td>
 <td style="text-align:right;">
-0.07758
+0.07581
 </td>
 <td style="text-align:right;">
-0.00389
+0.00413
 </td>
 <td style="text-align:right;">
 100
@@ -901,16 +901,16 @@ Gmean_p
 Species_setosa
 </td>
 <td style="text-align:right;">
-0.09990
+0.07861
 </td>
 <td style="text-align:right;">
-0.14977
+0.13584
 </td>
 <td style="text-align:right;">
-0.00735
+0.00588
 </td>
 <td style="text-align:right;">
-99
+100
 </td>
 </tr>
 <tr>
@@ -938,10 +938,10 @@ Petal.Width
 1.00000
 </td>
 <td style="text-align:right;">
-0.73888
+0.73882
 </td>
 <td style="text-align:right;">
-0.27300
+0.27036
 </td>
 <td style="text-align:right;">
 27
@@ -949,19 +949,19 @@ Petal.Width
 </tr>
 <tr>
 <td style="text-align:left;">
-Species_virginica
+Species_versicolor
 </td>
 <td style="text-align:right;">
 1.00000
 </td>
 <td style="text-align:right;">
-0.94904
+0.87126
 </td>
 <td style="text-align:right;">
-0.71002
+0.63427
 </td>
 <td style="text-align:right;">
-6
+14
 </td>
 </tr>
 <tr>
@@ -975,27 +975,10 @@ Sepal.Length:Species_setosa
 0.14857
 </td>
 <td style="text-align:right;">
-0.00668
+0.00667
 </td>
 <td style="text-align:right;">
 87
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Species_versicolor
-</td>
-<td style="text-align:right;">
-1.00000
-</td>
-<td style="text-align:right;">
-0.86553
-</td>
-<td style="text-align:right;">
-0.49438
-</td>
-<td style="text-align:right;">
-15
 </td>
 </tr>
 <tr>
@@ -1034,19 +1017,19 @@ Sepal.Length:Petal.Length
 </tr>
 <tr>
 <td style="text-align:left;">
-Petal.Width:Species_versicolor
+Species_virginica
 </td>
 <td style="text-align:right;">
 1.00000
 </td>
 <td style="text-align:right;">
-0.99977
+0.94887
 </td>
 <td style="text-align:right;">
-0.99977
+0.84585
 </td>
 <td style="text-align:right;">
-1
+6
 </td>
 </tr>
 <tr>
@@ -1109,7 +1092,7 @@ Gmean_p
 Species_setosa
 </td>
 <td style="text-align:right;">
-0.00954
+0.00978
 </td>
 <td style="text-align:right;">
 0.00000
@@ -1123,7 +1106,7 @@ Species_setosa
 Sepal.Length
 </td>
 <td style="text-align:right;">
-0.00398
+0.00444
 </td>
 <td style="text-align:right;">
 0.00000
@@ -1137,13 +1120,13 @@ Sepal.Length
 Sepal.Length:Species_setosa
 </td>
 <td style="text-align:right;">
-0.24837
+0.25235
 </td>
 <td style="text-align:right;">
 0.00007
 </td>
 <td style="text-align:right;">
-75.2
+74.8
 </td>
 </tr>
 <tr>
@@ -1151,7 +1134,7 @@ Sepal.Length:Species_setosa
 Petal.Width
 </td>
 <td style="text-align:right;">
-0.33705
+0.33706
 </td>
 <td style="text-align:right;">
 0.00004
@@ -1162,248 +1145,16 @@ Petal.Width
 </tr>
 <tr>
 <td style="text-align:left;">
-Species_versicolor
-</td>
-<td style="text-align:right;">
-0.62026
-</td>
-<td style="text-align:right;">
-0.03802
-</td>
-<td style="text-align:right;">
-42.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Petal.Length
-</td>
-<td style="text-align:right;">
-0.71704
-</td>
-<td style="text-align:right;">
-0.35625
-</td>
-<td style="text-align:right;">
-35.6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sepal.Length:Petal.Width
-</td>
-<td style="text-align:right;">
-0.87623
-</td>
-<td style="text-align:right;">
-0.23038
-</td>
-<td style="text-align:right;">
-12.4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sepal.Length:Species_versicolor
-</td>
-<td style="text-align:right;">
-0.97231
-</td>
-<td style="text-align:right;">
-0.86439
-</td>
-<td style="text-align:right;">
-2.8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Petal.Width:Species_setosa
-</td>
-<td style="text-align:right;">
-0.92099
-</td>
-<td style="text-align:right;">
-0.67194
-</td>
-<td style="text-align:right;">
-8.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sepal.Length:Petal.Length
-</td>
-<td style="text-align:right;">
-0.87201
-</td>
-<td style="text-align:right;">
-0.14964
-</td>
-<td style="text-align:right;">
-12.8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 Species_virginica
 </td>
 <td style="text-align:right;">
-0.97206
+0.95211
 </td>
 <td style="text-align:right;">
-0.74366
+0.66018
 </td>
 <td style="text-align:right;">
-2.8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Petal.Length:Petal.Width
-</td>
-<td style="text-align:right;">
-0.99216
-</td>
-<td style="text-align:right;">
-0.96898
-</td>
-<td style="text-align:right;">
-0.8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Petal.Length:Species_setosa
-</td>
-<td style="text-align:right;">
-0.98424
-</td>
-<td style="text-align:right;">
-0.93217
-</td>
-<td style="text-align:right;">
-1.6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Petal.Width:Species_versicolor
-</td>
-<td style="text-align:right;">
-0.91662
-</td>
-<td style="text-align:right;">
-0.58630
-</td>
-<td style="text-align:right;">
-8.4
-</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="co">## Uncentered model</span>
-<span class="va">b2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_bootstrap.html">sparseRBIC_bootstrap</a></span><span class="op">(</span><span class="va">rbic2</span>, B <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
-<table class="table table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead><tr>
-<th style="text-align:left;">
-Coefficient
-</th>
-<th style="text-align:right;">
-Mean_p
-</th>
-<th style="text-align:right;">
-Gmean_p
-</th>
-<th style="text-align:right;">
-% selected
-</th>
-</tr></thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-(Intercept)
-</td>
-<td style="text-align:right;">
-0.07237
-</td>
-<td style="text-align:right;">
-0.00027
-</td>
-<td style="text-align:right;">
-100.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Species_setosa
-</td>
-<td style="text-align:right;">
-0.09074
-</td>
-<td style="text-align:right;">
-0.00001
-</td>
-<td style="text-align:right;">
-100.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sepal.Length
-</td>
-<td style="text-align:right;">
-0.00440
-</td>
-<td style="text-align:right;">
-0.00000
-</td>
-<td style="text-align:right;">
-100.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sepal.Length:Species_setosa
-</td>
-<td style="text-align:right;">
-0.24837
-</td>
-<td style="text-align:right;">
-0.00007
-</td>
-<td style="text-align:right;">
-75.2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Petal.Width
-</td>
-<td style="text-align:right;">
-0.34021
-</td>
-<td style="text-align:right;">
-0.00006
-</td>
-<td style="text-align:right;">
-66.4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Species_versicolor
-</td>
-<td style="text-align:right;">
-0.58136
-</td>
-<td style="text-align:right;">
-0.03363
-</td>
-<td style="text-align:right;">
-43.2
+4.8
 </td>
 </tr>
 <tr>
@@ -1411,10 +1162,10 @@ Species_versicolor
 Petal.Length
 </td>
 <td style="text-align:right;">
-0.69013
+0.71850
 </td>
 <td style="text-align:right;">
-0.19514
+0.36074
 </td>
 <td style="text-align:right;">
 35.6
@@ -1422,16 +1173,30 @@ Petal.Length
 </tr>
 <tr>
 <td style="text-align:left;">
+Species_versicolor
+</td>
+<td style="text-align:right;">
+0.63447
+</td>
+<td style="text-align:right;">
+0.04241
+</td>
+<td style="text-align:right;">
+40.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 Sepal.Length:Petal.Width
 </td>
 <td style="text-align:right;">
-0.87232
+0.86832
 </td>
 <td style="text-align:right;">
-0.22684
+0.22093
 </td>
 <td style="text-align:right;">
-12.8
+13.2
 </td>
 </tr>
 <tr>
@@ -1478,16 +1243,234 @@ Sepal.Length:Petal.Length
 </tr>
 <tr>
 <td style="text-align:left;">
-Species_virginica
+Petal.Length:Petal.Width
 </td>
 <td style="text-align:right;">
-0.98400
+0.99216
 </td>
 <td style="text-align:right;">
-0.81220
+0.96898
+</td>
+<td style="text-align:right;">
+0.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Petal.Length:Species_setosa
+</td>
+<td style="text-align:right;">
+0.98424
+</td>
+<td style="text-align:right;">
+0.93217
 </td>
 <td style="text-align:right;">
 1.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Petal.Width:Species_versicolor
+</td>
+<td style="text-align:right;">
+0.92066
+</td>
+<td style="text-align:right;">
+0.60421
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="co">## Uncentered model</span>
+<span class="va">b2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_bootstrap.html">sparseRBIC_bootstrap</a></span><span class="op">(</span><span class="va">rbic2</span>, B <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
+<table class="table table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+Coefficient
+</th>
+<th style="text-align:right;">
+Mean_p
+</th>
+<th style="text-align:right;">
+Gmean_p
+</th>
+<th style="text-align:right;">
+% selected
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+0.07601
+</td>
+<td style="text-align:right;">
+0.00027
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Species_setosa
+</td>
+<td style="text-align:right;">
+0.08997
+</td>
+<td style="text-align:right;">
+0.00001
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sepal.Length
+</td>
+<td style="text-align:right;">
+0.00481
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sepal.Length:Species_setosa
+</td>
+<td style="text-align:right;">
+0.24837
+</td>
+<td style="text-align:right;">
+0.00007
+</td>
+<td style="text-align:right;">
+75.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Petal.Width
+</td>
+<td style="text-align:right;">
+0.34016
+</td>
+<td style="text-align:right;">
+0.00006
+</td>
+<td style="text-align:right;">
+66.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Species_versicolor
+</td>
+<td style="text-align:right;">
+0.58922
+</td>
+<td style="text-align:right;">
+0.03208
+</td>
+<td style="text-align:right;">
+42.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Petal.Length
+</td>
+<td style="text-align:right;">
+0.69109
+</td>
+<td style="text-align:right;">
+0.19662
+</td>
+<td style="text-align:right;">
+35.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Species_virginica
+</td>
+<td style="text-align:right;">
+0.97799
+</td>
+<td style="text-align:right;">
+0.85138
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sepal.Length:Petal.Width
+</td>
+<td style="text-align:right;">
+0.87231
+</td>
+<td style="text-align:right;">
+0.22325
+</td>
+<td style="text-align:right;">
+12.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sepal.Length:Species_virginica
+</td>
+<td style="text-align:right;">
+0.99206
+</td>
+<td style="text-align:right;">
+0.95350
+</td>
+<td style="text-align:right;">
+0.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Petal.Width:Species_setosa
+</td>
+<td style="text-align:right;">
+0.91698
+</td>
+<td style="text-align:right;">
+0.65775
+</td>
+<td style="text-align:right;">
+8.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sepal.Length:Petal.Length
+</td>
+<td style="text-align:right;">
+0.87201
+</td>
+<td style="text-align:right;">
+0.14964
+</td>
+<td style="text-align:right;">
+12.8
 </td>
 </tr>
 <tr>
@@ -1523,13 +1506,55 @@ Petal.Length:Species_setosa
 Petal.Width:Species_versicolor
 </td>
 <td style="text-align:right;">
-0.90871
+0.91670
 </td>
 <td style="text-align:right;">
-0.56272
+0.60281
 </td>
 <td style="text-align:right;">
-9.2
+8.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sepal.Length:Species_versicolor
+</td>
+<td style="text-align:right;">
+0.97622
+</td>
+<td style="text-align:right;">
+0.87766
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Petal.Length:Species_virginica
+</td>
+<td style="text-align:right;">
+0.99600
+</td>
+<td style="text-align:right;">
+0.97059
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Petal.Width:Species_virginica
+</td>
+<td style="text-align:right;">
+0.99600
+</td>
+<td style="text-align:right;">
+0.95986
+</td>
+<td style="text-align:right;">
+0.4
 </td>
 </tr>
 </tbody>
