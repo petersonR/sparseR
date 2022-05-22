@@ -19,6 +19,7 @@ test_that("Effect plots for sparseR run without error", {
   expect_warning(effect_plot(obj1, coef_name = "Species"))
   expect_warning(effect_plot(obj1, "Petal.Width", by = "Species"))
   expect_warning(effect_plot(obj1, coef_name = "Petal.Width"))
+  expect_warning(effect_plot(obj1, "Petal.Length", by = "Sepal.Length"))
 
   expect_silent(effect_plot(obj2, coef_name = "Petal.Width"))
   expect_silent(effect_plot(obj2, coef_name = "Species"))
@@ -38,6 +39,7 @@ test_that("Effect plots for sparseRBIC run without error", {
   expect_warning(effect_plot(obj1, coef_name = "Species"))
   expect_silent(effect_plot(obj1, "Petal.Width", by = "Species")) # might need to update to warn
   expect_silent(effect_plot(obj1, coef_name = "Petal.Width"))
+  expect_silent(effect_plot(obj1, "Petal.Length", by = "Sepal.Length")) # might need to update to warn
 
   expect_silent(effect_plot(obj1, "Sepal.Length", by = "Species"))
   expect_warning(effect_plot(obj1, coef_name = "Sepal.Length"))
