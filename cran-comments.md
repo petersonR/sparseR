@@ -1,7 +1,7 @@
 ## Resubmission
 This is a resubmission. In this version, I have:
 * avoided acronyms in the DESCRIPTION
-* Fixed citation links
+* Fixed citation and other links throughout
 * Use inherits() instead of == for class statements
 
 ## R CMD check results
