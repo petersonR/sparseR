@@ -1,10 +1,7 @@
 ## Resubmission
-This is a resubmission. In this version, I have:
+This is a second resubmission. In this version, I have:
 
-* avoided acronyms in the DESCRIPTION
-* Fixed citation and other links throughout
-* Use inherits() instead of == for class statements
-* switched survival to suggests (from imports)
+* Updated the DOI in the citation
 
 ## R CMD check results
 This is sparseR's first submission.

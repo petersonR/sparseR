@@ -3,7 +3,7 @@ citEntry(entry = "article",
          author = c(as.person("Ryan A. Peterson"), as.person("Joseph E. Cavanaugh")),
          year = "2022",
 	       journal = "AStA Advances in Statistical Analysis",
-         doi = "https://doi.org/10.1007/s10182-021-00431-7",
+         doi = "10.1007/s10182-021-00431-7",
 	       textVersion =
         "Peterson, R.A., Cavanaugh, J.E. Ranked sparsity: a cogent regularization framework for selecting and estimating feature interactions and polynomials. AStA Adv Stat Anal (2022). https://link.springer.com/article/10.1007/s10182-021-00431-7"
 )
