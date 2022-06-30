@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">sparseR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2.900</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -98,51 +98,51 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"petersonR/sparseR"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"petersonR/sparseR"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://petersonr.github.io/sparseR/" class="external-link">sparseR</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://petersonr.github.io/sparseR/" class="external-link">sparseR</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1321</span><span class="op">)</span>
-
-<span class="va">srl</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">1</span>, seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="va">srl</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Model summary @ min CV:</span>
-<span class="co">#&gt; -----------------------------------------------------</span>
-<span class="co">#&gt;   lasso-penalized linear regression with n=150, p=18</span>
-<span class="co">#&gt;   (At lambda=0.0015):</span>
-<span class="co">#&gt;     Nonzero coefficients: 10</span>
-<span class="co">#&gt;     Cross-validation error (deviance): 0.07</span>
-<span class="co">#&gt;     R-squared: 0.62</span>
-<span class="co">#&gt;     Signal-to-noise ratio: 1.64</span>
-<span class="co">#&gt;     Scale estimate (sigma): 0.267</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   SR information:</span>
-<span class="co">#&gt;              Vartype Total Selected Saturation Penalty</span>
-<span class="co">#&gt;          Main effect     6        4      0.667    2.45</span>
-<span class="co">#&gt;  Order 1 interaction    12        6      0.500    3.46</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Model summary @ CV1se:</span>
-<span class="co">#&gt; -----------------------------------------------------</span>
-<span class="co">#&gt;   lasso-penalized linear regression with n=150, p=18</span>
-<span class="co">#&gt;   (At lambda=0.0070):</span>
-<span class="co">#&gt;     Nonzero coefficients: 7</span>
-<span class="co">#&gt;     Cross-validation error (deviance): 0.08</span>
-<span class="co">#&gt;     R-squared: 0.57</span>
-<span class="co">#&gt;     Signal-to-noise ratio: 1.33</span>
-<span class="co">#&gt;     Scale estimate (sigma): 0.285</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   SR information:</span>
-<span class="co">#&gt;              Vartype Total Selected Saturation Penalty</span>
-<span class="co">#&gt;          Main effect     6        3      0.500    2.45</span>
-<span class="co">#&gt;  Order 1 interaction    12        4      0.333    3.46</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1321</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">srl</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">1</span>, seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">srl</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Model summary @ min CV:</span></span>
+<span><span class="co">#&gt; -----------------------------------------------------</span></span>
+<span><span class="co">#&gt;   lasso-penalized linear regression with n=150, p=18</span></span>
+<span><span class="co">#&gt;   (At lambda=0.0015):</span></span>
+<span><span class="co">#&gt;     Nonzero coefficients: 10</span></span>
+<span><span class="co">#&gt;     Cross-validation error (deviance): 0.07</span></span>
+<span><span class="co">#&gt;     R-squared: 0.62</span></span>
+<span><span class="co">#&gt;     Signal-to-noise ratio: 1.64</span></span>
+<span><span class="co">#&gt;     Scale estimate (sigma): 0.267</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   SR information:</span></span>
+<span><span class="co">#&gt;              Vartype Total Selected Saturation Penalty</span></span>
+<span><span class="co">#&gt;          Main effect     6        4      0.667    2.45</span></span>
+<span><span class="co">#&gt;  Order 1 interaction    12        6      0.500    3.46</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Model summary @ CV1se:</span></span>
+<span><span class="co">#&gt; -----------------------------------------------------</span></span>
+<span><span class="co">#&gt;   lasso-penalized linear regression with n=150, p=18</span></span>
+<span><span class="co">#&gt;   (At lambda=0.0070):</span></span>
+<span><span class="co">#&gt;     Nonzero coefficients: 7</span></span>
+<span><span class="co">#&gt;     Cross-validation error (deviance): 0.08</span></span>
+<span><span class="co">#&gt;     R-squared: 0.57</span></span>
+<span><span class="co">#&gt;     Signal-to-noise ratio: 1.33</span></span>
+<span><span class="co">#&gt;     Scale estimate (sigma): 0.285</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   SR information:</span></span>
+<span><span class="co">#&gt;              Vartype Total Selected Saturation Penalty</span></span>
+<span><span class="co">#&gt;          Main effect     6        3      0.500    2.45</span></span>
+<span><span class="co">#&gt;  Order 1 interaction    12        4      0.333    3.46</span></span></code></pre></div>
 <p>For more examples and a closer look, check out the <a href="https://petersonr.github.io/sparseR/" class="external-link">package website</a>.</p>
 </div>
 </div>
@@ -174,7 +174,7 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Ryan Andrew Peterson <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Ryan Andrew Peterson <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4650-5798" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
@@ -183,6 +183,7 @@
 <ul class="list-unstyled">
 <li><a href="https://codecov.io/gh/petersonR/sparseR" class="external-link"><img src="https://codecov.io/gh/petersonR/sparseR/branch/main/graph/badge.svg" alt="codecov"></a></li>
 <li><a href="https://github.com/petersonR/sparseR/actions" class="external-link"><img src="https://github.com/petersonR/sparseR/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://CRAN.R-project.org/package=sparseR" class="external-link"><img src="https://www.r-pkg.org/badges/version/sparseR" alt="CRAN status"></a></li>
 </ul>
 </div>
 
@@ -197,7 +198,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

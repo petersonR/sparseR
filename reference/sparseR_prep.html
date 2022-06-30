@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sparseR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2.900</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -56,43 +56,60 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">sparseR_prep</span><span class="op">(</span>
-  <span class="va">formula</span>,
-  <span class="va">data</span>,
-  k <span class="op">=</span> <span class="fl">1</span>,
-  poly <span class="op">=</span> <span class="fl">1</span>,
-  pre_proc_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"knnImpute"</span>, <span class="st">"scale"</span>, <span class="st">"center"</span>, <span class="st">"otherbin"</span>, <span class="st">"none"</span><span class="op">)</span>,
-  ia_formula <span class="op">=</span> <span class="cn">NULL</span>,
-  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"nzv"</span>, <span class="st">"zv"</span><span class="op">)</span>,
-  extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  family <span class="op">=</span> <span class="st">"gaussian"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">sparseR_prep</span><span class="op">(</span></span>
+<span>  <span class="va">formula</span>,</span>
+<span>  <span class="va">data</span>,</span>
+<span>  k <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  poly <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  pre_proc_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"knnImpute"</span>, <span class="st">"scale"</span>, <span class="st">"center"</span>, <span class="st">"otherbin"</span>, <span class="st">"none"</span><span class="op">)</span>,</span>
+<span>  ia_formula <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"nzv"</span>, <span class="st">"zv"</span><span class="op">)</span>,</span>
+<span>  extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  family <span class="op">=</span> <span class="st">"gaussian"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>formula</dt>
 <dd><p>A formula of the main effects + outcome of the model</p></dd>
+
+
 <dt>data</dt>
 <dd><p>A required data frame or tibble containing the variables in
 <code>formula</code></p></dd>
+
+
 <dt>k</dt>
 <dd><p>Maximum order of interactions to *numeric* variables</p></dd>
+
+
 <dt>poly</dt>
 <dd><p>the maximum order of polynomials to consider</p></dd>
+
+
 <dt>pre_proc_opts</dt>
 <dd><p>A character vector specifying methods for preprocessing
 (see details)</p></dd>
+
+
 <dt>ia_formula</dt>
 <dd><p>formula to be passed to step_interact (for interactions,
 see details)</p></dd>
+
+
 <dt>filter</dt>
 <dd><p>which methods should be used to filter out variables with
 (near) zero variance? (see details)</p></dd>
+
+
 <dt>extra_opts</dt>
 <dd><p>extra options to be used for preprocessing</p></dd>
+
+
 <dt>family</dt>
 <dd><p>family passed from sparseR</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -126,7 +143,7 @@ the same categorical variable.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

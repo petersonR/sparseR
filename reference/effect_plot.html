@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sparseR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2.900</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -56,54 +56,71 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">effect_plot</span><span class="op">(</span><span class="va">fit</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for sparseR</span>
-<span class="fu">effect_plot</span><span class="op">(</span>
-  <span class="va">fit</span>,
-  <span class="va">coef_name</span>,
-  at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cvmin"</span>, <span class="st">"cv1se"</span><span class="op">)</span>,
-  by <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">by_levels</span>,
-  nn <span class="op">=</span> <span class="fl">101</span>,
-  plot.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  resids <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="co"># S3 method for sparseRBIC</span>
-<span class="fu">effect_plot</span><span class="op">(</span>
-  <span class="va">fit</span>,
-  <span class="va">coef_name</span>,
-  by <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">by_levels</span>,
-  nn <span class="op">=</span> <span class="fl">101</span>,
-  plot.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  resids <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">effect_plot</span><span class="op">(</span><span class="va">fit</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for sparseR</span></span>
+<span><span class="fu">effect_plot</span><span class="op">(</span></span>
+<span>  <span class="va">fit</span>,</span>
+<span>  <span class="va">coef_name</span>,</span>
+<span>  at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cvmin"</span>, <span class="st">"cv1se"</span><span class="op">)</span>,</span>
+<span>  by <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">by_levels</span>,</span>
+<span>  nn <span class="op">=</span> <span class="fl">101</span>,</span>
+<span>  plot.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  resids <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for sparseRBIC</span></span>
+<span><span class="fu">effect_plot</span><span class="op">(</span></span>
+<span>  <span class="va">fit</span>,</span>
+<span>  <span class="va">coef_name</span>,</span>
+<span>  by <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">by_levels</span>,</span>
+<span>  nn <span class="op">=</span> <span class="fl">101</span>,</span>
+<span>  plot.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  resids <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>fit</dt>
 <dd><p>a `sparseR` object</p></dd>
+
+
 <dt>...</dt>
 <dd><p>additional arguments</p></dd>
+
+
 <dt>coef_name</dt>
 <dd><p>The name of the coefficient to plot along the x-axis</p></dd>
+
+
 <dt>at</dt>
 <dd><p>value of lambda to use</p></dd>
+
+
 <dt>by</dt>
 <dd><p>the variable(s) involved in the (possible) interaction</p></dd>
+
+
 <dt>by_levels</dt>
 <dd><p>values to cut continuous by variable (defaults to 3 quantiles)</p></dd>
+
+
 <dt>nn</dt>
 <dd><p>number of points to plot along prediction line</p></dd>
+
+
 <dt>plot.args</dt>
 <dd><p>list of arguments passed to the plot itself</p></dd>
+
+
 <dt>resids</dt>
 <dd><p>should residuals be plotted or not?</p></dd>
+
 </dl></div>
 
   </div>
@@ -118,7 +135,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sparseR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2.900</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -56,90 +56,135 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">sparseRBIC_step</span><span class="op">(</span>
-  <span class="va">formula</span>,
-  <span class="va">data</span>,
-  family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gaussian"</span>, <span class="st">"binomial"</span>, <span class="st">"poisson"</span><span class="op">)</span>,
-  k <span class="op">=</span> <span class="fl">1</span>,
-  poly <span class="op">=</span> <span class="fl">1</span>,
-  ic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"RBIC"</span>, <span class="st">"RAIC"</span>, <span class="st">"BIC"</span>, <span class="st">"AIC"</span>, <span class="st">"EBIC"</span><span class="op">)</span>,
-  hier <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"strong"</span>, <span class="st">"weak"</span>, <span class="st">"none"</span><span class="op">)</span>,
-  sequential <span class="op">=</span> <span class="op">(</span><span class="va">hier</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">!=</span> <span class="st">"none"</span><span class="op">)</span>,
-  cumulative_k <span class="op">=</span> <span class="cn">FALSE</span>,
-  cumulative_poly <span class="op">=</span> <span class="cn">TRUE</span>,
-  pool <span class="op">=</span> <span class="cn">FALSE</span>,
-  ia_formula <span class="op">=</span> <span class="cn">NULL</span>,
-  pre_process <span class="op">=</span> <span class="cn">TRUE</span>,
-  model_matrix <span class="op">=</span> <span class="cn">NULL</span>,
-  y <span class="op">=</span> <span class="cn">NULL</span>,
-  poly_prefix <span class="op">=</span> <span class="st">"_poly_"</span>,
-  int_sep <span class="op">=</span> <span class="st">"\\:"</span>,
-  pre_proc_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"knnImpute"</span>, <span class="st">"scale"</span>, <span class="st">"center"</span>, <span class="st">"otherbin"</span>, <span class="st">"none"</span><span class="op">)</span>,
-  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"nzv"</span>, <span class="st">"zv"</span><span class="op">)</span>,
-  extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  trace <span class="op">=</span> <span class="fl">0</span>,
-  message <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">sparseRBIC_step</span><span class="op">(</span></span>
+<span>  <span class="va">formula</span>,</span>
+<span>  <span class="va">data</span>,</span>
+<span>  family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gaussian"</span>, <span class="st">"binomial"</span>, <span class="st">"poisson"</span><span class="op">)</span>,</span>
+<span>  k <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  poly <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  ic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"RBIC"</span>, <span class="st">"RAIC"</span>, <span class="st">"BIC"</span>, <span class="st">"AIC"</span>, <span class="st">"EBIC"</span><span class="op">)</span>,</span>
+<span>  hier <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"strong"</span>, <span class="st">"weak"</span>, <span class="st">"none"</span><span class="op">)</span>,</span>
+<span>  sequential <span class="op">=</span> <span class="op">(</span><span class="va">hier</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">!=</span> <span class="st">"none"</span><span class="op">)</span>,</span>
+<span>  cumulative_k <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  cumulative_poly <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  pool <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  ia_formula <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  pre_process <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  model_matrix <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  poly_prefix <span class="op">=</span> <span class="st">"_poly_"</span>,</span>
+<span>  int_sep <span class="op">=</span> <span class="st">"\\:"</span>,</span>
+<span>  pre_proc_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"knnImpute"</span>, <span class="st">"scale"</span>, <span class="st">"center"</span>, <span class="st">"otherbin"</span>, <span class="st">"none"</span><span class="op">)</span>,</span>
+<span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"nzv"</span>, <span class="st">"zv"</span><span class="op">)</span>,</span>
+<span>  extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  trace <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  message <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>formula</dt>
 <dd><p>Names of the terms</p></dd>
+
+
 <dt>data</dt>
 <dd><p>Data</p></dd>
+
+
 <dt>family</dt>
 <dd><p>The family of the model</p></dd>
+
+
 <dt>k</dt>
 <dd><p>The maximum order of interactions to consider</p></dd>
+
+
 <dt>poly</dt>
 <dd><p>The maximum order of polynomials to consider</p></dd>
+
+
 <dt>ic</dt>
 <dd><p>The information criterion to use</p></dd>
+
+
 <dt>hier</dt>
 <dd><p>Should hierarchy be enforced (weak or strong)? Must be set
 with sequential == TRUE (see details)</p></dd>
+
+
 <dt>sequential</dt>
 <dd><p>Should the main effects be considered first, orders
 sequentially added/considered?</p></dd>
+
+
 <dt>cumulative_k</dt>
 <dd><p>Should penalties be increased cumulatively as order
 interaction increases?</p></dd>
+
+
 <dt>cumulative_poly</dt>
 <dd><p>Should penalties be increased cumulatively as order
 polynomial increases?</p></dd>
+
+
 <dt>pool</dt>
 <dd><p>Should interactions of order k and polynomials of order k+1 be
 pooled together for calculating the penalty?</p></dd>
+
+
 <dt>ia_formula</dt>
 <dd><p>formula to be passed to step_interact via terms argument</p></dd>
+
+
 <dt>pre_process</dt>
 <dd><p>Should the data be preprocessed (if FALSE, must provide
 model_matrix)</p></dd>
+
+
 <dt>model_matrix</dt>
 <dd><p>A data frame or matrix specifying the full model matrix
 (used if !pre_process)</p></dd>
+
+
 <dt>y</dt>
 <dd><p>A vector of responses (used if !pre_process)</p></dd>
+
+
 <dt>poly_prefix</dt>
 <dd><p>If model_matrix is specified, what is the prefix for
 polynomial terms?</p></dd>
+
+
 <dt>int_sep</dt>
 <dd><p>If model_matrix is specified, what is the separator for
 interaction terms?</p></dd>
+
+
 <dt>pre_proc_opts</dt>
 <dd><p>List of preprocessing steps (see details)</p></dd>
+
+
 <dt>filter</dt>
 <dd><p>The type of filter applied to main effects + interactions</p></dd>
+
+
 <dt>extra_opts</dt>
 <dd><p>A list of options for all preprocess steps (see details)</p></dd>
+
+
 <dt>trace</dt>
 <dd><p>Should intermediate results of model selection process be output</p></dd>
+
+
 <dt>message</dt>
 <dd><p>should experimental message be suppressed</p></dd>
+
+
 <dt>...</dt>
 <dd><p>additional arguments for running stepwise selection</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -188,7 +233,7 @@ centered and scaled already by this point by default)</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

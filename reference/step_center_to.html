@@ -19,7 +19,7 @@ of a recipe step that will normalize numeric data to have a 'center' of zero."><
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sparseR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2.900</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -60,20 +60,20 @@ of a recipe step that will normalize numeric data to have a 'center' of zero.</p
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">step_center_to</span><span class="op">(</span>
-  <span class="va">recipe</span>,
-  <span class="va">...</span>,
-  role <span class="op">=</span> <span class="cn">NA</span>,
-  trained <span class="op">=</span> <span class="cn">FALSE</span>,
-  centers <span class="op">=</span> <span class="cn">NULL</span>,
-  center_fn <span class="op">=</span> <span class="va">mean</span>,
-  na_rm <span class="op">=</span> <span class="cn">TRUE</span>,
-  skip <span class="op">=</span> <span class="cn">FALSE</span>,
-  id <span class="op">=</span> <span class="fu">rand_id</span><span class="op">(</span><span class="st">"center_to"</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="co"># S3 method for step_center_to</span>
-<span class="fu">tidy</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">step_center_to</span><span class="op">(</span></span>
+<span>  <span class="va">recipe</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  role <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  trained <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  centers <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  center_fn <span class="op">=</span> <span class="va">mean</span>,</span>
+<span>  na_rm <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  skip <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  id <span class="op">=</span> <span class="fu">rand_id</span><span class="op">(</span><span class="st">"center_to"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for step_center_to</span></span>
+<span><span class="fu">tidy</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -81,38 +81,59 @@ of a recipe step that will normalize numeric data to have a 'center' of zero.</p
     <dl><dt>recipe</dt>
 <dd><p>A recipe object. The step will be added to the sequence of
 operations for this recipe.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>One or more selector functions to choose which variables are
 affected by the step. See [selections()] for more details. For the `tidy`
 method, these are not currently used.</p></dd>
+
+
 <dt>role</dt>
 <dd><p>Not used by this step since no new variables are created.</p></dd>
+
+
 <dt>trained</dt>
 <dd><p>A logical to indicate if the quantities for preprocessing have
 been estimated.</p></dd>
+
+
 <dt>centers</dt>
 <dd><p>A named numeric vector of centers. This is `NULL` until
 computed by [prep.recipe()] (or it can be specified as a named
 numeric vector as well?).</p></dd>
+
+
 <dt>center_fn</dt>
 <dd><p>a function to be used to calculate where the center should be</p></dd>
+
+
 <dt>na_rm</dt>
 <dd><p>A logical value indicating whether `NA` values should be removed
 during computations.</p></dd>
+
+
 <dt>skip</dt>
 <dd><p>A logical. Should the step be skipped when the recipe is baked by
 [bake.recipe()]? While all operations are baked when [prep.recipe()] is
 run, some operations may not be able to be conducted on new data (e.g.
 processing the outcome variable(s)). Care should be taken when using `skip
 = TRUE` as it may affect the computations for subsequent operations</p></dd>
+
+
 <dt>id</dt>
 <dd><p>A character string that is unique to this step to identify it.</p></dd>
+
+
 <dt>x</dt>
 <dd><p>A `step_center_to` object.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An updated version of `recipe` with the new step added to the
+    
+
+<p>An updated version of `recipe` with the new step added to the
   sequence of existing steps (if any). For the `tidy` method, a tibble with
   columns `terms` (the selectors or variables selected) and `value` (the
   centers).</p>
@@ -131,23 +152,23 @@ processing the outcome variable(s)). Care should be taken when using `skip
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">biomass</span>, package <span class="op">=</span> <span class="st">"modeldata"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">biomass_tr</span> <span class="op">&lt;-</span> <span class="va">biomass</span><span class="op">[</span><span class="va">biomass</span><span class="op">$</span><span class="va">dataset</span> <span class="op">==</span> <span class="st">"Training"</span>,<span class="op">]</span></span>
-<span class="r-in"><span class="va">biomass_te</span> <span class="op">&lt;-</span> <span class="va">biomass</span><span class="op">[</span><span class="va">biomass</span><span class="op">$</span><span class="va">dataset</span> <span class="op">==</span> <span class="st">"Testing"</span>,<span class="op">]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">rec</span> <span class="op">&lt;-</span> <span class="fu">recipes</span><span class="fu">::</span><span class="fu"><a href="https://recipes.tidymodels.org/reference/recipe.html" class="external-link">recipe</a></span><span class="op">(</span></span>
-<span class="r-in"> <span class="va">HHV</span> <span class="op">~</span> <span class="va">carbon</span> <span class="op">+</span> <span class="va">hydrogen</span> <span class="op">+</span> <span class="va">oxygen</span> <span class="op">+</span> <span class="va">nitrogen</span> <span class="op">+</span> <span class="va">sulfur</span>,</span>
-<span class="r-in"> data <span class="op">=</span> <span class="va">biomass_tr</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">center_trans</span> <span class="op">&lt;-</span> <span class="va">rec</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">step_center_to</span><span class="op">(</span><span class="va">carbon</span>, <span class="fu">contains</span><span class="op">(</span><span class="st">"gen"</span><span class="op">)</span>, <span class="op">-</span><span class="va">hydrogen</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">center_obj</span> <span class="op">&lt;-</span> <span class="fu">recipes</span><span class="fu">::</span><span class="fu"><a href="https://recipes.tidymodels.org/reference/prep.html" class="external-link">prep</a></span><span class="op">(</span><span class="va">center_trans</span>, training <span class="op">=</span> <span class="va">biomass_tr</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">transformed_te</span> <span class="op">&lt;-</span> <span class="fu">recipes</span><span class="fu">::</span><span class="fu"><a href="https://recipes.tidymodels.org/reference/bake.html" class="external-link">bake</a></span><span class="op">(</span><span class="va">center_obj</span>, <span class="va">biomass_te</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">biomass_te</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">transformed_te</span><span class="op">)</span><span class="op">]</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">biomass</span>, package <span class="op">=</span> <span class="st">"modeldata"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">biomass_tr</span> <span class="op">&lt;-</span> <span class="va">biomass</span><span class="op">[</span><span class="va">biomass</span><span class="op">$</span><span class="va">dataset</span> <span class="op">==</span> <span class="st">"Training"</span>,<span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">biomass_te</span> <span class="op">&lt;-</span> <span class="va">biomass</span><span class="op">[</span><span class="va">biomass</span><span class="op">$</span><span class="va">dataset</span> <span class="op">==</span> <span class="st">"Testing"</span>,<span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">rec</span> <span class="op">&lt;-</span> <span class="fu">recipes</span><span class="fu">::</span><span class="fu"><a href="https://recipes.tidymodels.org/reference/recipe.html" class="external-link">recipe</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span> <span class="va">HHV</span> <span class="op">~</span> <span class="va">carbon</span> <span class="op">+</span> <span class="va">hydrogen</span> <span class="op">+</span> <span class="va">oxygen</span> <span class="op">+</span> <span class="va">nitrogen</span> <span class="op">+</span> <span class="va">sulfur</span>,</span></span>
+<span class="r-in"><span> data <span class="op">=</span> <span class="va">biomass_tr</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">center_trans</span> <span class="op">&lt;-</span> <span class="va">rec</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">step_center_to</span><span class="op">(</span><span class="va">carbon</span>, <span class="fu">contains</span><span class="op">(</span><span class="st">"gen"</span><span class="op">)</span>, <span class="op">-</span><span class="va">hydrogen</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">center_obj</span> <span class="op">&lt;-</span> <span class="fu">recipes</span><span class="fu">::</span><span class="fu"><a href="https://recipes.tidymodels.org/reference/prep.html" class="external-link">prep</a></span><span class="op">(</span><span class="va">center_trans</span>, training <span class="op">=</span> <span class="va">biomass_tr</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">transformed_te</span> <span class="op">&lt;-</span> <span class="fu">recipes</span><span class="fu">::</span><span class="fu"><a href="https://recipes.tidymodels.org/reference/bake.html" class="external-link">bake</a></span><span class="op">(</span><span class="va">center_obj</span>, <span class="va">biomass_te</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">biomass_te</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">transformed_te</span><span class="op">)</span><span class="op">]</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    carbon hydrogen oxygen nitrogen sulfur    HHV</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 15  46.35     5.67  47.20     0.30   0.22 18.275</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 20  43.25     5.50  48.06     2.85   0.34 17.560</span>
@@ -159,7 +180,7 @@ processing the outcome variable(s)). Care should be taken when using `skip
 <span class="r-out co"><span class="r-pr">#&gt;</span> 51  42.10     4.66  33.80     0.95   0.20 16.240</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 55  29.20     4.40  31.10     0.14   4.90 11.147</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 65  27.80     3.77  23.69     4.63   1.05 10.750</span>
-<span class="r-in"><span class="va">transformed_te</span></span>
+<span class="r-in"><span><span class="va">transformed_te</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 80 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     carbon hydrogen oxygen nitrogen sulfur   HHV</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -174,17 +195,17 @@ processing the outcome variable(s)). Care should be taken when using `skip
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> -<span style="color: #BB0000;">19.2</span>       4.4   -<span style="color: #BB0000;">7.42</span>   -<span style="color: #BB0000;">0.935</span>   4.9   11.1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> -<span style="color: #BB0000;">20.6</span>       3.77 -<span style="color: #BB0000;">14.8</span>     3.56    1.05  10.8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 70 more rows</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">recipes</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">center_trans</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">recipes</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">center_trans</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   number operation type      trained skip  id             </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>      1 step      center_to FALSE   FALSE center_to_WxdTm</span>
-<span class="r-in"><span class="fu">recipes</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">center_obj</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>      1 step      center_to FALSE   FALSE center_to_byzvc</span>
+<span class="r-in"><span><span class="fu">recipes</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">center_obj</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   number operation type      trained skip  id             </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>      1 step      center_to TRUE    FALSE center_to_WxdTm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>      1 step      center_to TRUE    FALSE center_to_byzvc</span>
 </code></pre></div>
     </div>
   </div>
@@ -199,7 +220,7 @@ processing the outcome variable(s)). Care should be taken when using `skip
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
