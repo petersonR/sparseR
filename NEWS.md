@@ -1,8 +1,8 @@
-# 0.0.1.903
+# 0.1.0
 
 - Updated documentation, added experimental message regarding RBIC
 - Update citation to new paper in AStA
-- Begin process of prepping for CRAN
+- prepping for CRAN
 - Improve test coverage, begin cleaning up stepwise selection code
 - fix bug occurring for larger n and p problems
 

@@ -73,6 +73,11 @@
 #'
 #' @md
 #'
+#' @references For fitting functionality, the `ncvreg` package is used; see
+#' Breheny, P. and Huang, J. (2011) Coordinate descent algorithms for nonconvex
+#' penalized regression, with applications to biological feature selection. Ann.
+#' Appl. Statist., 5: 232-253.
+#'
 #' @export
 
 sparseR <- function(formula, data, family = c("gaussian", "binomial", "poisson", "coxph"),

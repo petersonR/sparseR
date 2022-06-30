@@ -5,15 +5,17 @@
 
 [![codecov](https://codecov.io/gh/petersonR/sparseR/branch/main/graph/badge.svg)](https://codecov.io/gh/petersonR/sparseR)
 [![R-CMD-check](https://github.com/petersonR/sparseR/workflows/R-CMD-check/badge.svg)](https://github.com/petersonR/sparseR/actions)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/sparseR)](https://CRAN.R-project.org/package=sparseR)
 
 ## Overview
 
 The `sparseR` package implements the following ranked sparsity methods:
 
-1.  Sparsity-ranked lasso
-2.  Sparsity-ranked MCP
-3.  Sparsity-ranked SCAD
-4.  Ranked Bayesian Information Criterion (and corresponding stepwise
+1)  Sparsity-ranked lasso
+2)  Sparsity-ranked MCP
+3)  Sparsity-ranked SCAD
+4)  Ranked Bayesian Information Criterion (and corresponding stepwise
     approaches)
 
 Additionally, `sparseR` has many features designed to streamline dealing

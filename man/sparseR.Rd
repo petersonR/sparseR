@@ -122,3 +122,9 @@ to \code{recipes::step_interact}, so the help documentation for that function
 can be investigated for further assistance in specifying specific
 interactions.
 }
+\references{
+For fitting functionality, the \code{ncvreg} package is used; see
+Breheny, P. and Huang, J. (2011) Coordinate descent algorithms for nonconvex
+penalized regression, with applications to biological feature selection. Ann.
+Appl. Statist., 5: 232-253.
+}
