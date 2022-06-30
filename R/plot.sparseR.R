@@ -100,7 +100,7 @@ effect_plot.sparseR <- function(fit, coef_name, at = c("cvmin", "cv1se"),
 
   outcome_name <- fit$srprep$var_info$variable[fit$srprep$var_info$role == "outcome"]
   yy <- fit$srprep$outcome
-  if(class(yy) == "Surv")
+  if(inherits(yy, what = "Surv"))
     resids <- F
   pclass <- sapply(fit$data, class)
 
@@ -215,7 +215,7 @@ effect_plot.sparseR <- function(fit, coef_name, at = c("cvmin", "cv1se"),
   } else {
 
     ### Factor by variable
-    if(class(fit$data[[by]]) == "factor") {
+    if(inherits(fit$data[[by]], what = "factor")) {
       by_levels <- levels(fit$data[[by]])
       pt_cols <- as.character(factor(fit$data[[by]], labels = pal(length(by_levels))))
 
@@ -279,7 +279,7 @@ effect_plot.sparseR <- function(fit, coef_name, at = c("cvmin", "cv1se"),
         stop("Cannot yet handle factor effect for both main covariate and 'by' covariate")
 
     ## Numeric by variable
-    } else if(class(fit$data[[by]]) == "numeric") {
+    } else if(inherits(fit$data[[by]], what = "numeric")) {
 
 
       ## IF it's a numeric variable
@@ -464,7 +464,7 @@ effect_plot.sparseRBIC <- function(fit, coef_name,
   } else {
 
     ### Factor by variable
-    if(class(fit$data[[by]]) == "factor") {
+    if(inherits(fit$data[[by]], what = "factor")) {
       by_levels <- levels(fit$data[[by]])
       pt_cols <- as.character(factor(fit$data[[by]], labels = pal(length(by_levels))))
 
@@ -528,7 +528,7 @@ effect_plot.sparseRBIC <- function(fit, coef_name,
         stop("Cannot yet handle factor effect for both main covariate and 'by' covariate")
 
       ## Numeric by variable
-    } else if(class(fit$data[[by]]) == "numeric") {
+    } else if(inherits(fit$data[[by]], what = "numeric")) {
 
 
       ## IF it's a numeric variable

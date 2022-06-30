@@ -3,7 +3,7 @@
 
 # Implementing ranked sparsity methods with sparseR
 
-[![codecov](https://codecov.io/gh/petersonR/sparseR/branch/main/graph/badge.svg)](https://codecov.io/gh/petersonR/sparseR)
+[![codecov](https://codecov.io/gh/petersonR/sparseR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/petersonR/sparseR)
 [![R-CMD-check](https://github.com/petersonR/sparseR/workflows/R-CMD-check/badge.svg)](https://github.com/petersonR/sparseR/actions)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/sparseR)](https://CRAN.R-project.org/package=sparseR)

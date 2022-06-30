@@ -71,7 +71,7 @@ Sheddon survival data (Z: clinical covariates, S:survival outcome)
   Giordano, T. J., Misek, D. E., Chang, A. C., Zhu, C. Q., Strumpf, D., Hanash, S., Shepherd, F. A., Ding,
   K., Seymour, L., Naoki, K., Pennell, N., … Beer, D. G. (2008). Gene expression-based survival prediction
   in lung adenocarcinoma: a multi-site, blinded validation study. Nature medicine, 14(8), 822–827.
-  \url{https://doi.org/10.1038/nm.1790}
+  \url{https://www.nature.com/articles/nm.1790}
   }
 }
 }
