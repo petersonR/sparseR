@@ -4,7 +4,6 @@
 \alias{effect_plot}
 \alias{effect_plot.sparseR}
 \alias{effect_plot.sparseRBIC}
-\alias{residuals.sparseR}
 \title{Plot relevant effects of a sparseR object}
 \usage{
 effect_plot(fit, ...)
@@ -31,8 +30,6 @@ effect_plot(fit, ...)
   resids = TRUE,
   ...
 )
-
-\method{residuals}{sparseR}(fit, at, ...)
 }
 \arguments{
 \item{fit}{a `sparseR` object}

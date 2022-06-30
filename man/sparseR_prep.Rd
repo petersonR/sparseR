@@ -12,7 +12,8 @@ sparseR_prep(
   pre_proc_opts = c("knnImpute", "scale", "center", "otherbin", "none"),
   ia_formula = NULL,
   filter = c("nzv", "zv"),
-  extra_opts = list()
+  extra_opts = list(),
+  family = "gaussian"
 )
 }
 \arguments{
@@ -35,6 +36,8 @@ see details)}
 (near) zero variance? (see details)}
 
 \item{extra_opts}{extra options to be used for preprocessing}
+
+\item{family}{family passed from sparseR}
 }
 \description{
 Preprocess & create a model matrix with interactions + polynomials

@@ -113,8 +113,9 @@ sparseR <- function(formula, data, family = c("gaussian", "binomial", "poisson",
     stop("If specifying model matrix, pre_process must be set to FALSE")
 
   if(pre_process) {
+
     ## Create and prep model matrix function (preprocessing)
-    srprep <- sparseR_prep(formula, data, k, poly, pre_proc_opts, filter, extra_opts, ia_formula = ia_formula)
+    srprep <- sparseR_prep(formula, data, k, poly, pre_proc_opts, filter, extra_opts, ia_formula = ia_formula, family = family)
 
     ## "Bake" recipe using preprocess steps (this can be done on test data too later)
     X <- bake(srprep, data, everything(), - all_outcomes())
@@ -126,7 +127,7 @@ sparseR <- function(formula, data, family = c("gaussian", "binomial", "poisson",
       stop("formula must have outcome for sparseR")
     }
 
-  } else {
+  }  else {
     srprep <- NULL
     if(is.null(model_matrix))
       stop("If pre_process is FALSE, model_matrix must be specified")

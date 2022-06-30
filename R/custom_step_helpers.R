@@ -62,24 +62,14 @@ run_steps <- function (object, scope, scale = 0, direction = c("both", "backward
         deparse(formula(fit)),
         "\n"
       )
-    aod <- if (usingCp)
+    aod <-
       data.frame(
         Step = change,
         Df = ddf,
         Deviance = dd,
         `Resid. Df` = rdf,
         `Resid. Dev` = rd,
-        Cp = AIC,
-        check.names = FALSE
-      )
-    else
-      data.frame(
-        Step = change,
-        Df = ddf,
-        Deviance = dd,
-        `Resid. Df` = rdf,
-        `Resid. Dev` = rd,
-        AIC = AIC,
+        IC = IC,
         check.names = FALSE
       )
     attr(aod, "heading") <- heading
@@ -119,19 +109,19 @@ run_steps <- function (object, scope, scale = 0, direction = c("both", "backward
     keep.list <- vector("list", steps)
   n <- nobs(object, use.fallback = TRUE)
   fit <- object
-  bAIC <- penaltyfn(fit, ...)
+  bIC <- penaltyfn(fit, ...)
 
-  edf <- bAIC[1L]
-  bAIC <- bAIC[2L]
-  if (is.na(bAIC))
+  edf <- bIC[1L]
+  bIC <- bIC[2L]
+  if (is.na(bIC))
     stop("IC is not defined for this model, cannot proceed")
-  if (bAIC == -Inf)
+  if (bIC == -Inf)
     stop("IC is -infinity for this model, cannot proceed")
   nm <- 1
   Terms <- terms(fit)
   if (trace) {
     cat("Start:  IC=",
-        format(round(bAIC, 2)),
+        format(round(bIC, 2)),
         "\n",
         cut.string(deparse(formula(fit))),
         "\n\n",
@@ -143,14 +133,14 @@ run_steps <- function (object, scope, scale = 0, direction = c("both", "backward
     df.resid = n -
       edf,
     change = "",
-    AIC = bAIC
+    IC = bIC
   )
   if (!is.null(keep))
-    keep.list[[nm]] <- keep(fit, bAIC)
+    keep.list[[nm]] <- keep(fit, bIC)
   usingCp <- FALSE
   while (steps > 0) {
     steps <- steps - 1
-    AIC <- bAIC
+    IC <- bIC
     ffac <- attr(Terms, "factors")
     if (!is.null(sp <-
                  attr(Terms, "specials")) && !is.null(st <- sp$strata))
@@ -184,7 +174,7 @@ run_steps <- function (object, scope, scale = 0, direction = c("both", "backward
       aod <- aod[nzdf,]
       if (is.null(aod) || ncol(aod) == 0)
         break
-      nc <- match(c("Cp", "AIC"), names(aod))
+      nc <- match(c("Cp", "IC"), names(aod))
       nc <- nc[!is.na(nc)][1L]
       o <- order(aod[, nc])
       if (trace) {
@@ -202,29 +192,29 @@ run_steps <- function (object, scope, scale = 0, direction = c("both", "backward
     if (all(is.finite(c(n, nnew))) && nnew != n)
       stop("number of rows in use has changed: remove missing values?")
     Terms <- terms(fit)
-    bAIC <- penaltyfn(fit, ...)
-    edf <- bAIC[1L]
-    bAIC <- bAIC[2L]
+    bIC <- penaltyfn(fit, ...)
+    edf <- bIC[1L]
+    bIC <- bIC[2L]
     if (trace) {
       cat("\nStep:  IC=",
-          format(round(bAIC, 2)),
+          format(round(bIC, 2)),
           "\n",
           cut.string(deparse(formula(fit))),
           "\n\n",
           sep = "")
       utils::flush.console()
     }
-    if (bAIC >= AIC + 1e-07)
+    if (bIC >= IC + 1e-07)
       break
     nm <- nm + 1
     models[[nm]] <- list(
       deviance = mydeviance(fit),
       df.resid = n -edf,
       change = change,
-      AIC = bAIC
+      IC = bIC
     )
     if (!is.null(keep))
-      keep.list[[nm]] <- keep(fit, bAIC)
+      keep.list[[nm]] <- keep(fit, bIC)
   }
   if (!is.null(keep))
     fit$keep <- re.arrange(keep.list[seq(nm)])
@@ -275,20 +265,9 @@ deviance.lm <- function (object, ...)
 
 
 my_add1 <- function (object, scope, scale = 0,
-                     test = c("none", "Chisq", "F"),
+                     test = c("none"),
                      x = NULL, k = 2, penaltyfn, ...) {
-  Fstat <- function(table, RSS, rdf) {
-    dev <- table$"Sum of Sq"
-    df <- table$Df
-    rms <- (RSS - dev)/(rdf - df)
-    Fs <- (dev/df)/rms
-    Fs[df < .Machine$double.eps] <- NA
-    P <- Fs
-    nnas <- !is.na(Fs)
-    P[nnas] <- safe_pf(Fs[nnas], df[nnas], rdf - df[nnas],
-                       lower.tail = FALSE)
-    list(Fs = Fs, P = P)
-  }
+
   check_exact(object)
   if (missing(scope) || is.null(scope))
     stop("no terms in scope")
@@ -302,8 +281,8 @@ my_add1 <- function (object, scope, scale = 0,
   y <- object$residuals + object$fitted.values
   dfs <- numeric(ns + 1)
   RSS <- numeric(ns + 1)
-  aic <- numeric(ns + 1)
-  names(dfs) <- names(RSS) <- names(aic) <- c("<none>", scope)
+  ic <- numeric(ns + 1)
+  names(dfs) <- names(RSS) <- names(ic) <- c("<none>", scope)
   add.rhs <- paste(scope, collapse = "+")
   add.rhs <- eval(parse(text = paste("~ . +", add.rhs), keep.source = FALSE))
   new.form <- update.formula(object, add.rhs)
@@ -344,8 +323,7 @@ my_add1 <- function (object, scope, scale = 0,
   z$nobs <- length(y)
   class(z) <- "lm"
   RSS[1L] <- deviance(z)
-  aic[1L] <- penaltyfn(z, ...)[2]
-  # aic[1L] <- penaltyfn(z, P_index = P_index)[2]
+  ic[1L] <- penaltyfn(z, ...)[2]
 
   sTerms <- sapply(strsplit(Terms, ":", fixed = TRUE), function(x) paste(sort(x),
                                                                          collapse = ":"))
@@ -360,35 +338,17 @@ my_add1 <- function (object, scope, scale = 0,
     z$nobs <- length(y)
     dfs[tt] <- z$rank
     RSS[tt] <- deviance(z)
-    aic[tt] <- penaltyfn(z, ...)[2]
+    ic[tt] <- penaltyfn(z, ...)[2]
   }
 
   dfs <- dfs - dfs[1L]
   dfs[1L] <- NA
-  aod <- data.frame(Df = dfs, `Sum of Sq` = c(NA, RSS[1L] -
-                                                RSS[-1L]), RSS = RSS, AIC = aic, row.names = names(dfs),
+  aod <- data.frame(Df = dfs, `Sum of Sq` = c(NA, RSS[1L] - RSS[-1L]),
+                    RSS = RSS, IC = ic, row.names = names(dfs),
                     check.names = FALSE)
   if (scale > 0)
     names(aod) <- c("Df", "Sum of Sq", "RSS", "Cp")
   test <- match.arg(test)
-  if (test == "Chisq") {
-    dev <- aod$"Sum of Sq"
-    if (scale == 0) {
-      dev <- n * log(RSS/n)
-      dev <- dev[1L] - dev
-      dev[1L] <- NA
-    }
-    else dev <- dev/scale
-    df <- aod$Df
-    nas <- !is.na(df)
-    dev[nas] <- safe_pchisq(dev[nas], df[nas], lower.tail = FALSE)
-    aod[, "Pr(>Chi)"] <- dev
-  }
-  else if (test == "F") {
-    rdf <- object$df.residual
-    aod[, c("F value", "Pr(>F)")] <- Fstat(aod, aod$RSS[1L],
-                                           rdf)
-  }
   head <- c("Single term additions", "\nModel:", deparse(formula(object)),
             if (scale > 0) paste("\nscale: ", format(scale), "\n"))
   class(aod) <- c("anova", "data.frame")
@@ -397,21 +357,11 @@ my_add1 <- function (object, scope, scale = 0,
 }
 
 my_addterm <- function (object, scope, scale = 0,
-                        test = c("none", "Chisq", "F"),
+                        test = c("none"),
                         k = 2, sorted = FALSE,
                         penaltyfn = penaltyfn,
                         ...) {
-  Fstat <- function(table, RSS, rdf) {
-    dev <- table$"Sum of Sq"
-    df <- table$Df
-    rms <- (RSS - dev)/(rdf - df)
-    Fs <- (dev/df)/rms
-    Fs[df < 1e-04] <- NA
-    P <- Fs
-    nnas <- !is.na(Fs)
-    P[nnas] <- pf(Fs[nnas], df[nnas], rdf - df[nnas], lower.tail = FALSE)
-    list(Fs = Fs, P = P)
-  }
+
   if (missing(scope) || is.null(scope))
     stop("no terms in scope")
   aod <- my_add1(object, scope = scope, scale = scale, k=k, penaltyfn = penaltyfn, ...)
@@ -420,30 +370,12 @@ my_addterm <- function (object, scope, scale = 0,
   n <- length(object$residuals)
 
   o <- if (sorted)
-    order(aod$AIC)
-  else seq_along(aod$AIC)
+    order(aod$IC)
+  else seq_along(aod$IC)
 
   if (scale > 0)
     names(aod) <- c("Df", "Sum of Sq", "RSS", "Cp")
   test <- match.arg(test)
-  if (test == "Chisq") {
-    dev <- aod$"Sum of Sq"
-    if (scale == 0) {
-      dev <- n * log(RSS/n)
-      dev <- dev[1L] - dev
-      dev[1L] <- NA
-    }
-    else dev <- dev/scale
-    df <- aod$Df
-    nas <- !is.na(df)
-    dev[nas] <- safe_pchisq(dev[nas], df[nas], lower.tail = FALSE)
-    aod[, "Pr(Chi)"] <- dev
-  }
-  else if (test == "F") {
-    rdf <- object$df.residual
-    aod[, c("F Value", "Pr(F)")] <- Fstat(aod, aod$RSS[1L],
-                                          rdf)
-  }
   aod <- aod[o, ]
   head <- c("Single term additions", "\nModel:", deparse(formula(object)))
   if (scale > 0)

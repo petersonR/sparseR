@@ -11,6 +11,7 @@
 #'   (near) zero variance? (see details)
 #' @param poly the maximum order of polynomials to consider
 #' @param extra_opts extra options to be used for preprocessing
+#' @param family family passed from sparseR
 #' @details
 #'
 #' The pre_proc_opts acts as a wrapper for the corresponding procedures in the
@@ -41,7 +42,8 @@
 sparseR_prep <- function(formula, data, k = 1, poly = 1,
                          pre_proc_opts = c("knnImpute", "scale", "center", "otherbin", "none"),
                          ia_formula = NULL,
-                         filter = c("nzv", "zv"), extra_opts = list()) {
+                         filter = c("nzv", "zv"), extra_opts = list(),
+                         family = "gaussian") {
 
 
   stopifnot((as.integer(k) == k) && k >= 0)
@@ -49,6 +51,18 @@ sparseR_prep <- function(formula, data, k = 1, poly = 1,
 
   # Create recipe
   rec_obj <- recipe(formula, data = data)
+
+  # filter out survival outcomes
+  outcome <- NULL
+  if(family == "coxph" ) {
+    if(any(rec_obj$var_info$role == "outcome")) {
+      outcome <- bake(prep(rec_obj, data), all_outcomes(), new_data =data)[[1]]
+      rec_obj <- rec_obj %>% step_rm(all_outcomes())
+    }
+  }
+
+  # must filter out censored predictors as well or will crash
+  rec_obj <- rec_obj %>% step_rm(has_type("censored"))
 
   ## Filter out near-zero variance main effects
   if("nzv" %in% filter) {
@@ -124,20 +138,20 @@ sparseR_prep <- function(formula, data, k = 1, poly = 1,
   rec_obj <- rec_obj %>%
     step_naomit(everything())
 
-  ## Remove outcome here (step_dummy doesn't like survival outcomes)
-  # Extract and remove outcome
-  outcome <- NULL
-  if(any(rec_obj$var_info$role == "outcome")) {
-    outcome <- bake(prep(rec_obj, data), all_outcomes(), new_data =data)[[1]]
-    rec_obj <- rec_obj %>% step_rm(all_outcomes())
-  }
-
   # Create dummy variables if necessary
   if(!length(extra_opts$one_hot))
     extra_opts$one_hot <- TRUE
 
+
+  if(family != "coxph" & any(rec_obj$var_info$role == "outcome")) {
+    outcome <- bake(prep(rec_obj, data), all_outcomes(), new_data = data)[[1]]
+    rec_obj <- rec_obj %>% step_rm(all_outcomes())
+  }
+
+
   rec_obj_early <- rec_obj %>%
-    step_dummy(all_nominal(), one_hot = extra_opts$one_hot, role = "dummy") %>%
+    step_dummy(all_nominal(),
+               one_hot = extra_opts$one_hot, role = "dummy") %>%
     prep(data)
 
   rec_obj <- rec_obj_early

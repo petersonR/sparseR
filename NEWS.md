@@ -1,5 +1,13 @@
 # 0.1.0
 
+- Initial CRAN submission
+
+# 0.0.2.900
+
+- improved coverage and documentation, fixing checks 
+
+# 0.0.1.903
+
 - Updated documentation, added experimental message regarding RBIC
 - Update citation to new paper in AStA
 - prepping for CRAN

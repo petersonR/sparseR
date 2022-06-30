@@ -167,4 +167,10 @@ test_that("Centering to minimum works", {
   p2 <- sparseR_prep(Sepal.Width ~ ., iris, k = 0, extra_opts = list(center_fn = min))
   c2min2 <- bake(p2, iris)
   expect_identical(c2min2, c2min)
+
+  # testing print + tidy methods for center_to
+  expect_output(print(p2$steps[[3]]))
+  expect_silent(t1 <- tidy(p2$steps[[3]]))
 })
+
+

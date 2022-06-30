@@ -4,7 +4,8 @@ Title: Variable Selection under Ranked Sparsity Principles for Interactions and 
 Version: 0.1.0
 Authors@R: person("Ryan Andrew", "Peterson", 
                   email = "ryan.a.peterson@cuanschutz.edu", 
-                  role = c("aut", "cre"))
+                  role = c("aut", "cre"),
+                  comment = c(ORCID = "0000-0002-4650-5798"))
 Description: 
     An implementation of ranked sparsity methods, including 
     penalized regression methods such as the sparsity-ranked lasso, MCP, SCAD,

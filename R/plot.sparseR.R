@@ -168,7 +168,7 @@ effect_plot.sparseR <- function(fit, coef_name, at = c("cvmin", "cv1se"),
         approx(new_data[[coef_name]], preds, xout = fit$data[[coef_name]])$y
 
       if(!length(plot.args$ylim))
-        plot.args$ylim <- range(preds, resid)
+        plot.args$ylim <- range(preds, resid, na.rm = TRUE)
 
       if(!length(plot.args$xlim))
         plot.args$xlim <- range(new_data[[coef_name]])
@@ -190,7 +190,7 @@ effect_plot.sparseR <- function(fit, coef_name, at = c("cvmin", "cv1se"),
         as.numeric(as.character(factor(fit$data[[coef_name]], labels = preds)))
 
       if(!length(plot.args$ylim))
-        plot.args$ylim <- range(preds, resid)
+        plot.args$ylim <- range(preds, resid, na.rm = TRUE)
 
       if(!length(plot.args$xlim))
         plot.args$xlim <- range(xx)
@@ -382,15 +382,16 @@ effect_plot.sparseRBIC <- function(fit, coef_name,
 
   ## And most prevalent group for all factors
   new_data[pclass == "factor"] <-
-    sapply(fit$data[pclass == "factor"], function(x) levels(x)[which.max(table(x))])
+    sapply(fit$data[pclass == "factor"], function(x) rep(levels(x)[which.max(table(x))], nn))
 
   ## If the coef_name is a factor variable, get relevant info
-  if(cfact <- any(class(new_data[[coef_name]]) %in% c("factor","character"))) {
+  if(cfact <- any(class(fit$data[[coef_name]]) %in% c("factor","character"))) {
     levs <- levels(fit$data[[coef_name]])
     new_data[[coef_name]] <- rep(levs, nn)[1:nn]
     new_data <- new_data[1:length(levs),]
   } else
-    new_data[[coef_name]] <- seq(min(fit$data[[coef_name]]), max(fit$data[[coef_name]]), length = nn)
+    new_data[[coef_name]] <- seq(min(fit$data[[coef_name]], na.rm = TRUE),
+                                 max(fit$data[[coef_name]], na.rm = TRUE), length = nn)
 
   if(!length(plot.args$legloc))
     plot.args$legloc <- "bottomright"
@@ -416,7 +417,7 @@ effect_plot.sparseRBIC <- function(fit, coef_name,
         approx(new_data[[coef_name]], preds, xout = fit$data[[coef_name]])$y
 
       if(!length(plot.args$ylim))
-        plot.args$ylim <- range(preds, resid)
+        plot.args$ylim <- range(preds, resid, na.rm = TRUE)
 
       if(!length(plot.args$xlim))
         plot.args$xlim <- range(new_data[[coef_name]])
@@ -438,7 +439,7 @@ effect_plot.sparseRBIC <- function(fit, coef_name,
         as.numeric(as.character(factor(fit$data[[coef_name]], labels = preds)))
 
       if(!length(plot.args$ylim))
-        plot.args$ylim <- range(preds, resid)
+        plot.args$ylim <- range(preds, resid, na.rm=TRUE)
 
       if(!length(plot.args$xlim))
         plot.args$xlim <- range(xx)
@@ -477,7 +478,8 @@ effect_plot.sparseRBIC <- function(fit, coef_name,
           preds[[b]] <- predict(fit, newdata = new_data)
           resid[[b]] <- yy[fit$data[[by]] == by_levels[b]] -
             predict(fit, newdata = fit$data[fit$data[[by]] == by_levels[b],]) +
-            approx(new_data[[coef_name]], preds[[b]], xout = fit$data[[coef_name]][fit$data[[by]] == by_levels[b]])$y
+            approx(new_data[[coef_name]], preds[[b]],
+                   xout = fit$data[[coef_name]][fit$data[[by]] == by_levels[b]])$y
         }
 
 
@@ -489,7 +491,7 @@ effect_plot.sparseRBIC <- function(fit, coef_name,
           plot.args$xlab <- coef_name
 
         if(!length(plot.args$ylim))
-          plot.args$ylim <- range(preds, resid)
+          plot.args$ylim <- range(preds, resid, na.rm = TRUE)
 
         if(!length(plot.args$xlim))
           plot.args$xlim <- range(new_data[[coef_name]])
@@ -555,7 +557,7 @@ effect_plot.sparseRBIC <- function(fit, coef_name,
           plot.args$xlab <- coef_name
 
         if(!length(plot.args$ylim))
-          plot.args$ylim <- range(preds)
+          plot.args$ylim <- range(preds, na.rm = TRUE)
 
         if(!length(plot.args$xlim))
           plot.args$xlim <- range(new_data[[coef_name]])
@@ -582,23 +584,4 @@ effect_plot.sparseRBIC <- function(fit, coef_name,
       }
     }
   }
-}
-
-
-
-#' @rdname effect_plot
-#' @method residuals sparseR
-residuals.sparseR <- function(fit, at,...) {
-  y <- fit$srprep$outcome
-
-  preds <- predict(fit, at, ...)
-
-  # Return deviance residuals if nongaussian
-  if(fit$family == "binomial") {
-
-    res <- -2*(y*preds + (1-y) * log(1-exp(preds)))
-    return(res)
-  }
-
-  y - preds
 }
