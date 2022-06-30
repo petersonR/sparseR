@@ -26,7 +26,7 @@
 #'     Variation in risk estimates using alternative exposure scenarios. J Expo Sci Environ Epidemiol
 #'     12, 197–203 (2002). \url{https://www.nature.com/articles/7500215}
 #'   }
-#'   \item{Sheddon}{
+#'   \item{Shedden}{
 #'   Director's Challenge Consortium for the Molecular Classification of Lung Adenocarcinoma, Shedden, K.,
 #'   Taylor, J. M., Enkemann, S. A., Tsao, M. S., Yeatman, T. J., Gerald, W. L., Eschrich, S., Jurisica, I.,
 #'   Giordano, T. J., Misek, D. E., Chang, A. C., Zhu, C. Q., Strumpf, D., Hanash, S., Shepherd, F. A., Ding,

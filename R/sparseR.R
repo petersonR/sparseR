@@ -38,7 +38,7 @@
 #'
 #' Selecting `gamma`: higher values of gamma will penalize "group" size more. By
 #' default, this is set to 0.5, which yields equal contribution of prior
-#' information across orders of interactions/polynonmials (this is a good
+#' information across orders of interactions/polynomials (this is a good
 #' default for most settings).
 #'
 #' Additionally, setting `cumulative_poly` or `cumulative_k` to `TRUE` increases

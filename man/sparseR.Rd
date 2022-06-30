@@ -93,7 +93,7 @@ Fit a ranked-sparsity model with regularized regression
 \details{
 Selecting \code{gamma}: higher values of gamma will penalize "group" size more. By
 default, this is set to 0.5, which yields equal contribution of prior
-information across orders of interactions/polynonmials (this is a good
+information across orders of interactions/polynomials (this is a good
 default for most settings).
 
 Additionally, setting \code{cumulative_poly} or \code{cumulative_k} to \code{TRUE} increases

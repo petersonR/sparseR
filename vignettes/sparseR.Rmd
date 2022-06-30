@@ -88,7 +88,7 @@ Importantly, since `sparseR` with a formula centers and scales the covariates pr
 
 ## Using model matrix specification
 
-Since the `sparseR` preprocessing has limits to its customability, and often it will be of interest to create interactions that are centered at prespecified values (as opposed to their mean), it is also possible to feed in a matrix to `sparseR` that has already been preprocessed. The function also allows users to circumvent the recipes functionality and supply their own model matrix, composed of interactions and/or polynomials. This may be useful in cases where users wish to:  
+Since the `sparseR` preprocessing has limits to its customizability, and often it will be of interest to create interactions that are centered at prespecified values (as opposed to their mean), it is also possible to feed in a matrix to `sparseR` that has already been preprocessed. The function also allows users to circumvent the recipes functionality and supply their own model matrix, composed of interactions and/or polynomials. This may be useful in cases where users wish to:  
 
 - specify their own missing data imputation methods, 
 - specify the intercept differently than a grand mean (avoid centering variables prior to making certain interactions of interest)
@@ -546,6 +546,6 @@ par(mfrow = c(4,2))
 lapply(lso, plot, log.l = T)
 ```
 
-## Use case: Sheddon survival data
+## Use case: Shedden survival data
 
 
