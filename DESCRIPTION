@@ -17,6 +17,7 @@ Description:
     this package attempts to facilitate dealing with cumbersome interactions 
     and polynomials while not avoiding them entirely.
 Suggests:
+    survival,
     knitr,
     rmarkdown,
     kableExtra,
@@ -25,7 +26,6 @@ Suggests:
     modeldata, 
     MASS
 Imports: 
-    survival,
     ncvreg,
     rlang,
     magrittr, 
