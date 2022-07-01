@@ -20,6 +20,7 @@ library(dplyr)
 library(knitr)
 library(kableExtra)
 library(sparseR)
+old_par <- par(no.readonly = TRUE)
 par(mar = c(5,4,4,2))
 ```
 
@@ -548,4 +549,8 @@ lapply(lso, plot, log.l = T)
 
 ## Use case: Shedden survival data
 
+```{r, echo = FALSE, eval = TRUE}
+# Requested by CRAN
+par(old_par)
+```
 

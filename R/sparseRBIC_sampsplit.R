@@ -11,7 +11,7 @@
 #'
 #' @export
 
-sparseRBIC_sampsplit <- function(srbic_fit, S = 100, quiet = F) {
+sparseRBIC_sampsplit <- function(srbic_fit, S = 100, quiet = FALSE) {
 
   if(!quiet)
     message("Note: sparseRBIC_sampsplit is currently experimental and may not behave as expected.")

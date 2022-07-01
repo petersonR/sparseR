@@ -225,7 +225,7 @@ sparseR <- function(formula, data, family = c("gaussian", "binomial", "poisson",
 #'
 #' @method print sparseR
 #' @export
-print.sparseR <- function(x, prep = F, ...) {
+print.sparseR <- function(x, prep = FALSE, ...) {
   if(prep){
     cat("Model matrix setup information:\n\n")
     print(x$srprep)

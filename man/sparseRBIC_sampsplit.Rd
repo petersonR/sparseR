@@ -4,7 +4,7 @@
 \alias{sparseRBIC_sampsplit}
 \title{Sample split procedure for stepwise regression}
 \usage{
-sparseRBIC_sampsplit(srbic_fit, S = 100, quiet = F)
+sparseRBIC_sampsplit(srbic_fit, S = 100, quiet = FALSE)
 }
 \arguments{
 \item{srbic_fit}{An object fitted by sparseRBIC_step}

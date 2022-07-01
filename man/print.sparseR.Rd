@@ -4,7 +4,7 @@
 \alias{print.sparseR}
 \title{Print sparseR object}
 \usage{
-\method{print}{sparseR}(x, prep = F, ...)
+\method{print}{sparseR}(x, prep = FALSE, ...)
 }
 \arguments{
 \item{x}{a sparseR object}

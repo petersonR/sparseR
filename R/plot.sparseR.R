@@ -8,7 +8,7 @@
 #'
 #' @method plot sparseR
 #' @export
-plot.sparseR <- function(x, plot_type = c("both", "cv", "path"), cols = NULL, log.l = T, ...) {
+plot.sparseR <- function(x, plot_type = c("both", "cv", "path"), cols = NULL, log.l = TRUE, ...) {
 
   plot_type <- match.arg(plot_type)
 
@@ -101,7 +101,7 @@ effect_plot.sparseR <- function(fit, coef_name, at = c("cvmin", "cv1se"),
   outcome_name <- fit$srprep$var_info$variable[fit$srprep$var_info$role == "outcome"]
   yy <- fit$srprep$outcome
   if(inherits(yy, what = "Surv"))
-    resids <- F
+    resids <- FALSE
   pclass <- sapply(fit$data, class)
 
   ## Send warning if not getting the "full picture" of interaction
@@ -129,7 +129,7 @@ effect_plot.sparseR <- function(fit, coef_name, at = c("cvmin", "cv1se"),
   ## Set up model matrix with medians for all numeric
   new_data <- fit$data[rep(1, nn),]
   new_data[,pclass == "numeric"] <-
-    sapply(fit$data[pclass == "numeric"], function(x) rep(median(x, na.rm = T), nn))
+    sapply(fit$data[pclass == "numeric"], function(x) rep(median(x, na.rm = TRUE), nn))
 
   ## And most prevalent group for all factors
   new_data[,pclass == "factor"] <-
@@ -285,7 +285,7 @@ effect_plot.sparseR <- function(fit, coef_name, at = c("cvmin", "cv1se"),
       ## IF it's a numeric variable
       if(!cfact) {
         if(missing(by_levels)) {
-          by_levels <- quantile(fit$data[[by]], c(.1, .5, .9), na.rm = T)
+          by_levels <- quantile(fit$data[[by]], c(.1, .5, .9), na.rm = TRUE)
           closest_level <- apply(sapply(by_levels, function(x) (abs(x - fit$data[[by]]))), 1, which.min)
         }
 
@@ -378,7 +378,7 @@ effect_plot.sparseRBIC <- function(fit, coef_name,
   ## Set up model matrix with medians for all numeric
   new_data <- fit$data[rep(1, nn),]
   new_data[pclass == "numeric"] <-
-    sapply(fit$data[pclass == "numeric"], function(x) rep(median(x, na.rm = T), nn))
+    sapply(fit$data[pclass == "numeric"], function(x) rep(median(x, na.rm = TRUE), nn))
 
   ## And most prevalent group for all factors
   new_data[pclass == "factor"] <-
@@ -534,7 +534,7 @@ effect_plot.sparseRBIC <- function(fit, coef_name,
       ## IF it's a numeric variable
       if(!cfact) {
         if(missing(by_levels)) {
-          by_levels <- quantile(fit$data[[by]], c(.1, .5, .9), na.rm = T)
+          by_levels <- quantile(fit$data[[by]], c(.1, .5, .9), na.rm = TRUE)
           closest_level <- apply(sapply(by_levels, function(x) (abs(x - fit$data[[by]]))), 1, which.min)
         }
 

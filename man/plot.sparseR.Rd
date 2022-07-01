@@ -4,7 +4,7 @@
 \alias{plot.sparseR}
 \title{Plot relevant properties of sparseR objects}
 \usage{
-\method{plot}{sparseR}(x, plot_type = c("both", "cv", "path"), cols = NULL, log.l = T, ...)
+\method{plot}{sparseR}(x, plot_type = c("both", "cv", "path"), cols = NULL, log.l = TRUE, ...)
 }
 \arguments{
 \item{x}{a `sparseR` object}
