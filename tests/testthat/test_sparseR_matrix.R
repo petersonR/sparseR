@@ -22,6 +22,10 @@ test_that("Different vals of k and poly work (matrix)", {
 ## Test Detrano use-case
 
 data("Detrano")
+
+# Quicken compute time
+cleveland <- cleveland[1:100,]
+
 cleveland$thal <- factor(cleveland$thal)
 cleveland$case <- 1*(cleveland$num > 0)
 
@@ -48,14 +52,13 @@ test_that("Different vals of k and poly work, cleveland matrix", {
   })
 })
 
-test_that("Detrano lasso functionality, matrix", {
-  expect_silent(SRL <<- sparseR(model_matrix = X2, y = cleveland$case, pre_process = FALSE))
-  expect_silent(APL <<- sparseR(model_matrix = X2, y = cleveland$case, pre_process = FALSE, gamma = 0))
-  expect_silent(MEM <<- sparseR(model_matrix = X1, y = y, pre_process = FALSE, family = "binomial"))
-  expect_silent(SRLp <<- sparseR(model_matrix = X3, y = cleveland$case, pre_process = FALSE))
-})
 
 test_that("Detrano lasso predict (coef) functionality, matrix", {
+  expect_silent(SRL <- sparseR(model_matrix = X2, y = cleveland$case, pre_process = FALSE))
+  expect_silent(APL <- sparseR(model_matrix = X2, y = cleveland$case, pre_process = FALSE, gamma = 0))
+  expect_silent(MEM <- sparseR(model_matrix = X1, y = y, pre_process = FALSE, family = "binomial"))
+  expect_silent(SRLp <- sparseR(model_matrix = X3, y = cleveland$case, pre_process = FALSE))
+
   expect_equal(nrow(predict(SRL, type = "coef")), nrow(SRL$fit$fit$beta))
   expect_equal(nrow(predict(APL, type = "coef")), nrow(SRL$fit$fit$beta))
   expect_equal(nrow(predict(MEM, type = "coef")), nrow(MEM$fit$fit$beta))
@@ -79,13 +82,11 @@ test_that("Detrano lasso predict (coef) functionality, matrix", {
 
 
 test_that("Detrano MCP functionality (matrix)", {
-  expect_silent(SRL <<- sparseR(model_matrix = X2, y = cleveland$case, pre_process = FALSE, penalty = "MCP"))
-  expect_silent(APL <<- sparseR(model_matrix = X2, y = cleveland$case, pre_process = FALSE, gamma = 0, penalty = "MCP"))
-  expect_silent(MEM <<- sparseR(model_matrix = X1, y = y, pre_process = FALSE, family = "binomial", penalty = "MCP"))
-  expect_silent(SRLp <<- sparseR(model_matrix = X3, y = cleveland$case, pre_process = FALSE, penalty = "MCP"))
-})
+  expect_silent(SRL <- sparseR(model_matrix = X2, y = cleveland$case, pre_process = FALSE, penalty = "MCP"))
+  expect_silent(APL <- sparseR(model_matrix = X2, y = cleveland$case, pre_process = FALSE, gamma = 0, penalty = "MCP"))
+  expect_silent(MEM <- sparseR(model_matrix = X1, y = y, pre_process = FALSE, family = "binomial", penalty = "MCP"))
+  expect_silent(SRLp <- sparseR(model_matrix = X3, y = cleveland$case, pre_process = FALSE, penalty = "MCP"))
 
-test_that("Detrano MCP predict (coef) functionality  (matrix)", {
   expect_equal(nrow(predict(SRL, type = "coef")), nrow(SRL$fit$fit$beta))
   expect_equal(nrow(predict(APL, type = "coef")), nrow(SRL$fit$fit$beta))
   expect_equal(nrow(predict(MEM, type = "coef")), nrow(MEM$fit$fit$beta))

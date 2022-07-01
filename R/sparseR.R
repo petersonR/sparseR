@@ -178,7 +178,7 @@ sparseR <- function(formula, data, family = c("gaussian", "binomial", "poisson",
     group_by(.data$Vartype) %>%
     summarize(Total = n(), Selected = sum(.data$coef != 0),
               Saturation = .data$Selected/.data$Total,
-              Penalty = mean(.data$penalty, na.rm = T))%>%
+              Penalty = mean(.data$penalty, na.rm = TRUE))%>%
     ungroup() %>%
     mutate(Vartype = as.character(.data$Vartype))
 
@@ -198,7 +198,7 @@ sparseR <- function(formula, data, family = c("gaussian", "binomial", "poisson",
     group_by(.data$Vartype) %>%
     summarize(Total = n(), Selected = sum(.data$coef != 0),
               Saturation = .data$Selected/.data$Total,
-              Penalty = mean(.data$penalty, na.rm = T))%>%
+              Penalty = mean(.data$penalty, na.rm = TRUE))%>%
     ungroup() %>%
     mutate(Vartype = as.character(.data$Vartype))
 

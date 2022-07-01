@@ -132,6 +132,10 @@ test_that("Different vals of k and poly work, specific formulae, AIC/BIC", {
 ## Test Detrano use-case
 
 data("Detrano")
+
+# Quicken compute time
+cleveland <- cleveland[1:100,]
+
 cleveland$thal <- factor(cleveland$thal)
 cleveland$case <- 1*(cleveland$num > 0)
 cleveland$num <- NULL
@@ -147,7 +151,7 @@ cleveland$thal[2] <- cleveland$thalach[1] <- NA
 
 test_that("Different vals of k and poly work, cleveland, RBIC", {
   expect_silent({
-    obj1 <<- sparseRBIC_step(formula = case ~ ., data = cleveland, family = "binomial", message = FALSE)
+    obj1 <- sparseRBIC_step(formula = case ~ ., data = cleveland, family = "binomial", message = FALSE)
   })
   expect_silent({
     obj2 <- sparseRBIC_step(case ~ ., data = cleveland, k = 2, poly = 2, family = "binomial", message = FALSE)
@@ -190,9 +194,9 @@ test_that("Different vals of k and poly work, specific formulae, cleveland, RBIC
 })
 
 test_that("Detrano RBIC functionality", {
-  expect_silent(SRL <<- sparseRBIC_step(formula = case ~ .,
+  expect_silent(SRL <- sparseRBIC_step(formula = case ~ .,
                                         data = cleveland, message = FALSE))
-  expect_silent(MEM <<- sparseRBIC_step(formula = case ~ .,
+  expect_silent(MEM <- sparseRBIC_step(formula = case ~ .,
                                         data = cleveland, k = 0,
                                         family = "binomial", message = FALSE))
 
@@ -201,34 +205,31 @@ test_that("Detrano RBIC functionality", {
                                         family = "binomial", trace = TRUE))
 
   formula <- case ~ sex + thal
-  expect_silent(SRL_b <<- sparseRBIC_step(formula, data = cleveland, message = FALSE))
-  expect_silent(MEM_b <<- sparseRBIC_step(formula, data = cleveland, k = 0, family = "binomial", message = FALSE))
-})
+  expect_silent(SRL_b <- sparseRBIC_step(formula, data = cleveland, message = FALSE))
+  expect_silent(MEM_b <- sparseRBIC_step(formula, data = cleveland, k = 0, family = "binomial", message = FALSE))
 
-test_that("Detrano RBIC stepwise predict (coef) functionality", {
   expect_equal(length(coef(SRL)), length(SRL$fit$coef))
   expect_equal(length(coef(SRL)), length(SRL$fit$coef))
-})
 
+  # Bootstrapping
+  expect_silent(f <- sparseRBIC_bootstrap(SRL, B = 3, quiet = TRUE))
+  expect_silent(f <- sparseRBIC_bootstrap(MEM, B = 3, quiet = TRUE))
+  expect_silent(f <- sparseRBIC_bootstrap(SRL_b, B = 3, quiet = TRUE))
+  expect_silent(f <- sparseRBIC_bootstrap(MEM_b, B = 3, quiet = TRUE))
 
-test_that("Detrano RBIC bootstrap functionality", {
-  expect_silent(f <- sparseRBIC_bootstrap(SRL, B = 3, quiet = T))
-  expect_silent(f <- sparseRBIC_bootstrap(MEM, B = 3, quiet = T))
-  expect_silent(f <- sparseRBIC_bootstrap(SRL_b, B = 3, quiet = T))
-  expect_silent(f <- sparseRBIC_bootstrap(MEM_b, B = 3, quiet = T))
-
-})
-
-test_that("Detrano RBIC sampsplit functionality", {
-  expect_silent(f <- sparseRBIC_sampsplit(SRL, S = 3, quiet = T))
-  expect_silent(f <- sparseRBIC_sampsplit(MEM, S = 3, quiet = T))
-  expect_silent(f <- sparseRBIC_sampsplit(SRL_b, S = 3, quiet = T))
-  expect_silent(f <- sparseRBIC_sampsplit(MEM_b, S = 3, quiet = T))
+  # Sample splitting
+  expect_silent(f <- sparseRBIC_sampsplit(SRL, S = 3, quiet = TRUE))
+  expect_silent(f <- sparseRBIC_sampsplit(MEM, S = 3, quiet = TRUE))
+  expect_silent(f <- sparseRBIC_sampsplit(SRL_b, S = 3, quiet = TRUE))
+  expect_silent(f <- sparseRBIC_sampsplit(MEM_b, S = 3, quiet = TRUE))
 
 })
 
 test_that("Custom ICs work as intended", {
-  expect_equal(EBIC(obj1), 289.7922, tolerance = .01)
-  expect_equal(RBIC(obj1), 267.6465, tolerance = .01)
-  expect_equal(RAIC(obj1)[1], 238.2105, tolerance = .01)
+  expect_silent({
+    obj1 <- sparseRBIC_step(formula = case ~ ., data = cleveland, family = "binomial", message = FALSE)
+  })
+  expect_equal(EBIC(obj1), 102.0671, tolerance = .01)
+  expect_equal(RBIC(obj1), 90.61904, tolerance = .01)
+  expect_equal(RAIC(obj1)[1], 78.50217, tolerance = .01)
 })

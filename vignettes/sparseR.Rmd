@@ -146,7 +146,7 @@ Each covariate's centering location (in this case their minima) can be passed in
 ```{r}
 cc <- iris %>%
     select(Sepal.Length, Petal.Length, Petal.Width) %>%
-    apply(2, min, na.rm = T)
+    apply(2, min, na.rm = TRUE)
 
 
 p1 <- sparseR_prep(Sepal.Width ~ ., iris, k = 0, extra_opts = list(centers = cc))
@@ -249,7 +249,7 @@ Inference on the parameters is still i) difficult because one must account for p
 
 We can see this in the examples below:
 
-```{r, warning = F, fig.height=8, fig.width = 6}
+```{r, warning = FALSE, fig.height=8, fig.width = 6}
 ## Centered model
 (rbic1 <- sparseRBIC_step(Sepal.Width ~ ., iris, pre_proc_opts = c("center", "scale")))
 
@@ -421,7 +421,7 @@ Similarly, plots can be produced of all of these figures:
 
 ```{r, fig.height= 9, fig.width=7}
 par(mfrow = c(4,2), mar = c(3, 4, 4, 2))
-n <- lapply(lso, plot, log.l = T)
+n <- lapply(lso, plot, log.l = TRUE)
 ```
 
 MCP: 
@@ -441,7 +441,7 @@ mcp
 
 ```{r, fig.height= 9, fig.width=7}
 par(mfrow = c(4,2), mar = c(3, 4, 4, 2))
-n <- lapply(mcp, plot, log.l = T)
+n <- lapply(mcp, plot, log.l = TRUE)
 ```
 
 SCAD: 
@@ -461,7 +461,7 @@ scad
 
 ```{r, fig.height= 9, fig.width=7}
 par(mfrow = c(4,2), mar = c(3, 4, 4, 2))
-n <- lapply(mcp, plot, log.l = T)
+n <- lapply(mcp, plot, log.l = TRUE)
 ```
 
 Summary: 
@@ -481,19 +481,19 @@ scad_sum <- lapply(scad, function(x) bind_cols(x$results_summary[,c(1,5,2:4)],x$
 names(mcp_sum)[6:7] <- names(scad_sum)[6:7] <- names(lso_sum)[6:7] <- names(lso_sum)[4:5]
 lso_sum %>% 
   kable(digits = 3) %>% 
-  kable_styling("striped", full_width = F) %>%
+  kable_styling("striped", full_width = FALSE) %>%
   add_header_above(header = c(" " = 3, "Min CV" = 2, "CV1se" = 2)) %>% 
   group_rows(index = c("SRL" = 2, "APL" = 2, "MEL" = 1, "SRLp" = 3)) 
   
 mcp_sum %>% 
   kable(digits = 3) %>% 
-  kable_styling("striped", full_width = F) %>%
+  kable_styling("striped", full_width = FALSE) %>%
   add_header_above(header = c(" " = 3, "Min CV" = 2, "CV1se" = 2)) %>% 
   group_rows(index = c("SRM" = 2, "APM" = 2, "MEM" = 1, "SRMp" = 3)) 
   
 scad_sum %>% 
   kable(digits = 3) %>% 
-  kable_styling("striped", full_width = F) %>%
+  kable_styling("striped", full_width = FALSE) %>%
   add_header_above(header = c(" " = 3, "Min CV" = 2, "CV1se" = 2)) %>% 
   group_rows(index = c("SRS" = 2, "APS" = 2, "MES" = 1, "SRSp" = 3)) 
     
@@ -544,7 +544,7 @@ lso <- list(
 lso
 plot(lso$SRL)
 par(mfrow = c(4,2))
-lapply(lso, plot, log.l = T)
+lapply(lso, plot, log.l = TRUE)
 ```
 
 ## Use case: Shedden survival data

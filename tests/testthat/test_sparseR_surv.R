@@ -42,7 +42,7 @@ test_that("Different vals of k and poly work, sheddon", {
   srp2 <- sparseR_prep(survtime~., data = data.frame(survtime = S, Z), family = "coxph")
 
   sr_cox <- sparseR(survtime~., data = data.frame(survtime = S, Z),
-                    family = "coxph", cumulative_k = T)
+                    family = "coxph", cumulative_k = TRUE)
 
   plot(sr_cox)
   expect_warning(effect_plot(sr_cox, coef_name = "Age", by = "Sex"))

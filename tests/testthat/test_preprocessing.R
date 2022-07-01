@@ -160,7 +160,7 @@ test_that("Different vals of k and poly work, specific formulae", {
 test_that("Centering to minimum works", {
   cc <- iris %>%
     dplyr::select(Sepal.Length, Petal.Length, Petal.Width) %>%
-    apply(2, min, na.rm = T)
+    apply(2, min, na.rm = TRUE)
 
   p1 <- sparseR_prep(Sepal.Width ~ ., iris, k = 0, extra_opts = list(centers = cc))
   c2min <- bake(p1, iris)
