@@ -36,6 +36,13 @@ interaction increases? (only used if !pool)}
 \item{cumulative_poly}{Should penalties be increased cumulatively as order
 polynomial increases? (only used if !pool)}
 }
+\value{
+a list of relevant information for the variables, including:
+
+\item{penalties}{the numeric value of the penalties}
+\item{vartype}{Variable type (main effect, order k interaction, etc)}
+\item{varname}{name of variables}
+}
 \description{
 Helper function to help set up penalties
 }

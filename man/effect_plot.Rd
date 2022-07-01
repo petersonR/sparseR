@@ -50,6 +50,9 @@ effect_plot(fit, ...)
 
 \item{resids}{should residuals be plotted or not?}
 }
+\value{
+Nothing (invisible) returned
+}
 \description{
 Plot relevant effects of a sparseR object
 }

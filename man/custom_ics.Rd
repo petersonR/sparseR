@@ -28,6 +28,10 @@ RAIC(fit, ...)
 
 \item{return_df}{should the deg. freedom be returned}
 }
+\value{
+A vector of values for the criterion requested, and the degrees of
+  freedom (appended to front of vector) if return_df == TRUE.
+}
 \description{
 Custom IC functions for stepwise models
 }

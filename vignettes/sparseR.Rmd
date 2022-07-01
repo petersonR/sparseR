@@ -20,8 +20,7 @@ library(dplyr)
 library(knitr)
 library(kableExtra)
 library(sparseR)
-old_par <- par(no.readonly = TRUE)
-par(mar = c(5,4,4,2))
+
 ```
 
 # Introduction
@@ -41,6 +40,12 @@ This document goes through several use cases of the package on different dataset
 # Use case: `iris` data 
 
 To illustrate in a simple case, consider Fisher's Iris data set, composed of 4 numeric variables and one categorical variable. 
+
+```{r, echo = FALSE}
+old_par <- par(no.readonly = TRUE)
+par(mar = c(5,4,4,2))
+```
+
 
 ```{r}
 data(iris)

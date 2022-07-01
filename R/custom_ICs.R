@@ -13,7 +13,11 @@
 #'   median model.frame model.matrix model.offset model.response model.weights
 #'   nobs pf predict quantile terms update.formula weighted.residuals
 #'   pchisq pf
+#'
+#' @return A vector of values for the criterion requested, and the degrees of
+#'   freedom (appended to front of vector) if return_df == TRUE.
 #' @export
+#'
 EBIC <- function(...){
   UseMethod("EBIC")
 }

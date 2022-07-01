@@ -17,6 +17,9 @@
 
 \item{...}{extra plotting options}
 }
+\value{
+nothing returned for these plotting functions
+}
 \description{
 Plot relevant properties of sparseR objects
 }

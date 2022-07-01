@@ -22,7 +22,7 @@ sparseR_prep(
 \item{data}{A required data frame or tibble containing the variables in
 \code{formula}}
 
-\item{k}{Maximum order of interactions to *numeric* variables}
+\item{k}{Maximum order of interactions to \emph{numeric} variables}
 
 \item{poly}{the maximum order of polynomials to consider}
 
@@ -39,6 +39,9 @@ see details)}
 
 \item{family}{family passed from sparseR}
 }
+\value{
+an object of class \code{recipe}; see \code{\link[recipes:recipe]{recipes::recipe()}}
+}
 \description{
 Preprocess & create a model matrix with interactions + polynomials
 }
@@ -51,7 +54,7 @@ necessary?) scale: Should variables be scaled prior to creating interactions
 be centered (will not center factor variables or dummy variables ) otherbin:
 
 \code{ia_formula} will by default interact all variables with each other up
-to order k. If specified, ia_formula will be passed as the `terms` argument
+to order k. If specified, ia_formula will be passed as the \code{terms} argument
 to \code{recipes::step_interact}, so the help documentation for that function
 can be investigated for further assistance in specifying specific
 interactions.

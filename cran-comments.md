@@ -5,7 +5,7 @@ This is a third resubmission. In this version, I have:
 * Switched T/F to TRUE/FALSE
 * (still need to) Added \value to all .Rd files
 * Ensured par() is reset in vignette
-* (still need to) eliminated <<- calls per CRAN policy 
+* eliminated <<- calls per CRAN policy 
 
 ## R CMD check results
 This is sparseR's first submission.

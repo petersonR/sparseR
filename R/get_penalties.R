@@ -14,6 +14,12 @@
 #' @details This is primarily a helper function for sparseR, but it may be
 #'   useful if doing the model matrix set up by hand.
 #'
+#' @return a list of relevant information for the variables, including:
+#'
+#' \item{penalties}{the numeric value of the penalties}
+#' \item{vartype}{Variable type (main effect, order k interaction, etc)}
+#' \item{varname}{name of variables}
+#'
 #' @export
 get_penalties <- function(varnames, poly, poly_prefix = "poly_", int_sep = "\\:",
                           pool = FALSE, gamma = .5, cumulative_k = FALSE,

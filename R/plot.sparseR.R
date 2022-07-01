@@ -7,6 +7,9 @@
 #' @param ... extra plotting options
 #'
 #' @method plot sparseR
+#'
+#' @return nothing returned for these plotting functions
+#'
 #' @export
 plot.sparseR <- function(x, plot_type = c("both", "cv", "path"), cols = NULL, log.l = TRUE, ...) {
 
@@ -335,12 +338,14 @@ effect_plot.sparseR <- function(fit, coef_name, at = c("cvmin", "cv1se"),
       }
     }
   }
+  return(invisible(NULL))
 }
 
 
 #' @rdname effect_plot
 #' @export
 #' @method effect_plot sparseRBIC
+#' @return Nothing (invisible) returned
 effect_plot.sparseRBIC <- function(fit, coef_name,
                                 by = NULL, by_levels, nn = 101,
                                 plot.args = list(), resids = TRUE, ...) {
@@ -584,4 +589,5 @@ effect_plot.sparseRBIC <- function(fit, coef_name,
       }
     }
   }
+  return(invisible(NULL))
 }

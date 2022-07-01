@@ -12,6 +12,7 @@
 #' @param poly the maximum order of polynomials to consider
 #' @param extra_opts extra options to be used for preprocessing
 #' @param family family passed from sparseR
+#' @md
 #' @details
 #'
 #' The pre_proc_opts acts as a wrapper for the corresponding procedures in the
@@ -32,6 +33,8 @@
 #' don't make sense). This is true, for instance, when using dummy variables in
 #' polynomials , or when using interactions of dummy variables that relate to
 #' the same categorical variable.
+#'
+#' @return an object of class `recipe`; see [recipes::recipe()]
 #'
 #' @importFrom dplyr all_of
 #' @importFrom recipes recipe step_nzv step_zv has_role all_predictors all_outcomes
