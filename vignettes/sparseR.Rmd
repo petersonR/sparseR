@@ -41,12 +41,6 @@ This document goes through several use cases of the package on different dataset
 
 To illustrate in a simple case, consider Fisher's Iris data set, composed of 4 numeric variables and one categorical variable. 
 
-```{r, echo = FALSE}
-old_par <- par(no.readonly = TRUE)
-par(mar = c(5,4,4,2))
-```
-
-
 ```{r}
 data(iris)
 summary(iris)
@@ -123,12 +117,21 @@ srl2 <- sparseR(pre_process = FALSE, model_matrix = X, y = iris$Sepal.Width, max
 
 And we can use the same S3 methods to get more information about the SRL model:
 
-```{r, fig.height=8}
+```{r}
 srl2
 summary(srl2, at = "cv1se")
-par(mfrow = c(2,1))
+```
+
+```{r, echo = TRUE, eval = FALSE}
 plot(srl2)
 ```
+
+```{r, echo = FALSE, eval = TRUE, fig.height=8}
+old_par <- par(mfrow = c(2,1))
+plot(srl2)
+par(old_par)
+```
+
 
 Since we did not center/scale any of the variables prior to this fitting procedure, the interpretation of these coefficients should be on the original scale of the predictors, and the origin for the terms involved in interactions is 0, not at the mean of their constituent  covariates. 
 
@@ -191,8 +194,24 @@ It's clear that the model itself can change quite a bit depending on the center 
 
 The `sparseR` package will allow users to compare certain choices in terms of their cross-validated error, which is a decent starting point. The plot below shows how the "centered to zero" model has *slightly* lower cross-validated error than the best mean-centered model and the best minimum-centered model. 
 
-```{r,warning=FALSE, fig.height=6, fig.width=8, out.width="100%"}
-par(mfrow = c(2,3), mar = c(4,4,5,2) + .1)
+```{r, echo = TRUE, eval = FALSE}
+plot(srl3, plot_type = "cv", ylim = c(0,.2))
+abline(h = min(srl3$fit$cve), col = "red")
+plot(srl_centered2min, plot_type = "cv", ylim = c(0,.2))
+abline(h = min(srl3$fit$cve), col = "red")
+plot(srl, plot_type = "cv", ylim = c(0,.2))
+abline(h = min(srl3$fit$cve), col = "red")
+
+effect_plot(srl3, "Petal.Width", by = "Species", 
+            plot.args = list(ylim = c(1.5, 4.8)))
+effect_plot(srl_centered2min, "Petal.Width", by = "Species", 
+            plot.args = list(ylim = c(1.5, 4.8)))
+effect_plot(srl, "Petal.Width", by = "Species", 
+            plot.args = list(ylim = c(1.5, 4.8)))
+```
+
+```{r, echo = FALSE, warning=FALSE, fig.height=6, fig.width=8, out.width="100%"}
+old_par <- par(mfrow = c(2,3), mar = c(4,4,5,2) + .1)
 plot(srl3, plot_type = "cv", ylim = c(0,.2))
 title("Centered to zero", line = 3)
 abline(h = min(srl3$fit$cve), col = "red")
@@ -210,6 +229,8 @@ effect_plot(srl_centered2min, "Petal.Width", by = "Species",
             plot.args = list(ylim = c(1.5, 4.8)))
 effect_plot(srl, "Petal.Width", by = "Species", 
             plot.args = list(ylim = c(1.5, 4.8)))
+
+par(old_par)
 ```
 
 Though these models look substantially different, it's worth noting that the predictions obtained from the three models are very close to one another (since the models look similar in the neighborhood of existing data):
@@ -236,14 +257,21 @@ cor(cbind(p1, p2 ,p3, p4,p5,p6))
 pairs(cbind(p1, p2 ,p3, p4,p5,p6))
 ```
 
-```{r,warning=FALSE}
-par(mfrow = c(1,3))
+```{r, echo = FALSE, eval = TRUE, warning=FALSE}
+old_par <- par(mfrow = c(1,3))
 effect_plot(srl3, "Petal.Width", by = "Species", at = "cv1se", 
             plot.args = list(ylim = c(1.5, 5)))
 effect_plot(srl_centered2min, "Petal.Width", by = "Species", at = "cv1se", 
             plot.args = list(ylim = c(1.5, 5)))
 effect_plot(srl, "Petal.Width", by = "Species", at = "cv1se", 
             plot.args = list(ylim = c(1.5, 5)))
+par(old_par)
+```
+
+```{r, echo = TRUE, eval = FALSE, warning = FALSE}
+effect_plot(srl3, "Petal.Width", by = "Species", at = "cv1se")
+effect_plot(srl_centered2min, "Petal.Width", by = "Species", at = "cv1se")
+effect_plot(srl, "Petal.Width", by = "Species", at = "cv1se")
 ```
 
 ## Using stepwise RBIC 
@@ -254,18 +282,29 @@ Inference on the parameters is still i) difficult because one must account for p
 
 We can see this in the examples below:
 
-```{r, warning = FALSE, fig.height=8, fig.width = 6}
+```{r, warning = FALSE}
 ## Centered model
 (rbic1 <- sparseRBIC_step(Sepal.Width ~ ., iris, pre_proc_opts = c("center", "scale")))
 
 # Non-centered model
 (rbic2 <- sparseRBIC_step(Sepal.Width ~ ., iris, pre_proc_opts = c("scale")))
 
-par(mfrow = c(2,2))
+```
+
+```{r, echo = TRUE, eval=FALSE, warning = FALSE}
 effect_plot(rbic1, "Petal.Width", by = "Species", plot.args = list(ylim = c(1.5, 5)))
 effect_plot(rbic2, "Petal.Width", by = "Species", plot.args = list(ylim = c(1.5, 5)))
 effect_plot(rbic1, "Sepal.Length", by = "Species")
 effect_plot(rbic2, "Sepal.Length", by = "Species")
+```
+
+```{r, echo = FALSE, eval=TRUE, warning = FALSE, fig.height=8, fig.width = 6}
+old_par <- par(mfrow = c(2,2))
+effect_plot(rbic1, "Petal.Width", by = "Species", plot.args = list(ylim = c(1.5, 5)))
+effect_plot(rbic2, "Petal.Width", by = "Species", plot.args = list(ylim = c(1.5, 5)))
+effect_plot(rbic1, "Sepal.Length", by = "Species")
+effect_plot(rbic2, "Sepal.Length", by = "Species")
+par(old_par)
 ```
 
 
@@ -310,20 +349,20 @@ set.seed(1)
 b1 <- sparseRBIC_bootstrap(rbic1, B = 250)
 ```
 
-```{r, echo = F}
+```{r, echo = FALSE}
 b1$results %>%
   kable(digits = 5) %>% 
   kable_styling(full_width = FALSE)
 ```
 
 
-```{r, message = F}
+```{r, message = FALSE}
 set.seed(1)
 ## Uncentered model
 b2 <- sparseRBIC_bootstrap(rbic2, B = 250)
 ```
 
-```{r, echo = F}
+```{r, echo = FALSE}
 b2$results %>%
   kable(digits = 5) %>% 
   kable_styling(full_width = FALSE)
@@ -424,9 +463,14 @@ lso
 
 Similarly, plots can be produced of all of these figures:
 
-```{r, fig.height= 9, fig.width=7}
-par(mfrow = c(4,2), mar = c(3, 4, 4, 2))
+```{r, echo = TRUE, eval = FALSE}
 n <- lapply(lso, plot, log.l = TRUE)
+```
+
+```{r, echo = FALSE, eval = TRUE, fig.height= 9, fig.width=7}
+old_par <- par(mfrow = c(4,2), mar = c(3, 4, 4, 2))
+n <- lapply(lso, plot, log.l = TRUE)
+par(old_par)
 ```
 
 MCP: 
@@ -440,13 +484,14 @@ mcp <- list(
 )
 ```
 
-```{r}
-mcp
+```{r, echo = TRUE, eval = FALSE}
+n <- lapply(mcp, plot, log.l = TRUE)
 ```
 
-```{r, fig.height= 9, fig.width=7}
-par(mfrow = c(4,2), mar = c(3, 4, 4, 2))
+```{r, echo = FALSE, eval = TRUE, fig.height= 9, fig.width=7}
+old_par <- par(mfrow = c(4,2), mar = c(3, 4, 4, 2))
 n <- lapply(mcp, plot, log.l = TRUE)
+par(old_par)
 ```
 
 SCAD: 
@@ -460,30 +505,42 @@ scad <- list(
 )
 ```
 
-```{r}
-scad
+```{r, echo = TRUE, eval = FALSE}
+n <- lapply(scad, plot, log.l = TRUE)
 ```
 
-```{r, fig.height= 9, fig.width=7}
-par(mfrow = c(4,2), mar = c(3, 4, 4, 2))
-n <- lapply(mcp, plot, log.l = TRUE)
+```{r, echo = FALSE, eval = TRUE, fig.height= 9, fig.width=7}
+old_par <- par(mfrow = c(4,2), mar = c(3, 4, 4, 2))
+n <- lapply(scad, plot, log.l = TRUE)
+par(old_par)
 ```
 
-Summary: 
+Summaries (using `results_summary` and `results_1se_summary` values within each object; formatting omitted). 
 
-```{r}
-lso_sum <- lapply(lso, function(x) bind_cols(x$results_summary[,c(1,5,2:4)],x$results1se_summary[,-c(1:2, 5)])) %>% 
-  bind_rows()
-mcp_sum <- lapply(mcp, function(x) bind_cols(x$results_summary[,c(1,5,2:4)],x$results1se_summary[,-c(1:2, 5)])) %>% 
-  bind_rows()
-scad_sum <- lapply(scad, function(x) bind_cols(x$results_summary[,c(1,5,2:4)],x$results1se_summary[,-c(1:2, 5)])) %>% 
-  bind_rows()
-
-
+```{r, echo = TRUE, eval = FALSE}
+lapply(lso, function(x) bind_rows(x$results_summary, x$results1se_summary))
+lapply(mcp, function(x) bind_rows(x$results_summary, x$results1se_summary))
+lapply(scad, function(x) bind_rows(x$results_summary, x$results1se_summary))
 ```
 
-```{r, echo = F}
-names(mcp_sum)[6:7] <- names(scad_sum)[6:7] <- names(lso_sum)[6:7] <- names(lso_sum)[4:5]
+
+```{r, echo = FALSE, message = FALSE}
+
+lso_sum <-
+  lapply(lso, function(x)
+    bind_cols(x$results_summary[, c(1, 5, 2:4)], x$results1se_summary[, -c(1:2, 5)], .name_repair = "universal")) %>%
+  bind_rows()
+mcp_sum <-
+  lapply(mcp, function(x)
+    bind_cols(x$results_summary[, c(1, 5, 2:4)], x$results1se_summary[, -c(1:2, 5)])) %>%
+  bind_rows()
+scad_sum <-
+  lapply(scad, function(x)
+    bind_cols(x$results_summary[, c(1, 5, 2:4)], x$results1se_summary[, -c(1:2, 5)])) %>%
+  bind_rows()
+
+names(mcp_sum)[6:7] <- names(scad_sum)[6:7] <- names(lso_sum)[6:7] <- names(lso_sum)[4:5] <- names(mcp_sum)[4:5] <- names(scad_sum)[4:5] <-
+  c("Selected", "Saturation")
 lso_sum %>% 
   kable(digits = 3) %>% 
   kable_styling("striped", full_width = FALSE) %>%
@@ -511,7 +568,6 @@ This section is still incomplete and under active development.
 ## Use case: heart data
 
 ```{r, fig.height=8, fig.width=7}
-remove(list = ls())
 
 ## Load Data set, correctly code factors + outcome
 data("Detrano")
@@ -548,14 +604,21 @@ lso <- list(
 
 lso
 plot(lso$SRL)
-par(mfrow = c(4,2))
+```
+
+```{r, echo = TRUE, eval = FALSE}
 lapply(lso, plot, log.l = TRUE)
 ```
 
-## Use case: Shedden survival data
 
-```{r, echo = FALSE, eval = TRUE}
-# Requested by CRAN
+```{r, eval = TRUE, echo=FALSE, fig.height=8, fig.width=7}
+old_par <- par(mfrow = c(4,2))
+lapply(lso, plot, log.l = TRUE)
 par(old_par)
 ```
+
+
+## Use case: Shedden survival data
+
+TBD
 
