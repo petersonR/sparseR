@@ -81,7 +81,7 @@
 
 
 <dt>k</dt>
-<dd><p>Maximum order of interactions to *numeric* variables</p></dd>
+<dd><p>Maximum order of interactions to <em>numeric</em> variables</p></dd>
 
 
 <dt>poly</dt>
@@ -111,6 +111,14 @@ see details)</p></dd>
 <dd><p>family passed from sparseR</p></dd>
 
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    
+
+<p>an object of class <code>recipe</code>; see <code><a href="https://recipes.tidymodels.org/reference/recipe.html" class="external-link">recipes::recipe()</a></code></p>
+
+
+    </div>
     <div id="details">
     <h2>Details</h2>
     <p>The pre_proc_opts acts as a wrapper for the corresponding procedures in the
@@ -120,7 +128,7 @@ necessary?) scale: Should variables be scaled prior to creating interactions
 (does not scale factor variables or dummy variables) center: Should variables
 be centered (will not center factor variables or dummy variables ) otherbin:</p>
 <p><code>ia_formula</code> will by default interact all variables with each other up
-to order k. If specified, ia_formula will be passed as the `terms` argument
+to order k. If specified, ia_formula will be passed as the <code>terms</code> argument
 to <code><a href="https://recipes.tidymodels.org/reference/step_interact.html" class="external-link">recipes::step_interact</a></code>, so the help documentation for that function
 can be investigated for further assistance in specifying specific
 interactions.</p>
