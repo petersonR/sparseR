@@ -35,7 +35,7 @@ Imports:
     rlang,
     magrittr, 
     dplyr,
-    recipes
+    recipes (>= 1.0.0)
 Depends: 
     R (>= 3.5)
 License: GPL-3

@@ -76,6 +76,16 @@
 #'
 #' @md
 #'
+#' @return an object of class `sparseRBIC` containing the following:
+#'
+#' \item{fit}{the final fit object}
+#' \item{srprep}{a `recipes` object used to prep the data}
+#' \item{pen_info}{coefficient-level variable counts, types + names}
+#' \item{data}{the (unprocessed) data}
+#' \item{family}{the family argument (for non-normal, eg. poisson)}
+#' \item{info}{a list containing meta-info about the procedure}
+#' \item{stats}{the IC for each fit and respective terms included}
+#'
 #' @export
 
 sparseRBIC_step <- function(formula, data, family = c("gaussian", "binomial", "poisson"),
@@ -277,9 +287,9 @@ sparseRBIC_step <- function(formula, data, family = c("gaussian", "binomial", "p
                pre_process = pre_process, model_matrix = model_matrix, y = y,
                poly_prefix = poly_prefix, int_sep = int_sep)
 
-  res <- list(family = family,
-              fit = fit_rbic, srprep = srprep, pen_info = pen_info,
-              data = data, info = info, stats = t(stats))
+  res <- list(fit = fit_rbic, srprep = srprep, pen_info = pen_info,
+              data = data, family = family,
+              info = info, stats = t(stats))
 
   class(res) <- "sparseRBIC"
   res

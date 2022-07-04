@@ -8,6 +8,10 @@
 #' @param quiet Should the display of a progress bar be silenced?
 #'
 #' @importFrom dplyr full_join
+#' @return a list containing:
+#'
+#' \item{results}{a tibble containing coefficients, p-values, selection pct}
+#' \item{splits}{a tibble of different split-based coefficients}
 #'
 #' @export
 

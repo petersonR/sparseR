@@ -139,7 +139,7 @@ sparseR_prep <- function(formula, data, k = 1, poly = 1,
 
   # If KNN failed, use step_na
   rec_obj <- rec_obj %>%
-    step_naomit(everything())
+    step_naomit(everything(), skip = FALSE)
 
   # Create dummy variables if necessary
   if(!length(extra_opts$one_hot))

@@ -20,6 +20,10 @@
 
 \item{...}{additional arguments passed to predict.ncvreg}
 }
+\value{
+predicted outcomes for `newdata` (or coefficients)
+  at specified (or smart) lambda value
+}
 \description{
 Predict coefficients or responses for sparseR object
 }

@@ -86,6 +86,17 @@ interaction terms?}
 
 \item{...}{additional arguments for running stepwise selection}
 }
+\value{
+an object of class \code{sparseRBIC} containing the following:
+
+\item{fit}{the final fit object}
+\item{srprep}{a \code{recipes} object used to prep the data}
+\item{pen_info}{coefficient-level variable counts, types + names}
+\item{data}{the (unprocessed) data}
+\item{family}{the family argument (for non-normal, eg. poisson)}
+\item{info}{a list containing meta-info about the procedure}
+\item{stats}{the IC for each fit and respective terms included}
+}
 \description{
 Fit a ranked-sparsity model with forward stepwise RBIC (experimental)
 }

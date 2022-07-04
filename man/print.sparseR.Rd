@@ -13,6 +13,9 @@
 
 \item{...}{additional arguments passed to print.ncvreg}
 }
+\value{
+returns x invisibly
+}
 \description{
 Print sparseR object
 }

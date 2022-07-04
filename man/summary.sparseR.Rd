@@ -15,6 +15,10 @@
 
 \item{...}{additional arguments to be passed to summary.ncvreg}
 }
+\value{
+an object of class `summary.ncvreg` at specified or smart value of
+  lambda.
+}
 \description{
 Summary of sparseR model coefficients
 }

@@ -51,6 +51,8 @@ effect_plot(fit, ...)
 \item{resids}{should residuals be plotted or not?}
 }
 \value{
+nothing returned
+
 Nothing (invisible) returned
 }
 \description{

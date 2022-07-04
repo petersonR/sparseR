@@ -41,7 +41,7 @@ a list of relevant information for the variables, including:
 
 \item{penalties}{the numeric value of the penalties}
 \item{vartype}{Variable type (main effect, order k interaction, etc)}
-\item{varname}{name of variables}
+\item{varname}{names of variables}
 }
 \description{
 Helper function to help set up penalties

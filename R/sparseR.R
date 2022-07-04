@@ -73,6 +73,19 @@
 #'
 #' @md
 #'
+#' @return an object of class `sparseR` containing the following:
+#'
+#' \item{fit}{the fit object returned by `ncvreg`}
+#' \item{srprep}{a `recipes` object used to prep the data}
+#' \item{pen_factors}{the factor multiple on penalties for ranked sparsity}
+#' \item{results}{all coefficients and penalty factors at minimum CV lambda}
+#' \item{results_summary}{a tibble of summary results at minimum CV lambda}
+#' \item{results1se}{all coefficients and penalty factors at lambda_1se}
+#' \item{results1se_summary}{a tibble of summary results at lambda_1se}
+#' \item{data}{the (unprocessed) data}
+#' \item{family}{the family argument (for non-normal, eg. poisson)}
+#' \item{info}{a list containing meta-info about the procedure}
+#'
 #' @references For fitting functionality, the `ncvreg` package is used; see
 #' Breheny, P. and Huang, J. (2011) Coordinate descent algorithms for nonconvex
 #' penalized regression, with applications to biological feature selection. Ann.
@@ -224,6 +237,9 @@ sparseR <- function(formula, data, family = c("gaussian", "binomial", "poisson",
 #' @param ... additional arguments passed to print.ncvreg
 #'
 #' @method print sparseR
+#'
+#' @return returns x invisibly
+#'
 #' @export
 print.sparseR <- function(x, prep = FALSE, ...) {
   if(prep){
@@ -242,6 +258,7 @@ print.sparseR <- function(x, prep = FALSE, ...) {
   alt_print(summary(x$fit), which = which(x$fit$cve < min(x$fit$cve + x$fit$cvse))[1])
   cat("\n  SR information:\n")
   print(as.data.frame(x$results1se_summary), row.names = FALSE, digits = 3)
+  return(invisible(x))
 }
 
 ## Alternate printing method for summary.cv.ncvreg that allows for different lambda val
@@ -280,6 +297,10 @@ alt_print <- function (x, digits, which, ...) {
 #' @param ... additional arguments passed to predict.ncvreg
 #'
 #' @method predict sparseR
+#'
+#' @return predicted outcomes for `newdata` (or coefficients)
+#'   at specified (or smart) lambda value
+#'
 #' @export
 predict.sparseR <- function(object, newdata, lambda, at = c("cvmin", "cv1se"), ...) {
 
@@ -353,6 +374,10 @@ coef.sparseR <- function(object, lambda, at = c("cvmin", "cv1se"), ...) {
 #' @param ... additional arguments to be passed to summary.ncvreg
 #'
 #' @method summary sparseR
+#'
+#' @return an object of class `summary.ncvreg` at specified or smart value of
+#'   lambda.
+#'
 #' @export
 summary.sparseR <- function(object, lambda, at = c("cvmin", "cv1se"), ...) {
 

@@ -13,6 +13,12 @@ sparseRBIC_sampsplit(srbic_fit, S = 100, quiet = FALSE)
 
 \item{quiet}{Should the display of a progress bar be silenced?}
 }
+\value{
+a list containing:
+
+\item{results}{a tibble containing coefficients, p-values, selection pct}
+\item{splits}{a tibble of different split-based coefficients}
+}
 \description{
 Runs multiple on models selection procedures using RBIC to
 achieve valid inferential results post-selection

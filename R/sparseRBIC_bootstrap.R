@@ -9,6 +9,12 @@
 #' @param B Number of bootstrap samples
 #' @param quiet Should the display of a progress bar be silenced?
 #' @importFrom dplyr progress_estimated tibble
+#'
+#' @return a list containing:
+#'
+#' \item{results}{a tibble containing coefficients, p-values, selection pct}
+#' \item{bootstraps}{a tibble of bootstrapped coefficients}
+#'
 #' @export
 
 sparseRBIC_bootstrap <- function(srbic_fit, B = 100, quiet = FALSE) {

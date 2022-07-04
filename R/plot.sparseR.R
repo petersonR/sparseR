@@ -8,7 +8,7 @@
 #'
 #' @method plot sparseR
 #'
-#' @return nothing returned for these plotting functions
+#' @return nothing returned
 #'
 #' @export
 plot.sparseR <- function(x, plot_type = c("both", "cv", "path"), cols = NULL, log.l = TRUE, ...) {
@@ -84,6 +84,7 @@ pal <- function (n, alpha = 1) {
 #' @param plot.args list of arguments passed to the plot itself
 #' @param resids should residuals be plotted or not?
 #' @param ... additional arguments
+#' @return nothing returned
 #' @export
 
 effect_plot <- function(fit, ...) {

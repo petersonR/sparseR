@@ -18,7 +18,7 @@
 #'
 #' \item{penalties}{the numeric value of the penalties}
 #' \item{vartype}{Variable type (main effect, order k interaction, etc)}
-#' \item{varname}{name of variables}
+#' \item{varname}{names of variables}
 #'
 #' @export
 get_penalties <- function(varnames, poly, poly_prefix = "poly_", int_sep = "\\:",

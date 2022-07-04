@@ -13,6 +13,12 @@ sparseRBIC_bootstrap(srbic_fit, B = 100, quiet = FALSE)
 
 \item{quiet}{Should the display of a progress bar be silenced?}
 }
+\value{
+a list containing:
+
+\item{results}{a tibble containing coefficients, p-values, selection pct}
+\item{bootstraps}{a tibble of bootstrapped coefficients}
+}
 \description{
 Runs bootstrap on models selection procedure using RBIC to
 find bootstrapped standard error (smoothed, see Efron 2014)
