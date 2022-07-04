@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sparseR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
@@ -184,6 +184,33 @@ interaction terms?</p></dd>
 
 <dt>...</dt>
 <dd><p>additional arguments for running stepwise selection</p></dd>
+
+</dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    
+
+<p>an object of class <code>sparseRBIC</code> containing the following:</p>
+<dl><dt>fit</dt>
+<dd><p>the final fit object</p></dd>
+
+<dt>srprep</dt>
+<dd><p>a <code>recipes</code> object used to prep the data</p></dd>
+
+<dt>pen_info</dt>
+<dd><p>coefficient-level variable counts, types + names</p></dd>
+
+<dt>data</dt>
+<dd><p>the (unprocessed) data</p></dd>
+
+<dt>family</dt>
+<dd><p>the family argument (for non-normal, eg. poisson)</p></dd>
+
+<dt>info</dt>
+<dd><p>a list containing meta-info about the procedure</p></dd>
+
+<dt>stats</dt>
+<dd><p>the IC for each fit and respective terms included</p></dd>
 
 </dl></div>
     <div id="details">

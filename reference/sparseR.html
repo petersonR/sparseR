@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sparseR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
@@ -185,6 +185,42 @@ interaction terms?</p></dd>
 
 <dt>...</dt>
 <dd><p>Additional arguments (passed to fitting function)</p></dd>
+
+</dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    
+
+<p>an object of class <code>sparseR</code> containing the following:</p>
+<dl><dt>fit</dt>
+<dd><p>the fit object returned by <code>ncvreg</code></p></dd>
+
+<dt>srprep</dt>
+<dd><p>a <code>recipes</code> object used to prep the data</p></dd>
+
+<dt>pen_factors</dt>
+<dd><p>the factor multiple on penalties for ranked sparsity</p></dd>
+
+<dt>results</dt>
+<dd><p>all coefficients and penalty factors at minimum CV lambda</p></dd>
+
+<dt>results_summary</dt>
+<dd><p>a tibble of summary results at minimum CV lambda</p></dd>
+
+<dt>results1se</dt>
+<dd><p>all coefficients and penalty factors at lambda_1se</p></dd>
+
+<dt>results1se_summary</dt>
+<dd><p>a tibble of summary results at lambda_1se</p></dd>
+
+<dt>data</dt>
+<dd><p>the (unprocessed) data</p></dd>
+
+<dt>family</dt>
+<dd><p>the family argument (for non-normal, eg. poisson)</p></dd>
+
+<dt>info</dt>
+<dd><p>a list containing meta-info about the procedure</p></dd>
 
 </dl></div>
     <div id="details">
