@@ -1,3 +1,9 @@
+# 0.2.0
+
+- Resubmitted CRAN submission
+- Updated documentation
+- Changes to remain compatible with recipes 1.0.0+
+
 # 0.1.0
 
 - Initial CRAN submission
