@@ -1,4 +1,4 @@
-## Release sumary
+## Release summary
 
 This is a resubmission of an initial release.
 
