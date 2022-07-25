@@ -10,8 +10,8 @@ Description:
     An implementation of ranked sparsity methods, including
     penalized regression methods such as the sparsity-ranked lasso, its
     non-convex alternatives, and elastic net, as well as the sparsity-ranked
-    Bayesian Information Criterion. As described in Peterson and 
-    Cavanaugh (2022) <doi:10.1007/s10182-021-00431-7>, ranked 
+    Bayesian Information Criterion. As described in Peterson and
+    Cavanaugh (2022) <doi:10.1007/s10182-021-00431-7>, ranked
     sparsity is a philosophy with methods primarily useful for
     variable selection in the presence of prior informational
     asymmetry, which occurs in the context of trying to perform variable
