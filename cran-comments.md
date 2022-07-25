@@ -5,12 +5,7 @@ This is a resubmission of an initial release.
 In this version, I have done the following 
 in response to CRAN feedback:
 
-* Added a DOI/reference to DESCRIPTION
-* Switched T/F to TRUE/FALSE
-* Added \value to all .Rd files
-* Ensured par() is reset in evaluated vignette code 
-* eliminated <<- calls per CRAN policy 
-* eliminated perceived typo in DESCRIPTION
+* Added an author/year name for DOI in DESCRIPTION
 
 ## R CMD check results
 
