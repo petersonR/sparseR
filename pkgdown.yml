@@ -1,7 +1,10 @@
-pandoc: 2.7.3
+pandoc: 2.14.2
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   sparseR: sparseR.html
-last_built: 2022-08-15T22:30Z
+last_built: 2022-08-17T19:40Z
+urls:
+  reference: https://petersonr.github.io/sparseR/reference
+  article: https://petersonr.github.io/sparseR/articles
 

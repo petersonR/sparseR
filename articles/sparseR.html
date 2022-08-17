@@ -4,80 +4,77 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="sparseR">
 <title>Using the `sparseR` package • sparseR</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Using the `sparseR` package">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Using the `sparseR` package">
 <meta property="og:description" content="sparseR">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">sparseR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
-      </span>
-    </div>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../index.html">sparseR</a>
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../articles/sparseR.html">Get started</a>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="active nav-item">
+  <a class="nav-link" href="../articles/sparseR.html">Get started</a>
 </li>
-<li>
-  <a href="../reference/index.html">Reference</a>
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../news/index.html">Changelog</a>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/petersonR/sparseR/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/petersonR/sparseR/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
       </ul>
 </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
+</nav><div class="container template-article">
 
-      
 
-      </header><script src="sparseR_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="sparseR_files/kePrint-0.0.1/kePrint.js"></script><link href="sparseR_files/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+<script src="sparseR_files/kePrint-0.0.1/kePrint.js"></script><link href="sparseR_files/lightable-0.0.1/lightable.css" rel="stylesheet">
 <div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Using the <code>sparseR</code> package</h1>
+  <main id="main" class="col-md-9"><div class="page-header">
+      <img src="" class="logo" alt=""><h1>Using the `sparseR` package</h1>
                         <h4 data-toc-skip class="author">Ryan A. Peterson</h4>
             
-            <h4 data-toc-skip class="date">2022-08-15</h4>
+            <h4 data-toc-skip class="date">2022-08-17</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/petersonR/sparseR/blob/HEAD/vignettes/sparseR.Rmd" class="external-link"><code>vignettes/sparseR.Rmd</code></a></small>
-      <div class="hidden name"><code>sparseR.Rmd</code></div>
-
+      <div class="d-none name"><code>sparseR.Rmd</code></div>
     </div>
 
     
@@ -648,13 +645,13 @@ Species_setosa
 0.00000
 </td>
 <td style="text-align:right;">
-0.00063
+0.01046
 </td>
 <td style="text-align:right;">
 0.00000
 </td>
 <td style="text-align:right;">
-100
+99
 </td>
 </tr>
 <tr>
@@ -662,10 +659,10 @@ Species_setosa
 Sepal.Length
 </td>
 <td style="text-align:right;">
-0.00006
+0.00005
 </td>
 <td style="text-align:right;">
-0.04231
+0.04221
 </td>
 <td style="text-align:right;">
 0.00007
@@ -679,16 +676,16 @@ Sepal.Length
 Sepal.Length:Species_setosa
 </td>
 <td style="text-align:right;">
-0.00953
+0.01059
 </td>
 <td style="text-align:right;">
-0.30767
+0.31767
 </td>
 <td style="text-align:right;">
-0.01159
+0.01279
 </td>
 <td style="text-align:right;">
-70
+69
 </td>
 </tr>
 <tr>
@@ -696,13 +693,13 @@ Sepal.Length:Species_setosa
 Petal.Width
 </td>
 <td style="text-align:right;">
-0.15652
+0.20013
 </td>
 <td style="text-align:right;">
-0.49997
+0.50256
 </td>
 <td style="text-align:right;">
-0.08659
+0.08730
 </td>
 <td style="text-align:right;">
 52
@@ -716,13 +713,13 @@ Species_versicolor
 1.00000
 </td>
 <td style="text-align:right;">
-0.80657
+0.81563
 </td>
 <td style="text-align:right;">
-0.49933
+0.48935
 </td>
 <td style="text-align:right;">
-22
+21
 </td>
 </tr>
 <tr>
@@ -750,13 +747,13 @@ Species_virginica
 1.00000
 </td>
 <td style="text-align:right;">
-0.91756
+0.89734
 </td>
 <td style="text-align:right;">
-0.76499
+0.66208
 </td>
 <td style="text-align:right;">
-9
+11
 </td>
 </tr>
 <tr>
@@ -818,13 +815,13 @@ Petal.Width:Species_versicolor
 1.00000
 </td>
 <td style="text-align:right;">
-0.99624
+0.99707
 </td>
 <td style="text-align:right;">
-0.99592
+0.99679
 </td>
 <td style="text-align:right;">
-3
+2
 </td>
 </tr>
 <tr>
@@ -877,13 +874,13 @@ Gmean_p
 (Intercept)
 </td>
 <td style="text-align:right;">
-0.00500
+0.00375
 </td>
 <td style="text-align:right;">
-0.07581
+0.07267
 </td>
 <td style="text-align:right;">
-0.00413
+0.00354
 </td>
 <td style="text-align:right;">
 100
@@ -897,13 +894,13 @@ Species_setosa
 0.07861
 </td>
 <td style="text-align:right;">
-0.13584
+0.14709
 </td>
 <td style="text-align:right;">
-0.00588
+0.00729
 </td>
 <td style="text-align:right;">
-100
+99
 </td>
 </tr>
 <tr>
@@ -931,10 +928,10 @@ Petal.Width
 1.00000
 </td>
 <td style="text-align:right;">
-0.73882
+0.73888
 </td>
 <td style="text-align:right;">
-0.27036
+0.27300
 </td>
 <td style="text-align:right;">
 27
@@ -948,13 +945,13 @@ Species_versicolor
 1.00000
 </td>
 <td style="text-align:right;">
-0.87126
+0.88648
 </td>
 <td style="text-align:right;">
-0.63427
+0.54776
 </td>
 <td style="text-align:right;">
-14
+13
 </td>
 </tr>
 <tr>
@@ -968,10 +965,27 @@ Sepal.Length:Species_setosa
 0.14857
 </td>
 <td style="text-align:right;">
-0.00667
+0.00668
 </td>
 <td style="text-align:right;">
 87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Species_virginica
+</td>
+<td style="text-align:right;">
+1.00000
+</td>
+<td style="text-align:right;">
+0.92809
+</td>
+<td style="text-align:right;">
+0.64082
+</td>
+<td style="text-align:right;">
+8
 </td>
 </tr>
 <tr>
@@ -1010,19 +1024,19 @@ Sepal.Length:Petal.Length
 </tr>
 <tr>
 <td style="text-align:left;">
-Species_virginica
+Petal.Width:Species_versicolor
 </td>
 <td style="text-align:right;">
 1.00000
 </td>
 <td style="text-align:right;">
-0.94887
+0.99977
 </td>
 <td style="text-align:right;">
-0.84585
+0.99977
 </td>
 <td style="text-align:right;">
-6
+1
 </td>
 </tr>
 <tr>
@@ -1085,7 +1099,7 @@ Gmean_p
 Species_setosa
 </td>
 <td style="text-align:right;">
-0.00978
+0.00966
 </td>
 <td style="text-align:right;">
 0.00000
@@ -1113,13 +1127,13 @@ Sepal.Length
 Sepal.Length:Species_setosa
 </td>
 <td style="text-align:right;">
-0.25235
+0.24833
 </td>
 <td style="text-align:right;">
 0.00007
 </td>
 <td style="text-align:right;">
-74.8
+75.2
 </td>
 </tr>
 <tr>
@@ -1127,10 +1141,10 @@ Sepal.Length:Species_setosa
 Petal.Width
 </td>
 <td style="text-align:right;">
-0.33706
+0.33707
 </td>
 <td style="text-align:right;">
-0.00004
+0.00003
 </td>
 <td style="text-align:right;">
 66.4
@@ -1138,16 +1152,16 @@ Petal.Width
 </tr>
 <tr>
 <td style="text-align:left;">
-Species_virginica
+Species_versicolor
 </td>
 <td style="text-align:right;">
-0.95211
+0.69677
 </td>
 <td style="text-align:right;">
-0.66018
+0.07922
 </td>
 <td style="text-align:right;">
-4.8
+33.2
 </td>
 </tr>
 <tr>
@@ -1155,10 +1169,10 @@ Species_virginica
 Petal.Length
 </td>
 <td style="text-align:right;">
-0.71850
+0.71746
 </td>
 <td style="text-align:right;">
-0.36074
+0.36156
 </td>
 <td style="text-align:right;">
 35.6
@@ -1166,30 +1180,16 @@ Petal.Length
 </tr>
 <tr>
 <td style="text-align:left;">
-Species_versicolor
-</td>
-<td style="text-align:right;">
-0.63447
-</td>
-<td style="text-align:right;">
-0.04241
-</td>
-<td style="text-align:right;">
-40.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 Sepal.Length:Petal.Width
 </td>
 <td style="text-align:right;">
-0.86832
+0.87231
 </td>
 <td style="text-align:right;">
-0.22093
+0.21799
 </td>
 <td style="text-align:right;">
-13.2
+12.8
 </td>
 </tr>
 <tr>
@@ -1197,13 +1197,13 @@ Sepal.Length:Petal.Width
 Sepal.Length:Species_versicolor
 </td>
 <td style="text-align:right;">
-0.97231
+0.98427
 </td>
 <td style="text-align:right;">
-0.86439
+0.93456
 </td>
 <td style="text-align:right;">
-2.8
+1.6
 </td>
 </tr>
 <tr>
@@ -1211,13 +1211,13 @@ Sepal.Length:Species_versicolor
 Petal.Width:Species_setosa
 </td>
 <td style="text-align:right;">
-0.92488
+0.91692
 </td>
 <td style="text-align:right;">
-0.68161
+0.65368
 </td>
 <td style="text-align:right;">
-7.6
+8.4
 </td>
 </tr>
 <tr>
@@ -1232,6 +1232,20 @@ Sepal.Length:Petal.Length
 </td>
 <td style="text-align:right;">
 12.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Species_virginica
+</td>
+<td style="text-align:right;">
+0.88935
+</td>
+<td style="text-align:right;">
+0.34555
+</td>
+<td style="text-align:right;">
+11.6
 </td>
 </tr>
 <tr>
@@ -1267,13 +1281,41 @@ Petal.Length:Species_setosa
 Petal.Width:Species_versicolor
 </td>
 <td style="text-align:right;">
-0.92066
+0.93251
 </td>
 <td style="text-align:right;">
-0.60421
+0.66003
 </td>
 <td style="text-align:right;">
-8.0
+6.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Petal.Width:Species_virginica
+</td>
+<td style="text-align:right;">
+0.99200
+</td>
+<td style="text-align:right;">
+0.92547
+</td>
+<td style="text-align:right;">
+0.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sepal.Length:Species_virginica
+</td>
+<td style="text-align:right;">
+0.99209
+</td>
+<td style="text-align:right;">
+0.95371
+</td>
+<td style="text-align:right;">
+0.8
 </td>
 </tr>
 </tbody>
@@ -1303,10 +1345,10 @@ Gmean_p
 (Intercept)
 </td>
 <td style="text-align:right;">
-0.07601
+0.06651
 </td>
 <td style="text-align:right;">
-0.00027
+0.00023
 </td>
 <td style="text-align:right;">
 100.0
@@ -1317,7 +1359,7 @@ Gmean_p
 Species_setosa
 </td>
 <td style="text-align:right;">
-0.08997
+0.08141
 </td>
 <td style="text-align:right;">
 0.00001
@@ -1331,7 +1373,7 @@ Species_setosa
 Sepal.Length
 </td>
 <td style="text-align:right;">
-0.00481
+0.00440
 </td>
 <td style="text-align:right;">
 0.00000
@@ -1345,13 +1387,13 @@ Sepal.Length
 Sepal.Length:Species_setosa
 </td>
 <td style="text-align:right;">
-0.24837
+0.24438
 </td>
 <td style="text-align:right;">
 0.00007
 </td>
 <td style="text-align:right;">
-75.2
+75.6
 </td>
 </tr>
 <tr>
@@ -1359,10 +1401,10 @@ Sepal.Length:Species_setosa
 Petal.Width
 </td>
 <td style="text-align:right;">
-0.34016
+0.34018
 </td>
 <td style="text-align:right;">
-0.00006
+0.00005
 </td>
 <td style="text-align:right;">
 66.4
@@ -1373,13 +1415,13 @@ Petal.Width
 Species_versicolor
 </td>
 <td style="text-align:right;">
-0.58922
+0.66145
 </td>
 <td style="text-align:right;">
-0.03208
+0.06112
 </td>
 <td style="text-align:right;">
-42.4
+34.8
 </td>
 </tr>
 <tr>
@@ -1387,10 +1429,10 @@ Species_versicolor
 Petal.Length
 </td>
 <td style="text-align:right;">
-0.69109
+0.69055
 </td>
 <td style="text-align:right;">
-0.19662
+0.19805
 </td>
 <td style="text-align:right;">
 35.6
@@ -1398,27 +1440,13 @@ Petal.Length
 </tr>
 <tr>
 <td style="text-align:left;">
-Species_virginica
-</td>
-<td style="text-align:right;">
-0.97799
-</td>
-<td style="text-align:right;">
-0.85138
-</td>
-<td style="text-align:right;">
-2.4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 Sepal.Length:Petal.Width
 </td>
 <td style="text-align:right;">
-0.87231
+0.87232
 </td>
 <td style="text-align:right;">
-0.22325
+0.22270
 </td>
 <td style="text-align:right;">
 12.8
@@ -1426,16 +1454,16 @@ Sepal.Length:Petal.Width
 </tr>
 <tr>
 <td style="text-align:left;">
-Sepal.Length:Species_virginica
+Sepal.Length:Species_versicolor
 </td>
 <td style="text-align:right;">
-0.99206
+0.98027
 </td>
 <td style="text-align:right;">
-0.95350
+0.90457
 </td>
 <td style="text-align:right;">
-0.8
+2.0
 </td>
 </tr>
 <tr>
@@ -1443,13 +1471,13 @@ Sepal.Length:Species_virginica
 Petal.Width:Species_setosa
 </td>
 <td style="text-align:right;">
-0.91698
+0.92090
 </td>
 <td style="text-align:right;">
-0.65775
+0.66718
 </td>
 <td style="text-align:right;">
-8.4
+8.0
 </td>
 </tr>
 <tr>
@@ -1464,6 +1492,20 @@ Sepal.Length:Petal.Length
 </td>
 <td style="text-align:right;">
 12.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Species_virginica
+</td>
+<td style="text-align:right;">
+0.90056
+</td>
+<td style="text-align:right;">
+0.41384
+</td>
+<td style="text-align:right;">
+10.0
 </td>
 </tr>
 <tr>
@@ -1499,41 +1541,13 @@ Petal.Length:Species_setosa
 Petal.Width:Species_versicolor
 </td>
 <td style="text-align:right;">
-0.91670
+0.92851
 </td>
 <td style="text-align:right;">
-0.60281
+0.63491
 </td>
 <td style="text-align:right;">
-8.4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sepal.Length:Species_versicolor
-</td>
-<td style="text-align:right;">
-0.97622
-</td>
-<td style="text-align:right;">
-0.87766
-</td>
-<td style="text-align:right;">
-2.4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Petal.Length:Species_virginica
-</td>
-<td style="text-align:right;">
-0.99600
-</td>
-<td style="text-align:right;">
-0.97059
-</td>
-<td style="text-align:right;">
-0.4
+7.2
 </td>
 </tr>
 <tr>
@@ -1544,7 +1558,21 @@ Petal.Width:Species_virginica
 0.99600
 </td>
 <td style="text-align:right;">
-0.95986
+0.95965
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sepal.Length:Species_virginica
+</td>
+<td style="text-align:right;">
+0.99609
+</td>
+<td style="text-align:right;">
+0.98502
 </td>
 <td style="text-align:right;">
 0.4
@@ -2901,33 +2929,26 @@ Order 2 polynomial
 <p>TBD</p>
 </div>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
-
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
+    <footer><div class="pkgdown-footer-left">
   <p></p>
 <p>Developed by Ryan Andrew Peterson.</p>
 </div>
 
-<div class="pkgdown">
+<div class="pkgdown-footer-right">
   <p></p>
 <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
-
 
   
 
