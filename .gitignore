@@ -6,3 +6,4 @@ vignettes/*.R
 .DS_Store
 inst/doc
 tests/testthat/*.pdf
+docs

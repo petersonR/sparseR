@@ -1,3 +1,7 @@
+# 0.2.0.9000
+
+- update readme
+
 # 0.2.0
 
 - Resubmitted CRAN submission

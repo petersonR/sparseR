@@ -8,31 +8,38 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/sparseR)](https://CRAN.R-project.org/package=sparseR)
 
-## Overview
+## What is ranked sparsity?
 
-The `sparseR` package implements the following ranked sparsity methods:
+The ranked sparsity methods such as the sparsity-ranked lasso (SRL) have
+been developed for model selection and estimation in the presence of
+interactions and polynomials (Peterson & Cavanaugh
+2022)\[<https://doi.org/10.1007/s10182-021-00431-7>\]. The main idea is
+that an algorithm should be more skeptical of higher-order polynomials
+and interactions a priori compared to main effects, by a predetermined
+amount.
 
-1)  Sparsity-ranked lasso
-2)  Sparsity-ranked MCP
-3)  Sparsity-ranked SCAD
-4)  Ranked Bayesian Information Criterion (and corresponding stepwise
-    approaches)
+## Package overview
+
+The `sparseR` package implements ranked-sparsity-based versions of the
+lasso, elastic net, MCP, and SCAD. We also provide a (preliminary)
+version of an sparsity-ranked extension to Bayesian Information
+Criterion (and corresponding stepwise approaches)
 
 Additionally, `sparseR` has many features designed to streamline dealing
 with interaction terms and polynomials, including functions for variable
 pre-processing, variable selection, post-selection inference, and
 post-fit model visualization under ranked sparsity.
 
-The package is currently in beta phase (version 0.0.1), with plans for a
-stable release to CRAN in February 2022. A publication detailing ranked
-sparsity principles is currently under review, and available upon
-request.
-
 ## Installation
 
 ``` r
+
+## Via GitHub: 
 # install.packages("devtools")
 devtools::install_github("petersonR/sparseR")
+
+# or via CRAN
+install.packages("sparseR")
 ```
 
 ## Example
@@ -46,6 +53,10 @@ data(iris)
 set.seed(1321)
 
 srl <- sparseR(Sepal.Width ~ ., data = iris, k = 1, seed = 1)
+#> Warning: `terms_select()` was deprecated in recipes 0.1.17.
+#> Please use `recipes_eval_select()` instead.
+#> This warning is displayed once every 8 hours.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
 srl
 #> 
 #> Model summary @ min CV:
@@ -80,5 +91,9 @@ srl
 #>  Order 1 interaction    12        4      0.333    3.46
 ```
 
-For more examples and a closer look, check out the [package
-website](https://petersonr.github.io/sparseR/).
+For more examples and a closer look at how to use this package, check
+out the [package website](https://petersonr.github.io/sparseR/).
+
+Many thanks to the authors and maintainers of
+[`ncvreg`](https://github.com/pbreheny/ncvreg) and
+[`recipes`](https://recipes.tidymodels.org/).
