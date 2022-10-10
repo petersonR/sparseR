@@ -65,7 +65,7 @@ sparseR_prep <- function(formula, data, k = 1, poly = 1,
   }
 
   # must filter out censored predictors as well or will crash
-  rec_obj <- rec_obj %>% step_rm(has_type("censored"))
+  rec_obj <- rec_obj %>% step_rm(has_type("censored"), has_type("surv"))
 
   ## Filter out near-zero variance main effects
   if("nzv" %in% filter) {
