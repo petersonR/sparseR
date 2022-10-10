@@ -95,8 +95,13 @@ sparseR_prep <- function(formula, data, k = 1, poly = 1,
 
   # Center
   p_early <- prep(rec_obj, data)
-  has_numeric_predictor <-
-    any(p_early$term_info$type[p_early$term_info$role == "predictor"] == "numeric")
+  has_numeric_predictor <- any(
+    vapply(
+      X = p_early$term_info$type[p_early$term_info$role == "predictor"],
+      FUN = function(x) "numeric" %in% x,
+      FUN.VALUE = logical(1)
+    )
+  )
 
   if("center" %in% pre_proc_opts & has_numeric_predictor) {
     if(!length(extra_opts$centers)) {
