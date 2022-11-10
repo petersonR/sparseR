@@ -1,6 +1,6 @@
 ## Release summary
 
-This is a package update, attempting to fix CRAN check issues. 
+This is a resubmission of package update, attempting to fix CRAN check issues. 
 
 ## R CMD check results
 

@@ -24,7 +24,8 @@ sparseRBIC_sampsplit <- function(srbic_fit, S = 100, quiet = FALSE) {
 
   phi <- list()[1:S]
 
-  pb<-progress_estimated(S)
+  if(!quiet)
+    pb<-dplyr::progress_estimated(S)
 
   for(s in 1:S) {
     idx <- sample(1:n, ceiling(n/2))

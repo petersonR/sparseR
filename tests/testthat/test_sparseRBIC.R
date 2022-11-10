@@ -1,6 +1,8 @@
 context("sparseRBIC formula specification")
+skip_on_cran() # takes awhile, so only test on GitHub
 
 data(iris)
+iris <- iris[1:50,]
 
 # Add another unbalanced factor
 iris$Group <- factor(sample(c('A', 'B'), nrow(iris), replace = TRUE))

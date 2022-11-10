@@ -1,6 +1,9 @@
 context("Preprocessing Functionality")
+skip_on_cran() # takes awhile, so only test on GitHub
 
 data(iris)
+iris <- iris[1:50,]
+
 set.seed(123)
 
 # Add another unbalanced factor
@@ -87,6 +90,9 @@ test_that("Different vals of k and poly work, specific formulae", {
 ## Test Detrano use-case
 
 data("Detrano")
+# smaller data set
+cleveland <- cleveland[1:50,]
+
 cleveland$thal <- factor(cleveland$thal)
 cleveland$case <- 1*(cleveland$num > 0)
 

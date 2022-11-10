@@ -1,6 +1,8 @@
 context("sparseR formula specification")
+skip_on_cran() # takes awhile, so only test on GitHub
 
 data(iris)
+iris <- iris[1:50,]
 
 # Add another unbalanced factor
 iris$Group <- factor(sample(c('A', 'B'), nrow(iris), replace = TRUE))
@@ -73,7 +75,7 @@ test_that("Different vals of k and poly work, specific formulae", {
 data("Detrano")
 
 # Quicken compute time
-cleveland <- cleveland[1:100,]
+cleveland <- cleveland[1:50,]
 
 cleveland$thal <- factor(cleveland$thal)
 cleveland$case <- 1*(cleveland$num > 0)
@@ -210,37 +212,6 @@ test_that("Detrano MCPnet functionality", {
   expect_silent(APL <- sparseR(formula = case ~ .,  penalty = "MCP", alpha = .2, data = cleveland, gamma = 0))
   expect_silent(MEM <- sparseR(formula = case ~ .,  penalty = "MCP", alpha = .2, data = cleveland, k = 0))
   expect_silent(SRLp <- sparseR(formula = case ~ ., penalty = "MCP", alpha = .2, data = cleveland, poly = 2))
-
-  formula <- case ~ sex + thal
-  expect_silent(sparseR(formula, penalty = "MCP", alpha = .2, data = cleveland))
-  expect_silent(sparseR(formula, penalty = "MCP", alpha = .2, data = cleveland, gamma = 0))
-  expect_silent(sparseR(formula, penalty = "MCP", alpha = .2, data = cleveland, k = 0))
-  expect_silent(sparseR(formula, penalty = "MCP", alpha = .2, data = cleveland, poly = 2))
-
-  expect_silent(sparseR(formula, penalty = "MCP", ncvgamma = 4, alpha = .2, data = cleveland))
-  expect_silent(sparseR(formula, penalty = "MCP", ncvgamma = 4, alpha = .2, data = cleveland, gamma = 0))
-  expect_silent(sparseR(formula, penalty = "MCP", ncvgamma = 4, alpha = .2, data = cleveland, k = 0))
-  expect_silent(sparseR(formula, penalty = "MCP", ncvgamma = 4, alpha = .2, data = cleveland, poly = 2))
-
-  expect_equal(nrow(predict(SRL, type = "coef")), nrow(SRL$fit$fit$beta))
-  expect_equal(nrow(predict(APL, type = "coef")), nrow(SRL$fit$fit$beta))
-  expect_equal(nrow(predict(MEM, type = "coef")), nrow(MEM$fit$fit$beta))
-  expect_equal(nrow(predict(SRLp, type = "coef")), nrow(SRLp$fit$fit$beta))
-
-  expect_equal(length(coef(SRL)), nrow(SRL$fit$fit$beta))
-  expect_equal(length(coef(APL)), nrow(SRL$fit$fit$beta))
-  expect_equal(length(coef(MEM)), nrow(MEM$fit$fit$beta))
-  expect_equal(length(coef(SRLp)), nrow(SRLp$fit$fit$beta))
-
-  expect_equal(nrow(predict(SRL,  at = "cv1se", type = "coef")), nrow(SRL$fit$fit$beta))
-  expect_equal(nrow(predict(APL,  at = "cv1se", type = "coef")), nrow(SRL$fit$fit$beta))
-  expect_equal(nrow(predict(MEM,  at = "cv1se", type = "coef")), nrow(MEM$fit$fit$beta))
-  expect_equal(nrow(predict(SRLp, at = "cv1se",  type = "coef")), nrow(SRLp$fit$fit$beta))
-
-  expect_equal(length(coef(SRL, at = "cv1se")), nrow(SRL$fit$fit$beta))
-  expect_equal(length(coef(APL, at = "cv1se")), nrow(SRL$fit$fit$beta))
-  expect_equal(length(coef(MEM, at = "cv1se")), nrow(MEM$fit$fit$beta))
-  expect_equal(length(coef(SRLp, at = "cv1se")), nrow(SRLp$fit$fit$beta))
 
   # Print/summary
   expect_output(print(SRL))

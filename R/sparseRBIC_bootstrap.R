@@ -29,7 +29,8 @@ sparseRBIC_bootstrap <- function(srbic_fit, B = 100, quiet = FALSE) {
 
   phi <- list()[1:B]
 
-  pb<-dplyr::progress_estimated(B)
+  if(!quiet)
+    pb<-dplyr::progress_estimated(B)
 
   for(b in 1:B) {
     idx <- sample(1:nrow(srbic_fit$data), replace = TRUE)
