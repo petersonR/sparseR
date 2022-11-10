@@ -69,9 +69,10 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Using the `sparseR` package</h1>
-                        <h4 data-toc-skip class="author">Ryan A. Peterson</h4>
+                        <h4 data-toc-skip class="author">Ryan A.
+Peterson</h4>
             
-            <h4 data-toc-skip class="date">2022-08-17</h4>
+            <h4 data-toc-skip class="date">2022-11-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/petersonR/sparseR/blob/HEAD/vignettes/sparseR.Rmd" class="external-link"><code>vignettes/sparseR.Rmd</code></a></small>
       <div class="d-none name"><code>sparseR.Rmd</code></div>
@@ -82,20 +83,28 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>The <code>sparseR</code> package aids in the implementation of ranked sparsity methods for model selection in the presence of interactions and polynomials.</p>
-<p>The following methods are supported, with help from <code>ncvreg</code> on the backend:</p>
+<p>The <code>sparseR</code> package aids in the implementation of ranked
+sparsity methods for model selection in the presence of interactions and
+polynomials.</p>
+<p>The following methods are supported, with help from
+<code>ncvreg</code> on the backend:</p>
 <ol style="list-style-type: decimal">
 <li>The sparsity-ranked lasso (SRL)</li>
 <li>Sparsity-ranked MCP/SCAD (SRM/SRS)</li>
 <li>Sparsity-ranked elastic net (SREN)</li>
 </ol>
-<p>Additionally, <code>sparseR</code> makes it easy to preprocess data and get it ready for looking at all candidate interactions of order <code>k</code>, or all possible polynomials of order <code>poly</code>.</p>
-<p>This document goes through several use cases of the package on different datasets.</p>
+<p>Additionally, <code>sparseR</code> makes it easy to preprocess data
+and get it ready for looking at all candidate interactions of order
+<code>k</code>, or all possible polynomials of order
+<code>poly</code>.</p>
+<p>This document goes through several use cases of the package on
+different datasets.</p>
 </div>
 <div class="section level2">
 <h2 id="use-case-iris-data">Use case: <code>iris</code> data<a class="anchor" aria-label="anchor" href="#use-case-iris-data"></a>
 </h2>
-<p>To illustrate in a simple case, consider Fisher’s Iris data set, composed of 4 numeric variables and one categorical variable.</p>
+<p>To illustrate in a simple case, consider Fisher’s Iris data set,
+composed of 4 numeric variables and one categorical variable.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></code></pre></div>
@@ -113,12 +122,24 @@
 <span><span class="co">##                 </span></span>
 <span><span class="co">##                 </span></span>
 <span><span class="co">## </span></span></code></pre>
-<p>If we are interested in predicting <code>Sepal.Width</code> based on the other variables and their pairwise interactions, have a couple of options. We can either use the built-in preprocessing for building the model matrix and fitting the model, or we can manually build the model matrix and pass it to the <code>sparseR</code> function.</p>
+<p>If we are interested in predicting <code>Sepal.Width</code> based on
+the other variables and their pairwise interactions, have a couple of
+options. We can either use the built-in preprocessing for building the
+model matrix and fitting the model, or we can manually build the model
+matrix and pass it to the <code>sparseR</code> function.</p>
 <div class="section level3">
 <h3 id="using-formula-specification">Using formula specification<a class="anchor" aria-label="anchor" href="#using-formula-specification"></a>
 </h3>
-<p>Passing a <code>formula</code> to <code>sparseR</code> will tell the function which main effects should be in the model. These are also the main effects which will indicate which interactions/polynomials should be investigated. Note that the formula will only accept main effect terms, and will not allow specification of individual interaction effects (or other functions of the main effects).</p>
-<p>The sparsity-ranked lasso model for all-pairwise interactions can be fit as follows (cross-validation is performed for <code>lambda</code> via the <code>ncvreg</code> package, so it is important to set the seed for reproducibililty).</p>
+<p>Passing a <code>formula</code> to <code>sparseR</code> will tell the
+function which main effects should be in the model. These are also the
+main effects which will indicate which interactions/polynomials should
+be investigated. Note that the formula will only accept main effect
+terms, and will not allow specification of individual interaction
+effects (or other functions of the main effects).</p>
+<p>The sparsity-ranked lasso model for all-pairwise interactions can be
+fit as follows (cross-validation is performed for <code>lambda</code>
+via the <code>ncvreg</code> package, so it is important to set the seed
+for reproducibililty).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">srl</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">1</span>, seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>The print method will present useful results from these fits:</p>
@@ -155,7 +176,10 @@
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
 <span><span class="co">##          Main effect     6        3      0.500    2.45</span></span>
 <span><span class="co">##  Order 1 interaction    12        4      0.333    3.46</span></span></code></pre>
-<p>For more detailed model information, the <code>summary</code> method for <code>sparseR</code> objects displays more information about the fits (see <code><a href="https://rdrr.io/pkg/ncvreg/man/summary-ncvreg.html" class="external-link">?ncvreg::summary.ncvreg</a></code> for more information).</p>
+<p>For more detailed model information, the <code>summary</code> method
+for <code>sparseR</code> objects displays more information about the
+fits (see <code><a href="https://rdrr.io/pkg/ncvreg/man/summary-ncvreg.html" class="external-link">?ncvreg::summary.ncvreg</a></code> for more
+information).</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># At the lambda which minimizes CVE</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl</span>, at <span class="op">=</span> <span class="st">"cvmin"</span><span class="op">)</span></span></code></pre></div>
@@ -196,37 +220,66 @@
 <span><span class="co">## Sepal.Length:Petal.Length      -0.052711 -3.2466 0.078121        *</span></span>
 <span><span class="co">## Sepal.Length:Species_setosa     0.062782  2.5978 0.251076        *</span></span>
 <span><span class="co">## Species_versicolor             -0.001653 -0.8052 1.000000        *</span></span></code></pre>
-<p>Finally, plots of either the cross-validation error across <code>lambda</code> values or the coefficient paths can be produced fairly easily:</p>
+<p>Finally, plots of either the cross-validation error across
+<code>lambda</code> values or the coefficient paths can be produced
+fairly easily:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl</span>, plot_type <span class="op">=</span> <span class="st">"cv"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl</span>, plot_type <span class="op">=</span> <span class="st">"path"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
-<p>Importantly, since <code>sparseR</code> with a formula centers and scales the covariates prior to forming interactions, the coefficients should be interpreted this way (a 1-unit change in the covariate corresponds to a 1 SD change in the unit of the main effect, and parameters involving interactions must be interpreted at the mean value of involved covariates).</p>
+<p>Importantly, since <code>sparseR</code> with a formula centers and
+scales the covariates prior to forming interactions, the coefficients
+should be interpreted this way (a 1-unit change in the covariate
+corresponds to a 1 SD change in the unit of the main effect, and
+parameters involving interactions must be interpreted at the mean value
+of involved covariates).</p>
 </div>
 <div class="section level3">
 <h3 id="using-model-matrix-specification">Using model matrix specification<a class="anchor" aria-label="anchor" href="#using-model-matrix-specification"></a>
 </h3>
-<p>Since the <code>sparseR</code> preprocessing has limits to its customizability, and often it will be of interest to create interactions that are centered at prespecified values (as opposed to their mean), it is also possible to feed in a matrix to <code>sparseR</code> that has already been preprocessed. The function also allows users to circumvent the recipes functionality and supply their own model matrix, composed of interactions and/or polynomials. This may be useful in cases where users wish to:</p>
+<p>Since the <code>sparseR</code> preprocessing has limits to its
+customizability, and often it will be of interest to create interactions
+that are centered at prespecified values (as opposed to their mean), it
+is also possible to feed in a matrix to <code>sparseR</code> that has
+already been preprocessed. The function also allows users to circumvent
+the recipes functionality and supply their own model matrix, composed of
+interactions and/or polynomials. This may be useful in cases where users
+wish to:</p>
 <ul>
 <li>specify their own missing data imputation methods,</li>
-<li>specify the intercept differently than a grand mean (avoid centering variables prior to making certain interactions of interest)</li>
+<li>specify the intercept differently than a grand mean (avoid centering
+variables prior to making certain interactions of interest)</li>
 <li>scale variables differently</li>
 </ul>
-<p>The key arguments for this purpose are to set <code>pre_process</code> to <code>FALSE</code>, and supply <code>model_matrix</code> and the outcome <code>y</code>. Users may also want to specify how the model matrix is specified in terms of polynomial order (the package requires a prefix, such as “poly_1”, or “poly_2” to denote polynomial terms of orders 1 and 2 respectively) and interaction seperator (by default, this is “\\:”, which is the default for <code>model.matrix</code>).</p>
-<p>The code below creates a model matrix will all pairwise interactions, however as opposed to the formula, the numeric variables are not centered prior to forming the interactions, and the factor variable of species will be given a reference category (as opposed to a cell-means specification). Therefore, this method will lead to different results.</p>
+<p>The key arguments for this purpose are to set
+<code>pre_process</code> to <code>FALSE</code>, and supply
+<code>model_matrix</code> and the outcome <code>y</code>. Users may also
+want to specify how the model matrix is specified in terms of polynomial
+order (the package requires a prefix, such as “poly_1”, or “poly_2” to
+denote polynomial terms of orders 1 and 2 respectively) and interaction
+seperator (by default, this is “\\:”, which is the default for
+<code>model.matrix</code>).</p>
+<p>The code below creates a model matrix will all pairwise interactions,
+however as opposed to the formula, the numeric variables are not
+centered prior to forming the interactions, and the factor variable of
+species will be given a reference category (as opposed to a cell-means
+specification). Therefore, this method will lead to different
+results.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/model.matrix.html" class="external-link">model.matrix</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span><span class="op">*</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span><span class="op">[</span>,<span class="op">-</span><span class="fl">1</span><span class="op">]</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">srl2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span>pre_process <span class="op">=</span> <span class="cn">FALSE</span>, model_matrix <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Width</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Warning in ncvreg(X = X, y = y, ...): Maximum number of iterations reached</span></span></code></pre>
-<p>Since we have a warning about iterations, note that we can pass through arguments to <code>ncvreg</code> and fix this issue:</p>
+<p>Since we have a warning about iterations, note that we can pass
+through arguments to <code>ncvreg</code> and fix this issue:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">srl2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span>pre_process <span class="op">=</span> <span class="cn">FALSE</span>, model_matrix <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Width</span>, max.iter <span class="op">=</span> <span class="fl">1e6</span><span class="op">)</span></span></code></pre></div>
-<p>And we can use the same S3 methods to get more information about the SRL model:</p>
+<p>And we can use the same S3 methods to get more information about the
+SRL model:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">srl2</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
@@ -278,8 +331,17 @@
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-12-1.png" width="672"></p>
-<p>Since we did not center/scale any of the variables prior to this fitting procedure, the interpretation of these coefficients should be on the original scale of the predictors, and the origin for the terms involved in interactions is 0, not at the mean of their constituent covariates.</p>
-<p>Note also that there are fewer total covariates listed. This is because <code>model.matrix</code> uses reference cell dummy variables by default. Another way to do this without the reference category specification would be to pass pre-process options to <code>sparseR</code>, or to manually use <code>sparseR_prep</code> to create the model matrix.</p>
+<p>Since we did not center/scale any of the variables prior to this
+fitting procedure, the interpretation of these coefficients should be on
+the original scale of the predictors, and the origin for the terms
+involved in interactions is 0, not at the mean of their constituent
+covariates.</p>
+<p>Note also that there are fewer total covariates listed. This is
+because <code>model.matrix</code> uses reference cell dummy variables by
+default. Another way to do this without the reference category
+specification would be to pass pre-process options to
+<code>sparseR</code>, or to manually use <code>sparseR_prep</code> to
+create the model matrix.</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> </span>
 <span><span class="va">srl3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">1</span>, </span>
@@ -335,8 +397,13 @@
 <div class="section level3">
 <h3 id="centering-to-different-values">Centering to different values<a class="anchor" aria-label="anchor" href="#centering-to-different-values"></a>
 </h3>
-<p>In many cases with interactions, it makes sense to center variables to certain values (or rather, it does <strong>not</strong> make sense to center variables to their mean or to zero). Therefore we built some flexibility into <code>sparseR</code> and <code>sparseR_prep</code> in order to allow users to change these as the context dictates.</p>
-<p>Each covariate’s centering location (in this case their minima) can be passed into <code>sparseR_prep</code> as follows:</p>
+<p>In many cases with interactions, it makes sense to center variables
+to certain values (or rather, it does <strong>not</strong> make sense to
+center variables to their mean or to zero). Therefore we built some
+flexibility into <code>sparseR</code> and <code>sparseR_prep</code> in
+order to allow users to change these as the context dictates.</p>
+<p>Each covariate’s centering location (in this case their minima) can
+be passed into <code>sparseR_prep</code> as follows:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">iris</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu">select</span><span class="op">(</span><span class="va">Sepal.Length</span>, <span class="va">Petal.Length</span>, <span class="va">Petal.Width</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
@@ -347,7 +414,7 @@
 <span><span class="op">(</span><span class="va">c2min</span> <span class="op">&lt;-</span> <span class="fu">bake</span><span class="op">(</span><span class="va">p1</span>, <span class="va">iris</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 150 × 6</span></span></span>
 <span><span class="co">##    Sepal.Length Petal.Length Petal.Width Species_setosa Species_versic…¹ Speci…²</span></span>
-<span><span class="co">##           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">##           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span>        0.966        0.227       0.131              1                0       0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 2</span>        0.725        0.227       0.131              1                0       0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 3</span>        0.483        0.170       0.131              1                0       0</span></span>
@@ -359,8 +426,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>        0.121        0.227       0.131              1                0       0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>        0.725        0.283       0                  1                0       0</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 140 more rows, and abbreviated variable names ¹​Species_versicolor,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   ²​Species_virginica</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;">#   ²​Species_virginica</span></span></span></code></pre>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">c2min</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   Sepal.Length     Petal.Length     Petal.Width     Species_setosa  </span></span>
@@ -380,13 +446,14 @@
 <p>Or directly into <code>sparseR</code>:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">srl_centered2min</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>centers <span class="op">=</span> <span class="va">cc</span><span class="op">)</span>, seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<p>Or, a function can be passed to evaluate the location for each covariate:</p>
+<p>Or, a function can be passed to evaluate the location for each
+covariate:</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">0</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>center_fn <span class="op">=</span> <span class="va">min</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">c2min2</span> <span class="op">&lt;-</span> <span class="fu">bake</span><span class="op">(</span><span class="va">p2</span>, <span class="va">iris</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 150 × 6</span></span></span>
 <span><span class="co">##    Sepal.Length Petal.Length Petal.Width Species_setosa Species_versic…¹ Speci…²</span></span>
-<span><span class="co">##           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">##           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span>        0.966        0.227       0.131              1                0       0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 2</span>        0.725        0.227       0.131              1                0       0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 3</span>        0.483        0.170       0.131              1                0       0</span></span>
@@ -398,8 +465,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>        0.121        0.227       0.131              1                0       0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>        0.725        0.283       0                  1                0       0</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 140 more rows, and abbreviated variable names ¹​Species_versicolor,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   ²​Species_virginica</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;">#   ²​Species_virginica</span></span></span></code></pre>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">c2min2</span>, <span class="va">c2min</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
@@ -407,16 +473,30 @@
 <div class="section level3">
 <h3 id="plotting-the-model">Plotting the model<a class="anchor" aria-label="anchor" href="#plotting-the-model"></a>
 </h3>
-<p>Interactions are notoriously difficult to understand and to communicate, and visualizations can often be helpful. The <code>sparseR</code> package has some limited functionality for plotting the results from these fits, using the <code>visreg</code> package as a rough guide.</p>
+<p>Interactions are notoriously difficult to understand and to
+communicate, and visualizations can often be helpful. The
+<code>sparseR</code> package has some limited functionality for plotting
+the results from these fits, using the <code>visreg</code> package as a
+rough guide.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-17-1.png" width="672"></p>
-<p>Notice how this changes if the covariates are centered to their minima instead:</p>
+<p>Notice how this changes if the covariates are centered to their
+minima instead:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl_centered2min</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-18-1.png" width="672"></p>
-<p>It’s clear that the model itself can change quite a bit depending on the center location utilized prior to building the interactions. Unfortunately, optimizing the center location for each covariate is a difficult, p-dimensional problem (set in the context of another difficult optimization problem of regularized regression with multiple tuning parameters).</p>
-<p>The <code>sparseR</code> package will allow users to compare certain choices in terms of their cross-validated error, which is a decent starting point. The plot below shows how the “centered to zero” model has <em>slightly</em> lower cross-validated error than the best mean-centered model and the best minimum-centered model.</p>
+<p>It’s clear that the model itself can change quite a bit depending on
+the center location utilized prior to building the interactions.
+Unfortunately, optimizing the center location for each covariate is a
+difficult, p-dimensional problem (set in the context of another
+difficult optimization problem of regularized regression with multiple
+tuning parameters).</p>
+<p>The <code>sparseR</code> package will allow users to compare certain
+choices in terms of their cross-validated error, which is a decent
+starting point. The plot below shows how the “centered to zero” model
+has <em>slightly</em> lower cross-validated error than the best
+mean-centered model and the best minimum-centered model.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl3</span>, plot_type <span class="op">=</span> <span class="st">"cv"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">.2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">srl3</span><span class="op">$</span><span class="va">fit</span><span class="op">$</span><span class="va">cve</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
@@ -432,7 +512,10 @@
 <span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span>, </span>
 <span>            plot.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="fl">4.8</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-20-1.png" width="100%"></p>
-<p>Though these models look substantially different, it’s worth noting that the predictions obtained from the three models are very close to one another (since the models look similar in the neighborhood of existing data):</p>
+<p>Though these models look substantially different, it’s worth noting
+that the predictions obtained from the three models are very close to
+one another (since the models look similar in the neighborhood of
+existing data):</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">srl3</span>, at <span class="op">=</span> <span class="st">"cvmin"</span><span class="op">)</span></span>
 <span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">srl_centered2min</span>, at <span class="op">=</span> <span class="st">"cvmin"</span><span class="op">)</span></span>
@@ -446,7 +529,8 @@
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span> ,<span class="va">p3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-21-1.png" width="672"></p>
-<p>At the CV1se lambda value, there is slightly less agreement in these predictions:</p>
+<p>At the CV1se lambda value, there is slightly less agreement in these
+predictions:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># At CV1se</span></span>
 <span><span class="va">p4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">srl3</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
@@ -473,8 +557,18 @@
 <div class="section level3">
 <h3 id="using-stepwise-rbic">Using stepwise RBIC<a class="anchor" aria-label="anchor" href="#using-stepwise-rbic"></a>
 </h3>
-<p>RBIC, or <em>Ranked-sparsity Bayesian Information Criterion</em>, is a ranked sparsity model selection criterion that will correctly penalize interactions (higher than main effects). The benefit of using a stepwise approach informed by RBIC is that there is no shrinkage, and it thus doesn’t matter whether or not (or where) the covariates are centered (usually). The exceptions here occur when the stepwise process is not sequential/hierarchical (i.e. main effects first, then interactions of the “active” main effects, etc.).</p>
-<p>Inference on the parameters is still i) difficult because one must account for post-selection inference, and ii) affected by where and whether the covariates are centered. However, the lines themselves will not be affected by centering status.</p>
+<p>RBIC, or <em>Ranked-sparsity Bayesian Information Criterion</em>, is
+a ranked sparsity model selection criterion that will correctly penalize
+interactions (higher than main effects). The benefit of using a stepwise
+approach informed by RBIC is that there is no shrinkage, and it thus
+doesn’t matter whether or not (or where) the covariates are centered
+(usually). The exceptions here occur when the stepwise process is not
+sequential/hierarchical (i.e. main effects first, then interactions of
+the “active” main effects, etc.).</p>
+<p>Inference on the parameters is still i) difficult because one must
+account for post-selection inference, and ii) affected by where and
+whether the covariates are centered. However, the lines themselves will
+not be affected by centering status.</p>
 <p>We can see this in the examples below:</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Centered model</span></span>
@@ -526,7 +620,10 @@
 <span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">rbic1</span>, <span class="st">"Sepal.Length"</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">rbic2</span>, <span class="st">"Sepal.Length"</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-27-1.png" width="576"></p>
-<p>Again similar S3 methods are available (note how inference does change for certain parameters based on the centering status). A message is produced because these p-values do not account for post-selection inference.</p>
+<p>Again similar S3 methods are available (note how inference does
+change for certain parameters based on the centering status). A message
+is produced because these p-values do not account for post-selection
+inference.</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">rbic1</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## P-values have **not** been corrected for multiple comparisons</span></span>
@@ -593,7 +690,11 @@
 <span><span class="co">## AIC: 19.646</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Number of Fisher Scoring iterations: 2</span></span></code></pre>
-<p>Alternatively, sample splitting can be utilized to achieve valid inference. This method divides the data into two samples of equal size, uses the first sample to select the model, and the second one to fit and achieve valid (though potentially low-power) inference. Coefficients which are not selected are bestowed a p-value of 1.</p>
+<p>Alternatively, sample splitting can be utilized to achieve valid
+inference. This method divides the data into two samples of equal size,
+uses the first sample to select the model, and the second one to fit and
+achieve valid (though potentially low-power) inference. Coefficients
+which are not selected are bestowed a p-value of 1.</p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_sampsplit.html">sparseRBIC_sampsplit</a></span><span class="op">(</span><span class="va">rbic1</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Note: sparseRBIC_sampsplit is currently experimental and may not behave as expected.</span></span></code></pre>
@@ -1058,8 +1159,28 @@ Petal.Width:Species_setosa
 </tr>
 </tbody>
 </table>
-<p>Additionally, inferences based on bootstrapped samples of the data are available via the <code>sparseRBIC_bootstrap</code> function, which stores p-values for each coefficient after model selection has been performed. If a coefficient has not been selected, the p-value is set to one for that bootstrap iteration, so when the “mean” p-value is calculated across bootstraps, the underestimation of the p-value due to model selection is attenuated, as the estimate gets “pulled up” by the 1’s in the vector. Since this may be a conservative approach, we also display the “geometric” mean which is a measure of central tendency less sensitive to skew (which many p-values will be highly right skewed). More research must be done on these techniques to ensure adequate coverage properties, but given a high enough number of bootstrap samples they should both be more conservative than the naive, “pretend model selection never took place” approach. The downside here is that depending on the size of the data and the number of variables, this could take quite some time.</p>
-<p>Note that the mean p-value across bootstraps is bounded to be greater than 1-P(selected). In some sense, this makes sense, as if a variable has a low probability of being selected, then that variable should have a higher adjusted p-value. However, for variables whose effects will be highly related (i.e. an interaction and a constituent main effect), this may be too conservative.</p>
+<p>Additionally, inferences based on bootstrapped samples of the data
+are available via the <code>sparseRBIC_bootstrap</code> function, which
+stores p-values for each coefficient after model selection has been
+performed. If a coefficient has not been selected, the p-value is set to
+one for that bootstrap iteration, so when the “mean” p-value is
+calculated across bootstraps, the underestimation of the p-value due to
+model selection is attenuated, as the estimate gets “pulled up” by the
+1’s in the vector. Since this may be a conservative approach, we also
+display the “geometric” mean which is a measure of central tendency less
+sensitive to skew (which many p-values will be highly right skewed).
+More research must be done on these techniques to ensure adequate
+coverage properties, but given a high enough number of bootstrap samples
+they should both be more conservative than the naive, “pretend model
+selection never took place” approach. The downside here is that
+depending on the size of the data and the number of variables, this
+could take quite some time.</p>
+<p>Note that the mean p-value across bootstraps is bounded to be greater
+than 1-P(selected). In some sense, this makes sense, as if a variable
+has a low probability of being selected, then that variable should have
+a higher adjusted p-value. However, for variables whose effects will be
+highly related (i.e. an interaction and a constituent main effect), this
+may be too conservative.</p>
 <div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## Centered model</span></span>
@@ -1586,7 +1707,10 @@ Sepal.Length:Species_virginica
 <div class="section level2">
 <h2 id="use-case-lung-data">Use case: lung data<a class="anchor" aria-label="anchor" href="#use-case-lung-data"></a>
 </h2>
-<p>As a more realistic example, we take a data set that is often used to train models that can predict lung cancer status. It has 1027 observations and 14 covariates, including urban/rural, age, years of school, smoking years, number of children, etc.</p>
+<p>As a more realistic example, we take a data set that is often used to
+train models that can predict lung cancer status. It has 1027
+observations and 14 covariates, including urban/rural, age, years of
+school, smoking years, number of children, etc.</p>
 <p>First, let’s look at the data a little:</p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"irlcs_radon_syn"</span><span class="op">)</span></span>
@@ -1617,14 +1741,18 @@ Sepal.Length:Species_virginica
 <span><span class="co">##                   NA's   :51</span></span></code></pre>
 <p>Note:</p>
 <ul>
-<li>There are missing values for BMI - we will see how <code>sparseR</code> handles this.</li>
-<li>Everything is coded as numeric except the outcome, case (this is not necessary for <code>sparseR</code> to work), as we will see.</li>
+<li>There are missing values for BMI - we will see how
+<code>sparseR</code> handles this.</li>
+<li>Everything is coded as numeric except the outcome, case (this is not
+necessary for <code>sparseR</code> to work), as we will see.</li>
 <li>
-<code>ID</code> is an arbitrary identifying variable which should not be used in the modeling phase</li>
+<code>ID</code> is an arbitrary identifying variable which should
+not be used in the modeling phase</li>
 </ul>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">irlcs_radon_syn</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">irlcs_radon_syn</span>, <span class="op">-</span><span class="va">ID</span><span class="op">)</span></span></code></pre></div>
-<p>At this point, we will split the data into a test and training set.</p>
+<p>At this point, we will split the data into a test and training
+set.</p>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">13</span><span class="op">)</span></span>
 <span></span>
@@ -1635,7 +1763,14 @@ Sepal.Length:Species_virginica
 <div class="section level3">
 <h3 id="preprocessing">Preprocessing<a class="anchor" aria-label="anchor" href="#preprocessing"></a>
 </h3>
-<p>Although the <code><a href="../reference/sparseR.html">sparseR()</a></code> function will do it automatically, it’s generally a good idea to see how the data is being preprocessed and to examine how the model matrix is built before the regularization. We can see what <code>sparseR</code> does to preprocess the data by running the function <code>sparseR_prep</code>, which utilizes the <code>recipes</code> package to perform preprocessing. At no time is the outcome used to train any of the steps, except for the elimination of NA values if any exist.</p>
+<p>Although the <code><a href="../reference/sparseR.html">sparseR()</a></code> function will do it
+automatically, it’s generally a good idea to see how the data is being
+preprocessed and to examine how the model matrix is built before the
+regularization. We can see what <code>sparseR</code> does to preprocess
+the data by running the function <code>sparseR_prep</code>, which
+utilizes the <code>recipes</code> package to perform preprocessing. At
+no time is the outcome used to train any of the steps, except for the
+elimination of NA values if any exist.</p>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">prep_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">0</span>, poly <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">prep_obj</span></span></code></pre></div>
@@ -1662,12 +1797,19 @@ Sepal.Length:Species_virginica
 <span><span class="co">## Variables removed CASE [trained]</span></span>
 <span><span class="co">## Dummy variables from CITY, SCHOOL, PRELUNG, SMKEVER, SMKCUR [trained]</span></span>
 <span><span class="co">## Sparse, unbalanced variable filter removed SCHOOL_other [trained]</span></span></code></pre>
-<p>We see that the preprocessor did many things, among which it imputed the data for the missing value using the other predictors in the model. Apparently, by default, this preprocessor will remove variables with “near” zero variance, and that as a result, SMKYRS is not considered (it’s eliminated in an early step).</p>
+<p>We see that the preprocessor did many things, among which it imputed
+the data for the missing value using the other predictors in the model.
+Apparently, by default, this preprocessor will remove variables with
+“near” zero variance, and that as a result, SMKYRS is not considered
+(it’s eliminated in an early step).</p>
 <p>If we look at this variable, we see that it may be informative:</p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/truehist.html" class="external-link">truehist</a></span><span class="op">(</span><span class="va">train</span><span class="op">$</span><span class="va">SMKYRS</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-41-1.png" width="672"></p>
-<p>Therefore, we can tell the preprocessor not to filter this variable in two ways. First, we could tell it to use <code>zv</code> instead of <code>nzv</code>, in which case it will only remove zero variance predictors:</p>
+<p>Therefore, we can tell the preprocessor not to filter this variable
+in two ways. First, we could tell it to use <code>zv</code> instead of
+<code>nzv</code>, in which case it will only remove zero variance
+predictors:</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">0</span>, poly <span class="op">=</span> <span class="fl">1</span>, filter <span class="op">=</span> <span class="st">"zv"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Recipe</span></span>
@@ -1693,7 +1835,8 @@ Sepal.Length:Species_virginica
 <span><span class="co">## Variables removed CASE [trained]</span></span>
 <span><span class="co">## Dummy variables from CITY, SCHOOL, PRELUNG, SMKEVER, SMKCUR [trained]</span></span>
 <span><span class="co">## Zero variance filter removed &lt;none&gt; [trained]</span></span></code></pre>
-<p>Or, we could adjust the options for the near-zero variance filter (see <code><a href="https://recipes.tidymodels.org/reference/step_nzv.html" class="external-link">?recipes::step_nzv</a></code> for details):</p>
+<p>Or, we could adjust the options for the near-zero variance filter
+(see <code><a href="https://recipes.tidymodels.org/reference/step_nzv.html" class="external-link">?recipes::step_nzv</a></code> for details):</p>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">0</span>, poly <span class="op">=</span> <span class="fl">1</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unique_cut <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Recipe</span></span>
@@ -1719,7 +1862,10 @@ Sepal.Length:Species_virginica
 <span><span class="co">## Variables removed CASE [trained]</span></span>
 <span><span class="co">## Dummy variables from CITY, SCHOOL, PRELUNG, SMKEVER, SMKCUR [trained]</span></span>
 <span><span class="co">## Sparse, unbalanced variable filter removed SCHOOL_other [trained]</span></span></code></pre>
-<p>Notice that we haven’t told the preprocessor to build any interactions or polynomials of higher degree than 1. we can do this simply by setting <code>k</code> and <code>poly</code> respectively to higher numbers:</p>
+<p>Notice that we haven’t told the preprocessor to build any
+interactions or polynomials of higher degree than 1. we can do this
+simply by setting <code>k</code> and <code>poly</code> respectively to
+higher numbers:</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">1</span>, poly <span class="op">=</span> <span class="fl">1</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unique_cut <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Recipe</span></span>
@@ -1773,12 +1919,19 @@ Sepal.Length:Species_virginica
 <span><span class="co">## Interactions with (YRSHOME + AGE + SMKYRS + CHILDREN + PYR + PYRRATE... [trained]</span></span>
 <span><span class="co">## Orthogonal polynomials on YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRA... [trained]</span></span>
 <span><span class="co">## Sparse, unbalanced variable filter removed SCHOOL_other, YRSHOME:SCHOOL_X1, YRSHOM... [trained]</span></span></code></pre>
-<p><em>Note</em>: This preprocessor does not actually produce any data, it only prepares all of the steps. In the recipes package, this is known as <code>prep</code>ping the processor. the final step is called <code>bake</code>, where the data is fed through the processor and a new data set is returned.</p>
+<p><em>Note</em>: This preprocessor does not actually produce any data,
+it only prepares all of the steps. In the recipes package, this is known
+as <code>prep</code>ping the processor. the final step is called
+<code>bake</code>, where the data is fed through the processor and a new
+data set is returned.</p>
 </div>
 <div class="section level3">
 <h3 id="using-the-sparser-function">Using the <code>sparseR</code> function<a class="anchor" aria-label="anchor" href="#using-the-sparser-function"></a>
 </h3>
-<p>All of the preprocessing options can be accomplished through the main function for the package, <code>sparseR</code>. The following code runs a SRL model, an APL model, a main effects model, and an SRL with polynomials:</p>
+<p>All of the preprocessing options can be accomplished through the main
+function for the package, <code>sparseR</code>. The following code runs
+a SRL model, an APL model, a main effects model, and an SRL with
+polynomials:</p>
 <div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lso</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  SRL  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,            <span class="co">## SRL model</span></span>
@@ -1786,7 +1939,8 @@ Sepal.Length:Species_virginica
 <span>  ME   <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, k <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>,     <span class="co">## Main effects model</span></span>
 <span>  SRLp <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, poly <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>   <span class="co">## SRL + polynomials</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>The simple print method allows one to investigate all of these models</p>
+<p>The simple print method allows one to investigate all of these
+models</p>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lso</span></span></code></pre></div>
 <pre><code><span><span class="co">## $SRL</span></span>
@@ -1946,7 +2100,9 @@ Sepal.Length:Species_virginica
 <div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">scad</span>, <span class="va">plot</span>, log.l <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-54-1.png" width="672"></p>
-<p>Summaries (using <code>results_summary</code> and <code>results_1se_summary</code> values within each object; formatting omitted).</p>
+<p>Summaries (using <code>results_summary</code> and
+<code>results_1se_summary</code> values within each object; formatting
+omitted).</p>
 <div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">lso</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">results_summary</span>, <span class="va">x</span><span class="op">$</span><span class="va">results1se_summary</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">mcp</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">results_summary</span>, <span class="va">x</span><span class="op">$</span><span class="va">results1se_summary</span><span class="op">)</span><span class="op">)</span></span>
