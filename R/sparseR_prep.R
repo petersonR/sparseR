@@ -65,7 +65,7 @@ sparseR_prep <- function(formula, data, k = 1, poly = 1,
   }
 
   # must filter out censored predictors as well or will crash
-  rec_obj <- rec_obj %>% step_rm(has_type("censored"))
+  rec_obj <- rec_obj %>% step_rm(has_type("censored"), has_type("surv"))
 
   ## Filter out near-zero variance main effects
   if("nzv" %in% filter) {
@@ -95,8 +95,13 @@ sparseR_prep <- function(formula, data, k = 1, poly = 1,
 
   # Center
   p_early <- prep(rec_obj, data)
-  has_numeric_predictor <-
-    any(p_early$term_info$type[p_early$term_info$role == "predictor"] == "numeric")
+  has_numeric_predictor <- any(
+    vapply(
+      X = p_early$term_info$type[p_early$term_info$role == "predictor"],
+      FUN = function(x) "numeric" %in% x,
+      FUN.VALUE = logical(1)
+    )
+  )
 
   if("center" %in% pre_proc_opts & has_numeric_predictor) {
     if(!length(extra_opts$centers)) {
