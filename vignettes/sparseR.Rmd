@@ -317,22 +317,26 @@ summary(rbic2)
 
 Alternatively, sample splitting can be utilized to achieve valid inference. This method divides the data into two samples of equal size, uses the first sample to select the model, and the second one to fit and achieve valid (though potentially low-power) inference. Coefficients which are not selected are bestowed a p-value of 1. 
 
-```{r}
+```{r, eval = FALSE}
 s1 <- sparseRBIC_sampsplit(rbic1)
 ```
 
-```{r}
+```{r, echo = FALSE}
+s1 <- sparseRBIC_sampsplit(rbic1, S = 10)
+
 s1$results %>%
   kable(digits = 5) %>% 
   kable_styling(full_width = FALSE)
 ```
 
 
-```{r}
+```{r, eval = FALSE}
 s2 <- sparseRBIC_sampsplit(rbic2)
 ```
 
-```{r}
+```{r, echo = FALSE}
+s2 <- sparseRBIC_sampsplit(rbic2, S = 10)
+
 s2$results %>%
   kable(digits = 5) %>% 
   kable_styling(full_width = FALSE)
@@ -343,26 +347,32 @@ Additionally, inferences based on bootstrapped samples of the data are available
 
 Note that the mean p-value across bootstraps is bounded to be greater than 1-P(selected). In some sense, this makes sense, as if a variable has a low probability of being selected, then that variable should have a higher adjusted p-value. However, for variables whose effects will be highly related (i.e. an interaction and a constituent main effect), this may be too conservative.
 
-```{r, message=FALSE}
+```{r, eval = FALSE, message=FALSE}
 set.seed(1)
 ## Centered model
-b1 <- sparseRBIC_bootstrap(rbic1, B = 250)
+b1 <- sparseRBIC_bootstrap(rbic1)
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, message= FALSE}
+set.seed(1)
+b1 <- sparseRBIC_bootstrap(rbic1, B = 10)
+
 b1$results %>%
   kable(digits = 5) %>% 
   kable_styling(full_width = FALSE)
 ```
 
 
-```{r, message = FALSE}
+```{r, eval = FALSE, message = FALSE}
 set.seed(1)
 ## Uncentered model
-b2 <- sparseRBIC_bootstrap(rbic2, B = 250)
+b2 <- sparseRBIC_bootstrap(rbic2)
 ```
 
 ```{r, echo = FALSE}
+set.seed(1)
+b2 <- sparseRBIC_bootstrap(rbic2, B = 10)
+
 b2$results %>%
   kable(digits = 5) %>% 
   kable_styling(full_width = FALSE)
@@ -494,25 +504,17 @@ n <- lapply(mcp, plot, log.l = TRUE)
 par(old_par)
 ```
 
-SCAD: 
+SCAD (not evaluated): 
 
-```{r}
+```{r, echo = TRUE, eval = FALSE}
 scad <- list(
   SRS  = sparseR(CASE ~ ., train, seed = 1, penalty = "SCAD"),            ## SRS model
   APS  = sparseR(CASE ~ ., train, seed = 1, gamma = 0, penalty = "SCAD"), ## APS model
   MES   = sparseR(CASE ~ ., train, seed = 1, k = 0, penalty = "SCAD"),    ## Main effects SCAD model
   SRSp = sparseR(CASE ~ ., train, seed = 1, poly = 2, penalty = "SCAD")   ## SRS + polynomials
 )
-```
 
-```{r, echo = TRUE, eval = FALSE}
 n <- lapply(scad, plot, log.l = TRUE)
-```
-
-```{r, echo = FALSE, eval = TRUE, fig.height= 9, fig.width=7}
-old_par <- par(mfrow = c(4,2), mar = c(3, 4, 4, 2))
-n <- lapply(scad, plot, log.l = TRUE)
-par(old_par)
 ```
 
 Summaries (using `results_summary` and `results_1se_summary` values within each object; formatting omitted). 
@@ -520,7 +522,6 @@ Summaries (using `results_summary` and `results_1se_summary` values within each 
 ```{r, echo = TRUE, eval = FALSE}
 lapply(lso, function(x) bind_rows(x$results_summary, x$results1se_summary))
 lapply(mcp, function(x) bind_rows(x$results_summary, x$results1se_summary))
-lapply(scad, function(x) bind_rows(x$results_summary, x$results1se_summary))
 ```
 
 
@@ -534,13 +535,10 @@ mcp_sum <-
   lapply(mcp, function(x)
     bind_cols(x$results_summary[, c(1, 5, 2:4)], x$results1se_summary[, -c(1:2, 5)])) %>%
   bind_rows()
-scad_sum <-
-  lapply(scad, function(x)
-    bind_cols(x$results_summary[, c(1, 5, 2:4)], x$results1se_summary[, -c(1:2, 5)])) %>%
-  bind_rows()
 
-names(mcp_sum)[6:7] <- names(scad_sum)[6:7] <- names(lso_sum)[6:7] <- names(lso_sum)[4:5] <- names(mcp_sum)[4:5] <- names(scad_sum)[4:5] <-
+names(mcp_sum)[6:7] <- names(lso_sum)[6:7] <- names(lso_sum)[4:5] <- names(mcp_sum)[4:5] <- 
   c("Selected", "Saturation")
+  
 lso_sum %>% 
   kable(digits = 3) %>% 
   kable_styling("striped", full_width = FALSE) %>%
@@ -553,12 +551,6 @@ mcp_sum %>%
   add_header_above(header = c(" " = 3, "Min CV" = 2, "CV1se" = 2)) %>% 
   group_rows(index = c("SRM" = 2, "APM" = 2, "MEM" = 1, "SRMp" = 3)) 
   
-scad_sum %>% 
-  kable(digits = 3) %>% 
-  kable_styling("striped", full_width = FALSE) %>%
-  add_header_above(header = c(" " = 3, "Min CV" = 2, "CV1se" = 2)) %>% 
-  group_rows(index = c("SRS" = 2, "APS" = 2, "MES" = 1, "SRSp" = 3)) 
-    
 ```
 
 # Future work: 
@@ -613,10 +605,9 @@ lapply(lso, plot, log.l = TRUE)
 
 ```{r, eval = TRUE, echo=FALSE, fig.height=8, fig.width=7}
 old_par <- par(mfrow = c(4,2))
-lapply(lso, plot, log.l = TRUE)
+res <- lapply(lso, plot, log.l = TRUE)
 par(old_par)
 ```
-
 
 ## Use case: Shedden survival data
 
