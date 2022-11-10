@@ -1,17 +1,10 @@
 ## Release summary
 
-This is a resubmission of an initial release.
-
-In this version, I have done the following 
-in response to CRAN feedback:
-
-* Added an author/year name for DOI in DESCRIPTION
+This is a package update, attempting to fix CRAN check issues. 
 
 ## R CMD check results
 
-0 errors v | 0 warnings v | 1 notes v
-
-The single note refers to this being a new submission to CRAN. 
+0 errors v | 0 warnings v | 0 notes v
 
 R CMD check succeeded
 
