@@ -1,7 +1,7 @@
 ## Release summary
 
 This is a package update resubmission, fixes issues in tests with new version of update for ncvreg, 
-and an old call to citEntry().
+and an old call to citEntry(), and updated date field. 
 
 ## R CMD check results
 
