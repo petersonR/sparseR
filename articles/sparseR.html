@@ -8,10 +8,10 @@
 <meta name="description" content="sparseR">
 <title>Using the `sparseR` package • sparseR</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Using the `sparseR` package">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Using the `sparseR` package">
 <meta property="og:description" content="sparseR">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">sparseR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +72,7 @@
                         <h4 data-toc-skip class="author">Ryan A.
 Peterson</h4>
             
-            <h4 data-toc-skip class="date">2022-11-10</h4>
+            <h4 data-toc-skip class="date">2023-03-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/petersonR/sparseR/blob/HEAD/vignettes/sparseR.Rmd" class="external-link"><code>vignettes/sparseR.Rmd</code></a></small>
       <div class="d-none name"><code>sparseR.Rmd</code></div>
@@ -413,20 +413,20 @@ be passed into <code>sparseR_prep</code> as follows:</p>
 <span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">0</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>centers <span class="op">=</span> <span class="va">cc</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">c2min</span> <span class="op">&lt;-</span> <span class="fu">bake</span><span class="op">(</span><span class="va">p1</span>, <span class="va">iris</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 150 × 6</span></span></span>
-<span><span class="co">##    Sepal.Length Petal.Length Petal.Width Species_setosa Species_versic…¹ Speci…²</span></span>
-<span><span class="co">##           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>        0.966        0.227       0.131              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>        0.725        0.227       0.131              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>        0.483        0.170       0.131              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>        0.362        0.283       0.131              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>        0.845        0.227       0.131              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>        1.33         0.397       0.394              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>        0.362        0.227       0.262              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>        0.845        0.283       0.131              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>        0.121        0.227       0.131              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span>        0.725        0.283       0                  1                0       0</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 140 more rows, and abbreviated variable names ¹​Species_versicolor,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   ²​Species_virginica</span></span></span></code></pre>
+<span><span class="co">##    Sepal.Length Petal.Length Petal.Width Species_setosa Species_versicolor</span></span>
+<span><span class="co">##           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>        0.966        0.227       0.131              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>        0.725        0.227       0.131              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>        0.483        0.170       0.131              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>        0.362        0.283       0.131              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>        0.845        0.227       0.131              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>        1.33         0.397       0.394              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>        0.362        0.227       0.262              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>        0.845        0.283       0.131              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>        0.121        0.227       0.131              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>        0.725        0.283       0                  1                  0</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 140 more rows</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 1 more variable: Species_virginica &lt;dbl&gt;</span></span></span></code></pre>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">c2min</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   Sepal.Length     Petal.Length     Petal.Width     Species_setosa  </span></span>
@@ -452,20 +452,20 @@ covariate:</p>
 <code class="sourceCode R"><span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">0</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>center_fn <span class="op">=</span> <span class="va">min</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">c2min2</span> <span class="op">&lt;-</span> <span class="fu">bake</span><span class="op">(</span><span class="va">p2</span>, <span class="va">iris</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 150 × 6</span></span></span>
-<span><span class="co">##    Sepal.Length Petal.Length Petal.Width Species_setosa Species_versic…¹ Speci…²</span></span>
-<span><span class="co">##           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>        0.966        0.227       0.131              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>        0.725        0.227       0.131              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>        0.483        0.170       0.131              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>        0.362        0.283       0.131              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>        0.845        0.227       0.131              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>        1.33         0.397       0.394              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>        0.362        0.227       0.262              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>        0.845        0.283       0.131              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>        0.121        0.227       0.131              1                0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span>        0.725        0.283       0                  1                0       0</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 140 more rows, and abbreviated variable names ¹​Species_versicolor,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   ²​Species_virginica</span></span></span></code></pre>
+<span><span class="co">##    Sepal.Length Petal.Length Petal.Width Species_setosa Species_versicolor</span></span>
+<span><span class="co">##           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>        0.966        0.227       0.131              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>        0.725        0.227       0.131              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>        0.483        0.170       0.131              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>        0.362        0.283       0.131              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>        0.845        0.227       0.131              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>        1.33         0.397       0.394              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>        0.362        0.227       0.262              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>        0.845        0.283       0.131              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>        0.121        0.227       0.131              1                  0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>        0.725        0.283       0                  1                  0</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 140 more rows</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 1 more variable: Species_virginica &lt;dbl&gt;</span></span></span></code></pre>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">c2min2</span>, <span class="va">c2min</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
@@ -698,6 +698,12 @@ which are not selected are bestowed a p-value of 1.</p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_sampsplit.html">sparseRBIC_sampsplit</a></span><span class="op">(</span><span class="va">rbic1</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Note: sparseRBIC_sampsplit is currently experimental and may not behave as expected.</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: `progress_estimated()` was deprecated in dplyr 1.0.0.</span></span>
+<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">sparseR</span> package.</span></span>
+<span><span class="co">##   Please report the issue to the authors.</span></span>
+<span><span class="co">## <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">## <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">## <span style="color: #555555;">generated.</span></span></span></code></pre>
 <table class="table table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr>
 <th style="text-align:left;">
@@ -838,7 +844,7 @@ Petal.Length
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_sampsplit.html">sparseRBIC_sampsplit</a></span><span class="op">(</span><span class="va">rbic2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Note: sparseRBIC_sampsplit is currently experimental and may not behave as expected.</span></span></code></pre>
 <table class="table table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -865,13 +871,13 @@ Gmean_p
 (Intercept)
 </td>
 <td style="text-align:right;">
-0.04286
+0.06824
 </td>
 <td style="text-align:right;">
-0.24330
+0.20677
 </td>
 <td style="text-align:right;">
-0.02898
+0.02296
 </td>
 <td style="text-align:right;">
 100
@@ -882,13 +888,13 @@ Gmean_p
 Species_setosa
 </td>
 <td style="text-align:right;">
-0.09819
+0.13169
 </td>
 <td style="text-align:right;">
-0.16317
+0.16973
 </td>
 <td style="text-align:right;">
-0.00690
+0.01113
 </td>
 <td style="text-align:right;">
 100
@@ -930,16 +936,16 @@ Petal.Width
 </tr>
 <tr>
 <td style="text-align:left;">
-Species_virginica
+Species_versicolor
 </td>
 <td style="text-align:right;">
 1.00000
 </td>
 <td style="text-align:right;">
-0.71881
+0.72213
 </td>
 <td style="text-align:right;">
-0.38100
+0.39400
 </td>
 <td style="text-align:right;">
 30
@@ -964,23 +970,6 @@ Sepal.Length:Species_setosa
 </tr>
 <tr>
 <td style="text-align:left;">
-Species_versicolor
-</td>
-<td style="text-align:right;">
-1.00000
-</td>
-<td style="text-align:right;">
-0.81515
-</td>
-<td style="text-align:right;">
-0.57679
-</td>
-<td style="text-align:right;">
-20
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 Petal.Width:Species_setosa
 </td>
 <td style="text-align:right;">
@@ -991,6 +980,23 @@ Petal.Width:Species_setosa
 </td>
 <td style="text-align:right;">
 0.90718
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Species_virginica
+</td>
+<td style="text-align:right;">
+1.00000
+</td>
+<td style="text-align:right;">
+0.81183
+</td>
+<td style="text-align:right;">
+0.55776
 </td>
 <td style="text-align:right;">
 20
@@ -1054,7 +1060,7 @@ has a low probability of being selected, then that variable should have
 a higher adjusted p-value. However, for variables whose effects will be
 highly related (i.e. an interaction and a constituent main effect), this
 may be too conservative.</p>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## Centered model</span></span>
 <span><span class="va">b1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_bootstrap.html">sparseRBIC_bootstrap</a></span><span class="op">(</span><span class="va">rbic1</span><span class="op">)</span></span></code></pre></div>
@@ -1230,7 +1236,7 @@ Sepal.Length:Petal.Length
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## Uncentered model</span></span>
 <span><span class="va">b2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_bootstrap.html">sparseRBIC_bootstrap</a></span><span class="op">(</span><span class="va">rbic2</span><span class="op">)</span></span></code></pre></div>
@@ -1418,7 +1424,7 @@ train models that can predict lung cancer status. It has 1027
 observations and 14 covariates, including urban/rural, age, years of
 school, smoking years, number of children, etc.</p>
 <p>First, let’s look at the data a little:</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"irlcs_radon_syn"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">irlcs_radon_syn</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##        ID         CITY       YRSHOME          AGE        CASE    SCHOOL </span></span>
@@ -1455,11 +1461,11 @@ necessary for <code>sparseR</code> to work), as we will see.</li>
 <code>ID</code> is an arbitrary identifying variable which should
 not be used in the modeling phase</li>
 </ul>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">irlcs_radon_syn</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">irlcs_radon_syn</span>, <span class="op">-</span><span class="va">ID</span><span class="op">)</span></span></code></pre></div>
 <p>At this point, we will split the data into a test and training
 set.</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">13</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">N</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">irlcs_radon_syn</span><span class="op">)</span></span>
@@ -1477,154 +1483,166 @@ the data by running the function <code>sparseR_prep</code>, which
 utilizes the <code>recipes</code> package to perform preprocessing. At
 no time is the outcome used to train any of the steps, except for the
 elimination of NA values if any exist.</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">prep_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">0</span>, poly <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">prep_obj</span></span></code></pre></div>
-<pre><code><span><span class="co">## Recipe</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Inputs:</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##       role #variables</span></span>
-<span><span class="co">##      dummy          4</span></span>
-<span><span class="co">##    outcome          1</span></span>
-<span><span class="co">##  predictor         10</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Training data contained 770 data points and 43 incomplete rows. </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Operations:</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Variables removed &lt;none&gt; [trained]</span></span>
-<span><span class="co">## Sparse, unbalanced variable filter removed &lt;none&gt; [trained]</span></span>
-<span><span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span>
-<span><span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span>
-<span><span class="co">## Collapsing factor levels for SCHOOL [trained]</span></span>
-<span><span class="co">## K-nearest neighbor imputation for YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, PYR, P... [trained]</span></span>
-<span><span class="co">## Removing rows with NA values in CITY, YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, P... [trained]</span></span>
-<span><span class="co">## Variables removed CASE [trained]</span></span>
-<span><span class="co">## Dummy variables from CITY, SCHOOL, PRELUNG, SMKEVER, SMKCUR [trained]</span></span>
-<span><span class="co">## Sparse, unbalanced variable filter removed SCHOOL_other [trained]</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Recipe</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────────────────</span></span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Inputs</span></span></code></pre>
+<pre><code><span><span class="co">## Number of variables by role</span></span></code></pre>
+<pre><code><span><span class="co">## outcome:    1</span></span>
+<span><span class="co">## predictor: 10</span></span>
+<span><span class="co">## dummy:      4</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Training information</span></span></code></pre>
+<pre><code><span><span class="co">## Training data contained 770 data points and 43 incomplete rows.</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Operations</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Variables removed: <span style="color: #0000BB;">&lt;none&gt;</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Sparse, unbalanced variable filter removed: <span style="color: #0000BB;">&lt;none&gt;</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Scaling for: <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SMKYRS</span>, <span style="color: #0000BB;">CHILDREN</span>, <span style="color: #0000BB;">PYR</span>, <span style="color: #0000BB;">PYRRATE</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Collapsing factor levels for: <span style="color: #0000BB;">SCHOOL</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> K-nearest neighbor imputation for: <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SCHOOL</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Removing rows with NA values in: <span style="color: #0000BB;">CITY</span>, <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SCHOOL</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Variables removed: <span style="color: #0000BB;">CASE</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Dummy variables from: <span style="color: #0000BB;">CITY</span>, <span style="color: #0000BB;">SCHOOL</span>, <span style="color: #0000BB;">PRELUNG</span>, <span style="color: #0000BB;">SMKEVER</span>, <span style="color: #0000BB;">SMKCUR</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Sparse, unbalanced variable filter removed: <span style="color: #0000BB;">SCHOOL_other</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
 <p>We see that the preprocessor did many things, among which it imputed
 the data for the missing value using the other predictors in the model.
 Apparently, by default, this preprocessor will remove variables with
 “near” zero variance, and that as a result, SMKYRS is not considered
 (it’s eliminated in an early step).</p>
 <p>If we look at this variable, we see that it may be informative:</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/truehist.html" class="external-link">truehist</a></span><span class="op">(</span><span class="va">train</span><span class="op">$</span><span class="va">SMKYRS</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-41-1.png" width="672"></p>
 <p>Therefore, we can tell the preprocessor not to filter this variable
 in two ways. First, we could tell it to use <code>zv</code> instead of
 <code>nzv</code>, in which case it will only remove zero variance
 predictors:</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">0</span>, poly <span class="op">=</span> <span class="fl">1</span>, filter <span class="op">=</span> <span class="st">"zv"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Recipe</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Inputs:</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##       role #variables</span></span>
-<span><span class="co">##      dummy          4</span></span>
-<span><span class="co">##    outcome          1</span></span>
-<span><span class="co">##  predictor         10</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Training data contained 770 data points and 43 incomplete rows. </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Operations:</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Variables removed &lt;none&gt; [trained]</span></span>
-<span><span class="co">## Zero variance filter removed &lt;none&gt; [trained]</span></span>
-<span><span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span>
-<span><span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span>
-<span><span class="co">## Collapsing factor levels for SCHOOL [trained]</span></span>
-<span><span class="co">## K-nearest neighbor imputation for YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, PYR, P... [trained]</span></span>
-<span><span class="co">## Removing rows with NA values in CITY, YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, P... [trained]</span></span>
-<span><span class="co">## Variables removed CASE [trained]</span></span>
-<span><span class="co">## Dummy variables from CITY, SCHOOL, PRELUNG, SMKEVER, SMKCUR [trained]</span></span>
-<span><span class="co">## Zero variance filter removed &lt;none&gt; [trained]</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Recipe</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────────────────</span></span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Inputs</span></span></code></pre>
+<pre><code><span><span class="co">## Number of variables by role</span></span></code></pre>
+<pre><code><span><span class="co">## outcome:    1</span></span>
+<span><span class="co">## predictor: 10</span></span>
+<span><span class="co">## dummy:      4</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Training information</span></span></code></pre>
+<pre><code><span><span class="co">## Training data contained 770 data points and 43 incomplete rows.</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Operations</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Variables removed: <span style="color: #0000BB;">&lt;none&gt;</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Zero variance filter removed: <span style="color: #0000BB;">&lt;none&gt;</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Scaling for: <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SMKYRS</span>, <span style="color: #0000BB;">CHILDREN</span>, <span style="color: #0000BB;">PYR</span>, <span style="color: #0000BB;">PYRRATE</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Collapsing factor levels for: <span style="color: #0000BB;">SCHOOL</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> K-nearest neighbor imputation for: <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SCHOOL</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Removing rows with NA values in: <span style="color: #0000BB;">CITY</span>, <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SCHOOL</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Variables removed: <span style="color: #0000BB;">CASE</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Dummy variables from: <span style="color: #0000BB;">CITY</span>, <span style="color: #0000BB;">SCHOOL</span>, <span style="color: #0000BB;">PRELUNG</span>, <span style="color: #0000BB;">SMKEVER</span>, <span style="color: #0000BB;">SMKCUR</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Zero variance filter removed: <span style="color: #0000BB;">&lt;none&gt;</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
 <p>Or, we could adjust the options for the near-zero variance filter
 (see <code><a href="https://recipes.tidymodels.org/reference/step_nzv.html" class="external-link">?recipes::step_nzv</a></code> for details):</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">0</span>, poly <span class="op">=</span> <span class="fl">1</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unique_cut <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Recipe</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Inputs:</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##       role #variables</span></span>
-<span><span class="co">##      dummy          4</span></span>
-<span><span class="co">##    outcome          1</span></span>
-<span><span class="co">##  predictor         10</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Training data contained 770 data points and 43 incomplete rows. </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Operations:</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Variables removed &lt;none&gt; [trained]</span></span>
-<span><span class="co">## Sparse, unbalanced variable filter removed &lt;none&gt; [trained]</span></span>
-<span><span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span>
-<span><span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span>
-<span><span class="co">## Collapsing factor levels for SCHOOL [trained]</span></span>
-<span><span class="co">## K-nearest neighbor imputation for YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, PYR, P... [trained]</span></span>
-<span><span class="co">## Removing rows with NA values in CITY, YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, P... [trained]</span></span>
-<span><span class="co">## Variables removed CASE [trained]</span></span>
-<span><span class="co">## Dummy variables from CITY, SCHOOL, PRELUNG, SMKEVER, SMKCUR [trained]</span></span>
-<span><span class="co">## Sparse, unbalanced variable filter removed SCHOOL_other [trained]</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Recipe</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────────────────</span></span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Inputs</span></span></code></pre>
+<pre><code><span><span class="co">## Number of variables by role</span></span></code></pre>
+<pre><code><span><span class="co">## outcome:    1</span></span>
+<span><span class="co">## predictor: 10</span></span>
+<span><span class="co">## dummy:      4</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Training information</span></span></code></pre>
+<pre><code><span><span class="co">## Training data contained 770 data points and 43 incomplete rows.</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Operations</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Variables removed: <span style="color: #0000BB;">&lt;none&gt;</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Sparse, unbalanced variable filter removed: <span style="color: #0000BB;">&lt;none&gt;</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Scaling for: <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SMKYRS</span>, <span style="color: #0000BB;">CHILDREN</span>, <span style="color: #0000BB;">PYR</span>, <span style="color: #0000BB;">PYRRATE</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Collapsing factor levels for: <span style="color: #0000BB;">SCHOOL</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> K-nearest neighbor imputation for: <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SCHOOL</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Removing rows with NA values in: <span style="color: #0000BB;">CITY</span>, <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SCHOOL</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Variables removed: <span style="color: #0000BB;">CASE</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Dummy variables from: <span style="color: #0000BB;">CITY</span>, <span style="color: #0000BB;">SCHOOL</span>, <span style="color: #0000BB;">PRELUNG</span>, <span style="color: #0000BB;">SMKEVER</span>, <span style="color: #0000BB;">SMKCUR</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Sparse, unbalanced variable filter removed: <span style="color: #0000BB;">SCHOOL_other</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
 <p>Notice that we haven’t told the preprocessor to build any
 interactions or polynomials of higher degree than 1. we can do this
 simply by setting <code>k</code> and <code>poly</code> respectively to
 higher numbers:</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">1</span>, poly <span class="op">=</span> <span class="fl">1</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unique_cut <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Recipe</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Inputs:</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##       role #variables</span></span>
-<span><span class="co">##      dummy          4</span></span>
-<span><span class="co">##    outcome          1</span></span>
-<span><span class="co">##  predictor         10</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Training data contained 770 data points and 43 incomplete rows. </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Operations:</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Variables removed &lt;none&gt; [trained]</span></span>
-<span><span class="co">## Sparse, unbalanced variable filter removed &lt;none&gt; [trained]</span></span>
-<span><span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span>
-<span><span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span>
-<span><span class="co">## Collapsing factor levels for SCHOOL [trained]</span></span>
-<span><span class="co">## K-nearest neighbor imputation for YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, PYR, P... [trained]</span></span>
-<span><span class="co">## Removing rows with NA values in CITY, YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, P... [trained]</span></span>
-<span><span class="co">## Variables removed CASE [trained]</span></span>
-<span><span class="co">## Dummy variables from CITY, SCHOOL, PRELUNG, SMKEVER, SMKCUR [trained]</span></span>
-<span><span class="co">## Interactions with (YRSHOME + AGE + SMKYRS + CHILDREN + PYR + PYRRATE... [trained]</span></span>
-<span><span class="co">## Sparse, unbalanced variable filter removed SCHOOL_other, YRSHOME:SCHOOL_X1, YRSHOM... [trained]</span></span></code></pre>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Recipe</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────────────────</span></span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Inputs</span></span></code></pre>
+<pre><code><span><span class="co">## Number of variables by role</span></span></code></pre>
+<pre><code><span><span class="co">## outcome:    1</span></span>
+<span><span class="co">## predictor: 10</span></span>
+<span><span class="co">## dummy:      4</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Training information</span></span></code></pre>
+<pre><code><span><span class="co">## Training data contained 770 data points and 43 incomplete rows.</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Operations</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Variables removed: <span style="color: #0000BB;">&lt;none&gt;</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Sparse, unbalanced variable filter removed: <span style="color: #0000BB;">&lt;none&gt;</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Scaling for: <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SMKYRS</span>, <span style="color: #0000BB;">CHILDREN</span>, <span style="color: #0000BB;">PYR</span>, <span style="color: #0000BB;">PYRRATE</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Collapsing factor levels for: <span style="color: #0000BB;">SCHOOL</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> K-nearest neighbor imputation for: <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SCHOOL</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Removing rows with NA values in: <span style="color: #0000BB;">CITY</span>, <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SCHOOL</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Variables removed: <span style="color: #0000BB;">CASE</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Dummy variables from: <span style="color: #0000BB;">CITY</span>, <span style="color: #0000BB;">SCHOOL</span>, <span style="color: #0000BB;">PRELUNG</span>, <span style="color: #0000BB;">SMKEVER</span>, <span style="color: #0000BB;">SMKCUR</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Interactions with: <span style="color: #0000BB;">(YRSHOME + AGE + SMKYRS + CHILDREN + PYR + PYRRATE +</span></span></span>
+<span><span class="co">##   <span style="color: #0000BB;">SMKQUIT + BMI + WLM20 + (CITY_X0 + CITY_X1 + SCHOOL_X1 + SCHOOL_X2 +</span></span></span>
+<span><span class="co">##   <span style="color: #0000BB;">SCHOOL_X3 + SCHOOL_X4 + SCHOOL_other + PRELUNG_X0 + PRELUNG_X1 + SMKEVER_X0 +</span></span></span>
+<span><span class="co">##   <span style="color: #0000BB;">SMKEVER_X1 + SMKCUR_X0 + SMKCUR_X1)) * (YRSHOME + AGE + SMKYRS + CHILDREN +</span></span></span>
+<span><span class="co">##   <span style="color: #0000BB;">PYR + PYRRATE + SMKQUIT + BMI + WLM20 + (CITY_X0 + CITY_X1 + SCHOOL_X1 +</span></span></span>
+<span><span class="co">##   <span style="color: #0000BB;">SCHOOL_X2 + SCHOOL_X3 + SCHOOL_X4 + SCHOOL_other + PRELUNG_X0 + PRELUNG_X1 +</span></span></span>
+<span><span class="co">##   <span style="color: #0000BB;">SMKEVER_X0 + SMKEVER_X1 + SMKCUR_X0 + SMKCUR_X1))</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Sparse, unbalanced variable filter removed: <span style="color: #0000BB;">SCHOOL_other</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">1</span>, poly <span class="op">=</span> <span class="fl">2</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unique_cut <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Recipe</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Inputs:</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##       role #variables</span></span>
-<span><span class="co">##      dummy          4</span></span>
-<span><span class="co">##    outcome          1</span></span>
-<span><span class="co">##  predictor         10</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Training data contained 770 data points and 43 incomplete rows. </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Operations:</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Variables removed &lt;none&gt; [trained]</span></span>
-<span><span class="co">## Sparse, unbalanced variable filter removed &lt;none&gt; [trained]</span></span>
-<span><span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span>
-<span><span class="co">## Scaling for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span>
-<span><span class="co">## Collapsing factor levels for SCHOOL [trained]</span></span>
-<span><span class="co">## K-nearest neighbor imputation for YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, PYR, P... [trained]</span></span>
-<span><span class="co">## Removing rows with NA values in CITY, YRSHOME, AGE, SCHOOL, SMKYRS, CHILDREN, P... [trained]</span></span>
-<span><span class="co">## Variables removed CASE [trained]</span></span>
-<span><span class="co">## Dummy variables from CITY, SCHOOL, PRELUNG, SMKEVER, SMKCUR [trained]</span></span>
-<span><span class="co">## Interactions with (YRSHOME + AGE + SMKYRS + CHILDREN + PYR + PYRRATE... [trained]</span></span>
-<span><span class="co">## Orthogonal polynomials on YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRA... [trained]</span></span>
-<span><span class="co">## Sparse, unbalanced variable filter removed SCHOOL_other, YRSHOME:SCHOOL_X1, YRSHOM... [trained]</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Recipe</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────────────────</span></span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Inputs</span></span></code></pre>
+<pre><code><span><span class="co">## Number of variables by role</span></span></code></pre>
+<pre><code><span><span class="co">## outcome:    1</span></span>
+<span><span class="co">## predictor: 10</span></span>
+<span><span class="co">## dummy:      4</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Training information</span></span></code></pre>
+<pre><code><span><span class="co">## Training data contained 770 data points and 43 incomplete rows.</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span></code></pre>
+<pre><code><span><span class="co">## ── Operations</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Variables removed: <span style="color: #0000BB;">&lt;none&gt;</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Sparse, unbalanced variable filter removed: <span style="color: #0000BB;">&lt;none&gt;</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## Centering to mean for YRSHOME, AGE, SMKYRS, CHILDREN, PYR, PYRRATE, S... [trained]</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Scaling for: <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SMKYRS</span>, <span style="color: #0000BB;">CHILDREN</span>, <span style="color: #0000BB;">PYR</span>, <span style="color: #0000BB;">PYRRATE</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Collapsing factor levels for: <span style="color: #0000BB;">SCHOOL</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> K-nearest neighbor imputation for: <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SCHOOL</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Removing rows with NA values in: <span style="color: #0000BB;">CITY</span>, <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SCHOOL</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Variables removed: <span style="color: #0000BB;">CASE</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Dummy variables from: <span style="color: #0000BB;">CITY</span>, <span style="color: #0000BB;">SCHOOL</span>, <span style="color: #0000BB;">PRELUNG</span>, <span style="color: #0000BB;">SMKEVER</span>, <span style="color: #0000BB;">SMKCUR</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Interactions with: <span style="color: #0000BB;">(YRSHOME + AGE + SMKYRS + CHILDREN + PYR + PYRRATE +</span></span></span>
+<span><span class="co">##   <span style="color: #0000BB;">SMKQUIT + BMI + WLM20 + (CITY_X0 + CITY_X1 + SCHOOL_X1 + SCHOOL_X2 +</span></span></span>
+<span><span class="co">##   <span style="color: #0000BB;">SCHOOL_X3 + SCHOOL_X4 + SCHOOL_other + PRELUNG_X0 + PRELUNG_X1 + SMKEVER_X0 +</span></span></span>
+<span><span class="co">##   <span style="color: #0000BB;">SMKEVER_X1 + SMKCUR_X0 + SMKCUR_X1)) * (YRSHOME + AGE + SMKYRS + CHILDREN +</span></span></span>
+<span><span class="co">##   <span style="color: #0000BB;">PYR + PYRRATE + SMKQUIT + BMI + WLM20 + (CITY_X0 + CITY_X1 + SCHOOL_X1 +</span></span></span>
+<span><span class="co">##   <span style="color: #0000BB;">SCHOOL_X2 + SCHOOL_X3 + SCHOOL_X4 + SCHOOL_other + PRELUNG_X0 + PRELUNG_X1 +</span></span></span>
+<span><span class="co">##   <span style="color: #0000BB;">SMKEVER_X0 + SMKEVER_X1 + SMKCUR_X0 + SMKCUR_X1))</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Orthogonal polynomials on: <span style="color: #0000BB;">YRSHOME</span>, <span style="color: #0000BB;">AGE</span>, <span style="color: #0000BB;">SMKYRS</span>, <span style="color: #0000BB;">CHILDREN</span>, <span style="color: #0000BB;">PYR</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Sparse, unbalanced variable filter removed: <span style="color: #0000BB;">SCHOOL_other</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
 <p><em>Note</em>: This preprocessor does not actually produce any data,
 it only prepares all of the steps. In the recipes package, this is known
 as <code>prep</code>ping the processor. the final step is called
@@ -1638,7 +1656,7 @@ data set is returned.</p>
 function for the package, <code>sparseR</code>. The following code runs
 a SRL model, an APL model, a main effects model, and an SRL with
 polynomials:</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lso</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  SRL  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,            <span class="co">## SRL model</span></span>
 <span>  APL  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, gamma <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>, <span class="co">## APL model</span></span>
@@ -1647,7 +1665,7 @@ polynomials:</p>
 <span><span class="op">)</span></span></code></pre></div>
 <p>The simple print method allows one to investigate all of these
 models</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lso</span></span></code></pre></div>
 <pre><code><span><span class="co">## $SRL</span></span>
 <span><span class="co">## </span></span>
@@ -1781,22 +1799,22 @@ models</p>
 <span><span class="co">##  Order 1 interaction   174        0      0.000   13.19</span></span>
 <span><span class="co">##   Order 2 polynomial     9        1      0.111    5.48</span></span></code></pre>
 <p>Similarly, plots can be produced of all of these figures:</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">lso</span>, <span class="va">plot</span>, log.l <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-48-1.png" width="672"></p>
 <p>MCP:</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mcp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  SRM  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, penalty <span class="op">=</span> <span class="st">"MCP"</span><span class="op">)</span>,            <span class="co">## SRM model</span></span>
 <span>  APM  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, gamma <span class="op">=</span> <span class="fl">0</span>, penalty <span class="op">=</span> <span class="st">"MCP"</span><span class="op">)</span>, <span class="co">## APM model</span></span>
 <span>  MEM   <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, k <span class="op">=</span> <span class="fl">0</span>, penalty <span class="op">=</span> <span class="st">"MCP"</span><span class="op">)</span>,     <span class="co">## Main effects MCP model</span></span>
 <span>  SRMp <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, poly <span class="op">=</span> <span class="fl">2</span>, penalty <span class="op">=</span> <span class="st">"MCP"</span><span class="op">)</span>   <span class="co">## SRM + polynomials</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">mcp</span>, <span class="va">plot</span>, log.l <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-51-1.png" width="672"></p>
 <p>SCAD (not evaluated):</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scad</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  SRS  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, penalty <span class="op">=</span> <span class="st">"SCAD"</span><span class="op">)</span>,            <span class="co">## SRS model</span></span>
 <span>  APS  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, gamma <span class="op">=</span> <span class="fl">0</span>, penalty <span class="op">=</span> <span class="st">"SCAD"</span><span class="op">)</span>, <span class="co">## APS model</span></span>
@@ -1808,7 +1826,7 @@ models</p>
 <p>Summaries (using <code>results_summary</code> and
 <code>results_1se_summary</code> values within each object; formatting
 omitted).</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">lso</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">results_summary</span>, <span class="va">x</span><span class="op">$</span><span class="va">results1se_summary</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">mcp</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">results_summary</span>, <span class="va">x</span><span class="op">$</span><span class="va">results1se_summary</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -2314,7 +2332,7 @@ Order 2 polynomial
 <div class="section level3">
 <h3 id="use-case-heart-data">Use case: heart data<a class="anchor" aria-label="anchor" href="#use-case-heart-data"></a>
 </h3>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Load Data set, correctly code factors + outcome</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"Detrano"</span><span class="op">)</span></span>
 <span><span class="va">cleveland</span><span class="op">$</span><span class="va">thal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">cleveland</span><span class="op">$</span><span class="va">thal</span><span class="op">)</span></span>
@@ -2354,13 +2372,13 @@ Order 2 polynomial
 <span><span class="co">##  3rd Qu.:2.0000   3rd Qu.:1.0000  </span></span>
 <span><span class="co">##  Max.   :4.0000   Max.   :1.0000  </span></span>
 <span><span class="co">## </span></span></code></pre>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">cleveland</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##      age      sex       cp trestbps     chol      fbs  restecg  thalach </span></span>
 <span><span class="co">##       41        2        4       50      152        2        3       91 </span></span>
 <span><span class="co">##    exang  oldpeak    slope       ca     thal      num     case </span></span>
 <span><span class="co">##        2       40        3        5        4        5        2</span></span></code></pre>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cleveland</span><span class="op">$</span><span class="va">sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">cleveland</span><span class="op">$</span><span class="va">sex</span><span class="op">)</span></span>
 <span><span class="va">cleveland</span><span class="op">$</span><span class="va">fbs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">cleveland</span><span class="op">$</span><span class="va">fbs</span><span class="op">)</span></span>
 <span><span class="va">cleveland</span><span class="op">$</span><span class="va">exang</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">cleveland</span><span class="op">$</span><span class="va">exang</span><span class="op">)</span></span>
@@ -2518,10 +2536,10 @@ Order 2 polynomial
 <span><span class="co">##          Main effect    18        8      0.444    4.24</span></span>
 <span><span class="co">##  Order 1 interaction   135        0      0.000   11.62</span></span>
 <span><span class="co">##   Order 2 polynomial     9        0      0.000    5.20</span></span></code></pre>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">lso</span><span class="op">$</span><span class="va">SRL</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-55-1.png" width="672"><img src="sparseR_files/figure-html/unnamed-chunk-55-2.png" width="672"></p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">lso</span>, <span class="va">plot</span>, log.l <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-57-1.png" width="672"></p>
 </div>
@@ -2544,7 +2562,7 @@ Order 2 polynomial
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
     </footer>
