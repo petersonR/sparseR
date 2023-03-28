@@ -1,4 +1,4 @@
-citEntry(entry = "article",
+bibentry(bibtype = "article",
          title = "Ranked Sparsity: A Cogent Regularization Framework for Selecting and Estimating Feature Interactions and Polynomials",
          author = c(as.person("Ryan A. Peterson"), as.person("Joseph E. Cavanaugh")),
          year = "2022",

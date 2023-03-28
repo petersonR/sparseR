@@ -2,6 +2,7 @@
 
 - update readme
 - Fix bad test in test_sparseR_surv.R
+- Fix citation style for CRAN check
 
 # 0.2.0
 

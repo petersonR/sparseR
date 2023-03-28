@@ -1,6 +1,7 @@
 ## Release summary
 
-This is a resubmission of package update, attempting to fix CRAN check issues. 
+This is a package update resubmission, fixes issues in tests with new version of update for ncvreg, 
+and an old call to citEntry().
 
 ## R CMD check results
 
