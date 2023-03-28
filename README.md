@@ -53,10 +53,6 @@ data(iris)
 set.seed(1321)
 
 srl <- sparseR(Sepal.Width ~ ., data = iris, k = 1, seed = 1)
-#> Warning: `terms_select()` was deprecated in recipes 0.1.17.
-#> Please use `recipes_eval_select()` instead.
-#> This warning is displayed once every 8 hours.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
 srl
 #> 
 #> Model summary @ min CV:

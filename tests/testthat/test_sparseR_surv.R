@@ -36,17 +36,17 @@ set.seed(123)
 
 test_that("Different vals of k and poly work, sheddon", {
 
-  srp <- sparseR_prep(formula = ~., data = Z)
+  expect_silent(srp <- sparseR_prep(formula = ~., data = Z))
   X <- bake(srp, new_data = Z)
 
-  srp2 <- sparseR_prep(survtime~., data = data.frame(survtime = S, Z), family = "coxph")
+  expect_silent(srp2 <- sparseR_prep(survtime~., data = data.frame(survtime = S, Z), family = "coxph"))
 
-  sr_cox <- sparseR(survtime~., data = data.frame(survtime = S, Z),
-                    family = "coxph", cumulative_k = TRUE)
+  expect_silent(sr_cox <- sparseR(survtime~., data = data.frame(survtime = S, Z),
+                    family = "coxph", cumulative_k = TRUE))
 
-  plot(sr_cox)
-  expect_warning(effect_plot(sr_cox, coef_name = "Age", by = "Sex"))
-  apl_cox <- sparseR(model_matrix = X, y = S, gamma = 0,
-                     pre_process = FALSE, family = "coxph")
+  expect_silent(plot(sr_cox))
+  expect_silent(suppressWarnings(effect_plot(sr_cox, coef_name = "Age", by = "Sex")))
+  expect_silent(apl_cox <- sparseR(model_matrix = X, y = S, gamma = 0,
+                     pre_process = FALSE, family = "coxph"))
 })
 

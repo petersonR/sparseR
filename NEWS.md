@@ -1,6 +1,7 @@
-# 0.2.0.9000
+# 0.2.2
 
 - update readme
+- Fix bad test in test_sparseR_surv
 
 # 0.2.0
 
