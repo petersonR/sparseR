@@ -72,7 +72,7 @@
                         <h4 data-toc-skip class="author">Ryan A.
 Peterson</h4>
             
-            <h4 data-toc-skip class="date">2023-03-28</h4>
+            <h4 data-toc-skip class="date">2023-05-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/petersonR/sparseR/blob/HEAD/vignettes/sparseR.Rmd" class="external-link"><code>vignettes/sparseR.Rmd</code></a></small>
       <div class="d-none name"><code>sparseR.Rmd</code></div>
@@ -147,8 +147,9 @@ for reproducibililty).</p>
 <code class="sourceCode R"><span><span class="va">srl</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ min CV:</span></span>
-<span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=150, p=18</span></span>
+<span><span class="co">## -----------------------------------------------------</span></span></code></pre>
+<pre><code><span><span class="co">## Using a basic kernel estimate for local fdr; consider installing the ashr package for more accurate estimation.  See ?local_mfdr</span></span></code></pre>
+<pre><code><span><span class="co">##   lasso-penalized linear regression with n=150, p=18</span></span>
 <span><span class="co">##   (At lambda=0.0015):</span></span>
 <span><span class="co">##     Nonzero coefficients: 10</span></span>
 <span><span class="co">##     Cross-validation error (deviance): 0.07</span></span>
@@ -178,12 +179,11 @@ for reproducibililty).</p>
 <span><span class="co">##  Order 1 interaction    12        4      0.333    3.46</span></span></code></pre>
 <p>For more detailed model information, the <code>summary</code> method
 for <code>sparseR</code> objects displays more information about the
-fits (see <code><a href="https://rdrr.io/pkg/ncvreg/man/summary-ncvreg.html" class="external-link">?ncvreg::summary.ncvreg</a></code> for more
+fits (see <code><a href="https://rdrr.io/pkg/ncvreg/man/summary.ncvreg.html" class="external-link">?ncvreg::summary.ncvreg</a></code> for more
 information).</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># At the lambda which minimizes CVE</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl</span>, at <span class="op">=</span> <span class="st">"cvmin"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Using a basic kernel estimate for local fdr; consider installing the ashr package for more accurate estimation.  See ?local_mfdr</span></span></code></pre>
 <pre><code><span><span class="co">## lasso-penalized linear regression with n=150, p=18</span></span>
 <span><span class="co">## At lambda=0.0015:</span></span>
 <span><span class="co">## -------------------------------------------------</span></span>
@@ -202,7 +202,7 @@ information).</p>
 <span><span class="co">## Petal.Length:Petal.Width         0.04928  2.0135 0.71570426        *</span></span>
 <span><span class="co">## Petal.Length                    -0.02042 -1.1660 1.00000000        *</span></span>
 <span><span class="co">## Sepal.Length:Species_versicolor -0.01629 -0.5358 1.00000000        *</span></span></code></pre>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># At the lambda which is within 1 SE of the minimum CVE</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## lasso-penalized linear regression with n=150, p=18</span></span>
@@ -223,10 +223,10 @@ information).</p>
 <p>Finally, plots of either the cross-validation error across
 <code>lambda</code> values or the coefficient paths can be produced
 fairly easily:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl</span>, plot_type <span class="op">=</span> <span class="st">"cv"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl</span>, plot_type <span class="op">=</span> <span class="st">"path"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
 <p>Importantly, since <code>sparseR</code> with a formula centers and
@@ -267,20 +267,20 @@ centered prior to forming the interactions, and the factor variable of
 species will be given a reference category (as opposed to a cell-means
 specification). Therefore, this method will lead to different
 results.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/model.matrix.html" class="external-link">model.matrix</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span><span class="op">*</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span><span class="op">[</span>,<span class="op">-</span><span class="fl">1</span><span class="op">]</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/model.matrix.html" class="external-link">model.matrix</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span><span class="op">*</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span><span class="op">[</span>,<span class="op">-</span><span class="fl">1</span><span class="op">]</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">srl2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span>pre_process <span class="op">=</span> <span class="cn">FALSE</span>, model_matrix <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Width</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Warning in ncvreg(X = X, y = y, ...): Maximum number of iterations reached</span></span></code></pre>
 <p>Since we have a warning about iterations, note that we can pass
 through arguments to <code>ncvreg</code> and fix this issue:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">srl2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span>pre_process <span class="op">=</span> <span class="cn">FALSE</span>, model_matrix <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Width</span>, max.iter <span class="op">=</span> <span class="fl">1e6</span><span class="op">)</span></span></code></pre></div>
 <p>And we can use the same S3 methods to get more information about the
 SRL model:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">srl2</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ min CV:</span></span>
@@ -313,7 +313,7 @@ SRL model:</p>
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
 <span><span class="co">##          Main effect     5        4      0.800    2.24</span></span>
 <span><span class="co">##  Order 1 interaction     9        1      0.111    3.00</span></span></code></pre>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl2</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## lasso-penalized linear regression with n=150, p=14</span></span>
 <span><span class="co">## At lambda=0.0021:</span></span>
@@ -328,7 +328,7 @@ SRL model:</p>
 <span><span class="co">## Sepal.Length                0.4243  16.32 &lt; 1e-04        *</span></span>
 <span><span class="co">## Petal.Width                 0.3390  12.06 &lt; 1e-04        *</span></span>
 <span><span class="co">## Sepal.Length:Petal.Length  -0.0189 -11.68 &lt; 1e-04        *</span></span></code></pre>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-12-1.png" width="672"></p>
 <p>Since we did not center/scale any of the variables prior to this
@@ -342,7 +342,7 @@ default. Another way to do this without the reference category
 specification would be to pass pre-process options to
 <code>sparseR</code>, or to manually use <code>sparseR_prep</code> to
 create the model matrix.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> </span>
 <span><span class="va">srl3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                pre_proc_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span><span class="op">)</span>, max.iter <span class="op">=</span> <span class="fl">1e6</span><span class="op">)</span></span>
@@ -378,7 +378,7 @@ create the model matrix.</p>
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
 <span><span class="co">##          Main effect     6        3      0.500    2.45</span></span>
 <span><span class="co">##  Order 1 interaction    12        2      0.167    3.46</span></span></code></pre>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl3</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## lasso-penalized linear regression with n=150, p=18</span></span>
 <span><span class="co">## At lambda=0.0041:</span></span>
@@ -404,7 +404,7 @@ flexibility into <code>sparseR</code> and <code>sparseR_prep</code> in
 order to allow users to change these as the context dictates.</p>
 <p>Each covariate’s centering location (in this case their minima) can
 be passed into <code>sparseR_prep</code> as follows:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">iris</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu">select</span><span class="op">(</span><span class="va">Sepal.Length</span>, <span class="va">Petal.Length</span>, <span class="va">Petal.Width</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="fl">2</span>, <span class="va">min</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -427,7 +427,7 @@ be passed into <code>sparseR_prep</code> as follows:</p>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>        0.725        0.283       0                  1                  0</span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 140 more rows</span></span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 1 more variable: Species_virginica &lt;dbl&gt;</span></span></span></code></pre>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">c2min</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   Sepal.Length     Petal.Length     Petal.Width     Species_setosa  </span></span>
 <span><span class="co">##  Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  </span></span>
@@ -444,11 +444,11 @@ be passed into <code>sparseR_prep</code> as follows:</p>
 <span><span class="co">##  3rd Qu.:1.0000     3rd Qu.:1.0000   </span></span>
 <span><span class="co">##  Max.   :1.0000     Max.   :1.0000</span></span></code></pre>
 <p>Or directly into <code>sparseR</code>:</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">srl_centered2min</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>centers <span class="op">=</span> <span class="va">cc</span><span class="op">)</span>, seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>Or, a function can be passed to evaluate the location for each
 covariate:</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">0</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>center_fn <span class="op">=</span> <span class="va">min</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">c2min2</span> <span class="op">&lt;-</span> <span class="fu">bake</span><span class="op">(</span><span class="va">p2</span>, <span class="va">iris</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 150 × 6</span></span></span>
@@ -466,7 +466,7 @@ covariate:</p>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>        0.725        0.283       0                  1                  0</span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 140 more rows</span></span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 1 more variable: Species_virginica &lt;dbl&gt;</span></span></span></code></pre>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">c2min2</span>, <span class="va">c2min</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
 </div>
@@ -478,12 +478,12 @@ communicate, and visualizations can often be helpful. The
 <code>sparseR</code> package has some limited functionality for plotting
 the results from these fits, using the <code>visreg</code> package as a
 rough guide.</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-17-1.png" width="672"></p>
 <p>Notice how this changes if the covariates are centered to their
 minima instead:</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl_centered2min</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-18-1.png" width="672"></p>
 <p>It’s clear that the model itself can change quite a bit depending on
@@ -497,7 +497,7 @@ choices in terms of their cross-validated error, which is a decent
 starting point. The plot below shows how the “centered to zero” model
 has <em>slightly</em> lower cross-validated error than the best
 mean-centered model and the best minimum-centered model.</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl3</span>, plot_type <span class="op">=</span> <span class="st">"cv"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">.2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">srl3</span><span class="op">$</span><span class="va">fit</span><span class="op">$</span><span class="va">cve</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl_centered2min</span>, plot_type <span class="op">=</span> <span class="st">"cv"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">.2</span><span class="op">)</span><span class="op">)</span></span>
@@ -516,7 +516,7 @@ mean-centered model and the best minimum-centered model.</p>
 that the predictions obtained from the three models are very close to
 one another (since the models look similar in the neighborhood of
 existing data):</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">srl3</span>, at <span class="op">=</span> <span class="st">"cvmin"</span><span class="op">)</span></span>
 <span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">srl_centered2min</span>, at <span class="op">=</span> <span class="st">"cvmin"</span><span class="op">)</span></span>
 <span><span class="va">p3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">srl</span>, at <span class="op">=</span> <span class="st">"cvmin"</span><span class="op">)</span></span>
@@ -526,12 +526,12 @@ existing data):</p>
 <span><span class="co">## p1 1.0000000 0.9919068 0.9919581</span></span>
 <span><span class="co">## p2 0.9919068 1.0000000 0.9946687</span></span>
 <span><span class="co">## p3 0.9919581 0.9946687 1.0000000</span></span></code></pre>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span> ,<span class="va">p3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-21-1.png" width="672"></p>
 <p>At the CV1se lambda value, there is slightly less agreement in these
 predictions:</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># At CV1se</span></span>
 <span><span class="va">p4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">srl3</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
 <span><span class="va">p5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">srl_centered2min</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
@@ -545,11 +545,11 @@ predictions:</p>
 <span><span class="co">## p4 0.9761025 0.9718119 0.9704648 1.0000000 0.9787516 0.9891270</span></span>
 <span><span class="co">## p5 0.9607660 0.9797246 0.9701393 0.9787516 1.0000000 0.9602063</span></span>
 <span><span class="co">## p6 0.9744660 0.9642979 0.9763341 0.9891270 0.9602063 1.0000000</span></span></code></pre>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span> ,<span class="va">p3</span>, <span class="va">p4</span>,<span class="va">p5</span>,<span class="va">p6</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-22-1.png" width="672"></p>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-23-1.png" width="672"></p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl3</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl_centered2min</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span></code></pre></div>
@@ -570,7 +570,7 @@ account for post-selection inference, and ii) affected by where and
 whether the covariates are centered. However, the lines themselves will
 not be affected by centering status.</p>
 <p>We can see this in the examples below:</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Centered model</span></span>
 <span><span class="op">(</span><span class="va">rbic1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_step.html">sparseRBIC_step</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, pre_proc_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"center"</span>, <span class="st">"scale"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Note: sparseRBIC_step is currently experimental and may not behave as expected.</span></span></code></pre>
@@ -592,7 +592,7 @@ not be affected by centering status.</p>
 <span><span class="co">## Degrees of Freedom: 149 Total (i.e. Null);  143 Residual</span></span>
 <span><span class="co">## Null Deviance:       28.31 </span></span>
 <span><span class="co">## Residual Deviance: 8.999     AIC: 19.65</span></span></code></pre>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Non-centered model</span></span>
 <span><span class="op">(</span><span class="va">rbic2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_step.html">sparseRBIC_step</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, pre_proc_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"scale"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Note: sparseRBIC_step is currently experimental and may not behave as expected.</span></span></code></pre>
@@ -614,7 +614,7 @@ not be affected by centering status.</p>
 <span><span class="co">## Degrees of Freedom: 149 Total (i.e. Null);  143 Residual</span></span>
 <span><span class="co">## Null Deviance:       28.31 </span></span>
 <span><span class="co">## Residual Deviance: 8.999     AIC: 19.65</span></span></code></pre>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">rbic1</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span>, plot.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">rbic2</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span>, plot.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">rbic1</span>, <span class="st">"Sepal.Length"</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span>
@@ -624,7 +624,7 @@ not be affected by centering status.</p>
 change for certain parameters based on the centering status). A message
 is produced because these p-values do not account for post-selection
 inference.</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">rbic1</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## P-values have **not** been corrected for multiple comparisons</span></span>
 <span><span class="co">## Consider sparseRBIC_sampsplit() or sparseRBIC_bootstrap()</span></span></code></pre>
@@ -633,10 +633,6 @@ inference.</p>
 <span><span class="co">## glm(formula = y ~ Species_setosa + Sepal.Length + Petal.Width + </span></span>
 <span><span class="co">##     Species_versicolor + Petal.Length + `Sepal.Length:Species_setosa`, </span></span>
 <span><span class="co">##     family = family, data = X)</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Deviance Residuals: </span></span>
-<span><span class="co">##      Min        1Q    Median        3Q       Max  </span></span>
-<span><span class="co">## -0.78351  -0.15819   0.01874   0.16809   0.61264  </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Coefficients:</span></span>
 <span><span class="co">##                               Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
@@ -657,7 +653,7 @@ inference.</p>
 <span><span class="co">## AIC: 19.646</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Number of Fisher Scoring iterations: 2</span></span></code></pre>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">rbic2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## P-values have **not** been corrected for multiple comparisons</span></span>
 <span><span class="co">## Consider sparseRBIC_sampsplit() or sparseRBIC_bootstrap()</span></span></code></pre>
@@ -666,10 +662,6 @@ inference.</p>
 <span><span class="co">## glm(formula = y ~ Species_setosa + Sepal.Length + Petal.Width + </span></span>
 <span><span class="co">##     Species_versicolor + Petal.Length + `Sepal.Length:Species_setosa`, </span></span>
 <span><span class="co">##     family = family, data = X)</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Deviance Residuals: </span></span>
-<span><span class="co">##      Min        1Q    Median        3Q       Max  </span></span>
-<span><span class="co">## -0.78351  -0.15819   0.01874   0.16809   0.61264  </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Coefficients:</span></span>
 <span><span class="co">##                               Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
@@ -695,7 +687,7 @@ inference. This method divides the data into two samples of equal size,
 uses the first sample to select the model, and the second one to fit and
 achieve valid (though potentially low-power) inference. Coefficients
 which are not selected are bestowed a p-value of 1.</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_sampsplit.html">sparseRBIC_sampsplit</a></span><span class="op">(</span><span class="va">rbic1</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Note: sparseRBIC_sampsplit is currently experimental and may not behave as expected.</span></span></code></pre>
 <pre><code><span><span class="co">## Warning: `progress_estimated()` was deprecated in dplyr 1.0.0.</span></span>
@@ -762,13 +754,13 @@ Species_setosa
 Sepal.Length
 </td>
 <td style="text-align:right;">
-0.00028
+0.00003
 </td>
 <td style="text-align:right;">
-0.11109
+0.11104
 </td>
 <td style="text-align:right;">
-0.00012
+0.00006
 </td>
 <td style="text-align:right;">
 90
@@ -779,16 +771,16 @@ Sepal.Length
 Sepal.Length:Species_setosa
 </td>
 <td style="text-align:right;">
-0.00284
+0.00870
 </td>
 <td style="text-align:right;">
-0.20263
+0.30458
 </td>
 <td style="text-align:right;">
-0.00524
+0.01245
 </td>
 <td style="text-align:right;">
-80
+70
 </td>
 </tr>
 <tr>
@@ -796,16 +788,16 @@ Sepal.Length:Species_setosa
 Petal.Width
 </td>
 <td style="text-align:right;">
-1.00000
+0.50777
 </td>
 <td style="text-align:right;">
-0.60319
+0.50342
 </td>
 <td style="text-align:right;">
-0.09233
+0.05012
 </td>
 <td style="text-align:right;">
-40
+50
 </td>
 </tr>
 <tr>
@@ -842,9 +834,26 @@ Petal.Length
 10
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+Species_virginica
+</td>
+<td style="text-align:right;">
+1.00000
+</td>
+<td style="text-align:right;">
+0.90080
+</td>
+<td style="text-align:right;">
+0.61697
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_sampsplit.html">sparseRBIC_sampsplit</a></span><span class="op">(</span><span class="va">rbic2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Note: sparseRBIC_sampsplit is currently experimental and may not behave as expected.</span></span></code></pre>
 <table class="table table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -871,13 +880,13 @@ Gmean_p
 (Intercept)
 </td>
 <td style="text-align:right;">
-0.06824
+0.03563
 </td>
 <td style="text-align:right;">
-0.20677
+0.16769
 </td>
 <td style="text-align:right;">
-0.02296
+0.01860
 </td>
 <td style="text-align:right;">
 100
@@ -894,7 +903,7 @@ Species_setosa
 0.16973
 </td>
 <td style="text-align:right;">
-0.01113
+0.01104
 </td>
 <td style="text-align:right;">
 100
@@ -919,40 +928,6 @@ Sepal.Length
 </tr>
 <tr>
 <td style="text-align:left;">
-Petal.Width
-</td>
-<td style="text-align:right;">
-0.06679
-</td>
-<td style="text-align:right;">
-0.41560
-</td>
-<td style="text-align:right;">
-0.06462
-</td>
-<td style="text-align:right;">
-60
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Species_versicolor
-</td>
-<td style="text-align:right;">
-1.00000
-</td>
-<td style="text-align:right;">
-0.72213
-</td>
-<td style="text-align:right;">
-0.39400
-</td>
-<td style="text-align:right;">
-30
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 Sepal.Length:Species_setosa
 </td>
 <td style="text-align:right;">
@@ -966,6 +941,40 @@ Sepal.Length:Species_setosa
 </td>
 <td style="text-align:right;">
 80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Petal.Width
+</td>
+<td style="text-align:right;">
+0.06679
+</td>
+<td style="text-align:right;">
+0.41570
+</td>
+<td style="text-align:right;">
+0.06695
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Species_versicolor
+</td>
+<td style="text-align:right;">
+1.00000
+</td>
+<td style="text-align:right;">
+0.73683
+</td>
+<td style="text-align:right;">
+0.52997
+</td>
+<td style="text-align:right;">
+30
 </td>
 </tr>
 <tr>
@@ -1036,6 +1045,23 @@ Sepal.Length:Petal.Length
 10
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+Sepal.Length:Petal.Width
+</td>
+<td style="text-align:right;">
+1.00000
+</td>
+<td style="text-align:right;">
+0.90141
+</td>
+<td style="text-align:right;">
+0.65295
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
 </tbody>
 </table>
 <p>Additionally, inferences based on bootstrapped samples of the data
@@ -1060,7 +1086,7 @@ has a low probability of being selected, then that variable should have
 a higher adjusted p-value. However, for variables whose effects will be
 highly related (i.e. an interaction and a constituent main effect), this
 may be too conservative.</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## Centered model</span></span>
 <span><span class="va">b1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_bootstrap.html">sparseRBIC_bootstrap</a></span><span class="op">(</span><span class="va">rbic1</span><span class="op">)</span></span></code></pre></div>
@@ -1236,7 +1262,7 @@ Sepal.Length:Petal.Length
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## Uncentered model</span></span>
 <span><span class="va">b2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_bootstrap.html">sparseRBIC_bootstrap</a></span><span class="op">(</span><span class="va">rbic2</span><span class="op">)</span></span></code></pre></div>
@@ -1424,7 +1450,7 @@ train models that can predict lung cancer status. It has 1027
 observations and 14 covariates, including urban/rural, age, years of
 school, smoking years, number of children, etc.</p>
 <p>First, let’s look at the data a little:</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"irlcs_radon_syn"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">irlcs_radon_syn</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##        ID         CITY       YRSHOME          AGE        CASE    SCHOOL </span></span>
@@ -1461,11 +1487,11 @@ necessary for <code>sparseR</code> to work), as we will see.</li>
 <code>ID</code> is an arbitrary identifying variable which should
 not be used in the modeling phase</li>
 </ul>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">irlcs_radon_syn</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">irlcs_radon_syn</span>, <span class="op">-</span><span class="va">ID</span><span class="op">)</span></span></code></pre></div>
 <p>At this point, we will split the data into a test and training
 set.</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">13</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">N</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">irlcs_radon_syn</span><span class="op">)</span></span>
@@ -1483,7 +1509,7 @@ the data by running the function <code>sparseR_prep</code>, which
 utilizes the <code>recipes</code> package to perform preprocessing. At
 no time is the outcome used to train any of the steps, except for the
 elimination of NA values if any exist.</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">prep_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">0</span>, poly <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">prep_obj</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span></code></pre>
@@ -1515,14 +1541,14 @@ Apparently, by default, this preprocessor will remove variables with
 “near” zero variance, and that as a result, SMKYRS is not considered
 (it’s eliminated in an early step).</p>
 <p>If we look at this variable, we see that it may be informative:</p>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/truehist.html" class="external-link">truehist</a></span><span class="op">(</span><span class="va">train</span><span class="op">$</span><span class="va">SMKYRS</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-41-1.png" width="672"></p>
 <p>Therefore, we can tell the preprocessor not to filter this variable
 in two ways. First, we could tell it to use <code>zv</code> instead of
 <code>nzv</code>, in which case it will only remove zero variance
 predictors:</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">0</span>, poly <span class="op">=</span> <span class="fl">1</span>, filter <span class="op">=</span> <span class="st">"zv"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span></code></pre>
 <pre><code><span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Recipe</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────────────────</span></span></span></code></pre>
@@ -1549,7 +1575,7 @@ predictors:</p>
 <pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Zero variance filter removed: <span style="color: #0000BB;">&lt;none&gt;</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
 <p>Or, we could adjust the options for the near-zero variance filter
 (see <code><a href="https://recipes.tidymodels.org/reference/step_nzv.html" class="external-link">?recipes::step_nzv</a></code> for details):</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">0</span>, poly <span class="op">=</span> <span class="fl">1</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unique_cut <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span></code></pre>
 <pre><code><span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Recipe</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────────────────</span></span></span></code></pre>
@@ -1578,7 +1604,7 @@ predictors:</p>
 interactions or polynomials of higher degree than 1. we can do this
 simply by setting <code>k</code> and <code>poly</code> respectively to
 higher numbers:</p>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">1</span>, poly <span class="op">=</span> <span class="fl">1</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unique_cut <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span></code></pre>
 <pre><code><span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Recipe</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────────────────</span></span></span></code></pre>
@@ -1610,7 +1636,7 @@ higher numbers:</p>
 <span><span class="co">##   <span style="color: #0000BB;">SCHOOL_X2 + SCHOOL_X3 + SCHOOL_X4 + SCHOOL_other + PRELUNG_X0 + PRELUNG_X1 +</span></span></span>
 <span><span class="co">##   <span style="color: #0000BB;">SMKEVER_X0 + SMKEVER_X1 + SMKCUR_X0 + SMKCUR_X1))</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre>
 <pre><code><span><span class="co">## <span style="color: #00BBBB;">•</span> Sparse, unbalanced variable filter removed: <span style="color: #0000BB;">SCHOOL_other</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre>
-<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">1</span>, poly <span class="op">=</span> <span class="fl">2</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unique_cut <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span></code></pre>
 <pre><code><span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Recipe</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────────────────</span></span></span></code></pre>
@@ -1656,7 +1682,7 @@ data set is returned.</p>
 function for the package, <code>sparseR</code>. The following code runs
 a SRL model, an APL model, a main effects model, and an SRL with
 polynomials:</p>
-<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lso</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  SRL  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,            <span class="co">## SRL model</span></span>
 <span>  APL  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, gamma <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>, <span class="co">## APL model</span></span>
@@ -1665,7 +1691,7 @@ polynomials:</p>
 <span><span class="op">)</span></span></code></pre></div>
 <p>The simple print method allows one to investigate all of these
 models</p>
-<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lso</span></span></code></pre></div>
 <pre><code><span><span class="co">## $SRL</span></span>
 <span><span class="co">## </span></span>
@@ -1799,22 +1825,22 @@ models</p>
 <span><span class="co">##  Order 1 interaction   174        0      0.000   13.19</span></span>
 <span><span class="co">##   Order 2 polynomial     9        1      0.111    5.48</span></span></code></pre>
 <p>Similarly, plots can be produced of all of these figures:</p>
-<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">lso</span>, <span class="va">plot</span>, log.l <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-48-1.png" width="672"></p>
 <p>MCP:</p>
-<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mcp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  SRM  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, penalty <span class="op">=</span> <span class="st">"MCP"</span><span class="op">)</span>,            <span class="co">## SRM model</span></span>
 <span>  APM  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, gamma <span class="op">=</span> <span class="fl">0</span>, penalty <span class="op">=</span> <span class="st">"MCP"</span><span class="op">)</span>, <span class="co">## APM model</span></span>
 <span>  MEM   <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, k <span class="op">=</span> <span class="fl">0</span>, penalty <span class="op">=</span> <span class="st">"MCP"</span><span class="op">)</span>,     <span class="co">## Main effects MCP model</span></span>
 <span>  SRMp <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, poly <span class="op">=</span> <span class="fl">2</span>, penalty <span class="op">=</span> <span class="st">"MCP"</span><span class="op">)</span>   <span class="co">## SRM + polynomials</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">mcp</span>, <span class="va">plot</span>, log.l <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-51-1.png" width="672"></p>
 <p>SCAD (not evaluated):</p>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scad</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  SRS  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, penalty <span class="op">=</span> <span class="st">"SCAD"</span><span class="op">)</span>,            <span class="co">## SRS model</span></span>
 <span>  APS  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, gamma <span class="op">=</span> <span class="fl">0</span>, penalty <span class="op">=</span> <span class="st">"SCAD"</span><span class="op">)</span>, <span class="co">## APS model</span></span>
@@ -1826,7 +1852,7 @@ models</p>
 <p>Summaries (using <code>results_summary</code> and
 <code>results_1se_summary</code> values within each object; formatting
 omitted).</p>
-<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">lso</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">results_summary</span>, <span class="va">x</span><span class="op">$</span><span class="va">results1se_summary</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">mcp</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">results_summary</span>, <span class="va">x</span><span class="op">$</span><span class="va">results1se_summary</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -2332,7 +2358,7 @@ Order 2 polynomial
 <div class="section level3">
 <h3 id="use-case-heart-data">Use case: heart data<a class="anchor" aria-label="anchor" href="#use-case-heart-data"></a>
 </h3>
-<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Load Data set, correctly code factors + outcome</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"Detrano"</span><span class="op">)</span></span>
 <span><span class="va">cleveland</span><span class="op">$</span><span class="va">thal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">cleveland</span><span class="op">$</span><span class="va">thal</span><span class="op">)</span></span>
@@ -2372,13 +2398,13 @@ Order 2 polynomial
 <span><span class="co">##  3rd Qu.:2.0000   3rd Qu.:1.0000  </span></span>
 <span><span class="co">##  Max.   :4.0000   Max.   :1.0000  </span></span>
 <span><span class="co">## </span></span></code></pre>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">cleveland</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##      age      sex       cp trestbps     chol      fbs  restecg  thalach </span></span>
 <span><span class="co">##       41        2        4       50      152        2        3       91 </span></span>
 <span><span class="co">##    exang  oldpeak    slope       ca     thal      num     case </span></span>
 <span><span class="co">##        2       40        3        5        4        5        2</span></span></code></pre>
-<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cleveland</span><span class="op">$</span><span class="va">sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">cleveland</span><span class="op">$</span><span class="va">sex</span><span class="op">)</span></span>
 <span><span class="va">cleveland</span><span class="op">$</span><span class="va">fbs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">cleveland</span><span class="op">$</span><span class="va">fbs</span><span class="op">)</span></span>
 <span><span class="va">cleveland</span><span class="op">$</span><span class="va">exang</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">cleveland</span><span class="op">$</span><span class="va">exang</span><span class="op">)</span></span>
@@ -2536,10 +2562,10 @@ Order 2 polynomial
 <span><span class="co">##          Main effect    18        8      0.444    4.24</span></span>
 <span><span class="co">##  Order 1 interaction   135        0      0.000   11.62</span></span>
 <span><span class="co">##   Order 2 polynomial     9        0      0.000    5.20</span></span></code></pre>
-<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">lso</span><span class="op">$</span><span class="va">SRL</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-55-1.png" width="672"><img src="sparseR_files/figure-html/unnamed-chunk-55-2.png" width="672"></p>
-<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">lso</span>, <span class="va">plot</span>, log.l <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-57-1.png" width="672"></p>
 </div>
