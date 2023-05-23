@@ -317,9 +317,9 @@ predict.sparseR <- function(object, newdata, lambda, at = c("cvmin", "cv1se"), .
     }
   } else {
     if(!is.null(object$srprep)) {
-      outcome_name <- object$srprep$var_info %>%
-        dplyr::filter(role == "outcome") %>%
-        dplyr::pull(variable)
+      outcome_name <- object$srprep$var_info$variable[
+        object$srprep$var_info$role == "outcome"
+      ]
 
       # If the outcome isn't included in newdata, use temp placeholder
       if(!any(names(newdata) == outcome_name))
