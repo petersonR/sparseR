@@ -165,7 +165,7 @@ sparseR_prep <- function(formula, data, k = 1, poly = 1,
   rec_obj <- rec_obj_early
 
   # Create interactions if necessary
-  prec_obj <- prep(rec_obj, data = data)
+  prec_obj <- prep(rec_obj)
   has_predictors <- any(prec_obj$term_info$role == "predictor")
 
   if(k > 0) {
@@ -216,8 +216,7 @@ sparseR_prep <- function(formula, data, k = 1, poly = 1,
     warning("Recommend at least filtering zv for extraneous interaction effects")
 
   ## Prep recipe
-  final_rec <- rec_obj %>%
-    prep(data)
+  final_rec <- prep(rec_obj)
 
   ## Fix tr_info for earlier prepped version
   final_rec$tr_info <- rec_obj_early$tr_info
