@@ -1,4 +1,4 @@
-# 0.2.2.9000
+# 0.2.3
 
 - Fixed bug that caused error when making predictions 
   without outcome variable in `newdata` in `predict.sparseR`
