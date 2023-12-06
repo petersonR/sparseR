@@ -2,7 +2,9 @@
 
 S3method(EBIC,default)
 S3method(EBIC,sparseRBIC)
+S3method(RAIC,default)
 S3method(RAIC,sparseRBIC)
+S3method(RBIC,default)
 S3method(RBIC,sparseRBIC)
 S3method(bake,step_center_to)
 S3method(coef,sparseR)

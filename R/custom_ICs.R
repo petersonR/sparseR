@@ -61,6 +61,8 @@ RBIC <- function(fit, ...){
   UseMethod("RBIC")
 }
 
+#' @rdname custom_ics
+#' @export
 RBIC.default <- function(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...) {
 
   if(!is.null(fit$model)) {
@@ -116,6 +118,8 @@ RAIC <- function(fit, ...){
   UseMethod("RAIC")
 }
 
+#' @rdname custom_ics
+#' @export
 RAIC.default <- function(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...) {
   if(!is.null(fit$model)) {
     n <- nrow(fit$model)

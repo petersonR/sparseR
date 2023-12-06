@@ -5,6 +5,8 @@
 \alias{RBIC}
 \alias{RAIC}
 \alias{EBIC.default}
+\alias{RBIC.default}
+\alias{RAIC.default}
 \title{Custom IC functions for stepwise models}
 \usage{
 EBIC(...)
@@ -13,7 +15,11 @@ EBIC(...)
 
 RBIC(fit, ...)
 
+\method{RBIC}{default}(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...)
+
 RAIC(fit, ...)
+
+\method{RAIC}{default}(fit, varnames, pen_info, gammafn = NULL, return_df = TRUE, ...)
 }
 \arguments{
 \item{...}{additional args}

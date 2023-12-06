@@ -1,6 +1,6 @@
 ## Release summary
 
-This is a package update, requested by maintainers of recipes. 
+This is a resubmission of a package update, which fixes a NOTE flagged by CRAN's unstable check. 
 
 ## R CMD check results
 
