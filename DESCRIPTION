@@ -1,7 +1,7 @@
 Package: sparseR
 Type: Package
 Title: Variable Selection under Ranked Sparsity Principles for Interactions and Polynomials
-Version: 0.2.3
+Version: 0.2.3.9000
 Authors@R: person("Ryan Andrew", "Peterson", 
                   email = "ryan.a.peterson@cuanschutz.edu", 
                   role = c("aut", "cre"),
