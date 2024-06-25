@@ -290,8 +290,8 @@ effect_plot.sparseR <- function(fit, coef_name, at = c("cvmin", "cv1se"),
       if(!cfact) {
         if(missing(by_levels)) {
           by_levels <- quantile(fit$data[[by]], c(.1, .5, .9), na.rm = TRUE)
-          closest_level <- apply(sapply(by_levels, function(x) (abs(x - fit$data[[by]]))), 1, which.min)
         }
+        closest_level <- apply(sapply(by_levels, function(x) (abs(x - fit$data[[by]]))), 1, which.min)
 
         resid <- preds <- list()
         for(b in 1:length(by_levels)) {
