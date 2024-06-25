@@ -325,10 +325,11 @@ effect_plot.sparseR <- function(fit, coef_name, at = c("cvmin", "cv1se"),
         ll <- lapply(1:length(by_levels), function(i) {
           lines(new_data[[coef_name]], preds[[i]], lwd = 2, col = cols[i])
         })
-
-        pp <- lapply(1:length(by_levels), function(i) {
-          points(fit$data[[coef_name]][closest_level == i], resid[[i]], pch = 20, col = cols[i])
-        })
+        if (resids) {
+          pp <- lapply(1:length(by_levels), function(i) {
+            points(fit$data[[coef_name]][closest_level == i], resid[[i]], pch = 20, col = cols[i])
+          })
+        }
 
         leg_lab <- paste0(by, ": ", round(unname(by_levels),2))
         legend(plot.args$legloc, legend = leg_lab, col = cols, lwd = 2, bty = "n")
