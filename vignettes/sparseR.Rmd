@@ -39,6 +39,8 @@ This document goes through several use cases of the package on different dataset
 
 # Use case: `iris` data 
 
+## Data set description
+
 To illustrate in a simple case, consider Fisher's Iris data set, composed of 4 numeric variables and one categorical variable. 
 
 ```{r}
@@ -382,6 +384,8 @@ This section is still under development.
 
 # Use case: lung data 
 
+## Data set description
+
 As a more realistic example, we take a data set that is often used to train models that can predict lung cancer status. It has 1027 observations and 14 covariates, including urban/rural, age, years of school, smoking years, number of children, etc.
 
 First, let's look at the data a little: 
@@ -553,11 +557,7 @@ mcp_sum %>%
   
 ```
 
-# Future work: 
-
-This section is still incomplete and under active development. 
-
-## Use case: heart data
+# Use case: heart data
 
 ```{r}
 
@@ -608,8 +608,4 @@ old_par <- par(mfrow = c(4,2))
 res <- lapply(lso, plot, log.l = TRUE)
 par(old_par)
 ```
-
-## Use case: Shedden survival data
-
-TBD
 
