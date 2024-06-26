@@ -1,6 +1,6 @@
 ## Release summary
 
-This is a resubmission of a package update, which fixes a NOTE flagged by CRAN's unstable check. 
+This is a package update with minor improvements.
 
 ## R CMD check results
 

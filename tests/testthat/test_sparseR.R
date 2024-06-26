@@ -220,3 +220,11 @@ test_that("Detrano MCPnet functionality", {
   expect_visible(summary(SRL))
   expect_visible(summary(SRLp))
 })
+
+# Test pooling of penalties
+test_that("pooling works", {
+  expect_silent(SRL <- sparseR(formula = Sepal.Width ~ ., pool = TRUE, data = iris, poly = 2))
+  expect_length(val1 <- unique(SRL$results$penalty[SRL$results$Vartype == "Order 1 interaction"]), 1)
+  expect_length(val2 <- unique(SRL$results$penalty[SRL$results$Vartype == "Order 2 polynomial"]), 1)
+  expect_equal(val1, val2)
+})

@@ -17,6 +17,7 @@ effect_plot(fit, ...)
   nn = 101,
   plot.args = list(),
   resids = TRUE,
+  legend_location = "bottomright",
   ...
 )
 
@@ -28,6 +29,7 @@ effect_plot(fit, ...)
   nn = 101,
   plot.args = list(),
   resids = TRUE,
+  legend_location = "bottomright",
   ...
 )
 }
@@ -49,6 +51,8 @@ effect_plot(fit, ...)
 \item{plot.args}{list of arguments passed to the plot itself}
 
 \item{resids}{should residuals be plotted or not?}
+
+\item{legend_location}{location for legend passed to `legend`}
 }
 \value{
 nothing returned

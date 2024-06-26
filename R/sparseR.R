@@ -128,7 +128,9 @@ sparseR <- function(formula, data, family = c("gaussian", "binomial", "poisson",
   if(pre_process) {
 
     ## Create and prep model matrix function (preprocessing)
-    srprep <- sparseR_prep(formula, data, k, poly, pre_proc_opts, filter, extra_opts, ia_formula = ia_formula, family = family)
+    srprep <- sparseR_prep(formula, data, k, poly, pre_proc_opts,
+                           filter, extra_opts, ia_formula = ia_formula,
+                           family = family)
 
     ## "Bake" recipe using preprocess steps (this can be done on test data too later)
     X <- bake(srprep, data, everything(), - all_outcomes())
@@ -248,7 +250,7 @@ print.sparseR <- function(x, prep = FALSE, ...) {
   }
   cat("\nModel summary @ min CV:\n")
   cat("-----------------------------------------------------\n")
-  alt_print(summary(x$fit))
+  alt_print(suppressMessages(summary(x$fit)))
   cat("\n  SR information:\n")
 
   print(as.data.frame(x$results_summary), row.names = FALSE, digits = 3)

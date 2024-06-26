@@ -3,7 +3,6 @@
 \docType{package}
 \name{sparseR-package}
 \alias{sparseR-package}
-\alias{_PACKAGE}
 \title{sparseR: Implement ranked sparsity for selecting interactions and polynomials}
 \description{
 The \code{sparseR} package implements various techniques for selecting from

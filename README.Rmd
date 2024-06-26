@@ -1,5 +1,7 @@
 ---
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -8,12 +10,12 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "man/figures/README-"
 )
 library(sparseR)
 ```
 
-# Implementing ranked sparsity methods with sparseR
+# `sparseR`: using ranked sparsity to sift smartly through interactions & polynomials
 
 [![codecov](https://codecov.io/gh/petersonR/sparseR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/petersonR/sparseR)
 [![R-CMD-check](https://github.com/petersonR/sparseR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/petersonR/sparseR/actions/workflows/R-CMD-check.yaml)
@@ -25,9 +27,7 @@ The ranked sparsity methods such as the sparsity-ranked lasso (SRL) have been de
 
 ## Package overview
 
-The `sparseR` package implements ranked-sparsity-based versions of the lasso, elastic net, MCP, and SCAD. We also provide a (preliminary) version of an sparsity-ranked extension to Bayesian Information Criterion (and corresponding stepwise approaches)
-
-Additionally, `sparseR` has many features designed to streamline dealing with interaction terms and polynomials, including functions for variable pre-processing, variable selection, post-selection inference, and post-fit model visualization under ranked sparsity.
+The `sparseR` package has many features designed to streamline sifting through the high-dimensional space of interaction terms and polynomials, including functions for variable pre-processing, variable selection, post-selection inference, and post-fit model visualization under ranked sparsity. The package implements ranked-sparsity-based versions of the lasso, elastic net, MCP, and SCAD. We also provide a (preliminary) version of an sparsity-ranked extension to Bayesian Information Criterion (and corresponding stepwise approaches). 
 
 ## Installation 
 
@@ -47,12 +47,19 @@ install.packages("sparseR")
 library(sparseR)
 ```
 
-```{r example}
+```{r example, fig.height=8, fig.width = 6}
 data(iris)
-set.seed(1321)
-
-srl <- sparseR(Sepal.Width ~ ., data = iris, k = 1, seed = 1)
+srl <- sparseR(Sepal.Width ~ ., data = iris, k = 1, poly = 2, seed = 1)
 srl
+
+par(mfrow = c(2,1), mar = c(4, 4, 3, 1))
+plot(srl, plot_type = "both")
+
+summary(srl, at = "cv1se")
+```
+
+```{r example2}
+effect_plot(srl, "Petal.Width", by = "Species", at = "cv1se", legend_location = "topright")
 ```
 
 For more examples and a closer look at how to use this package, check out the [package website](https://petersonr.github.io/sparseR/). 

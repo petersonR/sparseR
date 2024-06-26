@@ -12,6 +12,7 @@ safe_pf <- function (q, df1, ...) {
   pf(q = q, df1 = df1, ...)
 }
 
+#' @importFrom stats deviance
 run_steps <- function (object, scope, scale = 0, direction = c("both", "backward", "forward"),
                        trace = 1, keep = NULL, steps = 1000, use.start = FALSE, k = 2, penalty = NULL, ...) {
 
@@ -259,11 +260,7 @@ check_exact <- function (object) {
             call. = FALSE)
 }
 
-# See stats:::deviance.lm()
-deviance.lm <- function (object, ...)
-  sum(weighted.residuals(object)^2, na.rm = TRUE)
-
-
+#' @importFrom stats deviance
 my_add1 <- function (object, scope, scale = 0,
                      test = c("none"),
                      x = NULL, k = 2, penaltyfn, ...) {
