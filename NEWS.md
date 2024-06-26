@@ -1,4 +1,6 @@
-# 0.2.4
+# 0.3.0.9000
+
+# 0.3.0
 
 - Fixed bug in the `effect_plot` function that was causing issues with 
   numeric `by` variables
