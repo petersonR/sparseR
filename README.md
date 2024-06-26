@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `sparseR`: using ranked sparsity to sift smartly through interactions & polynomials
+# `sparseR`: Sift smartly through interactions & polynomials with ranked sparsity
 
 [![codecov](https://codecov.io/gh/petersonR/sparseR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/petersonR/sparseR)
 [![R-CMD-check](https://github.com/petersonR/sparseR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/petersonR/sparseR/actions/workflows/R-CMD-check.yaml)
