@@ -103,6 +103,9 @@ different datasets.</p>
 <div class="section level2">
 <h2 id="use-case-iris-data">Use case: <code>iris</code> data<a class="anchor" aria-label="anchor" href="#use-case-iris-data"></a>
 </h2>
+<div class="section level3">
+<h3 id="data-set-description">Data set description<a class="anchor" aria-label="anchor" href="#data-set-description"></a>
+</h3>
 <p>To illustrate in a simple case, consider Fisher’s Iris data set,
 composed of 4 numeric variables and one categorical variable.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -127,6 +130,7 @@ the other variables and their pairwise interactions, have a couple of
 options. We can either use the built-in preprocessing for building the
 model matrix and fitting the model, or we can manually build the model
 matrix and pass it to the <code>sparseR</code> function.</p>
+</div>
 <div class="section level3">
 <h3 id="using-formula-specification">Using formula specification<a class="anchor" aria-label="anchor" href="#using-formula-specification"></a>
 </h3>
@@ -1474,6 +1478,9 @@ Sepal.Length:Petal.Length
 <div class="section level2">
 <h2 id="use-case-lung-data">Use case: lung data<a class="anchor" aria-label="anchor" href="#use-case-lung-data"></a>
 </h2>
+<div class="section level3">
+<h3 id="data-set-description-1">Data set description<a class="anchor" aria-label="anchor" href="#data-set-description-1"></a>
+</h3>
 <p>As a more realistic example, we take a data set that is often used to
 train models that can predict lung cancer status. It has 1027
 observations and 14 covariates, including urban/rural, age, years of
@@ -1527,6 +1534,7 @@ set.</p>
 <span><span class="va">trainIDX</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">N</span>, <span class="va">N</span> <span class="op">*</span> <span class="fl">.75</span><span class="op">)</span></span>
 <span><span class="va">train</span> <span class="op">&lt;-</span> <span class="va">irlcs_radon_syn</span><span class="op">[</span><span class="va">trainIDX</span>,<span class="op">]</span></span>
 <span><span class="va">test</span> <span class="op">&lt;-</span> <span class="va">irlcs_radon_syn</span><span class="op">[</span><span class="op">-</span><span class="va">trainIDX</span>,<span class="op">]</span></span></code></pre></div>
+</div>
 <div class="section level3">
 <h3 id="preprocessing">Preprocessing<a class="anchor" aria-label="anchor" href="#preprocessing"></a>
 </h3>
@@ -2381,12 +2389,8 @@ Order 2 polynomial
 </div>
 </div>
 <div class="section level2">
-<h2 id="future-work">Future work:<a class="anchor" aria-label="anchor" href="#future-work"></a>
+<h2 id="use-case-heart-data">Use case: heart data<a class="anchor" aria-label="anchor" href="#use-case-heart-data"></a>
 </h2>
-<p>This section is still incomplete and under active development.</p>
-<div class="section level3">
-<h3 id="use-case-heart-data">Use case: heart data<a class="anchor" aria-label="anchor" href="#use-case-heart-data"></a>
-</h3>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">## Load Data set, correctly code factors + outcome</span></span>
@@ -2598,12 +2602,6 @@ Order 2 polynomial
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">lso</span>, <span class="va">plot</span>, log.l <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-57-1.png" width="672"></p>
-</div>
-<div class="section level3">
-<h3 id="use-case-shedden-survival-data">Use case: Shedden survival data<a class="anchor" aria-label="anchor" href="#use-case-shedden-survival-data"></a>
-</h3>
-<p>TBD</p>
-</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
