@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">sparseR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.3.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,8 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="implementing-ranked-sparsity-methods-with-sparser">Implementing ranked sparsity methods with sparseR<a class="anchor" aria-label="anchor" href="#implementing-ranked-sparsity-methods-with-sparser"></a>
+<div class="page-header"><h1 id="sparser-using-ranked-sparsity-to-sift-smartly-through-interactions--polynomials">
+<code>sparseR</code>: using ranked sparsity to sift smartly through interactions &amp; polynomials<a class="anchor" aria-label="anchor" href="#sparser-using-ranked-sparsity-to-sift-smartly-through-interactions--polynomials"></a>
 </h1></div>
 <p><a href="https://app.codecov.io/gh/petersonR/sparseR" class="external-link"><img src="https://codecov.io/gh/petersonR/sparseR/branch/main/graph/badge.svg" alt="codecov"></a> <a href="https://github.com/petersonR/sparseR/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/petersonR/sparseR/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://CRAN.R-project.org/package=sparseR" class="external-link"><img src="https://www.r-pkg.org/badges/version/sparseR" alt="CRAN status"></a></p>
 <div class="section level2">
@@ -75,8 +76,7 @@
 <div class="section level2">
 <h2 id="package-overview">Package overview<a class="anchor" aria-label="anchor" href="#package-overview"></a>
 </h2>
-<p>The <code>sparseR</code> package implements ranked-sparsity-based versions of the lasso, elastic net, MCP, and SCAD. We also provide a (preliminary) version of an sparsity-ranked extension to Bayesian Information Criterion (and corresponding stepwise approaches)</p>
-<p>Additionally, <code>sparseR</code> has many features designed to streamline dealing with interaction terms and polynomials, including functions for variable pre-processing, variable selection, post-selection inference, and post-fit model visualization under ranked sparsity.</p>
+<p>The <code>sparseR</code> package has many features designed to streamline sifting through the high-dimensional space of interaction terms and polynomials, including functions for variable pre-processing, variable selection, post-selection inference, and post-fit model visualization under ranked sparsity. The package implements ranked-sparsity-based versions of the lasso, elastic net, MCP, and SCAD. We also provide a (preliminary) version of an sparsity-ranked extension to Bayesian Information Criterion (and corresponding stepwise approaches).</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -97,16 +97,14 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://petersonr.github.io/sparseR/">sparseR</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1321</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">srl</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">1</span>, seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">srl</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">1</span>, poly <span class="op">=</span> <span class="fl">2</span>, seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">srl</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Model summary @ min CV:</span></span>
 <span><span class="co">#&gt; -----------------------------------------------------</span></span>
-<span><span class="co">#&gt;   lasso-penalized linear regression with n=150, p=18</span></span>
-<span><span class="co">#&gt;   (At lambda=0.0015):</span></span>
-<span><span class="co">#&gt;     Nonzero coefficients: 10</span></span>
+<span><span class="co">#&gt;   lasso-penalized linear regression with n=150, p=21</span></span>
+<span><span class="co">#&gt;   (At lambda=0.0023):</span></span>
+<span><span class="co">#&gt;     Nonzero coefficients: 7</span></span>
 <span><span class="co">#&gt;     Cross-validation error (deviance): 0.07</span></span>
 <span><span class="co">#&gt;     R-squared: 0.62</span></span>
 <span><span class="co">#&gt;     Signal-to-noise ratio: 1.64</span></span>
@@ -114,24 +112,51 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   SR information:</span></span>
 <span><span class="co">#&gt;              Vartype Total Selected Saturation Penalty</span></span>
-<span><span class="co">#&gt;          Main effect     6        4      0.667    2.45</span></span>
-<span><span class="co">#&gt;  Order 1 interaction    12        6      0.500    3.46</span></span>
+<span><span class="co">#&gt;          Main effect     6        2      0.333    2.45</span></span>
+<span><span class="co">#&gt;  Order 1 interaction    12        3      0.250    3.46</span></span>
+<span><span class="co">#&gt;   Order 2 polynomial     3        2      0.667    3.00</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Model summary @ CV1se:</span></span>
 <span><span class="co">#&gt; -----------------------------------------------------</span></span>
-<span><span class="co">#&gt;   lasso-penalized linear regression with n=150, p=18</span></span>
-<span><span class="co">#&gt;   (At lambda=0.0070):</span></span>
-<span><span class="co">#&gt;     Nonzero coefficients: 7</span></span>
+<span><span class="co">#&gt;   lasso-penalized linear regression with n=150, p=21</span></span>
+<span><span class="co">#&gt;   (At lambda=0.0074):</span></span>
+<span><span class="co">#&gt;     Nonzero coefficients: 6</span></span>
 <span><span class="co">#&gt;     Cross-validation error (deviance): 0.08</span></span>
 <span><span class="co">#&gt;     R-squared: 0.57</span></span>
-<span><span class="co">#&gt;     Signal-to-noise ratio: 1.33</span></span>
-<span><span class="co">#&gt;     Scale estimate (sigma): 0.285</span></span>
+<span><span class="co">#&gt;     Signal-to-noise ratio: 1.35</span></span>
+<span><span class="co">#&gt;     Scale estimate (sigma): 0.284</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   SR information:</span></span>
 <span><span class="co">#&gt;              Vartype Total Selected Saturation Penalty</span></span>
-<span><span class="co">#&gt;          Main effect     6        3      0.500    2.45</span></span>
-<span><span class="co">#&gt;  Order 1 interaction    12        4      0.333    3.46</span></span></code></pre></div>
+<span><span class="co">#&gt;          Main effect     6        2      0.333    2.45</span></span>
+<span><span class="co">#&gt;  Order 1 interaction    12        2      0.167    3.46</span></span>
+<span><span class="co">#&gt;   Order 2 polynomial     3        2      0.667    3.00</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl</span>, plot_type <span class="op">=</span> <span class="st">"both"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-example-1.png"><!-- --></p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; lasso-penalized linear regression with n=150, p=21</span></span>
+<span><span class="co">#&gt; At lambda=0.0074:</span></span>
+<span><span class="co">#&gt; -------------------------------------------------</span></span>
+<span><span class="co">#&gt;   Nonzero coefficients         :   6</span></span>
+<span><span class="co">#&gt;   Expected nonzero coefficients:   1.10</span></span>
+<span><span class="co">#&gt;   Average mfdr (6 features)    :   0.183</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;                                Estimate      z       mfdr Selected</span></span>
+<span><span class="co">#&gt; Species_setosa                  0.80638 18.013    &lt; 1e-04        *</span></span>
+<span><span class="co">#&gt; Sepal.Length_poly_1             0.19734  9.713    &lt; 1e-04        *</span></span>
+<span><span class="co">#&gt; Petal.Width_poly_2              0.09871  4.614 0.00024977        *</span></span>
+<span><span class="co">#&gt; Petal.Width:Species_versicolor  0.27739  3.259 0.04655092        *</span></span>
+<span><span class="co">#&gt; Sepal.Length_poly_2            -0.03363 -2.804 0.21141507        *</span></span>
+<span><span class="co">#&gt; Sepal.Length:Species_setosa     0.04275  2.190 0.84164385        *</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span>, at <span class="op">=</span> <span class="st">"cv1se"</span>, legend_location <span class="op">=</span> <span class="st">"topright"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-example2-1.png"><!-- --></p>
 <p>For more examples and a closer look at how to use this package, check out the <a href="https://petersonr.github.io/sparseR/">package website</a>.</p>
 <p>Many thanks to the authors and maintainers of <a href="https://github.com/pbreheny/ncvreg" class="external-link"><code>ncvreg</code></a> and <a href="https://recipes.tidymodels.org/" class="external-link"><code>recipes</code></a>.</p>
 </div>
