@@ -8,13 +8,13 @@ output:
     toc: yes
     toc_depth: 2
 vignette: >
-  %\VignetteIndexEntry{sparseR}
+  %\VignetteIndexEntry{Using the `sparseR` package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.height = 5, fig.width = 7)
+knitr::opts_chunk$set(echo = TRUE, fig.height = 5, fig.width = 7, collapse = TRUE)
 library(recipes)
 library(dplyr)
 library(knitr)
@@ -416,7 +416,7 @@ test <- irlcs_radon_syn[-trainIDX,]
 
 Although the `sparseR()` function will do it automatically, it's generally a good idea to see how the data is being preprocessed and to examine how the model matrix is built before the regularization. We can see what `sparseR` does to preprocess the data by running the function `sparseR_prep`, which utilizes the `recipes` package to perform preprocessing. At no time is the outcome used to train any of the steps, except for the elimination of NA values if any exist. 
 
-```{r}
+```{r, results = "hold"}
 prep_obj <- sparseR_prep(CASE ~ ., data = train, k = 0, poly = 1)
 prep_obj
 ```
@@ -559,7 +559,7 @@ This section is still incomplete and under active development.
 
 ## Use case: heart data
 
-```{r, fig.height=8, fig.width=7}
+```{r}
 
 ## Load Data set, correctly code factors + outcome
 data("Detrano")
