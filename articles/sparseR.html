@@ -5,61 +5,43 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="sparseR">
 <title>Using the `sparseR` package • sparseR</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Using the `sparseR` package">
-<meta property="og:description" content="sparseR">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Using the `sparseR` package">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light" data-bs-theme="light"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">sparseR</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.9000</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="active nav-item">
-  <a class="nav-link" href="../articles/sparseR.html">Get started</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
-</li>
+<li class="active nav-item"><a class="nav-link" href="../articles/sparseR.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav">
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/petersonR/sparseR/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/petersonR/sparseR/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-article">
 
@@ -68,13 +50,14 @@
 <script src="sparseR_files/kePrint-0.0.1/kePrint.js"></script><link href="sparseR_files/lightable-0.0.1/lightable.css" rel="stylesheet">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>Using the `sparseR` package</h1>
+
+      <h1>Using the `sparseR` package</h1>
                         <h4 data-toc-skip class="author">Ryan A.
 Peterson</h4>
             
-            <h4 data-toc-skip class="date">2024-06-26</h4>
+            <h4 data-toc-skip class="date">2024-07-17</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/petersonR/sparseR/blob/HEAD/vignettes/sparseR.Rmd" class="external-link"><code>vignettes/sparseR.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/petersonR/sparseR/blob/main/vignettes/sparseR.Rmd" class="external-link"><code>vignettes/sparseR.Rmd</code></a></small>
       <div class="d-none name"><code>sparseR.Rmd</code></div>
     </div>
 
@@ -152,9 +135,9 @@ for reproducibililty).</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ min CV:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=150, p=18</span></span>
-<span><span class="co">##   (At lambda=0.0015):</span></span>
-<span><span class="co">##     Nonzero coefficients: 10</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=150, p=21</span></span>
+<span><span class="co">##   (At lambda=0.0023):</span></span>
+<span><span class="co">##     Nonzero coefficients: 7</span></span>
 <span><span class="co">##     Cross-validation error (deviance): 0.07</span></span>
 <span><span class="co">##     R-squared: 0.62</span></span>
 <span><span class="co">##     Signal-to-noise ratio: 1.64</span></span>
@@ -162,24 +145,26 @@ for reproducibililty).</p>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
-<span><span class="co">##          Main effect     6        4      0.667    2.45</span></span>
-<span><span class="co">##  Order 1 interaction    12        6      0.500    3.46</span></span>
+<span><span class="co">##          Main effect     6        2      0.333    2.45</span></span>
+<span><span class="co">##  Order 1 interaction    12        3      0.250    3.46</span></span>
+<span><span class="co">##   Order 2 polynomial     3        2      0.667    3.00</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ CV1se:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=150, p=18</span></span>
-<span><span class="co">##   (At lambda=0.0070):</span></span>
-<span><span class="co">##     Nonzero coefficients: 7</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=150, p=21</span></span>
+<span><span class="co">##   (At lambda=0.0074):</span></span>
+<span><span class="co">##     Nonzero coefficients: 6</span></span>
 <span><span class="co">##     Cross-validation error (deviance): 0.08</span></span>
 <span><span class="co">##     R-squared: 0.57</span></span>
-<span><span class="co">##     Signal-to-noise ratio: 1.33</span></span>
-<span><span class="co">##     Scale estimate (sigma): 0.285</span></span>
+<span><span class="co">##     Signal-to-noise ratio: 1.35</span></span>
+<span><span class="co">##     Scale estimate (sigma): 0.284</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
-<span><span class="co">##          Main effect     6        3      0.500    2.45</span></span>
-<span><span class="co">##  Order 1 interaction    12        4      0.333    3.46</span></span></code></pre></div>
+<span><span class="co">##          Main effect     6        2      0.333    2.45</span></span>
+<span><span class="co">##  Order 1 interaction    12        2      0.167    3.46</span></span>
+<span><span class="co">##   Order 2 polynomial     3        2      0.667    3.00</span></span></code></pre></div>
 <p>For more detailed model information, the <code>summary</code> method
 for <code>sparseR</code> objects displays more information about the
 fits (see <code><a href="https://rdrr.io/pkg/ncvreg/man/summary.ncvreg.html" class="external-link">?ncvreg::summary.ncvreg</a></code> for more
@@ -187,50 +172,45 @@ information).</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># At the lambda which minimizes CVE</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl</span>, at <span class="op">=</span> <span class="st">"cvmin"</span><span class="op">)</span></span>
-<span><span class="co">## lasso-penalized linear regression with n=150, p=18</span></span>
-<span><span class="co">## At lambda=0.0015:</span></span>
-<span><span class="co">## -------------------------------------------------</span></span>
-<span><span class="co">##   Nonzero coefficients         :  10</span></span>
-<span><span class="co">##   Expected nonzero coefficients:   3.36</span></span>
-<span><span class="co">##   Average mfdr (10 features)   :   0.336</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##                                 Estimate       z       mfdr Selected</span></span>
-<span><span class="co">## Species_setosa                   1.24843 28.8653    &lt; 1e-04        *</span></span>
-<span><span class="co">## Sepal.Length:Species_setosa      0.35020  9.3864    &lt; 1e-04        *</span></span>
-<span><span class="co">## Sepal.Length                     0.18424  9.1304    &lt; 1e-04        *</span></span>
-<span><span class="co">## Petal.Width:Species_virginica    0.23716  6.6223    &lt; 1e-04        *</span></span>
-<span><span class="co">## Petal.Width:Species_versicolor   0.55330  4.7733 0.00017262        *</span></span>
-<span><span class="co">## Species_virginica               -0.09639 -2.3907 0.27589226        *</span></span>
-<span><span class="co">## Sepal.Length:Petal.Length       -0.04447 -2.2272 0.36928053        *</span></span>
-<span><span class="co">## Petal.Length:Petal.Width         0.04928  2.0135 0.71677732        *</span></span>
-<span><span class="co">## Petal.Length                    -0.02042 -1.1660 1.00000000        *</span></span>
-<span><span class="co">## Sepal.Length:Species_versicolor -0.01629 -0.5358 1.00000000        *</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># At the lambda which is within 1 SE of the minimum CVE</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
-<span><span class="co">## lasso-penalized linear regression with n=150, p=18</span></span>
-<span><span class="co">## At lambda=0.0070:</span></span>
+<span><span class="co">## lasso-penalized linear regression with n=150, p=21</span></span>
+<span><span class="co">## At lambda=0.0023:</span></span>
 <span><span class="co">## -------------------------------------------------</span></span>
 <span><span class="co">##   Nonzero coefficients         :   7</span></span>
-<span><span class="co">##   Expected nonzero coefficients:   1.39</span></span>
-<span><span class="co">##   Average mfdr (7 features)    :   0.198</span></span>
+<span><span class="co">##   Expected nonzero coefficients:   2.00</span></span>
+<span><span class="co">##   Average mfdr (7 features)    :   0.286</span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">##                                 Estimate       z     mfdr Selected</span></span>
-<span><span class="co">## Species_setosa                  0.810513 17.9513  &lt; 1e-04        *</span></span>
-<span><span class="co">## Sepal.Length                    0.191210  9.3371  &lt; 1e-04        *</span></span>
-<span><span class="co">## Petal.Length:Petal.Width        0.119640  5.0379  &lt; 1e-04        *</span></span>
-<span><span class="co">## Petal.Width:Species_versicolor  0.275341  3.1640 0.055727        *</span></span>
-<span><span class="co">## Sepal.Length:Petal.Length      -0.052711 -3.2466 0.078207        *</span></span>
-<span><span class="co">## Sepal.Length:Species_setosa     0.062782  2.5978 0.251406        *</span></span>
-<span><span class="co">## Species_versicolor             -0.001653 -0.8052 1.000000        *</span></span></code></pre></div>
+<span><span class="co">##                                 Estimate       z       mfdr Selected</span></span>
+<span><span class="co">## Species_setosa                  1.106390 25.6231    &lt; 1e-04        *</span></span>
+<span><span class="co">## Sepal.Length:Species_setosa     0.376189 10.1686    &lt; 1e-04        *</span></span>
+<span><span class="co">## Sepal.Length_poly_1             0.167953  8.4066    &lt; 1e-04        *</span></span>
+<span><span class="co">## Petal.Width_poly_2              0.135230  5.6513    &lt; 1e-04        *</span></span>
+<span><span class="co">## Petal.Width:Species_versicolor  0.467836  4.1960 0.00063055        *</span></span>
+<span><span class="co">## Sepal.Length:Petal.Length      -0.006347 -0.6651 1.00000000        *</span></span>
+<span><span class="co">## Sepal.Length_poly_2            -0.011020 -0.9665 1.00000000        *</span></span>
+<span></span>
+<span><span class="co"># At the lambda which is within 1 SE of the minimum CVE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
+<span><span class="co">## lasso-penalized linear regression with n=150, p=21</span></span>
+<span><span class="co">## At lambda=0.0074:</span></span>
+<span><span class="co">## -------------------------------------------------</span></span>
+<span><span class="co">##   Nonzero coefficients         :   6</span></span>
+<span><span class="co">##   Expected nonzero coefficients:   1.10</span></span>
+<span><span class="co">##   Average mfdr (6 features)    :   0.183</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##                                Estimate      z       mfdr Selected</span></span>
+<span><span class="co">## Species_setosa                  0.80638 18.013    &lt; 1e-04        *</span></span>
+<span><span class="co">## Sepal.Length_poly_1             0.19734  9.713    &lt; 1e-04        *</span></span>
+<span><span class="co">## Petal.Width_poly_2              0.09871  4.614 0.00024977        *</span></span>
+<span><span class="co">## Petal.Width:Species_versicolor  0.27739  3.259 0.04655092        *</span></span>
+<span><span class="co">## Sepal.Length_poly_2            -0.03363 -2.804 0.21141507        *</span></span>
+<span><span class="co">## Sepal.Length:Species_setosa     0.04275  2.190 0.84164385        *</span></span></code></pre></div>
 <p>Finally, plots of either the cross-validation error across
 <code>lambda</code> values or the coefficient paths can be produced
 fairly easily:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl</span>, plot_type <span class="op">=</span> <span class="st">"cv"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl</span>, plot_type <span class="op">=</span> <span class="st">"path"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
 <p>Importantly, since <code>sparseR</code> with a formula centers and
@@ -271,20 +251,20 @@ centered prior to forming the interactions, and the factor variable of
 species will be given a reference category (as opposed to a cell-means
 specification). Therefore, this method will lead to different
 results.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/model.matrix.html" class="external-link">model.matrix</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span><span class="op">*</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span><span class="op">[</span>,<span class="op">-</span><span class="fl">1</span><span class="op">]</span></span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">srl2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span>pre_process <span class="op">=</span> <span class="cn">FALSE</span>, model_matrix <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Width</span><span class="op">)</span></span>
 <span><span class="co">## Warning in ncvreg(X = X, y = y, ...): Maximum number of iterations reached</span></span></code></pre></div>
 <p>Since we have a warning about iterations, note that we can pass
 through arguments to <code>ncvreg</code> and fix this issue:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">srl2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span>pre_process <span class="op">=</span> <span class="cn">FALSE</span>, model_matrix <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Width</span>, max.iter <span class="op">=</span> <span class="fl">1e6</span><span class="op">)</span></span></code></pre></div>
 <p>And we can use the same S3 methods to get more information about the
 SRL model:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">srl2</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ min CV:</span></span>
@@ -316,9 +296,8 @@ SRL model:</p>
 <span><span class="co">##   SR information:</span></span>
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
 <span><span class="co">##          Main effect     5        4      0.800    2.24</span></span>
-<span><span class="co">##  Order 1 interaction     9        1      0.111    3.00</span></span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl2</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
+<span><span class="co">##  Order 1 interaction     9        1      0.111    3.00</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl2</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
 <span><span class="co">## lasso-penalized linear regression with n=150, p=14</span></span>
 <span><span class="co">## At lambda=0.0021:</span></span>
 <span><span class="co">## -------------------------------------------------</span></span>
@@ -332,7 +311,7 @@ SRL model:</p>
 <span><span class="co">## Sepal.Length                0.4243  16.32 &lt; 1e-04        *</span></span>
 <span><span class="co">## Petal.Width                 0.3390  12.06 &lt; 1e-04        *</span></span>
 <span><span class="co">## Sepal.Length:Petal.Length  -0.0189 -11.68 &lt; 1e-04        *</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-12-1.png" width="672"></p>
 <p>Since we did not center/scale any of the variables prior to this
@@ -346,7 +325,7 @@ default. Another way to do this without the reference category
 specification would be to pass pre-process options to
 <code>sparseR</code>, or to manually use <code>sparseR_prep</code> to
 create the model matrix.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> </span>
 <span><span class="va">srl3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                pre_proc_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span><span class="op">)</span>, max.iter <span class="op">=</span> <span class="fl">1e6</span><span class="op">)</span></span>
@@ -354,49 +333,50 @@ create the model matrix.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ min CV:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=150, p=18</span></span>
-<span><span class="co">##   (At lambda=0.0007):</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=150, p=21</span></span>
+<span><span class="co">##   (At lambda=0.0006):</span></span>
 <span><span class="co">##     Nonzero coefficients: 6</span></span>
 <span><span class="co">##     Cross-validation error (deviance): 0.07</span></span>
 <span><span class="co">##     R-squared: 0.64</span></span>
-<span><span class="co">##     Signal-to-noise ratio: 1.74</span></span>
-<span><span class="co">##     Scale estimate (sigma): 0.262</span></span>
+<span><span class="co">##     Signal-to-noise ratio: 1.80</span></span>
+<span><span class="co">##     Scale estimate (sigma): 0.259</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
 <span><span class="co">##          Main effect     6        2      0.333    2.45</span></span>
 <span><span class="co">##  Order 1 interaction    12        4      0.333    3.46</span></span>
+<span><span class="co">##   Order 2 polynomial     3        0      0.000    3.00</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ CV1se:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=150, p=18</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=150, p=21</span></span>
 <span><span class="co">##   (At lambda=0.0041):</span></span>
 <span><span class="co">##     Nonzero coefficients: 5</span></span>
 <span><span class="co">##     Cross-validation error (deviance): 0.08</span></span>
 <span><span class="co">##     R-squared: 0.59</span></span>
-<span><span class="co">##     Signal-to-noise ratio: 1.42</span></span>
-<span><span class="co">##     Scale estimate (sigma): 0.279</span></span>
+<span><span class="co">##     Signal-to-noise ratio: 1.47</span></span>
+<span><span class="co">##     Scale estimate (sigma): 0.277</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
-<span><span class="co">##          Main effect     6        3      0.500    2.45</span></span>
-<span><span class="co">##  Order 1 interaction    12        2      0.167    3.46</span></span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl3</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
-<span><span class="co">## lasso-penalized linear regression with n=150, p=18</span></span>
+<span><span class="co">##          Main effect     6        2      0.333    2.45</span></span>
+<span><span class="co">##  Order 1 interaction    12        2      0.167    3.46</span></span>
+<span><span class="co">##   Order 2 polynomial     3        1      0.333    3.00</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl3</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
+<span><span class="co">## lasso-penalized linear regression with n=150, p=21</span></span>
 <span><span class="co">## At lambda=0.0041:</span></span>
 <span><span class="co">## -------------------------------------------------</span></span>
 <span><span class="co">##   Nonzero coefficients         :   5</span></span>
-<span><span class="co">##   Expected nonzero coefficients:   1.82</span></span>
-<span><span class="co">##   Average mfdr (5 features)    :   0.364</span></span>
+<span><span class="co">##   Expected nonzero coefficients:   1.32</span></span>
+<span><span class="co">##   Average mfdr (5 features)    :   0.264</span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">##                              Estimate       z   mfdr Selected</span></span>
-<span><span class="co">## Sepal.Length:Species_setosa  0.211340 23.4596 &lt;1e-04        *</span></span>
-<span><span class="co">## Sepal.Length                 0.233045  9.2221 &lt;1e-04        *</span></span>
-<span><span class="co">## Petal.Width                  0.179185  6.6622 &lt;1e-04        *</span></span>
-<span><span class="co">## Petal.Width:Species_setosa   0.002791  0.6622  0.819        *</span></span>
-<span><span class="co">## Species_virginica           -0.056953 -1.6796  1.000        *</span></span></code></pre></div>
+<span><span class="co">##                             Estimate      z    mfdr Selected</span></span>
+<span><span class="co">## Sepal.Length:Species_setosa  0.18862 21.079 &lt; 1e-04        *</span></span>
+<span><span class="co">## Sepal.Length_poly_1          0.23292  9.248 &lt; 1e-04        *</span></span>
+<span><span class="co">## Petal.Width_poly_2           0.06659  6.116 &lt; 1e-04        *</span></span>
+<span><span class="co">## Species_virginica           -0.08945 -2.387 0.32168        *</span></span>
+<span><span class="co">## Petal.Width:Species_setosa   0.14950  1.542 1.00000        *</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="centering-to-different-values">Centering to different values<a class="anchor" aria-label="anchor" href="#centering-to-different-values"></a>
@@ -408,7 +388,7 @@ flexibility into <code>sparseR</code> and <code>sparseR_prep</code> in
 order to allow users to change these as the context dictates.</p>
 <p>Each covariate’s centering location (in this case their minima) can
 be passed into <code>sparseR_prep</code> as follows:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">iris</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu">select</span><span class="op">(</span><span class="va">Sepal.Length</span>, <span class="va">Petal.Length</span>, <span class="va">Petal.Width</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="fl">2</span>, <span class="va">min</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -430,9 +410,8 @@ be passed into <code>sparseR_prep</code> as follows:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>        0.121        0.227       0.131              1                  0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>        0.725        0.283       0                  1                  0</span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 140 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 1 more variable: Species_virginica &lt;dbl&gt;</span></span></span></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">c2min</span><span class="op">)</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 1 more variable: Species_virginica &lt;dbl&gt;</span></span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">c2min</span><span class="op">)</span></span>
 <span><span class="co">##   Sepal.Length     Petal.Length     Petal.Width     Species_setosa  </span></span>
 <span><span class="co">##  Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  </span></span>
 <span><span class="co">##  1st Qu.:0.9661   1st Qu.:0.3399   1st Qu.:0.2624   1st Qu.:0.0000  </span></span>
@@ -448,11 +427,11 @@ be passed into <code>sparseR_prep</code> as follows:</p>
 <span><span class="co">##  3rd Qu.:1.0000     3rd Qu.:1.0000   </span></span>
 <span><span class="co">##  Max.   :1.0000     Max.   :1.0000</span></span></code></pre></div>
 <p>Or directly into <code>sparseR</code>:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">srl_centered2min</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>centers <span class="op">=</span> <span class="va">cc</span><span class="op">)</span>, seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>Or, a function can be passed to evaluate the location for each
 covariate:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, k <span class="op">=</span> <span class="fl">0</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>center_fn <span class="op">=</span> <span class="va">min</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">c2min2</span> <span class="op">&lt;-</span> <span class="fu">bake</span><span class="op">(</span><span class="va">p2</span>, <span class="va">iris</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## <span style="color: #949494;"># A tibble: 150 × 6</span></span></span>
@@ -469,9 +448,8 @@ covariate:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>        0.121        0.227       0.131              1                  0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>        0.725        0.283       0                  1                  0</span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 140 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 1 more variable: Species_virginica &lt;dbl&gt;</span></span></span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">c2min2</span>, <span class="va">c2min</span><span class="op">)</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 1 more variable: Species_virginica &lt;dbl&gt;</span></span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">c2min2</span>, <span class="va">c2min</span><span class="op">)</span></span>
 <span><span class="co">## [1] TRUE</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -482,12 +460,12 @@ communicate, and visualizations can often be helpful. The
 <code>sparseR</code> package has some limited functionality for plotting
 the results from these fits, using the <code>visreg</code> package as a
 rough guide.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-17-1.png" width="672"></p>
 <p>Notice how this changes if the covariates are centered to their
 minima instead:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl_centered2min</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-18-1.png" width="672"></p>
 <p>It’s clear that the model itself can change quite a bit depending on
@@ -501,7 +479,7 @@ choices in terms of their cross-validated error, which is a decent
 starting point. The plot below shows how the “centered to zero” model
 has <em>slightly</em> lower cross-validated error than the best
 mean-centered model and the best minimum-centered model.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl3</span>, plot_type <span class="op">=</span> <span class="st">"cv"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">.2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">srl3</span><span class="op">$</span><span class="va">fit</span><span class="op">$</span><span class="va">cve</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl_centered2min</span>, plot_type <span class="op">=</span> <span class="st">"cv"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">.2</span><span class="op">)</span><span class="op">)</span></span>
@@ -520,22 +498,21 @@ mean-centered model and the best minimum-centered model.</p>
 that the predictions obtained from the three models are very close to
 one another (since the models look similar in the neighborhood of
 existing data):</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">srl3</span>, at <span class="op">=</span> <span class="st">"cvmin"</span><span class="op">)</span></span>
 <span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">srl_centered2min</span>, at <span class="op">=</span> <span class="st">"cvmin"</span><span class="op">)</span></span>
 <span><span class="va">p3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">srl</span>, at <span class="op">=</span> <span class="st">"cvmin"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span> ,<span class="va">p3</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">##           p1        p2        p3</span></span>
-<span><span class="co">## p1 1.0000000 0.9919068 0.9919581</span></span>
-<span><span class="co">## p2 0.9919068 1.0000000 0.9946687</span></span>
-<span><span class="co">## p3 0.9919581 0.9946687 1.0000000</span></span></code></pre></div>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span> ,<span class="va">p3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">## p1 1.0000000 0.9903513 0.9873102</span></span>
+<span><span class="co">## p2 0.9903513 1.0000000 0.9898124</span></span>
+<span><span class="co">## p3 0.9873102 0.9898124 1.0000000</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span> ,<span class="va">p3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-21-1.png" width="672"></p>
 <p>At the CV1se lambda value, there is slightly less agreement in these
 predictions:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># At CV1se</span></span>
 <span><span class="va">p4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">srl3</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
 <span><span class="va">p5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">srl_centered2min</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
@@ -543,17 +520,16 @@ predictions:</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span> ,<span class="va">p3</span>, <span class="va">p4</span>,<span class="va">p5</span>,<span class="va">p6</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">##           p1        p2        p3        p4        p5        p6</span></span>
-<span><span class="co">## p1 1.0000000 0.9919068 0.9919581 0.9761025 0.9607660 0.9744660</span></span>
-<span><span class="co">## p2 0.9919068 1.0000000 0.9946687 0.9718119 0.9797246 0.9642979</span></span>
-<span><span class="co">## p3 0.9919581 0.9946687 1.0000000 0.9704648 0.9701393 0.9763341</span></span>
-<span><span class="co">## p4 0.9761025 0.9718119 0.9704648 1.0000000 0.9787516 0.9891270</span></span>
-<span><span class="co">## p5 0.9607660 0.9797246 0.9701393 0.9787516 1.0000000 0.9602063</span></span>
-<span><span class="co">## p6 0.9744660 0.9642979 0.9763341 0.9891270 0.9602063 1.0000000</span></span></code></pre></div>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span> ,<span class="va">p3</span>, <span class="va">p4</span>,<span class="va">p5</span>,<span class="va">p6</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">## p1 1.0000000 0.9903513 0.9873102 0.9781221 0.9586728 0.9752579</span></span>
+<span><span class="co">## p2 0.9903513 1.0000000 0.9898124 0.9714612 0.9784280 0.9627639</span></span>
+<span><span class="co">## p3 0.9873102 0.9898124 1.0000000 0.9706405 0.9671849 0.9821402</span></span>
+<span><span class="co">## p4 0.9781221 0.9714612 0.9706405 1.0000000 0.9709760 0.9845977</span></span>
+<span><span class="co">## p5 0.9586728 0.9784280 0.9671849 0.9709760 1.0000000 0.9504649</span></span>
+<span><span class="co">## p6 0.9752579 0.9627639 0.9821402 0.9845977 0.9504649 1.0000000</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span> ,<span class="va">p3</span>, <span class="va">p4</span>,<span class="va">p5</span>,<span class="va">p6</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-22-1.png" width="672"></p>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-23-1.png" width="672"></p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl3</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl_centered2min</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span></code></pre></div>
@@ -574,7 +550,7 @@ account for post-selection inference, and ii) affected by where and
 whether the covariates are centered. However, the lines themselves will
 not be affected by centering status.</p>
 <p>We can see this in the examples below:</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Centered model</span></span>
 <span><span class="op">(</span><span class="va">rbic1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_step.html">sparseRBIC_step</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, pre_proc_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"center"</span>, <span class="st">"scale"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## Note: sparseRBIC_step is currently experimental and may not behave as expected.</span></span>
@@ -595,9 +571,8 @@ not be affected by centering status.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## Degrees of Freedom: 149 Total (i.e. Null);  143 Residual</span></span>
 <span><span class="co">## Null Deviance:       28.31 </span></span>
-<span><span class="co">## Residual Deviance: 8.999     AIC: 19.65</span></span></code></pre></div>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="co">## Residual Deviance: 8.999     AIC: 19.65</span></span>
+<span></span>
 <span><span class="co"># Non-centered model</span></span>
 <span><span class="op">(</span><span class="va">rbic2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_step.html">sparseRBIC_step</a></span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, pre_proc_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"scale"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## Note: sparseRBIC_step is currently experimental and may not behave as expected.</span></span>
@@ -619,7 +594,7 @@ not be affected by centering status.</p>
 <span><span class="co">## Degrees of Freedom: 149 Total (i.e. Null);  143 Residual</span></span>
 <span><span class="co">## Null Deviance:       28.31 </span></span>
 <span><span class="co">## Residual Deviance: 8.999     AIC: 19.65</span></span></code></pre></div>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">rbic1</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span>, plot.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">rbic2</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span>, plot.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">rbic1</span>, <span class="st">"Sepal.Length"</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span>
@@ -629,7 +604,7 @@ not be affected by centering status.</p>
 change for certain parameters based on the centering status). A message
 is produced because these p-values do not account for post-selection
 inference.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">rbic1</span><span class="op">)</span></span>
 <span><span class="co">## P-values have **not** been corrected for multiple comparisons</span></span>
 <span><span class="co">## Consider sparseRBIC_sampsplit() or sparseRBIC_bootstrap()</span></span>
@@ -657,9 +632,8 @@ inference.</p>
 <span><span class="co">## Residual deviance:  8.9985  on 143  degrees of freedom</span></span>
 <span><span class="co">## AIC: 19.646</span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## Number of Fisher Scoring iterations: 2</span></span></code></pre></div>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">rbic2</span><span class="op">)</span></span>
+<span><span class="co">## Number of Fisher Scoring iterations: 2</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">rbic2</span><span class="op">)</span></span>
 <span><span class="co">## P-values have **not** been corrected for multiple comparisons</span></span>
 <span><span class="co">## Consider sparseRBIC_sampsplit() or sparseRBIC_bootstrap()</span></span>
 <span><span class="co">## </span></span>
@@ -692,7 +666,7 @@ inference. This method divides the data into two samples of equal size,
 uses the first sample to select the model, and the second one to fit and
 achieve valid (though potentially low-power) inference. Coefficients
 which are not selected are bestowed a p-value of 1.</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_sampsplit.html">sparseRBIC_sampsplit</a></span><span class="op">(</span><span class="va">rbic1</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Note: sparseRBIC_sampsplit is currently experimental and may not behave as expected.</span></span>
 <span><span class="co">## Warning: `progress_estimated()` was deprecated in dplyr 1.0.0.</span></span>
@@ -765,7 +739,7 @@ Sepal.Length
 0.11104
 </td>
 <td style="text-align:right;">
-0.00006
+0.00007
 </td>
 <td style="text-align:right;">
 90
@@ -779,10 +753,10 @@ Sepal.Length:Species_setosa
 0.00870
 </td>
 <td style="text-align:right;">
-0.30458
+0.30440
 </td>
 <td style="text-align:right;">
-0.01245
+0.01235
 </td>
 <td style="text-align:right;">
 70
@@ -858,7 +832,7 @@ Species_virginica
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_sampsplit.html">sparseRBIC_sampsplit</a></span><span class="op">(</span><span class="va">rbic2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Note: sparseRBIC_sampsplit is currently experimental and may not behave as expected.</span></span></code></pre>
 <table class="table table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1091,7 +1065,7 @@ has a low probability of being selected, then that variable should have
 a higher adjusted p-value. However, for variables whose effects will be
 highly related (i.e. an interaction and a constituent main effect), this
 may be too conservative.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## Centered model</span></span>
 <span><span class="va">b1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_bootstrap.html">sparseRBIC_bootstrap</a></span><span class="op">(</span><span class="va">rbic1</span><span class="op">)</span></span></code></pre></div>
@@ -1281,7 +1255,7 @@ Sepal.Length:Petal.Length
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## Uncentered model</span></span>
 <span><span class="va">b2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseRBIC_bootstrap.html">sparseRBIC_bootstrap</a></span><span class="op">(</span><span class="va">rbic2</span><span class="op">)</span></span></code></pre></div>
@@ -1486,7 +1460,7 @@ train models that can predict lung cancer status. It has 1027
 observations and 14 covariates, including urban/rural, age, years of
 school, smoking years, number of children, etc.</p>
 <p>First, let’s look at the data a little:</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"irlcs_radon_syn"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">irlcs_radon_syn</span><span class="op">)</span></span>
 <span><span class="co">##        ID         CITY       YRSHOME          AGE        CASE    SCHOOL </span></span>
@@ -1523,11 +1497,11 @@ necessary for <code>sparseR</code> to work), as we will see.</li>
 <code>ID</code> is an arbitrary identifying variable which should
 not be used in the modeling phase</li>
 </ul>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">irlcs_radon_syn</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">irlcs_radon_syn</span>, <span class="op">-</span><span class="va">ID</span><span class="op">)</span></span></code></pre></div>
 <p>At this point, we will split the data into a test and training
 set.</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">13</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">N</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">irlcs_radon_syn</span><span class="op">)</span></span>
@@ -1546,7 +1520,7 @@ the data by running the function <code>sparseR_prep</code>, which
 utilizes the <code>recipes</code> package to perform preprocessing. At
 no time is the outcome used to train any of the steps, except for the
 elimination of NA values if any exist.</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">prep_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">0</span>, poly <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">prep_obj</span></span>
 <span><span class="co">## </span></span>
@@ -1578,14 +1552,14 @@ Apparently, by default, this preprocessor will remove variables with
 “near” zero variance, and that as a result, SMKYRS is not considered
 (it’s eliminated in an early step).</p>
 <p>If we look at this variable, we see that it may be informative:</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/truehist.html" class="external-link">truehist</a></span><span class="op">(</span><span class="va">train</span><span class="op">$</span><span class="va">SMKYRS</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-41-1.png" width="672"></p>
 <p>Therefore, we can tell the preprocessor not to filter this variable
 in two ways. First, we could tell it to use <code>zv</code> instead of
 <code>nzv</code>, in which case it will only remove zero variance
 predictors:</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">0</span>, poly <span class="op">=</span> <span class="fl">1</span>, filter <span class="op">=</span> <span class="st">"zv"</span><span class="op">)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Recipe</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────────────────</span></span></span>
@@ -1612,7 +1586,7 @@ predictors:</p>
 <span><span class="co">## <span style="color: #00BBBB;">•</span> Zero variance filter removed: <span style="color: #0000BB;">&lt;none&gt;</span> | <span style="font-style: italic;">Trained</span></span></span></code></pre></div>
 <p>Or, we could adjust the options for the near-zero variance filter
 (see <code><a href="https://recipes.tidymodels.org/reference/step_nzv.html" class="external-link">?recipes::step_nzv</a></code> for details):</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">0</span>, poly <span class="op">=</span> <span class="fl">1</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unique_cut <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Recipe</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────────────────</span></span></span>
@@ -1641,7 +1615,7 @@ predictors:</p>
 interactions or polynomials of higher degree than 1. we can do this
 simply by setting <code>k</code> and <code>poly</code> respectively to
 higher numbers:</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">1</span>, poly <span class="op">=</span> <span class="fl">1</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unique_cut <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Recipe</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────────────────</span></span></span>
@@ -1672,9 +1646,8 @@ higher numbers:</p>
 <span><span class="co">##   <span style="color: #0000BB;">PYR + PYRRATE + SMKQUIT + BMI + WLM20 + (CITY_X0 + CITY_X1 + SCHOOL_X1 +</span></span></span>
 <span><span class="co">##   <span style="color: #0000BB;">SCHOOL_X2 + SCHOOL_X3 + SCHOOL_X4 + SCHOOL_other + PRELUNG_X0 + PRELUNG_X1 +</span></span></span>
 <span><span class="co">##   <span style="color: #0000BB;">SMKEVER_X0 + SMKEVER_X1 + SMKCUR_X0 + SMKCUR_X1))</span> | <span style="font-style: italic;">Trained</span></span></span>
-<span><span class="co">## <span style="color: #00BBBB;">•</span> Sparse, unbalanced variable filter removed: <span style="color: #0000BB;">SCHOOL_other</span>, ... | <span style="font-style: italic;">Trained</span></span></span></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">1</span>, poly <span class="op">=</span> <span class="fl">2</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unique_cut <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">## <span style="color: #00BBBB;">•</span> Sparse, unbalanced variable filter removed: <span style="color: #0000BB;">SCHOOL_other</span>, ... | <span style="font-style: italic;">Trained</span></span></span>
+<span><span class="fu"><a href="../reference/sparseR_prep.html">sparseR_prep</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train</span>, k <span class="op">=</span> <span class="fl">1</span>, poly <span class="op">=</span> <span class="fl">2</span>, extra_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unique_cut <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Recipe</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">## </span></span>
@@ -1719,7 +1692,7 @@ data set is returned.</p>
 function for the package, <code>sparseR</code>. The following code runs
 a SRL model, an APL model, a main effects model, and an SRL with
 polynomials:</p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lso</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  SRL  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,            <span class="co">## SRL model</span></span>
 <span>  APL  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, gamma <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>, <span class="co">## APL model</span></span>
@@ -1728,104 +1701,110 @@ polynomials:</p>
 <span><span class="op">)</span></span></code></pre></div>
 <p>The simple print method allows one to investigate all of these
 models</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lso</span></span>
 <span><span class="co">## $SRL</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ min CV:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=770, p=195</span></span>
-<span><span class="co">##   (At lambda=0.0007):</span></span>
-<span><span class="co">##     Nonzero coefficients: 42</span></span>
-<span><span class="co">##     Cross-validation error (deviance): 0.14</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=770, p=204</span></span>
+<span><span class="co">##   (At lambda=0.0009):</span></span>
+<span><span class="co">##     Nonzero coefficients: 41</span></span>
+<span><span class="co">##     Cross-validation error (deviance): 0.13</span></span>
 <span><span class="co">##     R-squared: 0.43</span></span>
-<span><span class="co">##     Signal-to-noise ratio: 0.74</span></span>
-<span><span class="co">##     Scale estimate (sigma): 0.368</span></span>
+<span><span class="co">##     Signal-to-noise ratio: 0.75</span></span>
+<span><span class="co">##     Scale estimate (sigma): 0.367</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
-<span><span class="co">##          Main effect    21       10      0.476    4.58</span></span>
-<span><span class="co">##  Order 1 interaction   174       32      0.184   13.19</span></span>
+<span><span class="co">##          Main effect    21       11      0.524    4.58</span></span>
+<span><span class="co">##  Order 1 interaction   174       24      0.138   13.19</span></span>
+<span><span class="co">##   Order 2 polynomial     9        6      0.667    5.48</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ CV1se:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=770, p=195</span></span>
-<span><span class="co">##   (At lambda=0.0098):</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=770, p=204</span></span>
+<span><span class="co">##   (At lambda=0.0093):</span></span>
 <span><span class="co">##     Nonzero coefficients: 4</span></span>
 <span><span class="co">##     Cross-validation error (deviance): 0.14</span></span>
 <span><span class="co">##     R-squared: 0.40</span></span>
-<span><span class="co">##     Signal-to-noise ratio: 0.65</span></span>
-<span><span class="co">##     Scale estimate (sigma): 0.378</span></span>
+<span><span class="co">##     Signal-to-noise ratio: 0.66</span></span>
+<span><span class="co">##     Scale estimate (sigma): 0.377</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
-<span><span class="co">##          Main effect    21        4       0.19    4.58</span></span>
-<span><span class="co">##  Order 1 interaction   174        0       0.00   13.19</span></span>
+<span><span class="co">##          Main effect    21        3      0.143    4.58</span></span>
+<span><span class="co">##  Order 1 interaction   174        0      0.000   13.19</span></span>
+<span><span class="co">##   Order 2 polynomial     9        1      0.111    5.48</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $APL</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ min CV:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=770, p=195</span></span>
-<span><span class="co">##   (At lambda=0.0095):</span></span>
-<span><span class="co">##     Nonzero coefficients: 45</span></span>
-<span><span class="co">##     Cross-validation error (deviance): 0.14</span></span>
-<span><span class="co">##     R-squared: 0.42</span></span>
-<span><span class="co">##     Signal-to-noise ratio: 0.72</span></span>
-<span><span class="co">##     Scale estimate (sigma): 0.370</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=770, p=204</span></span>
+<span><span class="co">##   (At lambda=0.0100):</span></span>
+<span><span class="co">##     Nonzero coefficients: 43</span></span>
+<span><span class="co">##     Cross-validation error (deviance): 0.13</span></span>
+<span><span class="co">##     R-squared: 0.43</span></span>
+<span><span class="co">##     Signal-to-noise ratio: 0.75</span></span>
+<span><span class="co">##     Scale estimate (sigma): 0.367</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
-<span><span class="co">##          Main effect    21        5      0.238       1</span></span>
-<span><span class="co">##  Order 1 interaction   174       40      0.230       1</span></span>
+<span><span class="co">##          Main effect    21        4      0.190       1</span></span>
+<span><span class="co">##  Order 1 interaction   174       37      0.213       1</span></span>
+<span><span class="co">##   Order 2 polynomial     9        2      0.222       1</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ CV1se:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=770, p=195</span></span>
-<span><span class="co">##   (At lambda=0.0555):</span></span>
-<span><span class="co">##     Nonzero coefficients: 6</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=770, p=204</span></span>
+<span><span class="co">##   (At lambda=0.0425):</span></span>
+<span><span class="co">##     Nonzero coefficients: 10</span></span>
 <span><span class="co">##     Cross-validation error (deviance): 0.14</span></span>
-<span><span class="co">##     R-squared: 0.39</span></span>
-<span><span class="co">##     Signal-to-noise ratio: 0.64</span></span>
-<span><span class="co">##     Scale estimate (sigma): 0.380</span></span>
+<span><span class="co">##     R-squared: 0.40</span></span>
+<span><span class="co">##     Signal-to-noise ratio: 0.66</span></span>
+<span><span class="co">##     Scale estimate (sigma): 0.377</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
 <span><span class="co">##          Main effect    21        3     0.1429       1</span></span>
-<span><span class="co">##  Order 1 interaction   174        3     0.0172       1</span></span>
+<span><span class="co">##  Order 1 interaction   174        6     0.0345       1</span></span>
+<span><span class="co">##   Order 2 polynomial     9        1     0.1111       1</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $ME</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ min CV:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=770, p=21</span></span>
-<span><span class="co">##   (At lambda=0.0030):</span></span>
-<span><span class="co">##     Nonzero coefficients: 10</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=770, p=30</span></span>
+<span><span class="co">##   (At lambda=0.0034):</span></span>
+<span><span class="co">##     Nonzero coefficients: 11</span></span>
 <span><span class="co">##     Cross-validation error (deviance): 0.14</span></span>
-<span><span class="co">##     R-squared: 0.41</span></span>
-<span><span class="co">##     Signal-to-noise ratio: 0.70</span></span>
-<span><span class="co">##     Scale estimate (sigma): 0.373</span></span>
+<span><span class="co">##     R-squared: 0.42</span></span>
+<span><span class="co">##     Signal-to-noise ratio: 0.71</span></span>
+<span><span class="co">##     Scale estimate (sigma): 0.371</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
-<span><span class="co">##      Vartype Total Selected Saturation Penalty</span></span>
-<span><span class="co">##  Main effect    21       10      0.476    4.58</span></span>
+<span><span class="co">##             Vartype Total Selected Saturation Penalty</span></span>
+<span><span class="co">##         Main effect    21       10      0.476    4.58</span></span>
+<span><span class="co">##  Order 2 polynomial     9        1      0.111    5.48</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ CV1se:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=770, p=21</span></span>
-<span><span class="co">##   (At lambda=0.0158):</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=770, p=30</span></span>
+<span><span class="co">##   (At lambda=0.0142):</span></span>
 <span><span class="co">##     Nonzero coefficients: 3</span></span>
 <span><span class="co">##     Cross-validation error (deviance): 0.15</span></span>
-<span><span class="co">##     R-squared: 0.38</span></span>
-<span><span class="co">##     Signal-to-noise ratio: 0.61</span></span>
-<span><span class="co">##     Scale estimate (sigma): 0.383</span></span>
+<span><span class="co">##     R-squared: 0.39</span></span>
+<span><span class="co">##     Signal-to-noise ratio: 0.63</span></span>
+<span><span class="co">##     Scale estimate (sigma): 0.381</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
-<span><span class="co">##      Vartype Total Selected Saturation Penalty</span></span>
-<span><span class="co">##  Main effect    21        3      0.143    4.58</span></span>
+<span><span class="co">##             Vartype Total Selected Saturation Penalty</span></span>
+<span><span class="co">##         Main effect    21        3      0.143    4.58</span></span>
+<span><span class="co">##  Order 2 polynomial     9        0      0.000    5.48</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $SRLp</span></span>
 <span><span class="co">## </span></span>
@@ -1862,22 +1841,22 @@ models</p>
 <span><span class="co">##  Order 1 interaction   174        0      0.000   13.19</span></span>
 <span><span class="co">##   Order 2 polynomial     9        1      0.111    5.48</span></span></code></pre></div>
 <p>Similarly, plots can be produced of all of these figures:</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">lso</span>, <span class="va">plot</span>, log.l <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-48-1.png" width="672"></p>
 <p>MCP:</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mcp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  SRM  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, penalty <span class="op">=</span> <span class="st">"MCP"</span><span class="op">)</span>,            <span class="co">## SRM model</span></span>
 <span>  APM  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, gamma <span class="op">=</span> <span class="fl">0</span>, penalty <span class="op">=</span> <span class="st">"MCP"</span><span class="op">)</span>, <span class="co">## APM model</span></span>
 <span>  MEM   <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, k <span class="op">=</span> <span class="fl">0</span>, penalty <span class="op">=</span> <span class="st">"MCP"</span><span class="op">)</span>,     <span class="co">## Main effects MCP model</span></span>
 <span>  SRMp <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, poly <span class="op">=</span> <span class="fl">2</span>, penalty <span class="op">=</span> <span class="st">"MCP"</span><span class="op">)</span>   <span class="co">## SRM + polynomials</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">mcp</span>, <span class="va">plot</span>, log.l <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-51-1.png" width="672"></p>
 <p>SCAD (not evaluated):</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scad</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  SRS  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, penalty <span class="op">=</span> <span class="st">"SCAD"</span><span class="op">)</span>,            <span class="co">## SRS model</span></span>
 <span>  APS  <span class="op">=</span> <span class="fu"><a href="../reference/sparseR.html">sparseR</a></span><span class="op">(</span><span class="va">CASE</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span>, seed <span class="op">=</span> <span class="fl">1</span>, gamma <span class="op">=</span> <span class="fl">0</span>, penalty <span class="op">=</span> <span class="st">"SCAD"</span><span class="op">)</span>, <span class="co">## APS model</span></span>
@@ -1889,7 +1868,7 @@ models</p>
 <p>Summaries (using <code>results_summary</code> and
 <code>results_1se_summary</code> values within each object; formatting
 omitted).</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">lso</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">results_summary</span>, <span class="va">x</span><span class="op">$</span><span class="va">results1se_summary</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">mcp</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">results_summary</span>, <span class="va">x</span><span class="op">$</span><span class="va">results1se_summary</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1949,136 +1928,6 @@ Main effect
 21
 </td>
 <td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-0.476
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.190
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-Order 1 interaction
-</td>
-<td style="text-align:right;">
-13.191
-</td>
-<td style="text-align:right;">
-174
-</td>
-<td style="text-align:right;">
-32
-</td>
-<td style="text-align:right;">
-0.184
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.000
-</td>
-</tr>
-<tr grouplength="2">
-<td colspan="7" style="border-bottom: 1px solid;">
-<strong>APL</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-Main effect
-</td>
-<td style="text-align:right;">
-1.000
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.238
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0.143
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-Order 1 interaction
-</td>
-<td style="text-align:right;">
-1.000
-</td>
-<td style="text-align:right;">
-174
-</td>
-<td style="text-align:right;">
-40
-</td>
-<td style="text-align:right;">
-0.230
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0.017
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="7" style="border-bottom: 1px solid;">
-<strong>MEL</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-Main effect
-</td>
-<td style="text-align:right;">
-4.583
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-0.476
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0.143
-</td>
-</tr>
-<tr grouplength="3">
-<td colspan="7" style="border-bottom: 1px solid;">
-<strong>SRLp</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-Main effect
-</td>
-<td style="text-align:right;">
-4.583
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:right;">
 11
 </td>
 <td style="text-align:right;">
@@ -2114,8 +1963,207 @@ Order 1 interaction
 0.000
 </td>
 </tr>
+<tr grouplength="2">
+<td colspan="7" style="border-bottom: 1px solid;">
+<strong>APL</strong>
+</td>
+</tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Order 2 polynomial
+</td>
+<td style="text-align:right;">
+5.477
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+0.667
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.111
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Main effect
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0.190
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0.143
+</td>
+</tr>
+<tr grouplength="1">
+<td colspan="7" style="border-bottom: 1px solid;">
+<strong>MEL</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Order 1 interaction
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+174
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+0.213
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+0.034
+</td>
+</tr>
+<tr grouplength="3">
+<td colspan="7" style="border-bottom: 1px solid;">
+<strong>SRLp</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Order 2 polynomial
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.222
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.111
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Main effect
+</td>
+<td style="text-align:right;">
+4.583
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0.476
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0.143
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Order 2 polynomial
+</td>
+<td style="text-align:right;">
+5.477
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.111
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Main effect
+</td>
+<td style="text-align:right;">
+4.583
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0.524
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0.143
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Order 1 interaction
+</td>
+<td style="text-align:right;">
+13.191
+</td>
+<td style="text-align:right;">
+174
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+0.138
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 Order 2 polynomial
 </td>
 <td style="text-align:right;">
@@ -2196,136 +2244,6 @@ Main effect
 21
 </td>
 <td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-0.333
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.048
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-Order 1 interaction
-</td>
-<td style="text-align:right;">
-13.191
-</td>
-<td style="text-align:right;">
-174
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0.011
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.000
-</td>
-</tr>
-<tr grouplength="2">
-<td colspan="7" style="border-bottom: 1px solid;">
-<strong>APM</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-Main effect
-</td>
-<td style="text-align:right;">
-1.000
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0.143
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.048
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-Order 1 interaction
-</td>
-<td style="text-align:right;">
-1.000
-</td>
-<td style="text-align:right;">
-174
-</td>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:right;">
-0.069
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.000
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="7" style="border-bottom: 1px solid;">
-<strong>MEM</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-Main effect
-</td>
-<td style="text-align:right;">
-4.583
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.238
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.048
-</td>
-</tr>
-<tr grouplength="3">
-<td colspan="7" style="border-bottom: 1px solid;">
-<strong>SRMp</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-Main effect
-</td>
-<td style="text-align:right;">
-4.583
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:right;">
 5
 </td>
 <td style="text-align:right;">
@@ -2361,8 +2279,207 @@ Order 1 interaction
 0.000
 </td>
 </tr>
+<tr grouplength="2">
+<td colspan="7" style="border-bottom: 1px solid;">
+<strong>APM</strong>
+</td>
+</tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Order 2 polynomial
+</td>
+<td style="text-align:right;">
+5.477
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+0.556
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Main effect
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.048
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.048
+</td>
+</tr>
+<tr grouplength="1">
+<td colspan="7" style="border-bottom: 1px solid;">
+<strong>MEM</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Order 1 interaction
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+174
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+0.075
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr grouplength="3">
+<td colspan="7" style="border-bottom: 1px solid;">
+<strong>SRMp</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Order 2 polynomial
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.111
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Main effect
+</td>
+<td style="text-align:right;">
+4.583
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0.190
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.048
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Order 2 polynomial
+</td>
+<td style="text-align:right;">
+5.477
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.222
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Main effect
+</td>
+<td style="text-align:right;">
+4.583
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+0.238
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.048
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Order 1 interaction
+</td>
+<td style="text-align:right;">
+13.191
+</td>
+<td style="text-align:right;">
+174
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+0.046
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 Order 2 polynomial
 </td>
 <td style="text-align:right;">
@@ -2391,7 +2508,7 @@ Order 2 polynomial
 <div class="section level2">
 <h2 id="use-case-heart-data">Use case: heart data<a class="anchor" aria-label="anchor" href="#use-case-heart-data"></a>
 </h2>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">## Load Data set, correctly code factors + outcome</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"Detrano"</span><span class="op">)</span></span>
@@ -2431,15 +2548,13 @@ Order 2 polynomial
 <span><span class="co">##  Mean   :0.9373   Mean   :0.4587  </span></span>
 <span><span class="co">##  3rd Qu.:2.0000   3rd Qu.:1.0000  </span></span>
 <span><span class="co">##  Max.   :4.0000   Max.   :1.0000  </span></span>
-<span><span class="co">## </span></span></code></pre></div>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">cleveland</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">cleveland</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">##      age      sex       cp trestbps     chol      fbs  restecg  thalach </span></span>
 <span><span class="co">##       41        2        4       50      152        2        3       91 </span></span>
 <span><span class="co">##    exang  oldpeak    slope       ca     thal      num     case </span></span>
-<span><span class="co">##        2       40        3        5        4        5        2</span></span></code></pre></div>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">cleveland</span><span class="op">$</span><span class="va">sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">cleveland</span><span class="op">$</span><span class="va">sex</span><span class="op">)</span></span>
+<span><span class="co">##        2       40        3        5        4        5        2</span></span>
+<span><span class="va">cleveland</span><span class="op">$</span><span class="va">sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">cleveland</span><span class="op">$</span><span class="va">sex</span><span class="op">)</span></span>
 <span><span class="va">cleveland</span><span class="op">$</span><span class="va">fbs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">cleveland</span><span class="op">$</span><span class="va">fbs</span><span class="op">)</span></span>
 <span><span class="va">cleveland</span><span class="op">$</span><span class="va">exang</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">cleveland</span><span class="op">$</span><span class="va">exang</span><span class="op">)</span></span>
 <span></span>
@@ -2469,56 +2584,59 @@ Order 2 polynomial
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ min CV:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=151, p=153</span></span>
-<span><span class="co">##   (At lambda=0.0070):</span></span>
-<span><span class="co">##     Nonzero coefficients: 12</span></span>
-<span><span class="co">##     Cross-validation error (deviance): 0.13</span></span>
-<span><span class="co">##     R-squared: 0.48</span></span>
-<span><span class="co">##     Signal-to-noise ratio: 0.93</span></span>
-<span><span class="co">##     Scale estimate (sigma): 0.357</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=151, p=162</span></span>
+<span><span class="co">##   (At lambda=0.0033):</span></span>
+<span><span class="co">##     Nonzero coefficients: 24</span></span>
+<span><span class="co">##     Cross-validation error (deviance): 0.12</span></span>
+<span><span class="co">##     R-squared: 0.51</span></span>
+<span><span class="co">##     Signal-to-noise ratio: 1.04</span></span>
+<span><span class="co">##     Scale estimate (sigma): 0.348</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
-<span><span class="co">##          Main effect    18       12      0.667    4.24</span></span>
-<span><span class="co">##  Order 1 interaction   135        0      0.000   11.62</span></span>
+<span><span class="co">##          Main effect    18       14     0.7778    4.24</span></span>
+<span><span class="co">##  Order 1 interaction   135        7     0.0519   11.62</span></span>
+<span><span class="co">##   Order 2 polynomial     9        3     0.3333    5.20</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ CV1se:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=151, p=153</span></span>
-<span><span class="co">##   (At lambda=0.0204):</span></span>
-<span><span class="co">##     Nonzero coefficients: 7</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=151, p=162</span></span>
+<span><span class="co">##   (At lambda=0.0156):</span></span>
+<span><span class="co">##     Nonzero coefficients: 8</span></span>
 <span><span class="co">##     Cross-validation error (deviance): 0.14</span></span>
-<span><span class="co">##     R-squared: 0.42</span></span>
-<span><span class="co">##     Signal-to-noise ratio: 0.73</span></span>
-<span><span class="co">##     Scale estimate (sigma): 0.377</span></span>
+<span><span class="co">##     R-squared: 0.45</span></span>
+<span><span class="co">##     Signal-to-noise ratio: 0.82</span></span>
+<span><span class="co">##     Scale estimate (sigma): 0.368</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
-<span><span class="co">##          Main effect    18        7      0.389    4.24</span></span>
+<span><span class="co">##          Main effect    18        8      0.444    4.24</span></span>
 <span><span class="co">##  Order 1 interaction   135        0      0.000   11.62</span></span>
+<span><span class="co">##   Order 2 polynomial     9        0      0.000    5.20</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $APL</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ min CV:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=151, p=153</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=151, p=162</span></span>
 <span><span class="co">##   (At lambda=0.0635):</span></span>
 <span><span class="co">##     Nonzero coefficients: 15</span></span>
 <span><span class="co">##     Cross-validation error (deviance): 0.14</span></span>
 <span><span class="co">##     R-squared: 0.43</span></span>
-<span><span class="co">##     Signal-to-noise ratio: 0.75</span></span>
-<span><span class="co">##     Scale estimate (sigma): 0.375</span></span>
+<span><span class="co">##     Signal-to-noise ratio: 0.74</span></span>
+<span><span class="co">##     Scale estimate (sigma): 0.376</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
 <span><span class="co">##          Main effect    18        6     0.3333       1</span></span>
 <span><span class="co">##  Order 1 interaction   135        9     0.0667       1</span></span>
+<span><span class="co">##   Order 2 polynomial     9        0     0.0000       1</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ CV1se:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=151, p=153</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=151, p=162</span></span>
 <span><span class="co">##   (At lambda=0.1144):</span></span>
 <span><span class="co">##     Nonzero coefficients: 9</span></span>
 <span><span class="co">##     Cross-validation error (deviance): 0.15</span></span>
@@ -2530,37 +2648,40 @@ Order 2 polynomial
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
 <span><span class="co">##          Main effect    18        5     0.2778       1</span></span>
 <span><span class="co">##  Order 1 interaction   135        4     0.0296       1</span></span>
+<span><span class="co">##   Order 2 polynomial     9        0     0.0000       1</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $ME</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ min CV:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=151, p=18</span></span>
-<span><span class="co">##   (At lambda=0.0033):</span></span>
-<span><span class="co">##     Nonzero coefficients: 13</span></span>
-<span><span class="co">##     Cross-validation error (deviance): 0.13</span></span>
-<span><span class="co">##     R-squared: 0.49</span></span>
-<span><span class="co">##     Signal-to-noise ratio: 0.96</span></span>
-<span><span class="co">##     Scale estimate (sigma): 0.354</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=151, p=27</span></span>
+<span><span class="co">##   (At lambda=0.0024):</span></span>
+<span><span class="co">##     Nonzero coefficients: 17</span></span>
+<span><span class="co">##     Cross-validation error (deviance): 0.12</span></span>
+<span><span class="co">##     R-squared: 0.52</span></span>
+<span><span class="co">##     Signal-to-noise ratio: 1.09</span></span>
+<span><span class="co">##     Scale estimate (sigma): 0.343</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
-<span><span class="co">##      Vartype Total Selected Saturation Penalty</span></span>
-<span><span class="co">##  Main effect    18       13      0.722    4.24</span></span>
+<span><span class="co">##             Vartype Total Selected Saturation Penalty</span></span>
+<span><span class="co">##         Main effect    18       14      0.778    4.24</span></span>
+<span><span class="co">##  Order 2 polynomial     9        3      0.333    5.20</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Model summary @ CV1se:</span></span>
 <span><span class="co">## -----------------------------------------------------</span></span>
-<span><span class="co">##   lasso-penalized linear regression with n=151, p=18</span></span>
-<span><span class="co">##   (At lambda=0.0193):</span></span>
-<span><span class="co">##     Nonzero coefficients: 7</span></span>
-<span><span class="co">##     Cross-validation error (deviance): 0.14</span></span>
-<span><span class="co">##     R-squared: 0.43</span></span>
-<span><span class="co">##     Signal-to-noise ratio: 0.75</span></span>
-<span><span class="co">##     Scale estimate (sigma): 0.375</span></span>
+<span><span class="co">##   lasso-penalized linear regression with n=151, p=27</span></span>
+<span><span class="co">##   (At lambda=0.0133):</span></span>
+<span><span class="co">##     Nonzero coefficients: 11</span></span>
+<span><span class="co">##     Cross-validation error (deviance): 0.13</span></span>
+<span><span class="co">##     R-squared: 0.46</span></span>
+<span><span class="co">##     Signal-to-noise ratio: 0.86</span></span>
+<span><span class="co">##     Scale estimate (sigma): 0.364</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   SR information:</span></span>
-<span><span class="co">##      Vartype Total Selected Saturation Penalty</span></span>
-<span><span class="co">##  Main effect    18        7      0.389    4.24</span></span>
+<span><span class="co">##             Vartype Total Selected Saturation Penalty</span></span>
+<span><span class="co">##         Main effect    18       11      0.611    4.24</span></span>
+<span><span class="co">##  Order 2 polynomial     9        0      0.000    5.20</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $SRLp</span></span>
 <span><span class="co">## </span></span>
@@ -2595,15 +2716,14 @@ Order 2 polynomial
 <span><span class="co">##              Vartype Total Selected Saturation Penalty</span></span>
 <span><span class="co">##          Main effect    18        8      0.444    4.24</span></span>
 <span><span class="co">##  Order 1 interaction   135        0      0.000   11.62</span></span>
-<span><span class="co">##   Order 2 polynomial     9        0      0.000    5.20</span></span></code></pre></div>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">lso</span><span class="op">$</span><span class="va">SRL</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">##   Order 2 polynomial     9        0      0.000    5.20</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">lso</span><span class="op">$</span><span class="va">SRL</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-55-1.png" width="672"><img src="sparseR_files/figure-html/unnamed-chunk-55-2.png" width="672"></p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">lso</span>, <span class="va">plot</span>, log.l <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="sparseR_files/figure-html/unnamed-chunk-57-1.png" width="672"></p>
 </div>
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
 
@@ -2614,15 +2734,15 @@ Order 2 polynomial
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>
