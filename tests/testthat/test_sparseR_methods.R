@@ -78,10 +78,10 @@ test_that("coef method works", {
     obj2 <- sparseR(Sepal.Width ~ ., data = iris)
     b <- coef(obj2, at = "cvmin")
     sum(b != 0)
-  }, 18)
+  }, 16)
 
   expect_equal({
     sum(coef(obj2, at = "cv1se") != 0)
-  }, 11)
+  }, 6)
 })
 

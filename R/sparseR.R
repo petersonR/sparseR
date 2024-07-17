@@ -9,8 +9,9 @@
 #' @param ncvgamma The tuning parameter for ncvreg (for MCP or SCAD)
 #' @param lambda.min The minimum value to be used for lambda (as ratio of max,
 #'   see ?ncvreg)
-#' @param k The maximum order of interactions to consider
-#' @param poly The maximum order of polynomials to consider
+#' @param k The maximum order of interactions to consider (default: 1; all
+#'   pairwise)
+#' @param poly The maximum order of polynomials to consider (default: 2)
 #' @param gamma The degree of extremity of sparsity rankings (see details)
 #' @param cumulative_k Should penalties be increased cumulatively as order
 #'   interaction increases?
@@ -51,14 +52,17 @@
 #' factors with low prevalence be combined?) - none (should no preprocessing be
 #' done? can also specify a null object)
 #'
-#' The options that can be passed to `extra_opts` are: - centers (named numeric
-#' vector which denotes where each covariate should be centered) - center_fn
-#' (alternatively, a function can be specified to calculate center such as `min`
-#' or `median`) - freq_cut, unique_cut (see ?step_nzv - these get used by the
-#' filtering steps) - neighbors (the number of neighbors for knnImpute) -
-#' one_hot (see ?step_dummy), this defaults to cell-means coding which can be
-#' done in regularized regression (change at your own risk) - raw (should
-#' polynomials not be orthogonal? defaults to true because variables are
+#' The options that can be passed to `extra_opts` are:
+#' - centers (named numeric vector which denotes where each covariate should be
+#'   centered)
+#' - center_fn (alternatively, a function can be specified to calculate center
+#'   such as `min`
+#' or `median`)
+#' - freq_cut, unique_cut (see ?step_nzv; these get used by the filtering steps)
+#' - neighbors (the number of neighbors for knnImpute)
+#' - one_hot (see ?step_dummy), this defaults to cell-means coding which can be
+#' done in regularized regression (change at your own risk)
+#' - raw (should polynomials not be orthogonal? defaults to true because variables are
 #' centered and scaled already by this point by default)
 #'
 #' \code{ia_formula} will by default interact all variables with each other up
@@ -96,7 +100,7 @@
 sparseR <- function(formula, data, family = c("gaussian", "binomial", "poisson", "coxph"),
                     penalty = c("lasso", "MCP", "SCAD"), alpha = 1, ncvgamma = 3,
                     lambda.min = .005,
-                    k = 1, poly = 1, gamma = .5, cumulative_k = FALSE,
+                    k = 1, poly = 2, gamma = .5, cumulative_k = FALSE,
                     cumulative_poly = TRUE, pool = FALSE,
                     ia_formula = NULL,
                     pre_process = TRUE, model_matrix = NULL, y = NULL,
@@ -217,7 +221,7 @@ sparseR <- function(formula, data, family = c("gaussian", "binomial", "poisson",
     ungroup() %>%
     mutate(Vartype = as.character(.data$Vartype))
 
-  info <- list(k = k, poly = k, cumulative_k = cumulative_k,
+  info <- list(k = k, poly = poly, cumulative_k = cumulative_k,
                cumulative_poly = cumulative_poly, pool = pool,
                pre_process = pre_process, model_matrix = model_matrix, y = y,
                poly_prefix = poly_prefix, int_sep = int_sep)

@@ -1,5 +1,9 @@
 # 0.3.0.9000
 
+- Updated default `poly` to 2 so that limited non-linearities get discovered by default,
+  as advertised (thank you to the anonymous reviewer who noticed this)
+- Fixed formatting issue in documentation for `sparseR`
+
 # 0.3.0
 
 - Fixed bug in the `effect_plot` function that was causing issues with 

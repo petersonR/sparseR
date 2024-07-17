@@ -13,7 +13,7 @@ sparseR(
   ncvgamma = 3,
   lambda.min = 0.005,
   k = 1,
-  poly = 1,
+  poly = 2,
   gamma = 0.5,
   cumulative_k = FALSE,
   cumulative_poly = TRUE,
@@ -47,9 +47,10 @@ penalty)}
 \item{lambda.min}{The minimum value to be used for lambda (as ratio of max,
 see ?ncvreg)}
 
-\item{k}{The maximum order of interactions to consider}
+\item{k}{The maximum order of interactions to consider (default: 1; all
+pairwise)}
 
-\item{poly}{The maximum order of polynomials to consider}
+\item{poly}{The maximum order of polynomials to consider (default: 2)}
 
 \item{gamma}{The degree of extremity of sparsity rankings (see details)}
 
@@ -120,15 +121,20 @@ missing data be imputed?) - scale (should data be standardized)? - center
 factors with low prevalence be combined?) - none (should no preprocessing be
 done? can also specify a null object)
 
-The options that can be passed to \code{extra_opts} are: - centers (named numeric
-vector which denotes where each covariate should be centered) - center_fn
-(alternatively, a function can be specified to calculate center such as \code{min}
-or \code{median}) - freq_cut, unique_cut (see ?step_nzv - these get used by the
-filtering steps) - neighbors (the number of neighbors for knnImpute) -
-one_hot (see ?step_dummy), this defaults to cell-means coding which can be
-done in regularized regression (change at your own risk) - raw (should
-polynomials not be orthogonal? defaults to true because variables are
+The options that can be passed to \code{extra_opts} are:
+\itemize{
+\item centers (named numeric vector which denotes where each covariate should be
+centered)
+\item center_fn (alternatively, a function can be specified to calculate center
+such as \code{min}
+or \code{median})
+\item freq_cut, unique_cut (see ?step_nzv; these get used by the filtering steps)
+\item neighbors (the number of neighbors for knnImpute)
+\item one_hot (see ?step_dummy), this defaults to cell-means coding which can be
+done in regularized regression (change at your own risk)
+\item raw (should polynomials not be orthogonal? defaults to true because variables are
 centered and scaled already by this point by default)
+}
 
 \code{ia_formula} will by default interact all variables with each other up
 to order k. If specified, ia_formula will be passed as the \code{terms} argument
