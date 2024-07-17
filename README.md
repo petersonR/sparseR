@@ -84,9 +84,6 @@ srl
 #>          Main effect     6        2      0.333    2.45
 #>  Order 1 interaction    12        2      0.167    3.46
 #>   Order 2 polynomial     3        2      0.667    3.00
-```
-
-``` r
 
 par(mfrow = c(2,1), mar = c(4, 4, 3, 1))
 plot(srl, plot_type = "both")
@@ -101,16 +98,16 @@ summary(srl, at = "cv1se")
 #> At lambda=0.0074:
 #> -------------------------------------------------
 #>   Nonzero coefficients         :   6
-#>   Expected nonzero coefficients:   1.10
-#>   Average mfdr (6 features)    :   0.183
+#>   Expected nonzero coefficients:   1.22
+#>   Average mfdr (6 features)    :   0.204
 #> 
-#>                                Estimate      z       mfdr Selected
-#> Species_setosa                  0.80638 18.013    < 1e-04        *
-#> Sepal.Length_poly_1             0.19734  9.713    < 1e-04        *
-#> Petal.Width_poly_2              0.09871  4.614 0.00024977        *
-#> Petal.Width:Species_versicolor  0.27739  3.259 0.04655092        *
-#> Sepal.Length_poly_2            -0.03363 -2.804 0.21141507        *
-#> Sepal.Length:Species_setosa     0.04275  2.190 0.84164385        *
+#>                                Estimate      z      mfdr Selected
+#> Species_setosa                  0.80638 18.013   < 1e-04        *
+#> Sepal.Length_poly_1             0.19734  9.713   < 1e-04        *
+#> Petal.Width_poly_2              0.09871  4.614 0.0011579        *
+#> Petal.Width:Species_versicolor  0.27739  3.259 0.1328700        *
+#> Sepal.Length_poly_2            -0.03363 -2.804 0.3663287        *
+#> Sepal.Length:Species_setosa     0.04275  2.190 0.7229428        *
 ```
 
 ``` r
