@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">sparseR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,30 +115,29 @@
 <span><span class="co">#&gt;              Vartype Total Selected Saturation Penalty</span></span>
 <span><span class="co">#&gt;          Main effect     6        2      0.333    2.45</span></span>
 <span><span class="co">#&gt;  Order 1 interaction    12        2      0.167    3.46</span></span>
-<span><span class="co">#&gt;   Order 2 polynomial     3        2      0.667    3.00</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt;   Order 2 polynomial     3        2      0.667    3.00</span></span>
+<span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">srl</span>, plot_type <span class="op">=</span> <span class="st">"both"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-example-1.png"><!-- --></p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">srl</span>, at <span class="op">=</span> <span class="st">"cv1se"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; lasso-penalized linear regression with n=150, p=21</span></span>
 <span><span class="co">#&gt; At lambda=0.0074:</span></span>
 <span><span class="co">#&gt; -------------------------------------------------</span></span>
 <span><span class="co">#&gt;   Nonzero coefficients         :   6</span></span>
-<span><span class="co">#&gt;   Expected nonzero coefficients:   1.10</span></span>
-<span><span class="co">#&gt;   Average mfdr (6 features)    :   0.183</span></span>
+<span><span class="co">#&gt;   Expected nonzero coefficients:   1.22</span></span>
+<span><span class="co">#&gt;   Average mfdr (6 features)    :   0.204</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;                                Estimate      z       mfdr Selected</span></span>
-<span><span class="co">#&gt; Species_setosa                  0.80638 18.013    &lt; 1e-04        *</span></span>
-<span><span class="co">#&gt; Sepal.Length_poly_1             0.19734  9.713    &lt; 1e-04        *</span></span>
-<span><span class="co">#&gt; Petal.Width_poly_2              0.09871  4.614 0.00024977        *</span></span>
-<span><span class="co">#&gt; Petal.Width:Species_versicolor  0.27739  3.259 0.04655092        *</span></span>
-<span><span class="co">#&gt; Sepal.Length_poly_2            -0.03363 -2.804 0.21141507        *</span></span>
-<span><span class="co">#&gt; Sepal.Length:Species_setosa     0.04275  2.190 0.84164385        *</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<span><span class="co">#&gt;                                Estimate      z      mfdr Selected</span></span>
+<span><span class="co">#&gt; Species_setosa                  0.80638 18.013   &lt; 1e-04        *</span></span>
+<span><span class="co">#&gt; Sepal.Length_poly_1             0.19734  9.713   &lt; 1e-04        *</span></span>
+<span><span class="co">#&gt; Petal.Width_poly_2              0.09871  4.614 0.0011579        *</span></span>
+<span><span class="co">#&gt; Petal.Width:Species_versicolor  0.27739  3.259 0.1328700        *</span></span>
+<span><span class="co">#&gt; Sepal.Length_poly_2            -0.03363 -2.804 0.3663287        *</span></span>
+<span><span class="co">#&gt; Sepal.Length:Species_setosa     0.04275  2.190 0.7229428        *</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/effect_plot.html">effect_plot</a></span><span class="op">(</span><span class="va">srl</span>, <span class="st">"Petal.Width"</span>, by <span class="op">=</span> <span class="st">"Species"</span>, at <span class="op">=</span> <span class="st">"cv1se"</span>, legend_location <span class="op">=</span> <span class="st">"topright"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-example2-1.png"><!-- --></p>
 <p>For more examples and a closer look at how to use this package, check out the <a href="https://petersonr.github.io/sparseR/">package website</a>.</p>

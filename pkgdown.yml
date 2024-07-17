@@ -3,7 +3,7 @@ pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   sparseR: sparseR.html
-last_built: 2024-07-17T22:47Z
+last_built: 2024-07-17T23:11Z
 urls:
   reference: https://petersonr.github.io/sparseR/reference
   article: https://petersonr.github.io/sparseR/articles
