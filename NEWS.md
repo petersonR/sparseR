@@ -1,4 +1,4 @@
-# 0.3.0.9000
+# 0.3.1
 
 - Updated default `poly` to 2 so that limited non-linearities get discovered by default,
   as advertised (thank you to the anonymous reviewer who noticed this)
