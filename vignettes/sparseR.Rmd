@@ -173,7 +173,7 @@ srl_centered2min <- sparseR(Sepal.Width ~ ., iris, extra_opts = list(centers = c
 Or, a function can be passed to evaluate the location for each covariate:
 
 ```{r}
-p2 <- sparseR_prep(Sepal.Width ~ ., iris, k = 0, extra_opts = list(center_fn = min))
+p2 <- sparseR_prep(Sepal.Width ~ ., iris, k = 0, extra_opts = list(center_fn = function(x, ...) min(x, ...)))
 (c2min2 <- bake(p2, iris))
 identical(c2min2, c2min)
 ```
